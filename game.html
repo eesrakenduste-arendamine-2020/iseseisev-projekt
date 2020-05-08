@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TyperGame-Made-By-Herman-&-Daniel</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+             integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+                crossorigin="anonymous">
+    </script>
+    <script defer src="game.js"></script>
+    <link rel="stylesheet" href="game.css">
+</head>
+<body>
+    <div class="main">
+        <h1>Type-Type-Mania</h1>
+        <div id="personName" >
+            <p>Your name: </p>
+            <input type="text" id="name">
+        </div>
+        <h2 id="difficultyHeader">Select your difficulty</h2>
+        <div id="difficulty">
+            <input id="ez" type="button" value="Easy">
+            <input id="norm" type="button" value="Normal">
+            <input id="hard" type="button" value="Hard">
+        </div>
+        <p id="notificationD">Your current difficulty is Easy</p>
+        <br>
+        <div class="start">
+            <input id="start" type="button"  value="Start">
+        </div>
+        <br>
+        <div class="score">
+            <h3>Score</h3>
+            <span class="scorePoints">0</span>
+        </div>
+        
+        <div class="time">
+            <h3>Time</h3>
+            <span class="timeLeft">10</span>
+        </div>
+        <div id="words">
+            <p class="words">MAKARAOONISALAD</p>
+        </div>
+    </div>
+</body>
+</html>
