@@ -7,13 +7,14 @@ body{
   margin:0;
 }
 .main {
+  font-style: italic;
   justify-content: center;
   align-items: center;
 	max-width: 600px;
   margin:auto;
-  margin-top: 50px;
-  width: 100%;
-  height: 500px;
+  margin-top: 30px;
+  width: auto;
+  height: 560px;
 	text-align: center;
 	padding: 2%;
 	background: linear-gradient(rgb(252, 186, 246),rgb(253, 234, 255,0.5),rgb(255, 143, 240));
@@ -54,21 +55,30 @@ input{
   border:solid blueviolet;
   
 }
-.score{float: left;}
+.score{
+  float: left;
+  margin-top: 30px;
+}
 .score span{}           
-.time{float: right}
+.time{
+  float: right;
+  margin-top: 30px;
+  
+}
 .time span{}
 
 .words{
-  text-align: center;
-  font-size: 35px;
-  width: 60%;
-  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: auto;
+  font-size: auto;
+  width: auto;
+  height: 40px;
   background-color: darkorange;
   border: 3px solid blueviolet;
   border-radius: 16px;
-  align-items: center;
-  margin: auto;
+  margin:  auto;
 }
 
 #notificationD{
