@@ -1,4 +1,18 @@
 # iseseisev-projekt
+PROJEKTI LOOJAD :
+HERMAN PETROV JA DANIEL EELMAA
+##
+PROJEKTI KIRJELDUS:
+
+##
+PROJEKTI DETAILSEM KIRJELDUS (++ PILDID)
+##
+
+
+
+
+
+
 
 Tähtaeg - 1 päev enne esitlust. Esitluse kuupäevadeks: 1 nädal peale ÕISis valitud arvestuse kuupäeva (v.a arvatud järelarvestus, mis toimub õigel kuupäeval) - kindlasti tuleb arvestusele registreerida. Projektide esitlemine toimub:
 1. 19.05.2020 kell 16:15-17:45 zoomis
