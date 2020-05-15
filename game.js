@@ -11,6 +11,8 @@ let playerReg;
 let agreed=0;
 let userDifficultyNotification;
 let notificationD=document.querySelector('#notificationD');
+let wordList=[];
+
 
 class EntryOfPlayer{
     constructor(userName,userDifficulty){
@@ -36,6 +38,7 @@ function startGame(){
         console.log(playerReg);
         agreed=0;
         name.value=""
+        prepareGame();
        
     }
     else if(userName==""&&agreed==1){
@@ -44,6 +47,7 @@ function startGame(){
             console.log(playerReg);
             agreed=0;
             name.value  ="";
+            prepareGame();
             
         
     }else{
@@ -52,7 +56,24 @@ function startGame(){
         
     }
 }
+$(document).keypress(function(e){
+    console.log(String.fromCharCode(e.keyCode))
+    let nextWord= wordList[Math.floor(Math.random()*wordList.length)]
+    console.log(nextWord)
+});
+
+
+function prepareGame(){
+    jQuery.get('1-1000.txt', function(data) {
+        wordList = data.split('\n');
+        console.log(wordList);
+        });
+}
+
+
+
 
 
 difficulty.addEventListener("click",difficultyValue);
 startButton.addEventListener("click",startGame);
+
