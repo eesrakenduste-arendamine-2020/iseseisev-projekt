@@ -72,7 +72,6 @@ input{
   justify-content: center;
   align-items: center;
   font-size: auto;
-  font-size: auto;
   width: auto;
   height: 40px;
   background-color: darkorange;
@@ -84,4 +83,8 @@ input{
 #notificationD{
   font-size: larger;
   font-weight: bold;
+}
+#wordsSpot span{
+  font-size: auto;
+  color: #ECF0F1;
 }

@@ -14,7 +14,7 @@ let notificationD=document.querySelector('#notificationD');
 let nextWord;
 let wordList=[];
 let inputLetter;
-let destroyWord;
+let splitter;
 let rights=0;
 
 prepareGame();
@@ -86,23 +86,46 @@ difficulty.addEventListener("click",difficultyValue);
 startButton.addEventListener("click",startGame);
 
 function getWord(){
-    let nextWord= wordList[Math.floor(Math.random()*wordList.length)]
+    nextWord= wordList[Math.floor(Math.random()*wordList.length)]
     $('#wordsSpot').html(nextWord);
-    destroyWord=nextWord;
+    splitter=nextWord;
+    
 
 }
-
+let letterOfWord = document.createElement("span");
 function typerMan(){
+    
+    let mainWord = document.createElement("span2");
     let characters=[];
-    characters=destroyWord.split("");
+    characters=splitter.split("");
     console.log(characters);
+
     if(inputLetter==characters[rights]){
+        $('#wordsSpot').html("");
+        mainWord.classList.add("span2");
+        letterOfWord.classList.add("span");
+        letterOfWord.innerHTML+=characters[rights];
+        nextWord=nextWord.slice(1);
+        mainWord.innerHTML=nextWord;
+        document.querySelector("#wordsSpot").appendChild(letterOfWord)
+        document.querySelector("#wordsSpot").appendChild(mainWord)
+        
         rights+=1;
         console.log(rights)
         if(characters.length==rights){
             getWord();
             rights=0;
+            letterOfWord.innerHTML=null;
+            
         }
     }
+    
 }
 
+
+
+
+/*
+const element = document.querySelector('#lettersList');
+element.innerHTML = element.innerHTML.replace('o', '<letterOfWord style="color: red;">o</letterOfWord>');
+*/
