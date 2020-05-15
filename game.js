@@ -11,9 +11,13 @@ let playerReg;
 let agreed=0;
 let userDifficultyNotification;
 let notificationD=document.querySelector('#notificationD');
+let nextWord;
 let wordList=[];
+let inputLetter;
+let destroyWord;
+let rights=0;
 
-
+prepareGame();
 class EntryOfPlayer{
     constructor(userName,userDifficulty){
         this.player=userName;
@@ -38,7 +42,7 @@ function startGame(){
         console.log(playerReg);
         agreed=0;
         name.value=""
-        prepareGame();
+        getWord();
        
     }
     else if(userName==""&&agreed==1){
@@ -47,7 +51,7 @@ function startGame(){
             console.log(playerReg);
             agreed=0;
             name.value  ="";
-            prepareGame();
+            getWord();
             
         
     }else{
@@ -58,8 +62,12 @@ function startGame(){
 }
 $(document).keypress(function(e){
     console.log(String.fromCharCode(e.keyCode))
+    inputLetter=String.fromCharCode(e.keyCode)
+    /*
     let nextWord= wordList[Math.floor(Math.random()*wordList.length)]
     console.log(nextWord)
+    */
+   typerMan();
 });
 
 
@@ -76,4 +84,25 @@ function prepareGame(){
 
 difficulty.addEventListener("click",difficultyValue);
 startButton.addEventListener("click",startGame);
+
+function getWord(){
+    let nextWord= wordList[Math.floor(Math.random()*wordList.length)]
+    $('#wordsSpot').html(nextWord);
+    destroyWord=nextWord;
+
+}
+
+function typerMan(){
+    let characters=[];
+    characters=destroyWord.split("");
+    console.log(characters);
+    if(inputLetter==characters[rights]){
+        rights+=1;
+        console.log(rights)
+        if(characters.length==rights){
+            getWord();
+            rights=0;
+        }
+    }
+}
 
