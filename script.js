@@ -5,8 +5,6 @@ window.onload = function() {
 };
 
 class Jeopardy{
-    
-
     constructor(questionEl, demo, a1){
         this.q = questionEl
         this.buttonPressed = demo
@@ -21,18 +19,22 @@ class Jeopardy{
         let category
 
         let buttonNr
-        let count = 0;
+        let count = 23;
         this.count = count
+
+        let finalScore1, finalScore2
+        this.finalScore1 = finalScore1
+        this.finalScore2 = finalScore2
+
+        this.gameHistory = JSON.parse(localStorage.getItem("gameHistory")) || [];
     }
 
     getBtnID(){
-        //console.log(event.srcElement.id)
         this.category = event.srcElement.id
         
     }
 
     getAnsBtnID(){
-        //console.log(event.srcElement.id)
         let choise = event.srcElement.id
         this.answer(choise)
     }
@@ -450,6 +452,11 @@ class Jeopardy{
         this.count = this.count + 1
         if (this.count == 25) {
             $("#gameover").slideToggle("fast")
+            this.finalScore1 = document.getElementById("team1score").innerHTML
+            console.log(this.finalScore1)
+            this.finalScore2 = document.getElementById("team2score").innerHTML
+            console.log(this.finalScore2)
+            this.storeHistory();
         }
 
         if (this.turn==1) {
@@ -470,11 +477,19 @@ class Jeopardy{
     }
 
     storeHistory(){
-
+        let savedHistory = {
+            team1: this.finalScore1,
+            team2: this.finalScore2
+        }
+        this.gameHistory.push(savedHistory);
+        localStorage.setItem("gameHistory", JSON.stringify(this.gameHistory));
     }
 
     viewHistory(){
-
+        $("#showhistory").slideToggle("fast")
+        for(let i=0; i<25; i++){
+            $('#history').append("Esimene tiim sai " +this.gameHistory[i].team1+ " punkti ja teine tiim " +this.gameHistory[i].team2+ "<br>");
+        }
     }
 
 }
@@ -495,6 +510,7 @@ const res1 = document.querySelector('#resetteam1')
 const res2 = document.querySelector('#resetteam2')
 
 const closeQuestion = document.querySelector('#close')
+const showHistory = document.querySelector('#showhistory')
 
 const team1points = document.querySelector('#team1score')
 const team2points = document.querySelector('#team2score')
@@ -509,6 +525,10 @@ res1.addEventListener('click', ()=> {
 
 res2.addEventListener('click', ()=> {
     j1.resetPoints(2)
+})
+
+showHistory.addEventListener('click', ()=> {
+    j1.viewHistory()
 })
 
 questionBtn.forEach(button => {
