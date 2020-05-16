@@ -1,6 +1,7 @@
 window.onload = function() {
     $("#showquestion").toggle()
     $("#gameover").toggle()
+    document.getElementById("current").innerHTML = "Alustab meeskond 1!"
 };
 
 class Jeopardy{
@@ -22,9 +23,6 @@ class Jeopardy{
         let buttonNr
         let count = 0;
         this.count = count
-
-
-        
     }
 
     getBtnID(){
@@ -429,13 +427,12 @@ class Jeopardy{
             team1points.innerHTML = +prev+ +this.points
 
             this.turn = 2
-
+            
         } else if (this.turn==2) {
             let prev = team2points.innerHTML
             team2points.innerHTML = +prev+ +this.points
 
             this.turn = 1
-
         }
     }
 
@@ -451,13 +448,25 @@ class Jeopardy{
         document.getElementById("answer4").disabled = false
 
         this.count = this.count + 1
-        console.log(this.count)
-
         if (this.count == 25) {
             $("#gameover").slideToggle("fast")
         }
 
+        if (this.turn==1) {
+            document.getElementById("current").innerHTML = "Järmisena mängib meeskond 2!"
+        } else if (this.turn==2) {
+            document.getElementById("current").innerHTML = "Järmisena mängib meeskond 1!"
+        }
+
         document.getElementById("close").disabled = true
+    }
+
+    resetPoints(teamnr){
+        if (teamnr==1) {
+            document.getElementById("team1score").innerHTML = "0" 
+        } else if (teamnr==2) {
+            document.getElementById("team2score").innerHTML = "0" 
+        }
     }
 
     storeHistory(){
@@ -482,6 +491,9 @@ const ans2 = document.querySelector('#answer2')
 const ans3 = document.querySelector('#answer3')
 const ans4 = document.querySelector('#answer4')
 
+const res1 = document.querySelector('#resetteam1')
+const res2 = document.querySelector('#resetteam2')
+
 const closeQuestion = document.querySelector('#close')
 
 const team1points = document.querySelector('#team1score')
@@ -489,6 +501,14 @@ const team2points = document.querySelector('#team2score')
 
 closeQuestion.addEventListener('click', ()=> {
     j1.reset()
+})
+
+res1.addEventListener('click', ()=> {
+    j1.resetPoints(1)
+})
+
+res2.addEventListener('click', ()=> {
+    j1.resetPoints(2)
 })
 
 questionBtn.forEach(button => {
@@ -501,7 +521,6 @@ questionBtn.forEach(button => {
 ans.forEach(button => {
     button.addEventListener('click', ()=> {
         j1.getAnsBtnID()
-        //j1.answer()
     })
 })
 
