@@ -427,5 +427,3 @@ const q22 = {"question":"Mis videomängu on kõige enam ostetud ?", "a1":"Grand 
 const q23 = {"question":"Mis videomängu seeria on teeninud kõige enam raha?", "a1":"Mario", "a2":"Call of duty", "a3":"Pokemon", "a4":"Fifa"}
 const q24 = {"question":"Mis videomäng võitis 2019 aasta parima mängu auhinna?", "a1":"Super Smash Bros. Ultimate ", "a2":"Death Stranding", "a3":"Resident Evil 2", "a4":"Sekiro: Shadows Die Twice"}
 const q25 = {"question":"Mis on enim mängijaid kogunud videomäng ?", "a1":"Minecraft", "a2":"CrossFire", "a3":"Fortnite", "a4":"PlayerUnknown's Battlegrounds"}
-
-let quest = q1.question
