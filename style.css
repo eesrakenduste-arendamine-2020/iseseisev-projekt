@@ -183,3 +183,27 @@ body{
     color: black;
     
 }
+
+#gameover{
+    font-size: 30vh;
+    text-align: center;
+    Color: Lime;
+    
+}
+#close{
+    width: 200px;
+    height: 100px;
+    font-size: 10vh;
+    color: yellow;
+    background-color: red;
+
+}
+#close:disabled{
+    width: 200px;
+    height: 100px;
+    font-size: 10vh;
+    color: lightgray;
+    background-color: darkgray;
+    
+}
+
