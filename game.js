@@ -311,21 +311,31 @@ function enableButtons(){
     document.querySelector("#hard").disabled=false;
     document.querySelector("#start").disabled=false;
 }
+
 function storeScore(){
-    scoreIndex+=1;
-    let storedData=scoreIndex+".  Name: "+currentPlayer+" Difficulty: "+currentMode+" Score: "+userScore;
+    let storedData="Name: "+currentPlayer+" Difficulty: "+currentMode+" Score: "+userScore+'<br/>';
     playerLog.push(storedData);
     console.log(playerLog);
-    for(i=0;i<playerLog.length;i++){
-        document.getElementById("scoreHistory").innerHTML=playerLog;
-    }
     localStorage.setItem("score", JSON.stringify(playerLog));
+    showScore();
 }
 function showScore(){
-    playerLog = JSON.parse(localStorage.getItem("score"));
+    document.getElementById("scoreHistory").innerHTML = "";
     for(i=0;i<playerLog.length;i++){
-        document.getElementById("scoreHistory").innerHTML=playerLog;
+        let playerData = playerLog[i];
+        let li = document.createElement("li");
+        li.innerHTML = playerData;
+        document.getElementById("scoreHistory").appendChild(li);
     }
+}
+function getScore(){
+    let data = [];
+    data =JSON.parse(localStorage.getItem("score"));
+    for(let i=0;i<data.length;i++){
+        let playerData = data[i];
+        playerLog.push(playerData);
+    }
+    showScore();
 }
 
 function gameOver(){
