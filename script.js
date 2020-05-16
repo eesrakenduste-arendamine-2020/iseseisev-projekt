@@ -18,7 +18,7 @@ class Jeopardy{
         this.turn = turn
 
         // How many buttons have been clicked
-        let count = 23;
+        let count = 1;
         this.count = count
 
         let points
