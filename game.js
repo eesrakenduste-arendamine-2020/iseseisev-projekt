@@ -66,6 +66,7 @@ function difficultyValue(e){
 
 
 function startGame(){
+    hideButtons();
     gameWorks=1;
     let audio = difficultyTrack;
     
@@ -176,12 +177,8 @@ function typerMan(){
             userScore-=pointReduction;
         }else if(mistakesCount==3&&gameWorks==1){
             gameOver();
-            letterOfWord = document.createElement("span");
-            letterOfWord.classList.add("span");
-            letterOfWord=null;
-            document.querySelector("#wordsSpot").appendChild(letterOfWord)
-
-
+            letterOfWord.innerHTML=null;
+            rights=0;
         }
     }
     
@@ -312,7 +309,7 @@ function enableButtons(){
 }
 function storeScore(){
     scoreIndex+=1;
-    let storedData=scoreIndex+".  Name: "+currentPlayer+" Difficulty: "+currentMode+" Score: "+userScore+'<br/>'+'<br/>';
+    let storedData=scoreIndex+".  Name: "+currentPlayer+" Difficulty: "+currentMode+" Score: "+userScore;
     playerLog.push(storedData);
     console.log(playerLog);
     for(i=0;i<playerLog.length;i++){
@@ -337,3 +334,9 @@ function nextRound(){
 function lostRound(){
     $('#wordsSpot').html("It's alright you'll win it next time");
 }
+
+function hideButtons() {
+    document.getElementById("difficulty").style.display = "none";
+    document.getElementById("personName").style.display = "none";
+    document.getElementById("start").style.display = "none";
+  }
