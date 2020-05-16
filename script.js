@@ -11,9 +11,12 @@ class Jeopardy{
 
         this.a1 = a1
 
+        let turn = 1
+
         let points
         let correct
         let category
+
         
     }
 
@@ -43,7 +46,7 @@ class Jeopardy{
                 ans4.innerHTML = q1.a4
 
                 this.points = points
-                this.correct = "answer1"
+                this.correct = "answer3"
 
             } else if (points==200) {
                 question = 2;
@@ -354,7 +357,9 @@ class Jeopardy{
     }
 
     updatePoints(value){
-        
+        if (this.turn==1) {
+            team1points.innerHTML = team1points.innerHTML+value
+        }
     }
 
     resetPoints(){
@@ -386,6 +391,9 @@ const ans1 = document.querySelector('#answer1')
 const ans2 = document.querySelector('#answer2')
 const ans3 = document.querySelector('#answer3')
 const ans4 = document.querySelector('#answer4')
+
+const team1points = document.getElementById('#team1score')
+const team2points = document.getElementById('#team2score')
 
 demo.forEach(button => {
     button.addEventListener('click', ()=> {
