@@ -11,14 +11,20 @@
         crossorigin="anonymous">
     </script>
     <script src="script.js" defer></script>
+
+    <audio id="wrong" src="incorrect.mp3"></audio>
+    <audio id="correct" src="correct.mp3"></audio>
+    <audio id="think" src="thinking.mp3"></audio>
+    <audio id="applause" src="applause.mp3"></audio>
+    <audio id="woosh" src="woosh.mp3"></audio>
     
     <title>Iseseisev töö</title>
 </head>
 <body id="mainbody">
     <div id="taskbar">
-        <button class="taskButton" id="History">Ajalugu</button>
-        <button class="taskButton" id="Developers">Autorid</button>
-        <button class="taskButton" id="Repo" onclick="window.location.href=''">Repo</button>
+        <button class="taskButton taskButton-slide" id="historybtn">Ajalugu</button>
+        <button class="taskButton taskButton-slide" id="developers">Autorid</button>
+        <button class="taskButton taskButton-slide" id="repo" onclick="window.location.href=''">Repo</button>
     </div>
 
     <p id="current"></p>
@@ -48,7 +54,7 @@
                 <p id="category">Minisitrid</p>
                 <p id="category">Mängud</p>
 
-                <button id="1" class="showQuestion" name="1">100</button>
+                <button id="1" class="showQuestion showQuestion-slide" name="1">100</button>
                 <button id="2" class="showQuestion" name="6">100</button>
                 <button id="3" class="showQuestion" name="11">100</button>
                 <button id="4" class="showQuestion" name="16">100</button>
@@ -89,7 +95,7 @@
             
             <button id="resetteam1">Reset</button>
         </div>
-        
+
         <div id="team2">
             <p>Team 2</p>
             <div id="team2score">0</div>

@@ -1,3 +1,4 @@
+// Onload hides questions, gameover screen, history screen + inits starting team
 window.onload = function() {
     $("#showquestion").toggle()
     $("#gameover").toggle()
@@ -12,37 +13,47 @@ class Jeopardy{
 
         this.a1 = a1
 
+        // Which team's turn it is (either 1 or 2)
         let turn = 1
         this.turn = turn
+
+        // How many buttons have been clicked
+        let count = 23;
+        this.count = count
 
         let points
         let correct
         let category
-
         let buttonNr
-        let count = 23;
-        this.count = count
 
+        // Stuff for storing to local storage
         let finalScore1, finalScore2
         this.finalScore1 = finalScore1
         this.finalScore2 = finalScore2
 
+        // Setting up local storage for saving
         this.gameHistory = JSON.parse(localStorage.getItem("gameHistory")) || [];
     }
 
+    // Gets buttons id, which indicates which category it belongs to
     getBtnID(){
         this.category = event.srcElement.id
-        
     }
 
+    // Gets answer button id and sends it to answer function
     getAnsBtnID(){
         let choise = event.srcElement.id
         this.answer(choise)
     }
 
-
+    // Displays correct question and corresponding answers to valid places
     openQuestion(points){
         let question
+
+        // plays thinking music
+        thinking.volume = 0.2
+        thinking.currentTime = 0
+        thinking.play()
 
         if (this.category==1) {
             if (points==100) {
@@ -109,7 +120,6 @@ class Jeopardy{
                 this.points = points
                 this.correct = "answer4"
                 this.buttonNr = 5
-
             }
         } else if (this.category==2) {
             if (points==100) {
@@ -386,10 +396,10 @@ class Jeopardy{
         
     }
 
-    
-
+    // Checks for correct answer
     answer(chosen){
-        if (chosen==this.correct) {
+        thinking.pause()
+        if (chosen==this.correct) { // if chosen is correct, disables other options and turns correct one green
             document.getElementById("answer1").style.backgroundColor = "red"
             document.getElementById("answer1").disabled = true
             document.getElementById("answer2").style.backgroundColor = "red"
@@ -400,11 +410,18 @@ class Jeopardy{
             document.getElementById("answer4").disabled = true
             document.getElementById(this.correct).style.backgroundColor = "green"
 
+            // plays ccorrect sound
+            correctS.volume = 0.2
+            correctS.play()
+
+            // unlocks close button
             document.getElementById("close").disabled = false
+            // sets "used question" as disabled
             document.getElementsByName(this.buttonNr)[0].disabled=true
 
+            // inits point update
             this.updatePoints();
-        } else if (chosen!=this.correct){
+        } else if (chosen!=this.correct){ // if chosen is incorrect, disables other options and turns correct orange
             document.getElementById("answer1").style.backgroundColor = "red"
             document.getElementById("answer1").disabled = true
             document.getElementById("answer2").style.backgroundColor = "red"
@@ -415,16 +432,24 @@ class Jeopardy{
             document.getElementById("answer4").disabled = true
             document.getElementById(this.correct).style.backgroundColor = "orange"
 
+            // plays incorrect sound
+            wrong.volume = 0.2
+            wrong.play()
+
+            // unlocks close button 
             document.getElementById("close").disabled = false
+            // sets "used question" as disabled
             document.getElementsByName(this.buttonNr)[0].disabled=true
         }
     }
 
-    updatePoints(){
+    // Updates points
+    updatePoints(){ // checks which teams turn it is
         if (this.turn==1) {
             let prev = team1points.innerHTML
-            team1points.innerHTML = +prev+ +this.points
+            team1points.innerHTML = +prev+ +this.points // adds new points to previous
 
+            // sets turn to other team
             this.turn = 2
             
         } else if (this.turn==2) {
@@ -435,8 +460,11 @@ class Jeopardy{
         }
     }
 
+    // Resets some things
     reset(){
         $("#showquestion").slideToggle("fast")
+
+        // resets answer button styling and enables them
         document.getElementById("answer1").style.backgroundColor = "lightsteelblue"
         document.getElementById("answer1").disabled = false
         document.getElementById("answer2").style.backgroundColor = "lightsteelblue"
@@ -446,14 +474,23 @@ class Jeopardy{
         document.getElementById("answer4").style.backgroundColor = "lightsteelblue"
         document.getElementById("answer4").disabled = false
 
+        // adds one as used button
         this.count = this.count + 1
+
+        // checks if game is over
         if (this.count == 25) {
-            $("#gameover").slideToggle("fast")
+            // if game is over, plays applause music
+            applause.volume = 0.2
+            applause.play()
+
+            $("#gameover").slideToggle("fast") // shows game over screen
+
+            // sets final scores
             this.finalScore1 = document.getElementById("team1score").innerHTML
-            console.log(this.finalScore1)
             this.finalScore2 = document.getElementById("team2score").innerHTML
-            console.log(this.finalScore2)
-            this.storeHistory();
+            
+            // inits result storing
+            this.storeHistory()
         }
 
         if (this.turn==1) {
@@ -462,9 +499,11 @@ class Jeopardy{
             document.getElementById("current").innerHTML = "Järmisena mängib meeskond 1!"
         }
 
+        // disables close button
         document.getElementById("close").disabled = true
     }
 
+    // If teams want to reset points mid-game
     resetPoints(teamnr){
         if (teamnr==1) {
             document.getElementById("team1score").innerHTML = "0" 
@@ -473,19 +512,22 @@ class Jeopardy{
         }
     }
 
+    // Stores current game data to local storage
     storeHistory(){
         let savedHistory = {
             team1: this.finalScore1,
             team2: this.finalScore2
         }
-        this.gameHistory.push(savedHistory);
-        localStorage.setItem("gameHistory", JSON.stringify(this.gameHistory));
+        this.gameHistory.push(savedHistory); // pushes to gameHistory
+        localStorage.setItem("gameHistory", JSON.stringify(this.gameHistory)); // makes local storage entry to string
     }
 
+    // Opens history tab
     viewHistory(){
-        $('#history').html("");
-        $("#history").slideToggle("fast")
+        $('#history').html(""); // clears out
+        $("#history").slideToggle("fast") // shows overlay
         for(let i=0; i<25; i++){
+            // prints first 25 out 
             let position = 1 + i
             $('#history').append(position+ ") Esimene tiim sai " +this.gameHistory[i].team1+ " punkti ja teine tiim " +this.gameHistory[i].team2+ "<br>");
         }
@@ -493,31 +535,45 @@ class Jeopardy{
 
 }
 
-
-
 let j1 = new Jeopardy()
 
-const questionBtn = document.querySelectorAll('.showQuestion');
-const ans = document.querySelectorAll('.answer');
-const questionEl = document.querySelector('[data-question]')
+// Action bar buttons
+const showHistory = document.querySelector('#historybtn')
+
+// Question controllers
+const closeQuestion = document.querySelector('#close')
+const questionBtn = document.querySelectorAll('.showQuestion')
+// Answer controllers and placeholders
+const ans = document.querySelectorAll('.answer')
 const ans1 = document.querySelector('#answer1')
 const ans2 = document.querySelector('#answer2')
 const ans3 = document.querySelector('#answer3')
 const ans4 = document.querySelector('#answer4')
+// Question placeholder
+const questionEl = document.querySelector('[data-question]')
 
+// Score controllers
 const res1 = document.querySelector('#resetteam1')
 const res2 = document.querySelector('#resetteam2')
-
-const closeQuestion = document.querySelector('#close')
-const showHistory = document.querySelector('#showhistory')
-
 const team1points = document.querySelector('#team1score')
 const team2points = document.querySelector('#team2score')
 
+// Audio controllers
+const wrong = document.querySelector('#wrong')
+const correctS = document.querySelector('#correct')
+const thinking = document.querySelector('#think')
+const applause = document.querySelector('#applause')
+const woosh = document.querySelector('#woosh')
+
+
+// Exit out from question
 closeQuestion.addEventListener('click', ()=> {
     j1.reset()
+    woosh.volume = 0.2
+    woosh.play();
 })
 
+// Score reset system
 res1.addEventListener('click', ()=> {
     j1.resetPoints(1)
 })
@@ -526,10 +582,12 @@ res2.addEventListener('click', ()=> {
     j1.resetPoints(2)
 })
 
+// Listening for show-history
 showHistory.addEventListener('click', ()=> {
     j1.viewHistory()
 })
 
+// Listening clicks on question buttons
 questionBtn.forEach(button => {
     button.addEventListener('click', ()=> {
         j1.getBtnID()
@@ -537,6 +595,7 @@ questionBtn.forEach(button => {
     })
 })
 
+// Waits for answer
 ans.forEach(button => {
     button.addEventListener('click', ()=> {
         j1.getAnsBtnID()
@@ -544,6 +603,7 @@ ans.forEach(button => {
 })
 
 
+// All questions and answers
 const q1 = {"question":"Kes on Maailma suurim loom ?", "a1":"Elevant", "a2":"Kaelkirjak", "a3":"Vaal", "a4":"Ninasarvik"}
 const q2 = {"question":"Kes on kiireim loom maailmas (maa peal) ?", "a1":"Gepard", "a2":"Tiiger", "a3":"Lõvi", "a4":"Ilves"}
 const q3 = {"question":"Milline loom ei suuda hüpata?", "a1":"Kaelkirjak", "a2":"Elevant", "a3":"Ninasarvik", "a4":"Lõvi"}
