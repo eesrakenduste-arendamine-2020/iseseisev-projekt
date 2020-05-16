@@ -149,13 +149,14 @@ body{
     
 }
 .showQuestion:disabled{
+    cursor: none;
     display: flex;
     justify-content: center;
     align-items: center;
     border: 2px solid black;
     font-family: 'Comfortaa', cursive;
     font-size: 5vh;
-    background-color: rgba(7, 119, 184, 0.8)
+    background-color: rgba(7, 119, 184, 0.8);
     width: 250px;
     height: 150px;
     outline: none;

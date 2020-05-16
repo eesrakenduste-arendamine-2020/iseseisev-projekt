@@ -18,12 +18,18 @@ class Jeopardy{
         let correct
         let category
 
+        let buttonNr
+        let count = 0;
+        this.count = count
+
+
         
     }
 
     getBtnID(){
         //console.log(event.srcElement.id)
         this.category = event.srcElement.id
+        
     }
 
     getAnsBtnID(){
@@ -48,6 +54,7 @@ class Jeopardy{
 
                 this.points = points
                 this.correct = "answer3"
+                this.buttonNr = 1
 
             } else if (points==200) {
                 question = 2;
@@ -60,6 +67,7 @@ class Jeopardy{
 
                 this.points = points
                 this.correct = "answer1"
+                this.buttonNr = 2
 
             } else if (points==300) {
                 question = 3;
@@ -72,6 +80,7 @@ class Jeopardy{
 
                 this.points = points
                 this.correct = "answer2"
+                this.buttonNr = 3
 
             } else if (points==400) {
                 question = 4;
@@ -84,6 +93,7 @@ class Jeopardy{
 
                 this.points = points
                 this.correct = "answer3"
+                this.buttonNr = 4
 
             } else if (points==500) {
                 question = 5;
@@ -96,6 +106,7 @@ class Jeopardy{
 
                 this.points = points
                 this.correct = "answer4"
+                this.buttonNr = 5
 
             }
         } else if (this.category==2) {
@@ -107,9 +118,11 @@ class Jeopardy{
                 ans2.innerHTML = q6.a2
                 ans3.innerHTML = q6.a3
                 ans4.innerHTML = q6.a4
+                
 
                 this.points = points
                 this.correct = "answer3"
+                this.buttonNr = 6
 
             } else if (points==200) {
                 question = 7;
@@ -122,6 +135,7 @@ class Jeopardy{
 
                 this.points = points
                 this.correct = "answer1"
+                this.buttonNr = 7
 
             } else if (points==300) {
                 question = 8;
@@ -134,6 +148,7 @@ class Jeopardy{
 
                 this.points = points
                 this.correct = "answer4"
+                this.buttonNr = 8
 
             } else if (points==400) {
                 question = 9;
@@ -146,6 +161,7 @@ class Jeopardy{
 
                 this.points = points
                 this.correct = "answer1"
+                this.buttonNr = 9
 
             } else if (points==500) {
                 question = 10;
@@ -158,6 +174,7 @@ class Jeopardy{
 
                 this.points = points
                 this.correct = "answer2"
+                this.buttonNr = 10
 
             }
         } else if (this.category==3) {
@@ -172,6 +189,7 @@ class Jeopardy{
 
                 this.points = points
                 this.correct = "answer1"
+                this.buttonNr = 11
 
             } else if (points==200) {
                 question = 12;
@@ -184,6 +202,7 @@ class Jeopardy{
 
                 this.points = points
                 this.correct = "answer4"
+                this.buttonNr = 12
 
             } else if (points==300) {
                 question = 13;
@@ -196,6 +215,7 @@ class Jeopardy{
 
                 this.points = points
                 this.correct = "answer1"
+                this.buttonNr = 13
 
             } else if (points==400) {
                 question = 14;
@@ -208,6 +228,7 @@ class Jeopardy{
 
                 this.points = points
                 this.correct = "answer3"
+                this.buttonNr = 14
 
             } else if (points==500) {
                 question = 15;
@@ -220,6 +241,7 @@ class Jeopardy{
 
                 this.points = points
                 this.correct = "answer2"
+                this.buttonNr = 15
 
             }
         } else if (this.category==4) {
@@ -234,6 +256,7 @@ class Jeopardy{
 
                 this.points = points
                 this.correct = "answer1"
+                this.buttonNr = 16
 
             } else if (points==200) {
                 question = 17;
@@ -246,6 +269,7 @@ class Jeopardy{
 
                 this.points = points
                 this.correct = "answer1"
+                this.buttonNr = 17
 
             } else if (points==300) {
                 question = 18;
@@ -258,6 +282,7 @@ class Jeopardy{
 
                 this.points = points
                 this.correct = "answer2"
+                this.buttonNr = 18
 
             } else if (points==400) {
                 question = 19;
@@ -270,6 +295,7 @@ class Jeopardy{
 
                 this.points = points
                 this.correct = "answer4"
+                this.buttonNr = 19
 
             } else if (points==500) {
                 question = 20;
@@ -282,6 +308,7 @@ class Jeopardy{
 
                 this.points = points
                 this.correct = "answer2"
+                this.buttonNr = 20
 
             }
         } else if (this.category==5) {
@@ -296,6 +323,7 @@ class Jeopardy{
 
                 this.points = points
                 this.correct = "answer2"
+                this.buttonNr = 21
 
             } else if (points==200) {
                 question = 22;
@@ -308,6 +336,7 @@ class Jeopardy{
 
                 this.points = points
                 this.correct = "answer3"
+                this.buttonNr = 22
 
             } else if (points==300) {
                 question = 23;
@@ -320,6 +349,7 @@ class Jeopardy{
 
                 this.points = points
                 this.correct = "answer1"
+                this.buttonNr = 23
 
             } else if (points==400) {
                 question = 24;
@@ -332,6 +362,7 @@ class Jeopardy{
 
                 this.points = points
                 this.correct = "answer4"
+                this.buttonNr = 24
 
             } else if (points==500) {
                 question = 25;
@@ -344,10 +375,13 @@ class Jeopardy{
 
                 this.points = points
                 this.correct = "answer2"
+                this.buttonNr = 25
 
             }
         }
         $("#showquestion").slideToggle("fast")
+        
+        
     }
 
     
@@ -365,7 +399,7 @@ class Jeopardy{
             document.getElementById(this.correct).style.backgroundColor = "green"
 
             document.getElementById("close").disabled = false
-            document.getElementById(this.category).disabled=true
+            document.getElementsByName(this.buttonNr)[0].disabled=true
 
             this.updatePoints();
         } else if (chosen!=this.correct){
@@ -380,7 +414,7 @@ class Jeopardy{
             document.getElementById(this.correct).style.backgroundColor = "orange"
 
             document.getElementById("close").disabled = false
-            document.get (this.category).disabled=true
+            document.getElementsByName(this.buttonNr)[0].disabled=true
         }
     }
 
@@ -414,6 +448,11 @@ class Jeopardy{
         document.getElementById("answer3").disabled = false
         document.getElementById("answer4").style.backgroundColor = "lightsteelblue"
         document.getElementById("answer4").disabled = false
+
+        this.count = this.count + 1
+        console.log(this.count)
+
+        document.getElementById("close").disabled = true
     }
 
     storeHistory(){
@@ -430,14 +469,13 @@ class Jeopardy{
 
 let j1 = new Jeopardy()
 
-const demo = document.querySelectorAll('.showQuestion');
+const questionBtn = document.querySelectorAll('.showQuestion');
 const ans = document.querySelectorAll('.answer');
 const questionEl = document.querySelector('[data-question]')
 const ans1 = document.querySelector('#answer1')
 const ans2 = document.querySelector('#answer2')
 const ans3 = document.querySelector('#answer3')
 const ans4 = document.querySelector('#answer4')
-
 
 const closeQuestion = document.querySelector('#close')
 
@@ -448,7 +486,7 @@ closeQuestion.addEventListener('click', ()=> {
     j1.reset()
 })
 
-demo.forEach(button => {
+questionBtn.forEach(button => {
     button.addEventListener('click', ()=> {
         j1.getBtnID()
         j1.openQuestion(button.innerHTML)
