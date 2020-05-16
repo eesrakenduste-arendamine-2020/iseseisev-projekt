@@ -11,14 +11,26 @@
     <script defer src="game.js"></script>
     <link rel="stylesheet" href="game.css">
 </head>
+
 <body>
+    <audio id="easyTrack">
+        <source id="first" src="Easy.mp3" type="audio/mp3"></source>
+    </audio>
+    <audio id="normalTrack">
+        <source id="second" src="Normal.mp3" type="audio/mp3"></source>
+    </audio>
+    <audio id="hardTrack">
+        <source id="third" src="HARD.mp3" type="audio/mp3"></source>
+    </audio>
     <div class="main">
+       
         <h1>Type-Type-Mania</h1>
         <div id="personName" >
             <p>Your name: </p>
             <input type="text" id="name">
             
         </div>
+        
         <h2 id="difficultyHeader">Select your difficulty</h2>
         <div id="difficulty">
             <input id="ez" type="button" value="Easy">
@@ -31,17 +43,25 @@
             <input id="start" type="button"  value="Start">
         </div>
         <br>
+        
         <div class="score">
             <h3>Score</h3>
-            <span class="scorePoints">0</span>
+            <span id="scorePoints">0</span>
         </div>
         <div class="time">
             <h3>Time</h3>
-            <span class="timeLeft">10</span>
+            <span id="timeLeft">67</span>
         </div>
         <div id="words">
             <div id="wordsSpot">WORDS WILL BE WAITING HERE</div>
         </div>
+        <div id="countdown"></div>
+        <div class="highScores">
+            <h3>Scores</h3>
+            <table id="scoreHistory"></table>
+            <td></td>
+        </div>
     </div>
+    
 </body>
 </html>

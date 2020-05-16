@@ -14,7 +14,7 @@ body{
   margin:auto;
   margin-top: 30px;
   width: auto;
-  height: 560px;
+  height: auto;
 	text-align: center;
 	padding: 2%;
 	background: linear-gradient(rgb(252, 186, 246),rgb(253, 234, 255,0.5),rgb(255, 143, 240));
@@ -40,6 +40,7 @@ input{
   background-color: green;
   border: solid blueviolet;
 }
+
 #norm{
   color: black;
   background-color: yellow;
@@ -59,13 +60,13 @@ input{
   float: left;
   margin-top: 30px;
 }
-.score span{}           
+#scorePoints span{}           
 .time{
   float: right;
   margin-top: 30px;
   
 }
-.time span{}
+#timeLeft span{}
 
 #wordsSpot{
   display: flex;
@@ -87,4 +88,10 @@ input{
 #wordsSpot span{
   font-size: auto;
   color: #ECF0F1;
+}
+#countdown{
+  float: unset;
+  color: crimson;
+  font-size: 40px;
+  margin-top: 10px;
 }
