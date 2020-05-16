@@ -478,7 +478,7 @@ class Jeopardy{
         this.count = this.count + 1
 
         // checks if game is over
-        if (this.count == 25) {
+        if (this.count == 26) {
             // if game is over, plays applause music
             applause.volume = 0.2
             applause.play()

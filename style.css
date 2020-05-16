@@ -138,7 +138,7 @@ body{
     z-index: 1;
     font-size: 30vh;
     text-align: center;
-    color: Lime;
+    color: black;
     
 }
 
@@ -322,6 +322,16 @@ body{
     background-color: rgba(0, 0, 0, 0.7);
     height: 5vh;
     width: 100%;
+}
+#current{
+    color: White;
+    font-family: 'Comfortaa', cursive;
+    font-size: 4vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5vh;
 }
 
 .taskButton{
