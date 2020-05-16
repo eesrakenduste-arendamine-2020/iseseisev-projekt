@@ -7,7 +7,7 @@ let startButton=document.querySelector('#start');
 let name=document.querySelector('#name');
 let userInput;
 let userOutput;
-let userDifficulty="Easy";
+let userDifficulty="";
 let userName=null;
 let playerReg;
 let agreed=0;
@@ -132,7 +132,7 @@ function prepareGame(){
     });
 
     if(localStorage.getItem("score")!==null){
-        showScore()
+        getScore()
     }
 }
 
