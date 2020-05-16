@@ -1,0 +1,93 @@
+*,*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: lightgrey;
+}
+
+#statusbar{
+    display: flex;
+    height: 5vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#gamecontainer{
+    display: flex;
+    height: 90vh;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 2.5vh;
+    margin-bottom: 2.5vh;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 10px;
+}
+
+#grid-wrapper{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+#testbutton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    font-family: 'Comfortaa', cursive;
+    font-size: 5vh;
+    background-color: lightsteelblue;
+    width: 250px;
+    height: 150px;
+    outline: none;
+    position: relative;
+}
+
+#testbutton:hover{
+    cursor: pointer;
+    background-color: white;
+}
+
+#category{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: 'Comfortaa', cursive;
+    font-size: 3vh;
+    padding-top: 2px;
+    padding-bottom: 1px;
+
+    background-color: darkgrey;
+    border: 1px solid black;
+}
+
+#scoreboard_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: darkgray;
+    width: 50%;
+    height: 15vh;
+
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    margin-left: 25%;
+    margin-right: 25%;
+
+    border-radius: 10px;
+}
+
+#team{
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    align-items: center;
+}
