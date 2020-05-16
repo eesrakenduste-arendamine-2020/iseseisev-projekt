@@ -416,10 +416,6 @@ class Jeopardy{
         document.getElementById("answer4").disabled = false
     }
 
-    addTeams(){
-
-    }
-
     storeHistory(){
 
     }
