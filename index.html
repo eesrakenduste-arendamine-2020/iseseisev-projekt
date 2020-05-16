@@ -5,53 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script
+        src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous">
+    </script>
     <script src="script.js" defer></script>
+    
     <title>Iseseisev töö</title>
 </head>
 <body id="mainbody">
-    <div id="statusbar">
-        <label id="eesnimi_label">Eesnimi:</label>
-        <input type="text" id="eesnimi"><br><br>
+    <div id="showquestion">
+        <p data-question class="question">Küsimus siin sees</p>
+        <div id="answerButtons">
+            <button id="answer">1</button>
+            <button id="answer">2</button>
+            <button id="answer">3</button>
+            <button id="answer">4</button>
+        </div>
+        
     </div>
 
     <div id="gamecontainer">
+
         <div id="grid-wrapper">
             
-                <p id="category">Kategooria 1</p>
-                <p id="category">Kategooria 2</p>
-                <p id="category">Kategooria 3</p>
-                <p id="category">Kategooria 4</p>
-                <p id="category">Kategooria 5</p>
+                <p data-id="1" id="category">Kategooria 1</p>
+                <p data-id="2" id="category">Kategooria 2</p>
+                <p data-id="3" id="category">Kategooria 3</p>
+                <p data-id="4" id="category">Kategooria 4</p>
+                <p data-id="5" id="category">Kategooria 5</p>
 
-                <div id="testbutton">100</div>
-                <div id="testbutton">100</div>
-                <div id="testbutton">100</div>
-                <div id="testbutton">100</div>
-                <div id="testbutton">100</div>
+                <button id="1" class="showQuestion">100</button>
+                <button id="2" class="showQuestion">100</button>
+                <button id="3" class="showQuestion">100</button>
+                <button id="4" class="showQuestion">100</button>
+                <button id="5" class="showQuestion">100</button>
 
-                <div id="testbutton">200</div>
-                <div id="testbutton">200</div>
-                <div id="testbutton">200</div>
-                <div id="testbutton">200</div>
-                <div id="testbutton">200</div>
+                <button id="1" class="showQuestion">200</button>
+                <button id="2" class="showQuestion">200</button>
+                <button id="3" class="showQuestion">200</button>
+                <button id="4" class="showQuestion">200</button>
+                <button id="5" class="showQuestion">200</button>
 
-                <div id="testbutton">300</div>
-                <div id="testbutton">300</div>
-                <div id="testbutton">300</div>
-                <div id="testbutton">300</div>
-                <div id="testbutton">300</div>
+                <button id="1" class="showQuestion">300</button>
+                <button id="2" class="showQuestion">300</button>
+                <button id="3" class="showQuestion">300</button>
+                <button id="4" class="showQuestion">300</button>
+                <button id="5" class="showQuestion">300</button>
 
-                <div id="testbutton">400</div>
-                <div id="testbutton">400</div>
-                <div id="testbutton">400</div>
-                <div id="testbutton">400</div>
-                <div id="testbutton">400</div>
+                <button id="1" class="showQuestion">400</button>
+                <button id="2" class="showQuestion">400</button>
+                <button id="3" class="showQuestion">400</button>
+                <button id="4" class="showQuestion">400</button>
+                <button id="5" class="showQuestion">400</button>
 
-                <div id="testbutton">500</div>
-                <div id="testbutton">500</div>
-                <div id="testbutton">500</div>
-                <div id="testbutton">500</div>
-                <div id="testbutton">500</div>
+                <button id="1" class="showQuestion">500</button>
+                <button id="2" class="showQuestion">500</button>
+                <button id="3" class="showQuestion">500</button>
+                <button id="4" class="showQuestion">500</button>
+                <button id="5" class="showQuestion">500</button>
  
             </div>
         </div>
@@ -61,13 +74,13 @@
             <p>Team 1</p>
             <div id="team1score">0</div>
             
-            <button id="disqualifyteam1">Disqualify</button>
+            <button id="disqualifyteam1">Reset</button>
         </div>
         <div id="team">
             <p>Team 2</p>
             <div id="team2score">0</div>
             
-            <button id="disqualifyteam2">Disqualify</button>
+            <button id="disqualifyteam2">Reset</button>
         </div>
         <button id="addTeam">+</button>
     </div>
