@@ -51,9 +51,10 @@ input{
   background-color: red;
   border:solid blueviolet;
 }
-#start{
+#start,#stop{/**/
+  margin:  auto;/**/
   border:red;
-  border:solid blueviolet;
+  border:solid blueviolet;/**/
   
 }
 .score{

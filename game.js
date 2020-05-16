@@ -1,5 +1,7 @@
 let words;
 let points=0;
+document.getElementById("stop").style.display = "none"; /**new */
+let stopButton=document.querySelector("#stop");/**/
 let difficulty=document.querySelector('#difficulty');
 let startButton=document.querySelector('#start');
 let name=document.querySelector('#name');
@@ -31,6 +33,7 @@ let penalty=0;
 let audio="";
 let hardWon="won";
 let gameWorks=0;
+let quit=0;/**/
 
 $(function() {
     $('body').hide().fadeIn(1200);
@@ -63,19 +66,18 @@ function difficultyValue(e){
         console.log("Difficulty is hard and pointreduction is -"+pointReduction);
     }
    notificationD.innerHTML=userDifficultyNotification;
+    }
+    notificationD.innerHTML="Select your difficulty";
 }
-}
-
-
-
 
 function startGame(){
-    hideButtons();
-    gameWorks=1;
+   
     let audio = difficultyTrack;
     
     userName=name.value;
-    if(userName!=""&&userDifficulty!=undefined){
+    if(userName!=""&&userDifficulty!=undefined&&userDifficulty!=""){
+        hideButtons();
+        gameWorks=1;
         playerReg= new EntryOfPlayer(userName,userDifficulty);
         currentPlayer=userName;
         currentMode=userDifficulty;
@@ -88,21 +90,23 @@ function startGame(){
         audio.volume = trackVolume;
         disableButtons()
     }
-    else if(userName==""&&agreed==1&&userDifficulty!=undefined){
+    else if(userName==""&&agreed==1&&userDifficulty!=undefined&&userDifficulty!=""){
+            hideButtons();/**/    
             userName="Anonymous";
+            gameWorks=1;
             playerReg= new EntryOfPlayer(userName,userDifficulty);
             currentPlayer=userName;
             currentMode=userDifficulty;
             console.log(playerReg);
             agreed=0;
             name.value  ="";
-            anim()
-            songTimer()
+            anim();
+            songTimer();
             audio.play();
-            disableButtons()
+            disableButtons();
             
         
-    }else if(userName==""&&agreed==0){
+    }else if(userName==""&&agreed==0&&userDifficulty!=""){
         alert("You are about to play anonymous");
         agreed=1;
         
@@ -138,6 +142,7 @@ function prepareGame(){
 
 difficulty.addEventListener("click",difficultyValue);
 startButton.addEventListener("click",startGame);
+stopButton.addEventListener("click",quitGame);/**/
 
 function getWord(){
     nextWord= wordList[Math.floor(Math.random()*wordList.length)]
@@ -279,9 +284,11 @@ function songTimer() {
         
     }
     else {
+        userDifficulty="";
         $('#timeLeft').html("FINISH");
         songTime=resetTime;
         enableButtons();
+        unHideButtons();
         $('body').fadeTo('slow', 0.3, function(){ 
             $(this).css('background-image', 'url("giphy.gif")');
         }).delay(1000).fadeTo('slow', 1);
@@ -289,17 +296,20 @@ function songTimer() {
         userScore=0;
         gameWorks=0;
         $('#scorePoints').html(userScore);
-        if(currentMode=="Easy"){
+        if(currentMode=="Easy"&&quit==0){
             $('#wordsSpot').html("Now that was pretty easy!");
-        }else if(currentMode=="Normal"){
+        }else if(currentMode=="Normal"&&quit==0){
             $('#wordsSpot').html("You did pretty good,might even be the best");
-        }else if(currentMode=="Hard"&&hardWon=="won"){
+        }else if(currentMode=="Hard"&&hardWon=="won"&&quit==0){
             $('#wordsSpot').html("Woah you made it through!");
+        }else if(quit==1){
+            $('#wordsSpot').html("AWWW why did you quit, well try again if you want");
         }else{
             setTimeout(lostRound,3000);
             hardWon="won"
         }
         setTimeout(nextRound,6000);
+        quit=0;/**/
     }
 }
 
@@ -352,7 +362,20 @@ function gameOver(){
     songTime=0;
     $('#wordsSpot').html("YOU LOST TOO MANY MISTAKES");
     hardWon="Lost";
-    
+    userDifficulty="";
+}
+
+function quitGame(){/**/
+    quit=1;
+    mistakesCount=0;
+    gameWorks=0;
+    let audio = difficultyTrack;
+    audio.pause();
+    audio.load();
+    songTime=0;
+    letterOfWord.innerHTML=null;
+    rights=0;
+    userDifficulty="";
 }
 function nextRound(){
     $('#wordsSpot').html("Are you ready for the next one? Words will appear here");
@@ -365,4 +388,17 @@ function hideButtons() {
     document.getElementById("difficulty").style.display = "none";
     document.getElementById("personName").style.display = "none";
     document.getElementById("start").style.display = "none";
+    document.getElementById("highScores").style.display = "none";/**/
+    document.getElementById("stop").style.display = "block";/**/
+  }
+function unHideButtons(){/**/
+    document.getElementById("difficulty").style.display = "block";/**/
+    document.getElementById("personName").style.display = "block";/**/
+    document.getElementById("start").style.display = "block";/**/
+    document.getElementById("highScores").style.display = "block";/**/
+    document.getElementById("stop").style.display = "none";/**/
+}
+function myfunkt() {           
+    $("#wordsSpot").focus();
+    
   }
