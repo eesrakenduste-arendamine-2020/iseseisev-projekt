@@ -1,5 +1,6 @@
 window.onload = function() {
     $("#showquestion").toggle()
+    $("#gameover").toggle()
 };
 
 class Jeopardy{
@@ -451,6 +452,10 @@ class Jeopardy{
 
         this.count = this.count + 1
         console.log(this.count)
+
+        if (this.count == 25) {
+            $("#gameover").slideToggle("fast")
+        }
 
         document.getElementById("close").disabled = true
     }

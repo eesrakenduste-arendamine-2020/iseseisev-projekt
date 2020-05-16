@@ -112,6 +112,24 @@ body{
     z-index: 1;
 }
 
+#gameover{
+    display: none;
+    display: flex;
+    flex-direction: column;
+    height: 85vh;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 2.5vh;
+    margin-bottom: 2.5vh;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+
+    position: absolute;
+    z-index: 1;
+}
+
 .question{
     font-family: 'Comfortaa', cursive;
     font-size: 5vh;
