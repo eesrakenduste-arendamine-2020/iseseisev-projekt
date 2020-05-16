@@ -6,7 +6,6 @@
     --slider-track-border-radius: 2em;
     --slider-thumb-border-radius: 8em;
     --slider-thumb-size: 4em;
-    --slider-shadow: 0 0 1em rgba(0, 0, 0, .15);
 }
 
 input[type=range] {
