@@ -116,18 +116,23 @@ body{
     display: none;
     display: flex;
     flex-direction: column;
-    height: 85vh;
+    height: 90vh;
     width: 70%;
     margin-left: 15%;
     margin-right: 15%;
     margin-top: 2.5vh;
     margin-bottom: 2.5vh;
+    justify-content: center;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 10px;
 
     position: absolute;
     z-index: 1;
+    font-size: 30vh;
+    text-align: center;
+    color: Lime;
+    
 }
 
 .question{
@@ -164,9 +169,6 @@ body{
     background-color: white;
 }
 
-.close{
-    
-}
 .showQuestion:disabled{
     cursor: none;
     display: flex;
@@ -184,38 +186,47 @@ body{
     
 }
 
-#gameover{
-    font-size: 30vh;
-    text-align: center;
-    Color: Lime;
-    
-}
+
 #close{
+    cursor: pointer;
     width: 200px;
     height: 100px;
-    font-size: 10vh;
-    color: yellow;
-    background-color: red;
+    outline: none;
+    border: none;
+    font-size: 5vh;
+    color: red;
+    background-color: transparent;
 
 }
+
 #close:disabled{
+    background-color: transparent;
+    outline: none;
+    border: none;
     width: 200px;
     height: 100px;
-    font-size: 10vh;
-    color: lightgray;
-    background-color: darkgray;
+    font-size: 5vh;
+    color: black;
     
 }
 
 #team1{
     font-size: 5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     color:red;
+    font-family: 'Comfortaa', cursive;
     margin-right: 25%;
 
 }
 
 #team2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-size: 5vh;
+    font-family: 'Comfortaa', cursive;
     color:blue;
 }
 #resetteam1{
@@ -224,6 +235,9 @@ body{
     background-color: green;
     color: white;
     cursor: pointer;
+    outline: none;
+    border: none;
+    font-family: 'Comfortaa', cursive;
 }
 #resetteam2{
     width: 150px;
@@ -231,6 +245,9 @@ body{
     background-color: green;
     color: white;
     cursor: pointer;
+    outline: none;
+    border: none;
+    font-family: 'Comfortaa', cursive;
 }
 #resetteam1:hover{
     cursor: pointer;
@@ -239,4 +256,27 @@ body{
 #resetteam2:hover{
     cursor: pointer;
     background-color: lightgreen;
+}
+
+#history{
+    display: none;
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 2.5vh;
+    margin-bottom: 2.5vh;
+    align-items: center;
+    background-color: rgba(0, 0, 255, 0.8);
+    border-radius: 10px;
+
+    justify-content: space-evenly;
+
+    font-size: 3vh;
+    color: white;
+
+    position: absolute;
+    z-index: 2;
 }

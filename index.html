@@ -15,16 +15,22 @@
     <title>Iseseisev töö</title>
 </head>
 <body id="mainbody">
-    <button id="showhistory">ääääää</button>
-    <p id="current"></p>
-    <div id="history"></div>
-    <div id="gameover">
-        <p>
-            Mäng on läbi
-        </p>
+    <div id="taskbar">
+        <button class="taskButton" id="History">Ajalugu</button>
+        <button class="taskButton" id="Developers">Autorid</button>
+        <button class="taskButton" id="Repo" onclick="window.location.href=''">Repo</button>
     </div>
+
+    <p id="current"></p>
+
+    <div id="history"></div>
+
+    <div id="gameover">
+        <p>Mäng on läbi</p>
+    </div>
+
     <div id="showquestion">
-        <button id="close" class="close" disabled=true>X</button>
+        <button id="close" class="close" disabled=true>🗙</button>
         <p data-question class="question" id="question">Küsimus siin sees</p>
         <div id="answerButtons">
             <button id="answer1" class="answer">1</button>
@@ -32,18 +38,15 @@
             <button id="answer3" class="answer">3</button>
             <button id="answer4" class="answer">4</button>
         </div>
-        
     </div>
 
     <div id="gamecontainer">
-
         <div id="grid-wrapper">
-            
-                <p data-id="1" id="category">Loomad</p>
-                <p data-id="2" id="category">Linnad</p>
-                <p data-id="3" id="category">Presidendid</p>
-                <p data-id="4" id="category">Minisitrid</p>
-                <p data-id="5" id="category">Mängud</p>
+                <p id="category">Loomad</p>
+                <p id="category">Linnad</p>
+                <p id="category">Presidendid</p>
+                <p id="category">Minisitrid</p>
+                <p id="category">Mängud</p>
 
                 <button id="1" class="showQuestion" name="1">100</button>
                 <button id="2" class="showQuestion" name="6">100</button>
@@ -78,6 +81,7 @@
             </div>
         </div>
     </div>
+
     <div id="scoreboard_container">
         <div id="team1">
             <p>Team 1</p>
@@ -85,6 +89,7 @@
             
             <button id="resetteam1">Reset</button>
         </div>
+        
         <div id="team2">
             <p>Team 2</p>
             <div id="team2score">0</div>

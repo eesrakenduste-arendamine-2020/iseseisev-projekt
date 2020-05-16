@@ -1,6 +1,7 @@
 window.onload = function() {
     $("#showquestion").toggle()
     $("#gameover").toggle()
+    $("#history").toggle()
     document.getElementById("current").innerHTML = "Alustab meeskond 1!"
 };
 
@@ -419,10 +420,6 @@ class Jeopardy{
         }
     }
 
-    showTopic(){
-
-    }
-
     updatePoints(){
         if (this.turn==1) {
             let prev = team1points.innerHTML
@@ -486,9 +483,11 @@ class Jeopardy{
     }
 
     viewHistory(){
-        $("#showhistory").slideToggle("fast")
+        $('#history').html("");
+        $("#history").slideToggle("fast")
         for(let i=0; i<25; i++){
-            $('#history').append("Esimene tiim sai " +this.gameHistory[i].team1+ " punkti ja teine tiim " +this.gameHistory[i].team2+ "<br>");
+            let position = 1 + i
+            $('#history').append(position+ ") Esimene tiim sai " +this.gameHistory[i].team1+ " punkti ja teine tiim " +this.gameHistory[i].team2+ "<br>");
         }
     }
 
