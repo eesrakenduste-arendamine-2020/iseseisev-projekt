@@ -16,7 +16,8 @@
 </head>
 <body id="mainbody">
     <div id="showquestion">
-        <p data-question class="question">Küsimus siin sees</p>
+        <button id="close" class="close" disabled=true>X</button>
+        <p data-question class="question" id="question">Küsimus siin sees</p>
         <div id="answerButtons">
             <button id="answer1" class="answer">1</button>
             <button id="answer2" class="answer">2</button>
@@ -72,7 +73,7 @@
     <div id="scoreboard_container">
         <div id="team">
             <p>Team 1</p>
-            <div id="team1score">15</div>
+            <div id="team1score">0</div>
             
             <button id="disqualifyteam1">Reset</button>
         </div>

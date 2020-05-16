@@ -363,6 +363,10 @@ class Jeopardy{
             document.getElementById("answer4").style.backgroundColor = "red"
             document.getElementById("answer4").disabled = true
             document.getElementById(this.correct).style.backgroundColor = "green"
+
+            document.getElementById("close").disabled = false
+            document.getElementById(this.category).disabled=true
+
             this.updatePoints();
         } else if (chosen!=this.correct){
             document.getElementById("answer1").style.backgroundColor = "red"
@@ -374,6 +378,9 @@ class Jeopardy{
             document.getElementById("answer4").style.backgroundColor = "red"
             document.getElementById("answer4").disabled = true
             document.getElementById(this.correct).style.backgroundColor = "orange"
+
+            document.getElementById("close").disabled = false
+            document.get (this.category).disabled=true
         }
     }
 
@@ -387,13 +394,18 @@ class Jeopardy{
             team1points.innerHTML = +prev+ +this.points
 
             this.turn = 2
-        } else if (this.turn==1) {
+
+        } else if (this.turn==2) {
             let prev = team2points.innerHTML
-            team1points.innerHTML = +prev+ +this.points
+            team2points.innerHTML = +prev+ +this.points
+
+            this.turn = 1
+
         }
     }
 
     reset(){
+        $("#showquestion").slideToggle("fast")
         document.getElementById("answer1").style.backgroundColor = "lightsteelblue"
         document.getElementById("answer1").disabled = false
         document.getElementById("answer2").style.backgroundColor = "lightsteelblue"
@@ -401,7 +413,7 @@ class Jeopardy{
         document.getElementById("answer3").style.backgroundColor = "lightsteelblue"
         document.getElementById("answer3").disabled = false
         document.getElementById("answer4").style.backgroundColor = "lightsteelblue"
-        document.getElementById("answer4").disabled = true
+        document.getElementById("answer4").disabled = false
     }
 
     addTeams(){
@@ -430,12 +442,13 @@ const ans2 = document.querySelector('#answer2')
 const ans3 = document.querySelector('#answer3')
 const ans4 = document.querySelector('#answer4')
 
-const exit = document.querySelector('#grid-wrapper')
+
+const closeQuestion = document.querySelector('#close')
 
 const team1points = document.querySelector('#team1score')
 const team2points = document.querySelector('#team2score')
 
-exit.addEventListener('click', ()=> {
+closeQuestion.addEventListener('click', ()=> {
     j1.reset()
 })
 
