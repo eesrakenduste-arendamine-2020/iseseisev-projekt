@@ -11,3 +11,7 @@ play.onclick = () => startGame(slider.value);
 function startGame(cards) {
 
 }
+
+function updateTextOutput(val) {
+    document.getElementById('textOutput').value=val; 
+  }

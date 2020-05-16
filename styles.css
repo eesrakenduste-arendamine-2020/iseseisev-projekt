@@ -54,3 +54,14 @@ input[type=range]::-moz-range-thumb {
     background: var(--tertiary-color);
     cursor: pointer;
 }
+
+.play{
+    background: url("triangle.svg") no-repeat;
+    width: 93px;
+    height: 103px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}

@@ -9,16 +9,21 @@
     <script src="match.js" defer></script>
 </head>
 <body>
-    <div class="slidecontainer">
-        <input type="range" id="slider">
+    <div id="start-playing-button">
+        <button id="play" class="play"></button>
+      </div>
 
-            <datalist id="ticmarks"></datalist>
+    <div class="slidecontainer">
+        <input type="range" id="slider" min="4" max="64" onchange="updateTextOutput(this.value);">
+            <datalist id="ticmarks">
             <option value="4"></option>
             <option value="8" ></option>
             <option value="16"></option>
             <option value="32"></option>
             <option value="64"></option>
         </datalist>
+        <output type="text" id="textOutput" value="">
       </div>
+      
 </body>
 </html>
