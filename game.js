@@ -121,7 +121,11 @@ function prepareGame(){
     jQuery.get('1-1000.txt', function(data) {
         wordList = data.split('\n');
         console.log(wordList);
-        });
+    });
+
+    if(localStorage.getItem("score")!==null){
+        showScore()
+    }
 }
 
 
@@ -312,6 +316,13 @@ function storeScore(){
     let storedData=scoreIndex+".  Name: "+currentPlayer+" Difficulty: "+currentMode+" Score: "+userScore;
     playerLog.push(storedData);
     console.log(playerLog);
+    for(i=0;i<playerLog.length;i++){
+        document.getElementById("scoreHistory").innerHTML=playerLog;
+    }
+    localStorage.setItem("score", JSON.stringify(playerLog));
+}
+function showScore(){
+    playerLog = JSON.parse(localStorage.getItem("score"));
     for(i=0;i<playerLog.length;i++){
         document.getElementById("scoreHistory").innerHTML=playerLog;
     }
