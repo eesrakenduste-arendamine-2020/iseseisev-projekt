@@ -1,0 +1,57 @@
+:root {
+    --primary-color: hsl(0, 0%, 100%);
+    --secondary-color: hsl(210, 20%, 94%);
+    --tertiary-color: hsl(210, 10%, 84%);
+    --accent-color: hsl(210, 16%, 24%);
+    --slider-track-border-radius: 2em;
+    --slider-thumb-border-radius: 8em;
+    --slider-thumb-size: 4em;
+    --slider-shadow: 0 0 1em rgba(0, 0, 0, .15);
+}
+
+input[type=range] {
+    height: var(--slider-thumb-size);
+    -webkit-appearance: none;
+    width: 100%;
+}
+
+/* Halb accessibility aga mida iganes, eks? */
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: calc(var(--slider-thumb-size) / 2);
+    cursor: pointer;
+    background: var(--secondary-color);
+    border-radius: var(--slider-track-border-radius);
+}
+
+input[type=range]::-webkit-slider-thumb {
+    height: var(--slider-thumb-size);
+    width: var(--slider-thumb-size);
+    border-radius: var(--slider-thumb-border-radius);
+    background: var(--tertiary-color);
+    cursor: pointer;
+    -webkit-appearance: none;
+    /* Ma nii vihkan seda */
+    margin-top: calc(var(--slider-thumb-size) / -4);
+}
+
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: calc(var(--slider-thumb-size) / 2);
+    cursor: pointer;
+    background: var(--secondary-color);
+    border-radius: var(--slider-track-border-radius);
+}
+
+input[type=range]::-moz-range-thumb {
+    border: none;
+    height: var(--slider-thumb-size);
+    width: var(--slider-thumb-size);
+    border-radius: var(--slider-thumb-border-radius);
+    background: var(--tertiary-color);
+    cursor: pointer;
+}
