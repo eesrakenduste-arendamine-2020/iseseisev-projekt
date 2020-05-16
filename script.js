@@ -59,6 +59,7 @@ class Jeopardy{
                 ans4.innerHTML = q2.a4
 
                 this.points = points
+                this.correct = "answer1"
 
             } else if (points==300) {
                 question = 3;
@@ -70,6 +71,7 @@ class Jeopardy{
                 ans4.innerHTML = q3.a4
 
                 this.points = points
+                this.correct = "answer2"
 
             } else if (points==400) {
                 question = 4;
@@ -81,6 +83,7 @@ class Jeopardy{
                 ans4.innerHTML = q4.a4
 
                 this.points = points
+                this.correct = "answer3"
 
             } else if (points==500) {
                 question = 5;
@@ -92,6 +95,7 @@ class Jeopardy{
                 ans4.innerHTML = q5.a4
 
                 this.points = points
+                this.correct = "answer4"
 
             }
         } else if (this.category==2) {
@@ -105,6 +109,7 @@ class Jeopardy{
                 ans4.innerHTML = q6.a4
 
                 this.points = points
+                this.correct = "answer3"
 
             } else if (points==200) {
                 question = 7;
@@ -116,6 +121,7 @@ class Jeopardy{
                 ans4.innerHTML = q7.a4
 
                 this.points = points
+                this.correct = "answer1"
 
             } else if (points==300) {
                 question = 8;
@@ -127,6 +133,7 @@ class Jeopardy{
                 ans4.innerHTML = q8.a4
 
                 this.points = points
+                this.correct = "answer4"
 
             } else if (points==400) {
                 question = 9;
@@ -138,6 +145,7 @@ class Jeopardy{
                 ans4.innerHTML = q9.a4
 
                 this.points = points
+                this.correct = "answer1"
 
             } else if (points==500) {
                 question = 10;
@@ -149,6 +157,7 @@ class Jeopardy{
                 ans4.innerHTML = q10.a4
 
                 this.points = points
+                this.correct = "answer2"
 
             }
         } else if (this.category==3) {
@@ -162,6 +171,7 @@ class Jeopardy{
                 ans4.innerHTML = q11.a4
 
                 this.points = points
+                this.correct = "answer1"
 
             } else if (points==200) {
                 question = 12;
@@ -173,6 +183,7 @@ class Jeopardy{
                 ans4.innerHTML = q12.a4
 
                 this.points = points
+                this.correct = "answer4"
 
             } else if (points==300) {
                 question = 13;
@@ -184,6 +195,7 @@ class Jeopardy{
                 ans4.innerHTML = q13.a4
 
                 this.points = points
+                this.correct = "answer1"
 
             } else if (points==400) {
                 question = 14;
@@ -195,6 +207,7 @@ class Jeopardy{
                 ans4.innerHTML = q14.a4
 
                 this.points = points
+                this.correct = "answer3"
 
             } else if (points==500) {
                 question = 15;
@@ -206,6 +219,7 @@ class Jeopardy{
                 ans4.innerHTML = q15.a4
 
                 this.points = points
+                this.correct = "answer2"
 
             }
         } else if (this.category==4) {
@@ -219,6 +233,7 @@ class Jeopardy{
                 ans4.innerHTML = q16.a4
 
                 this.points = points
+                this.correct = "answer1"
 
             } else if (points==200) {
                 question = 17;
@@ -230,6 +245,7 @@ class Jeopardy{
                 ans4.innerHTML = q17.a4
 
                 this.points = points
+                this.correct = "answer1"
 
             } else if (points==300) {
                 question = 18;
@@ -241,6 +257,7 @@ class Jeopardy{
                 ans4.innerHTML = q18.a4
 
                 this.points = points
+                this.correct = "answer2"
 
             } else if (points==400) {
                 question = 19;
@@ -252,6 +269,7 @@ class Jeopardy{
                 ans4.innerHTML = q19.a4
 
                 this.points = points
+                this.correct = "answer4"
 
             } else if (points==500) {
                 question = 20;
@@ -263,6 +281,7 @@ class Jeopardy{
                 ans4.innerHTML = q20.a4
 
                 this.points = points
+                this.correct = "answer2"
 
             }
         } else if (this.category==5) {
@@ -276,6 +295,7 @@ class Jeopardy{
                 ans4.innerHTML = q21.a4
 
                 this.points = points
+                this.correct = "answer2"
 
             } else if (points==200) {
                 question = 22;
@@ -287,6 +307,7 @@ class Jeopardy{
                 ans4.innerHTML = q22.a4
 
                 this.points = points
+                this.correct = "answer3"
 
             } else if (points==300) {
                 question = 23;
@@ -298,6 +319,7 @@ class Jeopardy{
                 ans4.innerHTML = q23.a4
 
                 this.points = points
+                this.correct = "answer1"
 
             } else if (points==400) {
                 question = 24;
@@ -309,6 +331,7 @@ class Jeopardy{
                 ans4.innerHTML = q24.a4
 
                 this.points = points
+                this.correct = "answer4"
 
             } else if (points==500) {
                 question = 25;
@@ -320,6 +343,7 @@ class Jeopardy{
                 ans4.innerHTML = q25.a4
 
                 this.points = points
+                this.correct = "answer2"
 
             }
         }
@@ -432,7 +456,7 @@ ans.forEach(button => {
 
 const q1 = {"question":"Kes on Maailma suurim loom ?", "a1":"Elevant", "a2":"Kaelkirjak", "a3":"Vaal", "a4":"Ninasarvik"}
 const q2 = {"question":"Kes on kiireim loom maailmas (maa peal) ?", "a1":"Gepard", "a2":"Tiiger", "a3":"Lõvi", "a4":"Ilves"}
-const q3 = {"question":"Milline loom ei suuda hüpata?", "a1":"Kaelkirjak", "a2":"Elevant", "a3":"Ninasarvik", "a4":""}
+const q3 = {"question":"Milline loom ei suuda hüpata?", "a1":"Kaelkirjak", "a2":"Elevant", "a3":"Ninasarvik", "a4":"Lõvi"}
 const q4 = {"question":"Mitu süda on kaheksajalgsel?", "a1":"1", "a2":"2", "a3":"3", "a4":"4"}
 const q5 = {"question":"Kui kaua suudab tigu maga talveunes?", "a1":"Aasta", "a2":"Kuu aega", "a3":"Pool aastat", "a4":"Kolm Aastat"}
 const q6 = {"question":"Mis on Saksamaa pealinn ?", "a1":"Hamburg", "a2":"München", "a3":"Berlin", "a4":"Augsburg"}
@@ -442,7 +466,7 @@ const q9 = {"question":"Mis on Korea pealinn?", "a1":"Seoul", "a2":"Busan", "a3"
 const q10 = {"question":"Mis on Austraalia pealinn?", "a1":"Melbourne", "a2":"Perth", "a3":"Sydney", "a4":"Brisbane"}
 const q11 = {"question":"Kes on Eesti president?", "a1":"Kersti Kaljulaid", "a2":"Jüri Ratas", "a3":"Toomas-Hendrik Ilves", "a4":"Mart Helme"}
 const q12 = {"question":"Kes on Ameerika president?", "a1":"Barack Obama", "a2":"Hillary Clinton", "a3":"Bill Clinton", "a4":"Donald Trump"}
-const q13 = {"question":"Kes on Soome president?", "a1":"Vastus 1", "a2":"Vastus 2", "a3":"Vastus 3", "a4":"Vastus 4"}
+const q13 = {"question":"Kes on Soome president?", "a1":"Sauli Niinistö", "a2":"Sanna Marin", "a3":"Tarja Halonen", "a4":"Antti Rinne"}
 const q14 = {"question":"Kes on Prantsusmaa president?", "a1":"Napoleon Bonaparte", "a2":"Marine Le Pen", "a3":"Emmanuel Macron", "a4":"François Hollande"}
 const q15 = {"question":"Kes on Saksamaa president?", "a1":"Angela Merkel", "a2":"Frank-Walter Steinmeier", "a3":"Joachim Gauck", "a4":"Christian Wulff"}
 const q16 = {"question":"Kes on Eesti peaminister?", "a1":"Jüri Ratas", "a2":"Mart Helme", "a3":"Martin Helme", "a4":"Kersti Kaljulaid"}
