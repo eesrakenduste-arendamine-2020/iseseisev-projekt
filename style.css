@@ -43,11 +43,12 @@ body{
     border: 2px solid black;
     font-family: 'Comfortaa', cursive;
     font-size: 5vh;
-    background-color: lightsteelblue;
+    background-color: darkblue;
     width: 250px;
     height: 150px;
     outline: none;
     position: relative;
+    color: orange;
 }
 
 .showQuestion:hover{
@@ -64,8 +65,8 @@ body{
     font-size: 3vh;
     padding-top: 2px;
     padding-bottom: 1px;
-
-    background-color: darkgrey;
+    color: orange;
+    background-color: darkblue;
     border: 1px solid black;
 }
 
@@ -133,8 +134,8 @@ body{
     font-family: 'Comfortaa', cursive;
     font-size: 5vh;
     background-color: lightsteelblue;
-    width: 200px;
-    height: 100px;
+    width: 350px;
+    height: 200px;
     outline: none;
     position: relative;
 }
