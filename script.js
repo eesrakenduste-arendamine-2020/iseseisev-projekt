@@ -12,6 +12,7 @@ class Jeopardy{
         this.a1 = a1
 
         let turn = 1
+        this.turn = turn
 
         let points
         let correct
@@ -338,7 +339,7 @@ class Jeopardy{
             document.getElementById("answer4").style.backgroundColor = "red"
             document.getElementById("answer4").disabled = true
             document.getElementById(this.correct).style.backgroundColor = "green"
-            this.updatePoints(this.points);
+            this.updatePoints();
         } else if (chosen!=this.correct){
             document.getElementById("answer1").style.backgroundColor = "red"
             document.getElementById("answer1").disabled = true
@@ -356,14 +357,27 @@ class Jeopardy{
 
     }
 
-    updatePoints(value){
+    updatePoints(){
         if (this.turn==1) {
-            team1points.innerHTML = team1points.innerHTML+value
+            let prev = team1points.innerHTML
+            team1points.innerHTML = +prev+ +this.points
+
+            this.turn = 2
+        } else if (this.turn==1) {
+            let prev = team2points.innerHTML
+            team1points.innerHTML = +prev+ +this.points
         }
     }
 
-    resetPoints(){
-
+    reset(){
+        document.getElementById("answer1").style.backgroundColor = "lightsteelblue"
+        document.getElementById("answer1").disabled = false
+        document.getElementById("answer2").style.backgroundColor = "lightsteelblue"
+        document.getElementById("answer2").disabled = false
+        document.getElementById("answer3").style.backgroundColor = "lightsteelblue"
+        document.getElementById("answer3").disabled = false
+        document.getElementById("answer4").style.backgroundColor = "lightsteelblue"
+        document.getElementById("answer4").disabled = true
     }
 
     addTeams(){
@@ -392,8 +406,14 @@ const ans2 = document.querySelector('#answer2')
 const ans3 = document.querySelector('#answer3')
 const ans4 = document.querySelector('#answer4')
 
-const team1points = document.getElementById('#team1score')
-const team2points = document.getElementById('#team2score')
+const exit = document.querySelector('#grid-wrapper')
+
+const team1points = document.querySelector('#team1score')
+const team2points = document.querySelector('#team2score')
+
+exit.addEventListener('click', ()=> {
+    j1.reset()
+})
 
 demo.forEach(button => {
     button.addEventListener('click', ()=> {
