@@ -77,7 +77,7 @@ body{
 
     background-color: darkgray;
     width: 50%;
-    height: 15vh;
+    height: 20vh;
 
     margin-top: 5vh;
     margin-bottom: 5vh;
@@ -98,7 +98,7 @@ body{
     display: none;
     display: flex;
     flex-direction: column;
-    height: 85vh;
+    height: 90vh;
     width: 70%;
     margin-left: 15%;
     margin-right: 15%;
@@ -207,3 +207,36 @@ body{
     
 }
 
+#team1{
+    font-size: 5vh;
+    color:red;
+    margin-right: 25%;
+
+}
+
+#team2{
+    font-size: 5vh;
+    color:blue;
+}
+#resetteam1{
+    width: 150px;
+    height: 50px;
+    background-color: green;
+    color: white;
+    cursor: pointer;
+}
+#resetteam2{
+    width: 150px;
+    height: 50px;
+    background-color: green;
+    color: white;
+    cursor: pointer;
+}
+#resetteam1:hover{
+    cursor: pointer;
+    background-color: lightgreen;
+}
+#resetteam2:hover{
+    cursor: pointer;
+    background-color: lightgreen;
+}
