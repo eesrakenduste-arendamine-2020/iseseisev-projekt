@@ -32,6 +32,10 @@ let audio="";
 let hardWon="won";
 let gameWorks=0;
 
+$(function() {
+    $('body').hide().fadeIn(1200);
+    
+});
 
 prepareGame();
 class EntryOfPlayer{
@@ -326,6 +330,7 @@ function showScore(){
         let li = document.createElement("li");
         li.innerHTML = playerData;
         document.getElementById("scoreHistory").appendChild(li);
+        $("#scoreHistory").hide().fadeIn(1500);
     }
 }
 function getScore(){
