@@ -401,16 +401,31 @@ ans.forEach(button => {
     })
 })
 
-const q1 = {"question":"See on küsimus", "a1":"Vastus 1", "a2":"Vastus 2", "a3":"Vastus 3", "a4":"Vastus 4"}
-const q2 = {"question":"See on küsimus", "a1":"Vastus 1", "a2":"Vastus 2", "a3":"Vastus 3", "a4":"Vastus 4"}
-const q3 = {"question":"See on küsimus", "a1":"Vastus 1", "a2":"Vastus 2", "a3":"Vastus 3", "a4":"Vastus 4"}
-const q4 = {"question":"See on küsimus", "a1":"Vastus 1", "a2":"Vastus 2", "a3":"Vastus 3", "a4":"Vastus 4"}
-const q5 = {"question":"See on küsimus", "a1":"Vastus 1", "a2":"Vastus 2", "a3":"Vastus 3", "a4":"Vastus 4"}
-const q6 = {"question":"See on küsimus", "a1":"Vastus 1", "a2":"Vastus 2", "a3":"Vastus 3", "a4":"Vastus 4"}
-const q7 = {"question":"See on küsimus", "a1":"Vastus 1", "a2":"Vastus 2", "a3":"Vastus 3", "a4":"Vastus 4"}
-const q8 = {"question":"See on küsimus", "a1":"Vastus 1", "a2":"Vastus 2", "a3":"Vastus 3", "a4":"Vastus 4"}
-const q9 = {"question":"See on küsimus", "a1":"Vastus 1", "a2":"Vastus 2", "a3":"Vastus 3", "a4":"Vastus 4"}
-const q10 = {"question":"See on küsimus", "a1":"Vastus 1", "a2":"Vastus 2", "a3":"Vastus 3", "a4":"Vastus 4"}
 
+const q1 = {"question":"Kes on Maailma suurim loom ?", "a1":"Elevant", "a2":"Kaelkirjak", "a3":"Vaal", "a4":"Ninasarvik"}
+const q2 = {"question":"Kes on kiireim loom maailmas (maa peal) ?", "a1":"Gepard", "a2":"Tiiger", "a3":"Lõvi", "a4":"Ilves"}
+const q3 = {"question":"Milline loom ei suuda hüpata?", "a1":"Kaelkirjak", "a2":"Elevant", "a3":"Ninasarvik", "a4":""}
+const q4 = {"question":"Mitu süda on kaheksajalgsel?", "a1":"1", "a2":"2", "a3":"3", "a4":"4"}
+const q5 = {"question":"Kui kaua suudab tigu maga talveunes?", "a1":"Aasta", "a2":"Kuu aega", "a3":"Pool aastat", "a4":"Kolm Aastat"}
+const q6 = {"question":"Mis on Saksamaa pealinn ?", "a1":"Hamburg", "a2":"München", "a3":"Berlin", "a4":"Augsburg"}
+const q7 = {"question":"Mis on Ameerika pealinn?", "a1":"Washington", "a2":"Los Angeles", "a3":"New York", "a4":"Dallas"}
+const q8 = {"question":"Mis on Kreeka pealinn ?", "a1":"Chania", "a2":"Patras", "a3":"Pireas", "a4":"Ateena"}
+const q9 = {"question":"Mis on Korea pealinn?", "a1":"Seoul", "a2":"Busan", "a3":"Daegu", "a4":"Pyongyang"}
+const q10 = {"question":"Mis on Austraalia pealinn?", "a1":"Melbourne", "a2":"Perth", "a3":"Sydney", "a4":"Brisbane"}
+const q11 = {"question":"Kes on Eesti president?", "a1":"Kersti Kaljulaid", "a2":"Jüri Ratas", "a3":"Toomas-Hendrik Ilves", "a4":"Mart Helme"}
+const q12 = {"question":"Kes on Ameerika president?", "a1":"Barack Obama", "a2":"Hillary Clinton", "a3":"Bill Clinton", "a4":"Donald Trump"}
+const q13 = {"question":"Kes on Soome president?", "a1":"Vastus 1", "a2":"Vastus 2", "a3":"Vastus 3", "a4":"Vastus 4"}
+const q14 = {"question":"Kes on Prantsusmaa president?", "a1":"Napoleon Bonaparte", "a2":"Marine Le Pen", "a3":"Emmanuel Macron", "a4":"François Hollande"}
+const q15 = {"question":"Kes on Saksamaa president?", "a1":"Angela Merkel", "a2":"Frank-Walter Steinmeier", "a3":"Joachim Gauck", "a4":"Christian Wulff"}
+const q16 = {"question":"Kes on Eesti peaminister?", "a1":"Jüri Ratas", "a2":"Mart Helme", "a3":"Martin Helme", "a4":"Kersti Kaljulaid"}
+const q17 = {"question":"Kes on Eesti sotsiaalminister?", "a1":"Tanel Kiik", "a2":"Riina Solman", "a3":"Mailis Reps", "a4":"Martin Helme"}
+const q18 = {"question":"Kes on Eesti siseminister?", "a1":"Martin Helme", "a2":"Mart Helme", "a3":"Jüri Luik", "a4":"Urmas Reinsalu"}
+const q19 = {"question":"Kes on Eesti kaitseministerminister?", "a1":"Tõnis Lukas", "a2":"Martin Helme", "a3":"Mailis Reps", "a4":"Jüri Luik"}
+const q20 = {"question":"Kes on Eesti väliskaubandus- ja infotehnoloogiaminister?", "a1":"Martin Helme", "a2":"Kaimar Karu", "a3":"Tõnis Lukas", "a4":"Arvo Aller"}
+const q21 = {"question":"Mis videomängu konsooli on kõige enam ostetud ?", "a1":"Playstation 1", "a2":"Playstation 2", "a3":"Nintendo Wii", "a4":"Nintendo DS"}
+const q22 = {"question":"Mis videomängu on kõige enam ostetud ?", "a1":"Grand Theft Auto V", "a2":"Wii Sports", "a3":"Minecraft", "a4":"Tetris"}
+const q23 = {"question":"Mis videomängu seeria on teeninud kõige enam raha?", "a1":"Mario", "a2":"Call of duty", "a3":"Pokemon", "a4":"Fifa"}
+const q24 = {"question":"Mis videomäng võitis 2019 aasta parima mängu auhinna?", "a1":"Super Smash Bros. Ultimate ", "a2":"Death Stranding", "a3":"Resident Evil 2", "a4":"Sekiro: Shadows Die Twice"}
+const q25 = {"question":"Mis on enim mängijaid kogunud videomäng ?", "a1":"Minecraft", "a2":"CrossFire", "a3":"Fortnite", "a4":"PlayerUnknown's Battlegrounds"}
 
 let quest = q1.question
