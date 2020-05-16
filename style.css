@@ -95,7 +95,7 @@ body{
 
 #showquestion{
     display: none;
-    /*display: flex;*/
+    display: flex;
     flex-direction: column;
     height: 85vh;
     width: 70%;
@@ -125,7 +125,7 @@ body{
     row-gap: 5px;
 }
 
-#answer{
+.answer{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -139,7 +139,7 @@ body{
     position: relative;
 }
 
-#answer:hover{
+.answer:hover{
     cursor: pointer;
     background-color: white;
 }
