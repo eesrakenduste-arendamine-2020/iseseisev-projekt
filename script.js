@@ -18,7 +18,7 @@ class Jeopardy{
         this.turn = turn
 
         // How many buttons have been clicked
-        let count = 23;
+        let count = 1;
         this.count = count
 
         let points
@@ -452,7 +452,6 @@ class Jeopardy{
         } else if (this.turn==2) {
             let prev = team2points.innerHTML
             team2points.innerHTML = +prev+ +this.points
-
         }
     }
 
@@ -508,6 +507,7 @@ class Jeopardy{
     resetPoints(teamnr){
         if (teamnr==1) {
             document.getElementById("team1score").innerHTML = "0" 
+            
         } else if (teamnr==2) {
             document.getElementById("team2score").innerHTML = "0" 
         }
