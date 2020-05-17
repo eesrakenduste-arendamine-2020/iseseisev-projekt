@@ -33,7 +33,6 @@ let userScore=0;
 let scoreMultiplier;
 let songTime=68;
 let difficultyTrack=document.getElementById('easyTrack');
-let trackVolume=1;
 let currentPlayer="";
 let currentMode="";
 let scoreIndex=0;
@@ -44,6 +43,7 @@ let hardWon="won";
 let gameWorks=0;
 let quit=0;/**/
 let navigateGame=document.getElementById("goToGame");
+let slider = document.getElementById("vol");
 
 $(function() {
     $('body').hide().fadeIn(1200);
@@ -102,12 +102,15 @@ function difficultyValue(e){
         
         if(userDifficulty=="Easy"){
             difficultyEasy();
+            showScore();
             console.log("Difficulty is easy and pointreduction is -"+pointReduction);
         }else if(userDifficulty=="Normal"){
             difficultyNormal();
+            showScore();
             console.log("Difficulty is normal and pointreduction is -"+pointReduction);
         }else if(userDifficulty=="Hard"){
             difficultyHard();
+            showScore();
             console.log("Difficulty is hard and pointreduction is -"+pointReduction);
         }
     notificationD.innerHTML=userDifficultyNotification;
@@ -136,9 +139,9 @@ function startGame(){
         agreed=0;
         name.value=""
         anim()
+        audio.volume = 0.1;
         songTimer()
         audio.play();
-        audio.volume = trackVolume;
         disableButtons()
         stopButton.disabled=true;
     }
@@ -288,7 +291,6 @@ function unselectDifficulty(){
     penalty=0;
     songTime="";
     document.getElementById("time").style.display = "none";
-    trackVolume=0;
     $('body').fadeTo('slow', 0.3, function(){ 
         $(this).css('background-image', 'url("giphy.gif")');
     }).delay(1000).fadeTo('slow', 1);
@@ -303,7 +305,6 @@ function difficultyEasy(){
     songTime=67;
     $('#timeLeft').html(songTime);
     difficultyTrack=document.getElementById('easyTrack');
-    trackVolume=1;
     $('body').fadeTo('slow', 0.3, function(){ 
         $(this).css('background-image', 'url("beauty.gif")');
     }).delay(1000).fadeTo('slow', 1);
@@ -318,7 +319,6 @@ function difficultyNormal(){
     songTime=68;
     $('#timeLeft').html(songTime);
     difficultyTrack=document.getElementById('normalTrack');
-    trackVolume=0.8;
     $('body').fadeTo('slow', 0.3, function(){ 
         $(this).css('background-image', 'url("carbeach.gif")');
     }).delay(1000).fadeTo('slow', 1);
@@ -333,7 +333,6 @@ function difficultyHard(){
     songTime=59;
     $('#timeLeft').html(songTime);
     difficultyTrack=document.getElementById('hardTrack');
-    trackVolume=0.3;
     $('body').fadeTo('slow', 0.3, function(){ 
         $(this).css('background-image', 'url("giphy (1).gif")');
     }).delay(1000).fadeTo('slow', 1);
@@ -394,7 +393,11 @@ function enableButtons(){
 }
 
 function storeScore(){
-    let storedData="Name: "+currentPlayer+" Difficulty: "+currentMode+" Score: "+userScore+'<br/>';
+    let storedData = {
+        name: currentPlayer,
+        difficulty: currentMode,
+        score: userScore
+    }
     playerLog.push(storedData);
     console.log(playerLog);
     localStorage.setItem("score", JSON.stringify(playerLog));
@@ -402,10 +405,17 @@ function storeScore(){
 }
 function showScore(){
     document.getElementById("scoreHistory").innerHTML = "";
+    sort();
     for(i=0;i<playerLog.length;i++){
         let playerData = playerLog[i];
+        if(userDifficulty!=""){
+            if(playerData.difficulty!=userDifficulty){
+                continue;
+            }
+        }
+        console.log(playerData)
         let li = document.createElement("li");
-        li.innerHTML = playerData;
+        li.innerHTML = "Name: " + playerData.name + " difficulty: " + playerData.difficulty + " score: " + playerData.score  + '<br/>';
         document.getElementById("scoreHistory").appendChild(li);
         $("#scoreHistory").hide().fadeIn(1500);
     }
@@ -418,6 +428,18 @@ function getScore(){
         playerLog.push(playerData);
     }
     showScore();
+}
+function sort(){
+    playerLog.sort(function(a,b){
+        if (a.score < b.score) {
+            return 1;
+          }
+          if (a.score > b.score) {
+            return -1;
+          }
+          console.log(playerLog);
+          return 0;  
+    });
 }
 
 function gameOver(){
@@ -471,3 +493,8 @@ function myfunkt() {
     $("#wordsSpot").focus();
     
   }
+
+function setvolume(){
+    difficultyTrack.volume = slider.value/10;
+}
+slider.addEventListener("change",setvolume,false);
