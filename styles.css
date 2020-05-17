@@ -58,30 +58,35 @@ input[type=range]::-moz-range-thumb {
 .play {
     background: url("triangle.svg") no-repeat;
     padding: 10px;
-    grid-row: 2/4;
-    grid-column: 2/3;
     width: 10em; 
     height: 10em;
+    border: none;
 }
 
 #value{
-    grid-row: 4/4;
-    grid-column: 2/3;
     font-size: xx-large;
     font-weight: bold;
+    border: solid 1px var(--accent-color);
+    border-radius: 4px;
+    padding: 0.5em;
 }
 
 #slider{
-    grid-row: 3/4;
-    grid-column: 2/3;
+    width: 60%;
 }
 
-#container{
+*{
+    margin: 1em;
+
+}
+
+body{
     height: 100vh;
-    display: grid;
-    grid-template-columns: 20% auto 20% ;
-    grid-template-rows: 30% auto 10% 10% 30%;  
-    justify-items: center;  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
 }
 
 
