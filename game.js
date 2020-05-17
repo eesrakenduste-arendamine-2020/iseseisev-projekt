@@ -1,6 +1,8 @@
 let words;
 let points=0;
 let wordArea=document.getElementById("words");
+let scoreArea=document.getElementById("score");
+let timeArea=document.getElementById("time");
 let mainGame=document.getElementById("main");
 let menuGame=document.getElementById("menu");
 let explinationPage=document.getElementById("explinationPage");
@@ -68,6 +70,8 @@ function gotoGame(){
     mainGame.style.display = "block";
     menuGame.style.display="none"
     wordArea.style.display="none"
+    scoreArea.style.display="none"
+    timeArea.style.display="none"
 
 
 }
@@ -487,6 +491,8 @@ function hideButtons() {
     document.getElementById("stop").style.display = "block";/**/
     menuInGameButton.style.display="none";
     wordArea.style.display="block"
+    scoreArea.style.display="block"
+    timeArea.style.display="block"
     
   }
 function unHideButtons(){/**/
@@ -497,6 +503,8 @@ function unHideButtons(){/**/
     document.getElementById("stop").style.display = "none";/**/
     menuInGameButton.style.display="block";
     wordArea.style.display="none"
+    scoreArea.style.display="none"
+    timeArea.style.display="none"
 }
 function myfunkt() {           
     $("#wordsSpot").focus();
