@@ -67,6 +67,8 @@ input[type=range]::-moz-range-thumb {
 #value{
     grid-row: 4/4;
     grid-column: 2/3;
+    font-size: xx-large;
+    font-weight: bold;
 }
 
 #slider{
@@ -78,8 +80,8 @@ input[type=range]::-moz-range-thumb {
     height: 100vh;
     display: grid;
     grid-template-columns: 20% auto 20% ;
-    grid-template-rows: 30% auto 10% 10% 30%;
-  
-    
+    grid-template-rows: 30% auto 10% 10% 30%;  
+    justify-items: center;  
 }
+
 
