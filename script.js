@@ -3,6 +3,7 @@ window.onload = function() {
     $("#showquestion").toggle()
     $("#gameover").toggle()
     $("#history").toggle()
+    $("#developerS").toggle()
     document.getElementById("current").innerHTML = "Alustab meeskond 1!"
 };
 
@@ -506,10 +507,12 @@ class Jeopardy{
     // If teams want to reset points mid-game
     resetPoints(teamnr){
         if (teamnr==1) {
-            document.getElementById("team1score").innerHTML = "0" 
+            document.getElementById("team1score").innerHTML = "0"
+            team1points = 0 
             
         } else if (teamnr==2) {
             document.getElementById("team2score").innerHTML = "0" 
+            team2points = 0 
         }
     }
 
@@ -545,6 +548,10 @@ class Jeopardy{
         }
     }
 
+    showDevelopers(){
+        $("#developerS").slideToggle("fast")
+    }
+
 }
 
 let j1 = new Jeopardy()
@@ -576,6 +583,8 @@ const correctS = document.querySelector('#correct')
 const thinking = document.querySelector('#think')
 const applause = document.querySelector('#applause')
 const woosh = document.querySelector('#woosh')
+
+const devs = document.querySelector('#developers')
 
 
 // Exit out from question
@@ -612,6 +621,10 @@ ans.forEach(button => {
     button.addEventListener('click', ()=> {
         j1.getAnsBtnID()
     })
+})
+
+devs.addEventListener('click', ()=> {
+    j1.showDevelopers();
 })
 
 
