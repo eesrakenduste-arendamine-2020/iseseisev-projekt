@@ -69,7 +69,9 @@ input[type=range]::-moz-range-thumb {
     border: solid 1px var(--accent-color);
     border-radius: 4px;
     padding: 0.5em;
-    line-height: 1em
+    line-height: 1em;
+    width: 1.25em;
+    text-align: center;
 }
 
 #slider{
