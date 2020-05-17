@@ -58,24 +58,28 @@ input[type=range]::-moz-range-thumb {
 .play {
     background: url("triangle.svg") no-repeat;
     padding: 10px;
-    grid-row: 1/4;
+    grid-row: 2/4;
     grid-column: 2/3;
+    width: 10em; 
+    height: 10em;
 }
 
 #value{
-    grid-row: 3/4;
+    grid-row: 4/4;
     grid-column: 2/3;
 }
 
 #slider{
-    grid-row: 2/4;
+    grid-row: 3/4;
     grid-column: 2/3;
 }
 
 #container{
+    height: 100vh;
     display: grid;
     grid-template-columns: 20% auto 20% ;
-    grid-template-rows: auto 20% 20% 10%;
+    grid-template-rows: 30% auto 10% 10% 30%;
+  
     
 }
 
