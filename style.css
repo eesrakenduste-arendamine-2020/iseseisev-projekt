@@ -9,7 +9,7 @@ body{
 
 #statusbar{
     display: flex;
-    height: 5vh;
+    height: 5%;
     width: 100%;
     align-items: center;
     justify-content: center;
@@ -18,7 +18,7 @@ body{
 
 #gamecontainer{
     display: flex;
-    height: 90vh;
+    height: 90VH;
     width: 70%;
     margin-left: 15%;
     margin-right: 15%;
@@ -84,7 +84,7 @@ body{
 
     background-color: darkgray;
     width: 50%;
-    height: 20vh;
+    height: 20%;
 
     margin-top: 5vh;
     margin-bottom: 5vh;
@@ -105,7 +105,7 @@ body{
     display: none;
     display: flex;
     flex-direction: column;
-    height: 90vh;
+    height: 90%;
     width: 70%;
     margin-left: 15%;
     margin-right: 15%;
