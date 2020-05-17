@@ -24,9 +24,9 @@ const ball = {
     x : canvas.width/2,
     y : paddle.y - ballRadius,
     radius : ballRadius,
-    speed : 3,
-    length : 3, 
-    width : -3
+    speed : 10,
+    dx : 3 * (Math.random() * 2 - 1), 
+    dy : -3
 }
 
 function drawPaddle() {
@@ -77,17 +77,34 @@ function movePaddle() {
 }
 
 function moveBall() {
-    ball.x += ball.length;
-    ball.y += ball.width;
+    ball.x += ball.dx;
+    ball.y += ball.dy;
 }
 
 function wallImpactBall() {
     if(ball.x + ballRadius > canvas.width || ball.x - ballRadius < 0) {
-        ball.length = - ball.length
+        ball.dx = - ball.dx
     }
     if(ball.y - ballRadius < 0) {
-        ball.width = - ball.width;
+        ball.dy = - ball.dy;
     }
+    if(ball.y + ballRadius > canvas.height) {
+        reset();
+    }
+}
+
+function paddleImpactBall() {
+    if(ball.x < paddle.x + paddle.width && ball.x > paddle.x && paddle.y < paddle.y + paddle.height && ball.y > paddle.y) {
+        ball.dx = - ball.dx;
+        ball.dy = - ball.dy;
+    }
+}
+
+function reset() {
+    ball.x = canvas.width/2;
+    ball.y = paddle.y - ballRadius;
+    ball.dx = 3;
+    ball.dy = -3;
 }
 
 function draw() {
@@ -99,6 +116,7 @@ function update() {
     movePaddle();
     moveBall();
     wallImpactBall();
+    paddleImpactBall();
 }
 
 function loop() {
