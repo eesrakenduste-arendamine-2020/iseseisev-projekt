@@ -116,12 +116,15 @@ input{
 
 
 #wordsSpot{
+  letter-spacing: 4px;
+  font-size: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: auto;
   width: auto;
-  height: 40px;
+  height: 100px;
+  text-shadow: 2px 0 0 rgb(56, 0, 102), -2px 0 0 rgb(56, 0, 102), 0 2px 0 rgb(56, 0, 102), 0 -2px 0 rgb(56, 0, 102), 1px 1px rgb(56, 0, 102), -1px -1px 0 rgb(56, 0, 102), 1px -1px 0 rgb(56, 0, 102), -1px 1px 0 rgb(56, 0, 102);
   background-color: darkorange;
   border: 3px solid blueviolet;
   border-radius: 16px;
@@ -137,11 +140,16 @@ input{
   color: #ECF0F1;
 }
 #countdown{
-  text-align: center;
-  overflow: visible;
-  position: absolute;
-  top: 40%;
-  right: 45%;
+  
+  font-style: italic;
+  justify-content: center;
+  align-items: center;
+	max-width: 600px;
+  margin:auto;
+  margin-top: 30px;
+  width: 600px;
+  height: 40px;
+	text-align: center;
 
   font-family: sans-serif;
   color: crimson;
@@ -152,4 +160,30 @@ input{
 }
 #notificationD{
   height: 20px;
+}
+
+
+#bonus{
+  font-style: italic;
+  justify-content: center;
+  align-items: center;
+	max-width: 600px;
+  margin:auto;
+  margin-top: 30px;
+  width: 600px;
+  height:50px;
+	text-align: center;
+	padding: 2%;
+	background: linear-gradient(rgb(252, 186, 246),rgb(253, 234, 255,0.5),rgb(255, 143, 240));
+  border: solid rgba(138, 31, 238, 0.5);
+  border-radius:15px;
+  border-width: 6px;
+  color: rgb(127, 3, 243);
+  font-size: 30px;
+  text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+#justPlayed{
+  font-size: xx-large;
+
 }

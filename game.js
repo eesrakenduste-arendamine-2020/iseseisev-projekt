@@ -1,4 +1,5 @@
 let words;
+let headsUP=document.getElementById("headsUp");
 let points=0;
 let recordMusic=document.getElementById("record");
 let failedMusic=document.getElementById("UFAILED");
@@ -291,6 +292,8 @@ function anim() {
         
     }
     else {
+        scoreArea.style.display="block"
+        timeArea.style.display="block"
         $('#countdown').html("TYPE!");
         getWord();
         count=5;
@@ -550,11 +553,11 @@ function hideButtons() {
     document.getElementById("start").style.display = "none";
     document.getElementById("difficultyHeader").style.display="none";
     document.getElementById("highScores").style.display = "none";/**/
-    document.getElementById("stop").style.display = "block";/**/
+    document.getElementById("stop").style.display = "block";
+    headsUP.style.display="none";
     menuInGameButton.style.display="none";
     wordArea.style.display="block"
-    scoreArea.style.display="block"
-    timeArea.style.display="block"
+    
     
   }
 function unHideButtons(){/**/
@@ -568,6 +571,7 @@ function unHideButtons(){/**/
     wordArea.style.display="none"
     scoreArea.style.display="none"
     timeArea.style.display="none"
+    headsUP.style.display="block";
 }
 function myfunkt() {           
     $("#wordsSpot").focus();
@@ -594,13 +598,13 @@ function difficultyValueSort(e){
      bonusPoints=2;
      bonusPointsArea.style.display = "block";
      $('#bonusBody').html("Double Points!");
-     $("#bonusBody").css("backgroundImage", 'url("triple.gif")')
+     $("#bonus").css("backgroundImage", 'url("triple.gif")')
  }
  function bonusMultiplierX3(){
      bonusPoints=3;
      bonusPointsArea.style.display="block"
      $('#bonusBody').html("TRIPLE POINTS!!!");
-     $("#bonusBody").css("backgroundImage", 'url("tripl33e.gif")')
+     $("#bonus").css("backgroundImage", 'url("dus.gif")')
  }
 
  function bonusMultiplierEnd(){
@@ -624,7 +628,9 @@ function showUserScore(){
         failedMusic.play();
     }else if((currentMode=="Hard"||currentMode=="Normal"||currentMode=="Easy")&&hardWon!="Lost"&&quit==0){
         regRecentScore="Congratulations "+currentPlayer+" your score in difficulty "+currentMode+" was "+recentInfo+bonusNotification;
-        recordMusic.play();
+        if(bonusNotification!=""){
+            recordMusic.play();
+        }
     }else if((currentMode=="Hard"||currentMode=="Normal"||currentMode=="Easy")&&hardWon!="Lost"&&quit==1){
         regRecentScore="Dude why would you quit? Anyways "+currentPlayer+" your score in difficulty "+currentMode+" was "+recentInfo+bonusNotification;
         console.log("WHAT MAN")
@@ -633,14 +639,3 @@ function showUserScore(){
     $('#userRecentScore').html(regRecentScore);
 }
 
-window.onbeforeunload = function (e) {
-    e = e || window.event;
-
-    // For IE and Firefox prior to version 4
-    if (e) {
-        e.returnValue = "where are you going? no no no";
-    }
-
-    // For Safari
-    return 'where are you going? no no no';
-};
