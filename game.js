@@ -27,6 +27,7 @@ let userDifficultyNotification;
 let notificationD=document.querySelector('#notificationD');
 let nextWord;
 let wordList=[];
+let wordListEasy=[];
 let inputLetter;
 let splitter;
 let rights=0;
@@ -103,7 +104,6 @@ function difficultyValue(e){
    if(e.target.value!=userDifficulty){
        if(e.target.value!=undefined){
         userDifficulty=e.target.value;
-        console.log(userDifficulty);
         userDifficultyNotification="Your current difficulty is "+userDifficulty;
         
         if(userDifficulty=="Easy"){
@@ -141,11 +141,10 @@ function startGame(){
         playerReg= new EntryOfPlayer(userName,userDifficulty);
         currentPlayer=userName;
         currentMode=userDifficulty;
-        console.log(playerReg);
         agreed=0;
         name.value=""
         anim()
-        audio.volume = 0.1;
+        audio.volume = slider.value/10;
         songTimer()
         audio.play();
         disableButtons()
@@ -158,7 +157,6 @@ function startGame(){
             playerReg= new EntryOfPlayer(userName,userDifficulty);
             currentPlayer=userName;
             currentMode=userDifficulty;
-            console.log(playerReg);
             agreed=0;
             name.value  ="";
             anim();
@@ -176,12 +174,8 @@ function startGame(){
     }
 }
 $(document).keypress(function(e){
-    console.log(String.fromCharCode(e.keyCode))
+    //console.log(String.fromCharCode(e.keyCode))
     inputLetter=String.fromCharCode(e.keyCode)
-    /*
-    let nextWord= wordList[Math.floor(Math.random()*wordList.length)]
-    console.log(nextWord)
-    */
    typerMan();
 });
 
@@ -189,7 +183,10 @@ $(document).keypress(function(e){
 function prepareGame(){
     jQuery.get('en.txt', function(data) {
         wordList = data.split('\n');
-        console.log(wordList);
+    });
+
+    jQuery.get('1-1000.txt', function(data) {
+        wordListEasy = data.split('\n');
     });
 
     if(localStorage.getItem("score")!==null){
@@ -201,12 +198,17 @@ function prepareGame(){
 
 
 
+
 difficulty.addEventListener("click",difficultyValue);
 startButton.addEventListener("click",startGame);
 stopButton.addEventListener("click",quitGame);/**/
 
 function getWord(){
-    nextWord= wordList[Math.floor(Math.random()*wordList.length)]
+    if(userDifficulty=="Easy"){
+        nextWord= wordListEasy[Math.floor(Math.random()*wordListEasy.length)]
+    }else{
+        nextWord= wordList[Math.floor(Math.random()*wordList.length)] 
+    }
     $('#wordsSpot').html(nextWord);
     splitter=nextWord;
     
@@ -218,8 +220,6 @@ function typerMan(){
         let mainWord = document.createElement("span2");
         let characters=[];
         characters=splitter.split("");
-        console.log(characters);
-
         if(inputLetter==characters[rights]&&gameWorks==1){
             
             $('#wordsSpot').html("");
@@ -228,16 +228,11 @@ function typerMan(){
             letterOfWord.innerHTML+=characters[rights];
             nextWord=nextWord.slice(1);
             mainWord.innerHTML=nextWord;
-            console.log(mainWord)
-            console.log(letterOfWord)
             document.querySelector("#wordsSpot").appendChild(letterOfWord)
             document.querySelector("#wordsSpot").appendChild(mainWord)
-            
             rights+=1;
-            console.log(rights)
             if(characters.length==rights){
                 userScore+=splitter.length*scoreMultiplier;
-                console.log(userScore);
                 $('#scorePoints').html(userScore);
                 getWord();
                 rights=0;
@@ -245,8 +240,6 @@ function typerMan(){
             
         }
         }else if(inputLetter!=characters[rights]&&mistakesCount!=3&&gameWorks==1){
-            console.log(mainWord)
-            console.log(letterOfWord)
             mistakesCount+=penalty;
             userScore-=pointReduction;
         }else if(mistakesCount==3&&gameWorks==1){
@@ -269,7 +262,6 @@ var count = 5;
 function anim() {
     $('#countdown').html(count);
     if (count > 0) {
-        console.log(count);
         count--;
         setTimeout(anim,1000);
         
@@ -347,7 +339,6 @@ function songTimer() {
     let resetTime=songTime;
     $('#timeLeft').html(songTime);
     if (songTime > 0) {
-        console.log(songTime);
         songTime--;
         setTimeout(songTimer,1000);
         
@@ -405,7 +396,6 @@ function storeScore(){
         score: userScore
     }
     playerLog.push(storedData);
-    console.log(playerLog);
     localStorage.setItem("score", JSON.stringify(playerLog));
     showScore();
 }
@@ -419,7 +409,6 @@ function showScore(){
                 continue;
             }
         }
-        console.log(playerData)
         let li = document.createElement("li");
         li.innerHTML = "Name: " + playerData.name + " difficulty: " + playerData.difficulty + " score: " + playerData.score  + '<br/>';
         document.getElementById("scoreHistory").appendChild(li);
@@ -443,7 +432,6 @@ function sort(){
           if (a.score > b.score) {
             return -1;
           }
-          console.log(playerLog);
           return 0;  
     });
 }
