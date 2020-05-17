@@ -1,7 +1,5 @@
 let words;
 let points=0;
-let recordMusic=document.getElementById("record");
-let failedMusic=document.getElementById("UFAILED");
 let showGame=document.getElementById("justPlayed");
 let wordArea=document.getElementById("words");
 let scoreArea=document.getElementById("score");
@@ -48,7 +46,7 @@ let penalty=0;
 let audio="";
 let hardWon="won";
 let gameWorks=0;
-let quit=0;
+let quit=0;/**/
 let navigateGame=document.getElementById("goToGame");
 let slider = document.getElementById("vol");
 let difficultySort="";
@@ -151,7 +149,6 @@ function difficultyValue(e){
 
 function startGame(){
     hardWon="won";
-    quit=0;
     let audio = difficultyTrack;
     userName=name.value;
     if(userName!=""&&userDifficulty!=undefined&&userDifficulty!=""){
@@ -381,13 +378,12 @@ function songTimer() {
         }else if(currentMode=="Hard"&&hardWon=="Lost"&&quit==0){
             $('#wordsSpot').html("Damn U LOST");
             hardWon="Lost"
-        }else if((currentMode=="Hard"||currentMode=="Easy"||currentMode=="Normal")&&quit==1){
-            quit=1;
         }else{
             setTimeout(lostRound,3000);
             hardWon="won"
         }
         setTimeout(nextRound,6000);
+        quit=0;/**/
         notificationD.innerHTML="";
         bonusMultiplierEnd()
         backToMenu()
@@ -519,6 +515,7 @@ function gameOver(){
 }
 
 function quitGame(){/**/
+    quit=1;
     mistakesCount=0;
     gameWorks=0;
     let audio = difficultyTrack;
@@ -534,7 +531,6 @@ function quitGame(){/**/
     justPlayed=1;
     gotoScoreboard()
     hardWon="won"
-    quit=1;
     
 }
 function nextRound(){
@@ -594,13 +590,11 @@ function difficultyValueSort(e){
      bonusPoints=2;
      bonusPointsArea.style.display = "block";
      $('#bonusBody').html("Double Points!");
-     $("#bonusBody").css("backgroundImage", 'url("triple.gif")')
  }
  function bonusMultiplierX3(){
      bonusPoints=3;
      bonusPointsArea.style.display="block"
      $('#bonusBody').html("TRIPLE POINTS!!!");
-     $("#bonusBody").css("backgroundImage", 'url("tripl33e.gif")')
  }
 
  function bonusMultiplierEnd(){
@@ -611,27 +605,19 @@ function difficultyValueSort(e){
 }
 function showUserScore(){
     let regRecentScore;
-    let bonusNotification;
-    if(topScore<recentInfo){
-        bonusNotification=". YOU ALSO BEAT THE HIGHSCORE!!! good work scrub"
-        topScore=recentInfo;
-    }else{
-        bonusNotification=""
-    }
     showGame.style.display="block";
     if(currentMode=="Hard"&&hardWon=="Lost"){
-        regRecentScore="Sadly you made three mistakes in hard mode, but congratulations "+currentPlayer+" your score in difficulty "+currentMode+" was "+recentInfo+bonusNotification;
-        failedMusic.play();
-    }else if((currentMode=="Hard"||currentMode=="Normal"||currentMode=="Easy")&&hardWon!="Lost"&&quit==0){
-        regRecentScore="Congratulations "+currentPlayer+" your score in difficulty "+currentMode+" was "+recentInfo+bonusNotification;
-        recordMusic.play();
-    }else if((currentMode=="Hard"||currentMode=="Normal"||currentMode=="Easy")&&hardWon!="Lost"&&quit==1){
-        regRecentScore="Dude why would you quit? Anyways "+currentPlayer+" your score in difficulty "+currentMode+" was "+recentInfo+bonusNotification;
-        console.log("WHAT MAN")
+        regRecentScore="Sadly you made three mistakes in hard mode, but congratulations "+currentPlayer+" your score in difficulty "+currentMode+" was "+recentInfo;
+        console.log("FUCK")
+    }else if((currentMode=="Hard"||currentMode=="Normal"||currentMode=="Easy")&&hardWon!="Lost"){
+        regRecentScore="Congratulations "+currentPlayer+" your score in difficulty "+currentMode+" was "+recentInfo;
+        console.log("FUCK VOL 2")
     }
     
     $('#userRecentScore').html(regRecentScore);
 }
+
+
 
 window.onbeforeunload = function (e) {
     e = e || window.event;
