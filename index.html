@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script
+        src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous">
+    </script>
+    <script src="script.js" defer></script>
+
+    <audio id="wrong" src="wrong.mp3"></audio>
+    <audio id="correct" src="correct.mp3"></audio>
+    <audio id="think" src="thinking.mp3"></audio>
+    <audio id="applause" src="applause.mp3"></audio>
+    <audio id="woosh" src="close.mp3"></audio>
+    
+    <title>Iseseisev töö</title>
+</head>
+<body id="mainbody">
+    <div id="taskbar">
+        <button class="taskButton taskButton-slide" id="historybtn">Ajalugu</button>
+        <button class="taskButton taskButton-slide" id="developers">Autorid</button>
+        <button class="taskButton taskButton-slide" id="repo" onclick="window.location.href='https://github.com/rein-ra/iseseisev-projekt'">Repo</button>
+    </div>
+    <div id="developerS">
+        <p class="dev">Rene Raidmaa</p>
+        <p class="dev">Ralf Vihmaru</p>
+    </div>
+
+    <p id="current"></p>
+
+    <div id="history"></div>
+
+    <div id="gameover">
+        <p>Mäng on läbi</p>
+    </div>
+
+    <div id="showquestion">
+        <button id="close" class="close" disabled=true>🗙</button>
+        <p data-question class="question" id="question">Küsimus siin sees</p>
+        <div id="answerButtons">
+            <button id="answer1" class="answer">1</button>
+            <button id="answer2" class="answer">2</button>
+            <button id="answer3" class="answer">3</button>
+            <button id="answer4" class="answer">4</button>
+        </div>
+    </div>
+
+    <div id="gamecontainer">
+        <div id="grid-wrapper">
+                <p id="category">Loomad</p>
+                <p id="category">Linnad</p>
+                <p id="category">Presidendid</p>
+                <p id="category">Minisitrid</p>
+                <p id="category">Mängud</p>
+
+                <button id="1" class="showQuestion" name="1">100</button>
+                <button id="2" class="showQuestion" name="6">100</button>
+                <button id="3" class="showQuestion" name="11">100</button>
+                <button id="4" class="showQuestion" name="16">100</button>
+                <button id="5" class="showQuestion" name="21">100</button>
+
+                <button id="1" class="showQuestion" name="2">200</button>
+                <button id="2" class="showQuestion" name="7">200</button>
+                <button id="3" class="showQuestion" name="12">200</button>
+                <button id="4" class="showQuestion" name="17">200</button>
+                <button id="5" class="showQuestion" name="22">200</button>
+
+                <button id="1" class="showQuestion" name="3">300</button>
+                <button id="2" class="showQuestion" name="8">300</button>
+                <button id="3" class="showQuestion" name="13">300</button>
+                <button id="4" class="showQuestion" name="18">300</button>
+                <button id="5" class="showQuestion" name="23">300</button>
+
+                <button id="1" class="showQuestion" name="4">400</button>
+                <button id="2" class="showQuestion" name="9">400</button>
+                <button id="3" class="showQuestion" name="14">400</button>
+                <button id="4" class="showQuestion" name="19">400</button>
+                <button id="5" class="showQuestion" name="24">400</button>
+
+                <button id="1" class="showQuestion" name="5">500</button>
+                <button id="2" class="showQuestion" name="10">500</button>
+                <button id="3" class="showQuestion" name="15">500</button>
+                <button id="4" class="showQuestion" name="20">500</button>
+                <button id="5" class="showQuestion" name="25">500</button>
+ 
+            </div>
+        </div>
+    </div>
+
+    <div id="scoreboard_container">
+        <div id="team1">
+            <p>Team 1</p>
+            <div id="team1score">0</div>
+            
+            <button id="resetteam1">Reset</button>
+        </div>
+
+        <div id="team2">
+            <p>Team 2</p>
+            <div id="team2score">0</div>
+            
+            <button id="resetteam2">Reset</button>
+        </div>
+    </div>
+</body>
+</html>
