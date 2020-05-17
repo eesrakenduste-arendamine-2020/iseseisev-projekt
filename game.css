@@ -7,14 +7,14 @@ body{
   margin:0;
 }
 
-#main,#menu,#explinationPage,#scoreBoardPage {
+#main,#menu,#explinationPage,#scoreBoardPage,#bonus,#justPlayed {
   font-style: italic;
   justify-content: center;
   align-items: center;
 	max-width: 600px;
   margin:auto;
   margin-top: 30px;
-  width: auto;
+  width: 600px;
   height: auto;
 	text-align: center;
 	padding: 2%;
@@ -35,13 +35,19 @@ body{
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   
 }
-#backToMenuFromGame{
-  width: auto;
-  text-align: center;
-  overflow: visible;
-  position: absolute;
-  right: 65%;
+#backToMenuFromGame,#backToMenuFromScoreBoard{
+  display: flex;
+   justify-content: center;
+   position: absolute;
+}
 
+#scoreHistory{
+  
+  text-align: left;
+  margin:auto;
+  justify-content: center;
+  align-items: center;
+  width: 360px;
 }
 
 input{

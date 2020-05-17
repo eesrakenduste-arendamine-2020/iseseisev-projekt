@@ -1,10 +1,12 @@
 let words;
 let points=0;
+let showGame=document.getElementById("justPlayed");
 let wordArea=document.getElementById("words");
 let scoreArea=document.getElementById("score");
 let timeArea=document.getElementById("time");
 let mainGame=document.getElementById("main");
 let menuGame=document.getElementById("menu");
+let bonusPointsArea=document.getElementById("bonus");
 let explinationPage=document.getElementById("explinationPage");
 let explinationButton=document.getElementById("explinationButton");
 let scoreBoardButton=document.getElementById("goToScoreboard");
@@ -49,6 +51,11 @@ let navigateGame=document.getElementById("goToGame");
 let slider = document.getElementById("vol");
 let difficultySort="";
 let difficultyS=document.querySelector('#difficultyS');
+let correctInARow=0;
+let correctWords=0;
+let bonusPoints=1;
+let justPlayed=0;
+let recentInfo=0;
 
 $(function() {
     $('body').hide().fadeIn(1200);
@@ -74,6 +81,7 @@ function gotoGame(){
     wordArea.style.display="none"
     scoreArea.style.display="none"
     timeArea.style.display="none"
+    bonusPointsArea.style.display = "none";
 }
 function backToMenu(){
     $('body').hide().fadeIn(800);
@@ -81,7 +89,11 @@ function backToMenu(){
     menuGame.style.display="block"
     scoreboardPage.style.display="none"
     explinationPage.style.display="none"
+    bonusPointsArea.style.display = "none";
     difficultySort="";
+    showGame.style.display="none"
+    justPlayed=0;
+    
 }
 /////////////////////////////////////////////////////////////SCOREBOARD/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 scoreBoardButton.addEventListener("click",gotoScoreboard)
@@ -92,6 +104,9 @@ function gotoScoreboard(){
     scoreboardPage.style.display="block"
     showScore();
     enableButtons();
+    if(justPlayed==1){
+        showUserScore()
+    }
 }
 /////////////////////////////////////////////////////////////EXPLINATION/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 explinationButton.addEventListener("click",gotoExplination);
@@ -132,9 +147,8 @@ function difficultyValue(e){
 }
 
 function startGame(){
-   
+    hardWon="won";
     let audio = difficultyTrack;
-    
     userName=name.value;
     if(userName!=""&&userDifficulty!=undefined&&userDifficulty!=""){
         hideButtons();
@@ -229,15 +243,31 @@ function typerMan(){
             document.querySelector("#wordsSpot").appendChild(letterOfWord)
             document.querySelector("#wordsSpot").appendChild(mainWord)
             rights+=1;
+            correctInARow+=1;
+            if(correctInARow==splitter.length){
+                console.log("ALL LETTER RITE")
+                correctWords+=1;
+            }
+            if(correctWords>5){
+                bonusMultiplier();
+            }
+            if(correctWords>15){
+                bonusMultiplierX3();
+            }
             if(characters.length==rights){
-                userScore+=splitter.length*scoreMultiplier;
+                userScore+=splitter.length*scoreMultiplier*bonusPoints;
                 $('#scorePoints').html(userScore);
+                recentInfo=userScore;
                 getWord();
+                correctInARow=0;
                 rights=0;
                 letterOfWord.innerHTML=null;
             
         }
         }else if(inputLetter!=characters[rights]&&mistakesCount!=3&&gameWorks==1){
+            bonusMultiplierEnd()
+            correctWords=0;
+            correctInARow=0;
             mistakesCount+=penalty;
             userScore-=pointReduction;
         }else if(mistakesCount==3&&gameWorks==1){
@@ -344,6 +374,9 @@ function songTimer() {
             $('#wordsSpot').html("Woah you made it through!");
         }else if(quit==1){
             $('#wordsSpot').html("AWWW why did you quit, well try again if you want");
+        }else if(currentMode=="Hard"&&hardWon=="Lost"&&quit==0){
+            $('#wordsSpot').html("Damn U LOST");
+            hardWon="Lost"
         }else{
             setTimeout(lostRound,3000);
             hardWon="won"
@@ -351,6 +384,11 @@ function songTimer() {
         setTimeout(nextRound,6000);
         quit=0;/**/
         notificationD.innerHTML="";
+        bonusMultiplierEnd()
+        backToMenu()
+        justPlayed=1;
+        gotoScoreboard()
+        
     }
 }
 
@@ -427,6 +465,11 @@ function gameOver(){
     hardWon="Lost";
     userDifficulty="";
     notificationD.innerHTML="";
+    bonusMultiplierEnd()
+    backToMenu()
+    justPlayed=1;
+    gotoScoreboard()
+    
 }
 
 function quitGame(){/**/
@@ -441,6 +484,12 @@ function quitGame(){/**/
     rights=0;
     userDifficulty="";
     notificationD.innerHTML="";
+    bonusMultiplierEnd()
+    backToMenu()
+    justPlayed=1;
+    gotoScoreboard()
+    hardWon="won"
+    
 }
 function nextRound(){
     $('#wordsSpot').html("Are you ready for the next one? Words will appear here");
@@ -453,6 +502,7 @@ function hideButtons() {
     document.getElementById("difficulty").style.display = "none";
     document.getElementById("personName").style.display = "none";
     document.getElementById("start").style.display = "none";
+    document.getElementById("difficultyHeader").style.display="none";
     document.getElementById("highScores").style.display = "none";/**/
     document.getElementById("stop").style.display = "block";/**/
     menuInGameButton.style.display="none";
@@ -462,6 +512,7 @@ function hideButtons() {
     
   }
 function unHideButtons(){/**/
+    document.getElementById("difficultyHeader").style.display="block";
     document.getElementById("difficulty").style.display = "block";/**/
     document.getElementById("personName").style.display = "block";/**/
     document.getElementById("start").style.display = "block";/**/
@@ -490,3 +541,36 @@ function difficultyValueSort(e){
         }
      }
  }
+
+ //////////////////////////////////////////////DOUBLE POINTS////////////////////////////////////////////////////////////////
+
+ function bonusMultiplier(){
+     bonusPoints=2;
+     bonusPointsArea.style.display = "block";
+     $('#bonusBody').html("Double Points!");
+ }
+ function bonusMultiplierX3(){
+     bonusPoints=3;
+     bonusPointsArea.style.display="block"
+     $('#bonusBody').html("TRIPLE POINTS!!!");
+ }
+
+ function bonusMultiplierEnd(){
+    correctWords=0;
+    correctInARow=0;
+    bonusPoints=1;
+    bonusPointsArea.style.display = "none";/**/
+}
+function showUserScore(){
+    let regRecentScore;
+    showGame.style.display="block";
+    if(currentMode=="Hard"&&hardWon=="Lost"){
+        regRecentScore="Sadly you made three mistakes in hard mode, but congratulations "+currentPlayer+" your score in difficulty "+currentMode+" was "+recentInfo;
+        console.log("FUCK")
+    }else if((currentMode=="Hard"||currentMode=="Normal"||currentMode=="Easy")&&hardWon!="Lost"){
+        regRecentScore="Congratulations "+currentPlayer+" your score in difficulty "+currentMode+" was "+recentInfo;
+        console.log("FUCK VOL 2")
+    }
+    
+    $('#userRecentScore').html(regRecentScore);
+}
