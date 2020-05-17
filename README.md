@@ -11,5 +11,5 @@ Kuldvillaku loojad: Rene Raidmaa ja Ralf Vihmaru
 
 
 ![Pilt Kuldvillaku lauast](pilt1.png)
-![Pilt Kuldvillaku skoorist](pilt3.png)
+![Pilt Kuldvillaku skoorist](pilt2.png)
 
