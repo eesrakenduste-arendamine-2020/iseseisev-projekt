@@ -185,7 +185,7 @@ class Jeopardy{
                 ans4.innerHTML = q10.a4
 
                 this.points = points
-                this.correct = "answer2"
+                this.correct = "answer4"
                 this.buttonNr = 10
 
             }
@@ -635,7 +635,7 @@ const q16 = {"question":"Kes on Eesti peaminister?", "a1":"Jüri Ratas", "a2":"M
 const q17 = {"question":"Kes on Eesti sotsiaalminister?", "a1":"Tanel Kiik", "a2":"Riina Solman", "a3":"Mailis Reps", "a4":"Martin Helme"}
 const q18 = {"question":"Kes on Eesti siseminister?", "a1":"Martin Helme", "a2":"Mart Helme", "a3":"Jüri Luik", "a4":"Urmas Reinsalu"}
 const q19 = {"question":"Kes on Eesti kaitseminister?", "a1":"Tõnis Lukas", "a2":"Martin Helme", "a3":"Mailis Reps", "a4":"Jüri Luik"}
-const q20 = {"question":"Kes on Eesti väliskaubandus- ja infotehnoloogiaminister?", "a1":"Raul Siem", "a2":"Kaimar Karu", "a3":"Tõnis Lukas", "a4":"Arvo Aller"}
+const q20 = {"question":"Kes on Eesti väliskaubandus- ja infotehnoloogiaminister?", "a1":"Kaimar Karu", "a2":"Raul Siem", "a3":"Tõnis Lukas", "a4":"Arvo Aller"}
 const q21 = {"question":"Mis videomängu konsooli on kõige enam ostetud ?", "a1":"Playstation 1", "a2":"Playstation 2", "a3":"Nintendo Wii", "a4":"Nintendo DS"}
 const q22 = {"question":"Mis videomängu on kõige enam ostetud ?", "a1":"Grand Theft Auto V", "a2":"Wii Sports", "a3":"Minecraft", "a4":"Tetris"}
 const q23 = {"question":"Mis videomängu seeria on teeninud kõige enam raha?", "a1":"Super Mario", "a2":"Call of duty", "a3":"Pokemon", "a4":"Fifa"}
