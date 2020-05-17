@@ -14,7 +14,6 @@ let menuInScoreButton=document.getElementById("backToMenuFromScoreBoard")
 let menuInExplinationButton=document.getElementById("backToMenuFromExplination")
 document.getElementById("stop").style.display = "none"; /**new */
 let stopButton=document.querySelector("#stop");/**/
-let difficulty=document.querySelector('#difficulty');
 let startButton=document.querySelector('#start');
 let name=document.querySelector('#name');
 let userInput;
@@ -48,10 +47,11 @@ let gameWorks=0;
 let quit=0;/**/
 let navigateGame=document.getElementById("goToGame");
 let slider = document.getElementById("vol");
+let difficultySort="";
+let difficultyS=document.querySelector('#difficultyS');
 
 $(function() {
     $('body').hide().fadeIn(1200);
-    
 });
 
 prepareGame();
@@ -68,31 +68,36 @@ class EntryOfPlayer{
 navigateGame.addEventListener("click",gotoGame);
 menuInGameButton.addEventListener("click",backToMenu);
 function gotoGame(){
+    $('body').hide().fadeIn(800);
     mainGame.style.display = "block";
     menuGame.style.display="none"
     wordArea.style.display="none"
     scoreArea.style.display="none"
     timeArea.style.display="none"
-
-
 }
 function backToMenu(){
+    $('body').hide().fadeIn(800);
     mainGame.style.display="none";
     menuGame.style.display="block"
     scoreboardPage.style.display="none"
     explinationPage.style.display="none"
+    difficultySort="";
 }
 /////////////////////////////////////////////////////////////SCOREBOARD/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 scoreBoardButton.addEventListener("click",gotoScoreboard)
 menuInScoreButton.addEventListener("click",backToMenu);
 function gotoScoreboard(){
+    $('body').hide().fadeIn(800);
     menuGame.style.display="none"
     scoreboardPage.style.display="block"
+    showScore();
+    enableButtons();
 }
 /////////////////////////////////////////////////////////////EXPLINATION/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 explinationButton.addEventListener("click",gotoExplination);
 menuInExplinationButton.addEventListener("click",backToMenu);
 function gotoExplination(){
+    $('body').hide().fadeIn(800);
     menuGame.style.display="none"
     explinationPage.style.display="block"
 }
@@ -101,7 +106,7 @@ function gotoExplination(){
 /////////////////////////////////////////////////////////////MAINGAME/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function difficultyValue(e){
-   if(e.target.value!=userDifficulty){
+   if(e.target.value=="Easy"||e.target.value=="Normal"||e.target.value=="Hard"){
        if(e.target.value!=undefined){
         userDifficulty=e.target.value;
         userDifficultyNotification="Your current difficulty is "+userDifficulty;
@@ -123,11 +128,7 @@ function difficultyValue(e){
         }else{
             notificationD.innerHTML="Select your difficulty";
         }
-    }else if(e.target.value==userDifficulty){
-        console.log("Difficulty unselected");
     }
-    
-    
 }
 
 function startGame(){
@@ -194,12 +195,9 @@ function prepareGame(){
     }
 }
 
-
-
-
-
-
+let difficulty=document.querySelector('#difficulty');
 difficulty.addEventListener("click",difficultyValue);
+difficultyS.addEventListener("click",difficultyValueSort);
 startButton.addEventListener("click",startGame);
 stopButton.addEventListener("click",quitGame);/**/
 
@@ -250,14 +248,6 @@ function typerMan(){
     
 }
 
-
-
-
-/*
-const element = document.querySelector('#lettersList');
-element.innerHTML = element.innerHTML.replace('o', '<letterOfWord style="color: red;">o</letterOfWord>');
-*/
-
 var count = 5;
 function anim() {
     $('#countdown').html(count);
@@ -278,18 +268,6 @@ function anim() {
 }
 function zoomOutTimer(){
     $('#countdown').html("");
-}
-
-function unselectDifficulty(){
-    enableButtons()
-    pointReduction=0;
-    scoreMultiplier=0;
-    penalty=0;
-    songTime="";
-    document.getElementById("time").style.display = "none";
-    $('body').fadeTo('slow', 0.3, function(){ 
-        $(this).css('background-image', 'url("giphy.gif")');
-    }).delay(1000).fadeTo('slow', 1);
 }
 
 function difficultyEasy(){
@@ -404,15 +382,15 @@ function showScore(){
     sort();
     for(i=0;i<playerLog.length;i++){
         let playerData = playerLog[i];
-        if(userDifficulty!=""){
-            if(playerData.difficulty!=userDifficulty){
+        if(difficultySort!=""){
+            if(playerData.difficulty!=difficultySort){
                 continue;
             }
         }
         let li = document.createElement("li");
         li.innerHTML = "Name: " + playerData.name + " difficulty: " + playerData.difficulty + " score: " + playerData.score  + '<br/>';
         document.getElementById("scoreHistory").appendChild(li);
-        $("#scoreHistory").hide().fadeIn(1500);
+        $("#scoreHistory").hide().fadeIn(1200);
     }
 }
 function getScore(){
@@ -503,3 +481,12 @@ function setvolume(){
     difficultyTrack.volume = slider.value/10;
 }
 slider.addEventListener("change",setvolume,false);
+
+function difficultyValueSort(e){
+    if(e.target.value!=difficultySort){
+        if(e.target.value!=undefined){
+            difficultySort=e.target.value;
+            showScore();
+        }
+     }
+ }
