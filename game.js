@@ -437,12 +437,17 @@ function showScore(){
         $("#scoreHistory").hide().fadeIn(1200);
     }
 }
+let topScore=0;
 function getScore(){
     let data = [];
     data =JSON.parse(localStorage.getItem("score"));
     for(let i=0;i<data.length;i++){
         let playerData = data[i];
         playerLog.push(playerData);
+        if(topScore < playerData.score){
+            topScore = playerData.score;
+            console.log(topScore)
+        }
     }
     showScore();
 }
