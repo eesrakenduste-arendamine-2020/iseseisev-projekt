@@ -56,6 +56,7 @@ body{
   justify-content: center;
   align-items: center;
   width: 360px;
+  word-spacing: 4px;
 }
 
 input{
@@ -161,7 +162,9 @@ input{
 #notificationD{
   height: 20px;
 }
-
+h1{
+  font-size: 50px;
+}
 
 #bonus{
   font-style: italic;

@@ -2,7 +2,7 @@ let words;
 let headsUP=document.getElementById("headsUp");
 let points=0;
 let recordMusic=document.getElementById("record");
-let failedMusic=document.getElementById("UFAILED");
+let failedMusic=document.getElementById("failedMelody");
 let showGame=document.getElementById("justPlayed");
 let wordArea=document.getElementById("words");
 let scoreArea=document.getElementById("score");
@@ -437,7 +437,7 @@ function showScore(){
             }
         }
         let li = document.createElement("li");
-        li.innerHTML = "Name: " + playerData.name + " difficulty: " + playerData.difficulty + " score: " + playerData.score  + '<br/>';
+        li.innerHTML = "Name:" + playerData.name + " difficulty: " + playerData.difficulty + " score: " + playerData.score  + '<br/>';
         document.getElementById("scoreHistory").appendChild(li);
         $("#scoreHistory").hide().fadeIn(1200);
 
