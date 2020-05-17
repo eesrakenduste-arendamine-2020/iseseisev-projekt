@@ -6,6 +6,7 @@ Kuldvillaku loojad: Rene Raidmaa ja Ralf Vihmaru
 * Mäng loeb punkte ja lisab need tiimi skoorile automaatselt. Lisaks on ka reset nupp, mis tühjendab tiimi punktid nulli.
 * Leheküljel on ka ajaloo funktsionaalsus, kus on võimalik näha eelmiste mängude võitjaid.
 * Mängule on lisatud ka muusika, mis mängib küsimuse vastust mõeldes ning heliefektid õige ja vale vastuse korral.
+* Kasutatud on ka jquery funktsionaalsuseid ja CSS transitioneid.
 
 
 
