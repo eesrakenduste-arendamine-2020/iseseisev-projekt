@@ -573,12 +573,19 @@ function difficultyValueSort(e){
 }
 function showUserScore(){
     let regRecentScore;
+    let bonusNotification;
+    if(topScore<recentInfo){
+        bonusNotification=". YOU ALSO BEAT THE HIGHSCORE!!! good work scrub"
+        topScore=recentInfo;
+    }else{
+        bonusNotification=""
+    }
     showGame.style.display="block";
     if(currentMode=="Hard"&&hardWon=="Lost"){
-        regRecentScore="Sadly you made three mistakes in hard mode, but congratulations "+currentPlayer+" your score in difficulty "+currentMode+" was "+recentInfo;
+        regRecentScore="Sadly you made three mistakes in hard mode, but congratulations "+currentPlayer+" your score in difficulty "+currentMode+" was "+recentInfo+bonusNotification;
         console.log("FUCK")
     }else if((currentMode=="Hard"||currentMode=="Normal"||currentMode=="Easy")&&hardWon!="Lost"){
-        regRecentScore="Congratulations "+currentPlayer+" your score in difficulty "+currentMode+" was "+recentInfo;
+        regRecentScore="Congratulations "+currentPlayer+" your score in difficulty "+currentMode+" was "+recentInfo+bonusNotification;
         console.log("FUCK VOL 2")
     }
     
