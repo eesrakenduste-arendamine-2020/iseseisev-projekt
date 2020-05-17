@@ -451,6 +451,8 @@ function gameOver(){
     songTime=0;
     $('#wordsSpot').html("YOU LOST TOO MANY MISTAKES");
     hardWon="Lost";
+    letterOfWord.innerHTML=null;
+    rights=0;
     userDifficulty="";
     notificationD.innerHTML="";
 }
