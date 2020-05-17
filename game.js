@@ -181,7 +181,7 @@ $(document).keypress(function(e){
 
 
 function prepareGame(){
-    jQuery.get('1-1000.txt', function(data) {
+    jQuery.get('en.txt', function(data) {
         wordList = data.split('\n');
         console.log(wordList);
     });
