@@ -106,7 +106,7 @@ function gotoExplination(){
 /////////////////////////////////////////////////////////////MAINGAME/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function difficultyValue(e){
-   if(e.target.value=="Easy"||e.target.value=="Normal"||e.target.value=="Hard"){
+   if(e.target.value!=userDifficulty&&(e.target.value=="Easy"||e.target.value=="Normal"||e.target.value=="Hard")){
        if(e.target.value!=undefined){
         userDifficulty=e.target.value;
         userDifficultyNotification="Your current difficulty is "+userDifficulty;
