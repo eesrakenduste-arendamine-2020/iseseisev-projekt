@@ -430,6 +430,12 @@ function showScore(){
         document.getElementById("scoreHistory").appendChild(li);
         $("#scoreHistory").hide().fadeIn(1200);
     }
+    if(localStorage.getItem("score")==null) {
+        let noScores = document.createElement("h2");
+        noScores.innerHTML = "There are no scores yet";
+        document.getElementById("scoreHistory").appendChild(noScores);
+        $("#scoreHistory").hide().fadeIn(1200);
+    }
 }
 function getScore(){
     let data = [];
