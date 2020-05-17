@@ -22,9 +22,39 @@
     <audio id="hardTrack">
         <source id="third" src="HARD.mp3" type="audio/mp3"></source>
     </audio>
-    <div class="main">
-       
+
+
+
+    <div id="menu">
         <h1>Type-Type-Mania</h1>
+        <div id="explination">
+            <input id="explinationButton" type="button" value="Explination of game">
+            <input id="goToGame" type="button" value="Play Game">
+            <input id="goToScoreboard" type="button" value="Scoreboard">
+        </div>
+    </div>
+
+
+    <div id="explinationPage">
+        <h1>Type-Type-Mania</h1>
+        <h2>Step by Step How 2 Play</h2>
+        <input id="backToMenuFromExplination" type="button" value="Back To Menu">
+    </div>
+
+
+    <div id="scoreBoardPage">
+        <h1>Type-Type-Mania</h1>
+        <h2>Scoreboard</h2>
+        <input id="backToMenuFromScoreBoard" type="button" value="Back To Menu">
+    </div>
+
+
+    <div id="main">
+        <h1>Type-Type-Mania</h1>
+        <div>
+            <input id="backToMenuFromGame" type="button" value="Back To Menu">
+        </div>
+        
         <div id="personName" >
             <p>Your name: </p>
             <input type="text" id="name">
@@ -38,7 +68,7 @@
             <input id="norm" type="button" value="Normal">
             <input id="hard" type="button" value="Hard">
         </div>
-        <p id="notificationD">Select your difficulty</p>
+        <p id="notificationD"></p>
         <br>
         <div class="start">
             <input id="start" type="button"  value="Start">
@@ -52,7 +82,7 @@
             <h3>Score</h3>
             <span id="scorePoints">0</span>
         </div>
-        <div class="time">
+        <div id="time">
             <h3>Time</h3>
             <span id="timeLeft">67</span>
         </div>
