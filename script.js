@@ -18,7 +18,7 @@ class Jeopardy{
         this.turn = turn
 
         // How many buttons have been clicked
-        let count = 1;
+        let count = 23;
         this.count = count
 
         let points
@@ -448,15 +448,11 @@ class Jeopardy{
         if (this.turn==1) {
             let prev = team1points.innerHTML
             team1points.innerHTML = +prev+ +this.points // adds new points to previous
-
-            // sets turn to other team
-            this.turn = 2
             
         } else if (this.turn==2) {
             let prev = team2points.innerHTML
             team2points.innerHTML = +prev+ +this.points
 
-            this.turn = 1
         }
     }
 
@@ -465,14 +461,16 @@ class Jeopardy{
         $("#showquestion").slideToggle("fast")
 
         // resets answer button styling and enables them
-        document.getElementById("answer1").style.backgroundColor = "lightsteelblue"
+        document.getElementById("answer1").style.backgroundColor = "darkblue"
         document.getElementById("answer1").disabled = false
-        document.getElementById("answer2").style.backgroundColor = "lightsteelblue"
+        document.getElementById("answer2").style.backgroundColor = "darkblue"
         document.getElementById("answer2").disabled = false
-        document.getElementById("answer3").style.backgroundColor = "lightsteelblue"
+        document.getElementById("answer3").style.backgroundColor = "darkblue"
         document.getElementById("answer3").disabled = false
-        document.getElementById("answer4").style.backgroundColor = "lightsteelblue"
+        document.getElementById("answer4").style.backgroundColor = "darkblue"
         document.getElementById("answer4").disabled = false
+
+
 
         // adds one as used button
         this.count = this.count + 1
@@ -493,10 +491,13 @@ class Jeopardy{
             this.storeHistory()
         }
 
+        // Switches which team's turn it currently is
         if (this.turn==1) {
             document.getElementById("current").innerHTML = "Järmisena mängib meeskond 2!"
+            this.turn=2
         } else if (this.turn==2) {
             document.getElementById("current").innerHTML = "Järmisena mängib meeskond 1!"
+            this.turn=1
         }
 
         // disables close button
@@ -514,10 +515,21 @@ class Jeopardy{
 
     // Stores current game data to local storage
     storeHistory(){
+        let winner
+        if (this.finalScore1>this.finalScore2) {
+            winner = "VÕITIS MEESKOND 1"
+        } else if (this.finalScore1<this.finalScore2) {
+            winner = "VÕITIS MEESKOND 2"
+        } else {
+            winner = "Mäng jäi viiki!"
+        }
+
         let savedHistory = {
             team1: this.finalScore1,
-            team2: this.finalScore2
+            team2: this.finalScore2,
+            winningteam: winner
         }
+
         this.gameHistory.push(savedHistory); // pushes to gameHistory
         localStorage.setItem("gameHistory", JSON.stringify(this.gameHistory)); // makes local storage entry to string
     }
@@ -529,7 +541,7 @@ class Jeopardy{
         for(let i=0; i<25; i++){
             // prints first 25 out 
             let position = 1 + i
-            $('#history').append(position+ ") Esimene tiim sai " +this.gameHistory[i].team1+ " punkti ja teine tiim " +this.gameHistory[i].team2+ "<br>");
+            $('#history').append(position+ ") " +this.gameHistory[i].winningteam+ "\nEsimene tiim sai " +this.gameHistory[i].team1+ " punkti ja teine tiim " +this.gameHistory[i].team2+ "<br>");
         }
     }
 
