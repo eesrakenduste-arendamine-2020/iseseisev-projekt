@@ -548,10 +548,10 @@ class Jeopardy{
         }
     }
 
+    // Toggels visibility of developer tab
     showDevelopers(){
         $("#developerS").slideToggle("fast")
     }
-
 }
 
 let j1 = new Jeopardy()
