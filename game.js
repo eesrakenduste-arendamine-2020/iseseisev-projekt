@@ -1,5 +1,6 @@
 let words;
 let points=0;
+let wordArea=document.getElementById("words");
 let mainGame=document.getElementById("main");
 let menuGame=document.getElementById("menu");
 let explinationPage=document.getElementById("explinationPage");
@@ -66,6 +67,7 @@ menuInGameButton.addEventListener("click",backToMenu);
 function gotoGame(){
     mainGame.style.display = "block";
     menuGame.style.display="none"
+    wordArea.style.display="none"
 
 
 }
@@ -483,6 +485,9 @@ function hideButtons() {
     document.getElementById("start").style.display = "none";
     document.getElementById("highScores").style.display = "none";/**/
     document.getElementById("stop").style.display = "block";/**/
+    menuInGameButton.style.display="none";
+    wordArea.style.display="block"
+    
   }
 function unHideButtons(){/**/
     document.getElementById("difficulty").style.display = "block";/**/
@@ -490,6 +495,8 @@ function unHideButtons(){/**/
     document.getElementById("start").style.display = "block";/**/
     document.getElementById("highScores").style.display = "block";/**/
     document.getElementById("stop").style.display = "none";/**/
+    menuInGameButton.style.display="block";
+    wordArea.style.display="none"
 }
 function myfunkt() {           
     $("#wordsSpot").focus();
