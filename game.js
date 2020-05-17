@@ -245,8 +245,6 @@ function typerMan(){
             userScore-=pointReduction;
         }else if(mistakesCount==3&&gameWorks==1){
             gameOver();
-            letterOfWord.innerHTML=null;
-            rights=0;
         }
     }
     
@@ -349,6 +347,8 @@ function songTimer() {
         
     }
     else {
+        letterOfWord.innerHTML=null;
+        rights=0;
         userDifficulty="";
         $('#timeLeft').html("FINISH");
         songTime=resetTime;
@@ -443,6 +443,8 @@ function sort(){
 }
 
 function gameOver(){
+    letterOfWord.innerHTML=null;
+    rights=0;
     mistakesCount=0;
     gameWorks=0;
     let audio = difficultyTrack;
@@ -451,8 +453,6 @@ function gameOver(){
     songTime=0;
     $('#wordsSpot').html("YOU LOST TOO MANY MISTAKES");
     hardWon="Lost";
-    letterOfWord.innerHTML=null;
-    rights=0;
     userDifficulty="";
     notificationD.innerHTML="";
 }
