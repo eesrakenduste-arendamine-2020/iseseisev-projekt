@@ -56,6 +56,7 @@ let correctWords=0;
 let bonusPoints=1;
 let justPlayed=0;
 let recentInfo=0;
+let topScore=0;
 
 $(function() {
     $('body').hide().fadeIn(1200);
@@ -437,16 +438,14 @@ function showScore(){
         $("#scoreHistory").hide().fadeIn(1200);
     }
 }
-let topScore=0;
 function getScore(){
     let data = [];
     data =JSON.parse(localStorage.getItem("score"));
     for(let i=0;i<data.length;i++){
         let playerData = data[i];
         playerLog.push(playerData);
-        if(topScore < playerData.score){
+        if(topScore <=   playerData.score){
             topScore = playerData.score;
-            console.log(topScore)
         }
     }
     showScore();
