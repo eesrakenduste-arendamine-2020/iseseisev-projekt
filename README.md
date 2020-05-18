@@ -7,6 +7,7 @@ Iseseisva projekti kirjeldus:
 Tegin ühe youtube tutoriali järgi Tetrise mängu ning sellele lisaks chillimise veebilehe, kuhu pärast Tetrise mängimist puhkama saab minna. Põhilehel on mäng ning viide repositooriumisse, samuti on lisatud ka autori nimi. Chillimise veebilehel on kell, autori nimi ja viide Tetrisele. Samuti saab kuulata seal ka muusikat
 
 Ekraanitõmmised mõlemast lehest on lisatud failidena sc1 ja sc2.
+kasutatud tutorial: https://www.youtube.com/watch?v=QDp8BZbwOqk
 
 
 
