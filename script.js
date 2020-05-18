@@ -34,6 +34,19 @@ class UI {
     }
   }
 
+  static showAlerts(message) {
+    const div = document.createElement("div");
+    div.className = "alert alert-danger";
+    div.appendChild(document.createTextNode(message));
+    const container = document.querySelector("#container");
+    const form = document.querySelector("#book-form");
+    container.insertBefore(div, form);
+  }
+
+  static deleteAlerts() {
+    document.querySelectorAll(".alert").forEach((e) => e.remove());
+  }
+
   static clear() {
     document.querySelector("#book-title").value = "";
     document.querySelector("#book-author").value = "";
@@ -69,16 +82,16 @@ document.querySelector("#book-form").addEventListener("submit", (e) => {
   const errors = 0;
 
   if (title == "" && author == "" && page == "") {
-    alert("Palun täitke kõik väljad!");
+    UI.showAlerts("Palun täitke kõik väljad!");
     error++;
   } else if (author == "") {
-    alert("Palun sisestage raamatu autor!");
+    UI.showAlerts("Palun sisestage autor!");
     error++;
   } else if (page == "") {
-    alert("Palun sisestage loetud lehekülgede arv!");
+    UI.showAlerts("Palun sisestage loetud lehekülgede arv!");
     error++;
   } else if (title == "") {
-    alert("Palun sisestage raamatu pealkiri!");
+    UI.showAlerts("Palun sisestage teose pealkiri!");
     error++;
   } else {
     error = 0;
@@ -90,6 +103,8 @@ document.querySelector("#book-form").addEventListener("submit", (e) => {
     UI.addBook(book);
 
     UI.clear();
+
+    UI.deleteAlerts();
   }
 });
 
