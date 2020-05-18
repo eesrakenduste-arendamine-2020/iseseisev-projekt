@@ -18,17 +18,16 @@ class Card {
     constructor(face) {
         this.face = face;
         // State peaks olema 'hidden', 'visible' või 'temporarilyVisible'
-        this.state = 'hidden';
-    }
-
-    get face() {
-        return this.face;
+        this._state = 'hidden';
     }
 
     get state() {
-        return this.state;
+        return this._state;
     }
 
+    /**
+     * @param {string} state should be 'hidden', 'visible' or 'temporarilyVisible'
+     */
     set state(state) {
         if (![
             'hidden',
@@ -38,7 +37,7 @@ class Card {
             throw Error('Attempted to set unknown card state');
         }
 
-        this.state = state;
+        this._state = state;
     }
 }
 
@@ -46,11 +45,7 @@ class Deck {
     constructor(pairs) {
         // TODO: this.faces on tõenäoliselt ebavajalik, generateFaces() ja generateDeck() peaks kombineerima
         this.faces = this.generateFaces(pairs);
-        this.deck = this.generateDeck(this.faces);
-    }
-
-    get deck() {
-        return this.deck;
+        this.cards = this.generateDeck(this.faces);
     }
 
     // TODO: valida suvaline emoji teema
@@ -81,82 +76,106 @@ class Deck {
     }
 
     generateDeck(faces) {
-        const deck = [];
+        const cards = [];
 
         for (const face of faces) {
-            deck.push(new Card(face));
+            cards.push(new Card(face));
         }
 
-        return deck;
+        return cards;
     }
 }
-
-// TODO: need tuleb uuesti hankida body taasloomisel
-const play = document.getElementById('play');
-const slider = document.getElementById('slider');
-const value = document.getElementById('value');
-
-const validCardsAmounts = [
-    4,
-    8,
-    16,
-    32,
-    64
-];
-
-/*
-// See on võib-olla halb idee, aga kas halvad ideed on mind kunagi takistanud koodi kirjutamast?
-Object.defineProperty(Array.prototype, 'shuffle', {
-    value(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-    }
-});
-*/
 
 // Tagastab clone'i body'st
 const clearBody = () => {
     // Deep clone body node'i et me saaks selle pärast uuesti luua
     const bodyClone = document.body.cloneNode(true);
 
-    for (const node of document.body.childNodes) {
-        node.removeChild(node);
+    // document.body.textContent = '';
+    const body = document.body;
+    while (body.firstChild) {
+        body.removeChild(body.lastChild);
     }
 
     return bodyClone;
 };
 
-// Muudab value väärtust kui sliderit liigutatakse
-// Samuti ükkab slideri thumb'i lähima lubatud väärtuse peale, sest brauserid seda ei ise ei tee
-slider.oninput = () => {
+// Loob menüü event listenerid, seda funktsiooni on vaja kasutada pärast mängu lõppu ka
+function setupMenuEventListeners() {
+    const play = document.getElementById('play');
+    const slider = document.getElementById('slider');
+    const value = document.getElementById('value');
 
-    let lowestDiff = 64;
-    let closestValidValue = 0;
+    const validCardsAmounts = [
+        4,
+        8,
+        16,
+        32,
+        64
+    ];
 
-    // Leiame kas üks lubatud väärtustest on valitud, aga eeldame et ei ole, nii et saame vajadusel sundida lubatud väärtuse peale
-    const isValid = validCardsAmounts.some(num => {
-        const diff = Math.abs(Number(slider.value) - num);
-        if (diff < lowestDiff) {
-            lowestDiff = diff;
-            closestValidValue = num;
+
+    // Muudab value väärtust kui sliderit liigutatakse
+    // Samuti ükkab slideri thumb'i lähima lubatud väärtuse peale, sest brauserid seda ei ise ei tee
+    slider.oninput = () => {
+
+        let lowestDiff = 64;
+        let closestValidValue = 0;
+
+        // Leiame kas üks lubatud väärtustest on valitud, aga eeldame et ei ole, nii et saame vajadusel sundida lubatud väärtuse peale
+        const isValid = validCardsAmounts.some(num => {
+            const diff = Math.abs(Number(slider.value) - num);
+            if (diff < lowestDiff) {
+                lowestDiff = diff;
+                closestValidValue = num;
+            }
+            return num === Number(slider.value);
+        });
+
+        if (!isValid) {
+            slider.value = closestValidValue;
         }
-        return num === Number(slider.value);
-    });
+        value.innerText = slider.value;
+    };
 
-    if (!isValid) {
-        slider.value = closestValidValue;
+    // Play nupu vajutamisel alustame mänguga ja tühjendame <body> sisu
+    play.onclick = () => startGame(slider.value / 2, clearBody());
+}
+
+setupMenuEventListeners();
+
+const buildDeckInterface = deck => {
+    const fragment = document.createDocumentFragment();
+
+    for (const card of deck.cards) {
+        const container = document.createElement('div');
+        container.classList.add('card-container');
+
+        const front = document.createElement('div');
+        front.classList.add('front');
+        const text = document.createTextNode(card.face);
+        front.appendChild(text);
+        container.appendChild(front);
+
+        const back = document.createElement('div');
+        back.classList.add('back');
+        container.appendChild(back);
+
+        fragment.appendChild(container);
     }
-    value.innerText = slider.value;
+
+    return fragment;
 };
 
-// Play nupu vajutamisel alustame mänguga
-play.onclick = () => startGame(slider.value / 2, clearBody());
-
 // Nõuab kaartide kogust ja body clone'i
-function startGame(pairs, body) {
+function startGame(pairs, bodyClone) {
     const deck = new Deck(pairs);
 
+    const fragment = buildDeckInterface(deck);
+    document.body.appendChild(fragment);
 
+    return;
+    // Taasloob menüü
+    document.body.replaceWith(bodyClone);
+    setupMenuEventListeners();
 }
