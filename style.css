@@ -49,13 +49,13 @@
 
 /*Switchbox*/
 #switch-box{
-    windows: 100px;
-    height: 45px;
+    justify-content: flex-end;
+    margin-right: 5px;
     margin: 1px auto;
-    border-radius: 5px;
 }
 
 #switch{
+    align-content: space-between;
     margin-left: 10px;
     margin-right: 10px;
 }
