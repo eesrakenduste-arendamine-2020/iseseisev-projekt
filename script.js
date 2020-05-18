@@ -170,4 +170,8 @@ document.querySelector("#checkbox").addEventListener("click", (e) => {
   UI.changeTheme(counter);
 });
 
+// document.getElementsByClassName("#tr").addEventListener("click", (e) => {
+//   e.target.classList.add("read");
+// });
+
 // Event: Mark book as read
