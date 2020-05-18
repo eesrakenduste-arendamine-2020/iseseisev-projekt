@@ -6,15 +6,17 @@ body{
   background-size: cover;
   margin:0;
 }
-
-#main,#menu,#explinationPage,#scoreBoardPage,#bonus,#justPlayed {
+h1,h2,h3{
+  font-style: italic;
+}
+#main,#menu,#scoreBoardPage,#bonus,#justPlayed {
   font-style: italic;
   justify-content: center;
   align-items: center;
 	max-width: 600px;
   margin:auto;
   margin-top: 30px;
-  width: 600px;
+  width: 90%;
   height: auto;
 	text-align: center;
 	padding: 2%;
@@ -25,6 +27,24 @@ body{
   color: rgb(127, 3, 243);
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+#explinationPage{
+  justify-content: center;
+  align-items: center;
+	max-width: 600px;
+  margin:auto;
+  margin-top: 30px;
+  width: 90%;
+  height: auto;
+	text-align: center;
+	padding: 2%;
+	background: linear-gradient(rgb(252, 186, 246),rgb(253, 234, 255,0.5),rgb(255, 143, 240));
+  border: solid rgba(138, 31, 238, 0.5);
+  border-radius:15px;
+  border-width: 6px;
+  color: rgb(127, 3, 243);
+  font-family: Calibri;
+  font-weight: bold;
+}
 
 #backToMenuFromGame:hover,#explinationButton:hover,#goToGame:hover,#goToScoreboard:hover,#backToMenuFromExplination:hover,#backToMenuFromScoreBoard:hover,#backToMenuFromGame:hover{
   color: crimson;
@@ -34,7 +54,7 @@ body{
   font-style: italic;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-#backToMenuFromGame,#explinationButton,#goToGame,#goToScoreboard,#backToMenuFromExplination,#backToMenuFromScoreBoard,#backToMenuFromGame{
+#backToMenuFromGame,#explinationButton,#goToGame,#goToScoreboard,#backToMenuFromExplination,#backToMenuFromScoreBoard,#backToMenuFromGame,#repoButton{
   color: white;
   background-color: blueviolet;
   border: solid blueviolet;
@@ -118,7 +138,7 @@ input{
 
 #wordsSpot{
   letter-spacing: 4px;
-  font-size: 60px;
+  font-size: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -196,4 +216,44 @@ h1{
   border-width: 4px;
   border: 3px solid blueviolet;
   color: blueviolet;
+}
+#scoreHistory {
+  text-align: center;
+  width: 80%;
+  margin: auto;
+  margin-top: 30px;
+}
+
+#scoreHistory > div {
+  display: flex;
+  padding: 5px 10px;
+}
+
+#scoreHistory > div div {
+  width: calc(100% / 3);
+}
+
+#scoreHistory > div:first-child {
+  border-bottom: 2px solid;
+  padding: 10px;
+}
+
+#scoreHistory > div:nth-child(2) {
+  padding-top: 20px;
+}
+img {
+  border-radius: 2%;
+  border: 3px solid blueviolet;
+}
+#diffHeader{
+  font-size: 48px;
+  font-family: Calibri, sans-serif;
+}
+#repoButton:hover{
+  color: transparent;
+  background-image: url("GITMARK.png");
+  background-size: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+
 }

@@ -1,6 +1,7 @@
 let words;
 let headsUP = document.getElementById("headsUp");
 let points = 0;
+let repoButton = document.getElementById("repoButton");
 let recordMusic = document.getElementById("record");
 let failedMusic = document.getElementById("failedMelody");
 let showGame = document.getElementById("justPlayed");
@@ -16,7 +17,9 @@ let scoreBoardButton = document.getElementById("goToScoreboard");
 let scoreboardPage = document.getElementById("scoreBoardPage");
 let menuInGameButton = document.getElementById("backToMenuFromGame");
 let menuInScoreButton = document.getElementById("backToMenuFromScoreBoard");
-let menuInExplinationButton = document.getElementById("backToMenuFromExplination");
+let menuInExplinationButton = document.getElementById(
+  "backToMenuFromExplination"
+);
 let stopButton = document.querySelector("#stop"); /**/
 let startButton = document.querySelector("#start");
 let name = document.querySelector("#name");
@@ -59,8 +62,7 @@ let bonusPoints = 1;
 let justPlayed = 0;
 let recentInfo = 0;
 let topScore = 0;
-let stopper=document.getElementById("stop");
-
+let stopper = document.getElementById("stop");
 
 $(function () {
   $("body").hide().fadeIn(1200);
@@ -75,10 +77,12 @@ class EntryOfPlayer {
   }
 }
 
-//////////////////////////////////////////////////////////MENU////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 navigateGame.addEventListener("click", gotoGame);
 menuInGameButton.addEventListener("click", backToMenu);
+repoButton.addEventListener("click", () => {
+  window.open("https://github.com/hp355837/iseseisev-projekt.git");
+});
 function gotoGame() {
   $("body").hide().fadeIn(800);
   mainGame.style.display = "block";
@@ -86,6 +90,7 @@ function gotoGame() {
   wordArea.style.display = "none";
   scoreArea.style.display = "none";
   timeArea.style.display = "none";
+  repoButton.style.display = "none";
   bonusPointsArea.style.display = "none";
 }
 function backToMenu() {
@@ -97,9 +102,10 @@ function backToMenu() {
   bonusPointsArea.style.display = "none";
   difficultySort = "";
   showGame.style.display = "none";
+  repoButton.style.display = "block";
   justPlayed = 0;
 }
-/////////////////////////////////////////////////////////////SCOREBOARD/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 scoreBoardButton.addEventListener("click", gotoScoreboard);
 menuInScoreButton.addEventListener("click", backToMenu);
 function gotoScoreboard() {
@@ -112,7 +118,7 @@ function gotoScoreboard() {
     showUserScore();
   }
 }
-/////////////////////////////////////////////////////////////EXPLINATION/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 explinationButton.addEventListener("click", gotoExplination);
 menuInExplinationButton.addEventListener("click", backToMenu);
 function gotoExplination() {
@@ -121,7 +127,6 @@ function gotoExplination() {
   explinationPage.style.display = "block";
 }
 
-/////////////////////////////////////////////////////////////MAINGAME/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function difficultyValue(e) {
   if (
@@ -265,7 +270,7 @@ function typerMan() {
       if (correctWords > 5) {
         bonusMultiplier();
       }
-      if (correctWords > 15) {
+      if (correctWords > 14) {
         bonusMultiplierX3();
       }
       if (characters.length == rights) {
@@ -287,7 +292,10 @@ function typerMan() {
       correctInARow = 0;
       mistakesCount += penalty;
       userScore -= pointReduction;
+      $("#scorePoints").html(userScore);
+      recentInfo=userScore;
     } else if (mistakesCount == 3 && gameWorks == 1) {
+      recentInfo = userScore;
       gameOver();
     }
   }
@@ -302,6 +310,7 @@ function anim() {
   } else {
     scoreArea.style.display = "block";
     timeArea.style.display = "block";
+    document.getElementById("stop").style.display = "block";
     $("#countdown").html("TYPE!");
     getWord();
     count = 5;
@@ -443,66 +452,64 @@ function storeScore() {
   showScore();
 }
 function showScore() {
-  document.getElementById("scoreHistory").innerHTML = "";
-  sort();
-  let hardS = 0;
-  let normalS = 0;
-  let easyS = 0;
-  for (i = 0; i < playerLog.length; i++) {
-    let playerData = playerLog[i];
+  let scores = JSON.parse(window.localStorage.getItem("score"));
+  if (scores != null) {
+    var table = document.getElementById("scoreHistory");
+    scores.sort((a, b) => {
+      return a.score < b.score ? 1 : -1;
+    });
+    table.innerHTML =
+      "<div><div>Name</div><div>Difficulty</div><div>Score</div></div>";
+
     if (difficultySort != "") {
-      if (playerData.difficulty != difficultySort) {
-        continue;
-      }
+      var filteredScores = scores.filter((el) => {
+        return el.difficulty == difficultySort;
+      });
+      fillTable(filteredScores, table);
+      console.log(scores);
+      noScoresPlaceHolder(difficultySort, filteredScores.length);
+      console.log(difficultySort);
+    } else {
+      fillTable(scores, table);
     }
-    let li = document.createElement("li");
-    li.innerHTML =
-      "Name: " +
-      playerData.name +
-      "  difficulty: " +
-      playerData.difficulty +
-      " score: " +
-      playerData.score +
-      "<br/>";
-    document.getElementById("scoreHistory").appendChild(li);
-    $("#scoreHistory").hide().fadeIn(1200);
+  } else {
+    var messageH = document.getElementById("scoreHistory");
+    console.log("h1");
+    messageH.innerHTML = "NO GAMES HAVE BEEN PLAYED";
+  }
+}
 
-    if (playerData.difficulty == "Hard") {
-      hardS = 1;
-    }
-    if (playerData.difficulty == "Normal") {
-      normalS = 1;
-    }
-    if (playerData.difficulty == "Easy") {
-      easyS = 1;
-    }
-  }
-  if (localStorage.getItem("score") == null) {
-    let noScores = document.createElement("h2");
-    noScores.innerHTML = "There are no scores yet";
-    document.getElementById("scoreHistory").appendChild(noScores);
-    $("#scoreHistory").hide().fadeIn(1200);
-  }
-
-  if (difficultySort == "Hard" && hardS == 0) {
+function noScoresPlaceHolder(difficulty, indicator) {
+  if (!indicator) {
     let noScores = document.createElement("h3");
-    noScores.innerHTML = "No games have been played on hard difficulty yet";
-    document.getElementById("scoreHistory").appendChild(noScores);
-    $("#scoreHistory").hide().fadeIn(1200);
-  }
-  if (difficultySort == "Normal" && normalS == 0) {
-    let noScores = document.createElement("h3");
-    noScores.innerHTML = "No games have been played on normal difficulty yet";
-    document.getElementById("scoreHistory").appendChild(noScores);
-    $("#scoreHistory").hide().fadeIn(1200);
-  }
-  if (difficultySort == "Easy" && easyS == 0) {
-    let noScores = document.createElement("h3");
-    noScores.innerHTML = "No games have been played on easy difficulty yet";
+    noScores.innerHTML =
+      "No games have been played on " +
+      difficulty.toLowerCase() +
+      " difficulty yet";
     document.getElementById("scoreHistory").appendChild(noScores);
     $("#scoreHistory").hide().fadeIn(1200);
   }
 }
+
+function fillTable(array, table) {
+  if (array != 0) {
+    array.forEach((el) => {
+      table.innerHTML +=
+        "<div>" +
+        "<div>" +
+        el.name +
+        "</div>" +
+        "<div>" +
+        el.difficulty +
+        "</div>" +
+        "<div>" +
+        el.score +
+        "</div>" +
+        "</div>";
+    });
+  }
+}
+
 function getScore() {
   let data = [];
   data = JSON.parse(localStorage.getItem("score"));
@@ -547,7 +554,7 @@ function gameOver() {
 }
 
 function quitGame() {
-  /**/
+
   mistakesCount = 0;
   gameWorks = 0;
   let audio = difficultyTrack;
@@ -579,20 +586,20 @@ function hideButtons() {
   document.getElementById("personName").style.display = "none";
   document.getElementById("start").style.display = "none";
   document.getElementById("difficultyHeader").style.display = "none";
-  document.getElementById("highScores").style.display = "none"; /**/
-  document.getElementById("stop").style.display = "block";
+  document.getElementById("highScores").style.display = "none";
+
   headsUP.style.display = "none";
   menuInGameButton.style.display = "none";
   wordArea.style.display = "block";
 }
 function unHideButtons() {
-  /**/
+  
   document.getElementById("difficultyHeader").style.display = "block";
-  document.getElementById("difficulty").style.display = "block"; /**/
-  document.getElementById("personName").style.display = "block"; /**/
-  document.getElementById("start").style.display = "block"; /**/
-  document.getElementById("highScores").style.display = "block"; /**/
-  document.getElementById("stop").style.display = "none"; /**/
+  document.getElementById("difficulty").style.display = "block";
+  document.getElementById("personName").style.display = "block"; 
+  document.getElementById("start").style.display = "block";
+  document.getElementById("highScores").style.display = "block";
+  document.getElementById("stop").style.display = "none";
   menuInGameButton.style.display = "block";
   wordArea.style.display = "none";
   scoreArea.style.display = "none";
@@ -617,7 +624,6 @@ function difficultyValueSort(e) {
   }
 }
 
-//////////////////////////////////////////////DOUBLE POINTS////////////////////////////////////////////////////////////////
 
 function bonusMultiplier() {
   bonusPoints = 2;
@@ -636,13 +642,13 @@ function bonusMultiplierEnd() {
   correctWords = 0;
   correctInARow = 0;
   bonusPoints = 1;
-  bonusPointsArea.style.display = "none"; /**/
+  bonusPointsArea.style.display = "none"; 
 }
 function showUserScore() {
   let regRecentScore;
   let bonusNotification;
   if (topScore < recentInfo) {
-    bonusNotification = ". YOU ALSO BEAT THE HIGHSCORE!!! good work scrub";
+    bonusNotification = ". YOU ALSO BEAT THE HIGHSCORE!!!";
     topScore = recentInfo;
   } else {
     bonusNotification = "";
@@ -675,6 +681,7 @@ function showUserScore() {
       bonusNotification;
     if (bonusNotification != "") {
       recordMusic.play();
+      recordMusic.volume=0.2;
     }
   } else if (
     (currentMode == "Hard" ||
@@ -696,4 +703,3 @@ function showUserScore() {
 
   $("#userRecentScore").html(regRecentScore);
 }
-

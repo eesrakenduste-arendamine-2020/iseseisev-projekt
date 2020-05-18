@@ -31,12 +31,13 @@
 
 
     <div id="menu">
-        <h3>Welcome to </h3>
+        <h3>Welcome to a page made by <br> Herman Petrov & Daniel Eelmaa</h3>
         <h1>Type-Type-Mania</h1>
         <div id="explination">
             <input id="explinationButton" type="button" value="Explanation of game">
             <input id="goToGame" type="button" value="Play Game">
             <input id="goToScoreboard" type="button" value="Scoreboard">
+            <input id="repoButton" type="button" value="Repo">
         </div>
     </div>
 
@@ -45,15 +46,57 @@
         <h1>Type-Type-Mania</h1>
         <h2>Step by Step How 2 Play</h2>
         <input id="backToMenuFromExplination" type="button" value="Back To Menu">
-        <p>Enter a name and pick a difficulty, then press start button and your game will start.</p>
-        <p>Type the words that appear on the screen.</p>
-        <br>
-        <p>In the bottom section of the game you see the scoreboard</p>
-        <p>Under each specific difficutly you will see the given difficulty scoreboard</p>
-        <br>
-        <p>On easy difficulty every correct word is 1 point and there are no pelanties or point reductions. Game time is 62 seconds.</p>
-        <p>On normal difficulty every correct word is 2 points, wrong letter is -5 points, no penalties. Game times is 63 seconds.</p>
-        <p>On hard difficulty every correct word is 3 points, wrong letter is -10 points, with 3 wrong letters the game will end. Game time is 54 seconds.</p>
+        <p>Welcome to the typing game &quot;Type-Type-Mania&quot;</p>
+            <p>How to play?</p>
+            <p>To play the game Type-Type-Mania here are the steps:</p>
+            <p><br></p>
+            <p>Navigate and press the &quot;Play Game&quot; button.</p>
+            <p><img src="Step1.png" style="width: 498px;"></p>
+            <p>You will be then in the game menu of Type-Type-Mania.</p>
+            <p><img src="Step6.png" style="width: 498px;"></p>
+            <p>In the Type-Type-Mania Play Game menu write in your player name which can consist maximum of 10 letters. In case you will leave the field blank, you will be notified that you will play the game as a &quot;Anonymous&quot; player.</p>
+            <p><img src="Step2.png" style="width: 498px;"></p>
+            <p>Under &quot;Select your difficulty&quot; please select your preferred difficulty. The game has in total three difficulties. To know more about difficulties scroll down to difficulties section</p>
+            <p><img src="Step3.png" style="width: 498px;"></p>
+            <p>You can change the volume before starting the game in case you wish to play the game blasting full volume or silently.</p>
+            <p><img src="Step4.png" style="width: 498px;"></p>
+            <p>After setting your name and choosing your difficulty you can press on &quot;Start&quot; to begin with the game.</p>
+            <p>As a extra reminder the game reminds the player about the game functioning automatically on every user input key press. If the user clicked off the page after pressing &quot;Start&quot;button, then the user should click back on the page so it would register the keys.&nbsp;</p>
+            <p><img src="Step5.png" style="width: 498px;"></p>
+            <p>After pressing &quot;Start&quot; user will be navigated to the main game screen. User will see his chosen difficulty, his volume bar and is reminded where the words will appear.</p>
+            <p>The game start immediately&nbsp;after the countdown.</p>
+            <p><img src="Step8.png" style="width: 498px;"></p>
+            <p>After the timer counts down and notifies to &quot;Type!&quot;</p>
+            <p>The user will still see his difficulty, is allowed to quit and is notified about how much time player has left on the right side. Player points are counted on the left side.</p>
+            <p>The given word that the user needs to type is located in the same place as it was notified in previous step.&nbsp;</p>
+            <p><img src="Step7.png" style="width: 498px;"></p>
+            <p>For every right letter within the word will turn from violet to white.</p>
+            <p>In case of a wrong letter the color will not change within the word.</p>
+            <p><img src="Step9.png" style="width: 498px;"></p>
+            <p>If the player types out without a single mistake six words in a row then the player score will be multiplied by two.</p>
+            <p><img src="Step10.png" style="width: 498px;"></p>
+            <p>If the player types out without a single mistake 15 words in a row then the player score will be multiplied by three.<br><br></p>
+            <p><img src="Step11.png" style="width: 498px;"></p>
+            <p><br></p>
+            <p>If the game time is up or the player decides to end the game or loses the game then, the player will be transferred to game Scoreboard where the player will see the result of the game</p>
+            <hr>
+            <p id="diffHeader">DIFFICULTIES</p>
+            <p >In total there are three difficulties which have unique backgrounds, songs and penalties.</p>
+            <p >For every completed word the player gets rewarded with points.</p>
+            <p >Word length represents points and every difficulty has it own reward for each correct letter within a word.&nbsp;</p>
+            <hr>
+            <p><img src="EASYIMAGE.png" style="width: 498px;"></p>
+            <p >Player can play freely without worrying of making a mistake of losing points.&nbsp;</p>
+            <p >Every single letter within a word gives you one point.</p>
+            <hr>
+            <p><img src="NORMALIMAGE.png" style="width: 498px;"></p>
+            <p >User has to be cautious as every wrong letter means -5 <span>points from the total score .&nbsp;</p>
+            <p >Every single letter within a word gives you two points.</p>
+            <hr>
+            <p><img src="HARDIMAGE.png" style="width: 498px;"></p>
+            <p >Player can not make more than three mistakes within the game, otherwise the game will end.</p>
+            <p >User has to be cautious as every wrong letter means -10 points from the total score.</p>
+            <p >Every single letter within a word gives you three &nbsp;points.</p>
     </div>
 
 
@@ -112,11 +155,11 @@
         
         <div id="score">
             <h3>Score</h3>
-            <span id="scorePoints">0</span>
+            <span id="scorePoints">0
         </div>
         <div id="time">
             <h3>Time</h3>
-            <span id="timeLeft">0</span>
+            <span id="timeLeft">0
         </div>
         <div id="words">
             <div id="wordsSpot">WORDS ARE HERE</div>
@@ -125,7 +168,7 @@
         
     </div>
     <div id="bonus">
-        <span id="bonusBody">DOUBLE POINTS</span>
+        <span id="bonusBody">DOUBLE POINTS
     </div>
     <div id="justPlayed">
         <div id="userRecentScore"></div>
