@@ -1,0 +1,27 @@
+body{
+    text-align: center;
+    background: cadetblue;
+}
+#tetris{
+    background: white;
+    border-radius: 20px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+button{
+    position: top;
+    border-width: 3px;
+    border-style: solid;
+    border-radius: 20px;
+    font-size: 24px;
+    color: gold;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    background: linear-gradient(90deg, darkcyan, darkcyan, cadetblue, dodgerblue, royalblue);
+}
+h1{
+    font-size: 50px;
+    color: gold;
+}

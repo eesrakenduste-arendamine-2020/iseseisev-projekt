@@ -1,0 +1,108 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: #000;
+}
+a{
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    color: white;
+    font-size: 24px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    background: linear-gradient(90deg, lime, darkgreen, darkcyan, cyan, darkred, crimson, lightgreen);
+    background-size: 400%;
+    border-radius: 20px;
+    z-index: 1;
+}
+a:hover{
+    animation: animate 8s linear infinite;
+}
+#name{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    color: #fff;
+    font-size: 24px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    background: linear-gradient(90deg, lime, darkgreen, darkcyan, cyan, darkred, crimson, lightgreen);
+    background-size: 400%;
+    border-radius: 20px;
+    z-index: 1;
+}
+#name:hover{
+    animation: animate 8s linear infinite;
+}
+.clock{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: #fff;
+    font-size: 80px;
+    border: 1px solid #ccc;
+    padding: 0px 5px 0px 5px;
+    border-radius: 20px;
+    background: linear-gradient(90deg, midnightblue, indigo, darkgreen);
+}
+#changeColor{
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    color: #fff;
+    font-size: 24px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    background: linear-gradient(90deg, lime, darkgreen, darkcyan, cyan, darkred, crimson, lightgreen);
+    background-size: 400%;
+    border-radius: 20px;
+    z-index: 1;
+}
+#changeColor:hover{
+    animation: animate 8s linear infinite;
+}
+
+#muss{
+    position: absolute;
+    top: 30%;
+    right: 800px;
+    position: center;
+}
+@keyframes animate{
+    0%{
+        background-position: 0%;
+    }
+    100%{
+        background-position: 400%;
+    }
+}
+#chill{
+    position: absolute;
+    top: 60%;
+    left: 43%;
+    color: lime;
+    font-style: oblique;
+}

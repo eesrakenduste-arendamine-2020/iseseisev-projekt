@@ -1,3 +1,18 @@
+Rakenduse nimi: TETRIS
+
+
+Iseseisva projekti autor: Raimo Pindus
+
+Iseseisva projekti kirjeldus:
+Tegin ühe youtube tutoriali järgi Tetrise mängu ning sellele lisaks chillimise veebilehe, kuhu pärast Tetrise mängimist puhkama saab minna. Põhilehel on mäng ning viide repositooriumisse, samuti on lisatud ka autori nimi. Chillimise veebilehel on kell, autori nimi ja viide Tetrisele. Samuti saab kuulata seal ka muusikat
+
+Ekraanitõmmised mõlemast lehest on lisatud failidena sc1 ja sc2.
+kasutatud tutorial: https://www.youtube.com/watch?v=QDp8BZbwOqk
+
+
+
+-----------------------------------------------------------------------------------------------
+
 # iseseisev-projekt
 
 Tähtaeg - 1 päev enne esitlust. Esitluse kuupäevadeks: 1 nädal peale ÕISis valitud arvestuse kuupäeva (v.a arvatud järelarvestus, mis toimub õigel kuupäeval) - kindlasti tuleb arvestusele registreerida. Projektide esitlemine toimub:
@@ -39,5 +54,4 @@ Rakenduses võib kasutada teiste autorite koodi, aga see peab olema viidatud. Ü
 # Esitlus
 * Igale grupile on aega 15 minutit (6 minutit rakenduse esitlus, 6 minutit koodi esitlus, 3 minutit küsimused)
 * Esitama peavad grupiliikmed ühisel ajal. 
-
 
