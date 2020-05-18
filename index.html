@@ -1,65 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <script
-      src="https://kit.fontawesome.com/6f06b18aec.js"
-      crossorigin="anonymous"
+            crossorigin="anonymous"
+            src="https://kit.fontawesome.com/6f06b18aec.js"
     ></script>
     <link
-      rel="stylesheet"
-      href="https://bootswatch.com/4/cerulean/bootstrap.min.css"
-      id="csstheme"
+            href="https://bootswatch.com/4/cerulean/bootstrap.min.css"
+            id="csstheme"
+            rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:600,700"
-      rel="stylesheet"
-      id="fontsheet"
+            href="https://fonts.googleapis.com/css?family=Open+Sans:600,700"
+            id="fontsheet"
+            rel="stylesheet"
     />
-    <script src="script.js" defer></script>
+    <script defer src="script.js"></script>
 
     <title>Raamaturiiul</title>
-  </head>
-  <body>
-    <div id="container" class="container">
-      <h1 id="heading" class="title">
-        <i class="fas fa-book"></i> Raamaturiiul
-      </h1>
-      <div id="switch-box" class="theme-switch-wrapper">
-        <em> Muuda teema</em>
-        <label id="switch" class="theme-switch" for="checkbox">
-          <input type="checkbox" id="checkbox" />
-          <div class="slider round"></div>
-        </label>
-      </div>
-      <form id="book-form">
-        <label>Pealkiri</label>
-        <input type="text" id="book-title" />
-        <label>Autor</label>
-        <input type="text" id="book-author" />
-        <label>Lehekülg</label>
-        <input type="number" id="book-page" />
+</head>
 
+<body>
+<div class="container" id="container">
+
+    <h1 class="title" id="heading">
+        <i class="fas fa-book"></i> Raamaturiiul
+    </h1>
+
+    <div class="theme-switch-wrapper" id="switch-box">
+        <em> Muuda teemat</em>
+        <label class="theme-switch" for="checkbox" id="switch">
+            <input id="checkbox" type="checkbox"/>
+            <div class="slider round"></div>
+        </label>
+    </div>
+
+    <form id="book-form">
+        <label for="book-title">Pealkiri</label><input id="book-title" type="text"/>
+        <label for="book-author">Autor</label><input id="book-author" type="text"/>
+        <label for="book-page">Lehekülg</label><input id="book-page" type="number"/>
         <input
-          id="add-book-button"
-          type="submit"
-          value="Lisa raamat"
-          class="btn btn-primary btn-block"
+                class="btn btn-primary btn-block"
+                id="add-book-button"
+                type="submit"
+                value="Lisa raamat"
         />
-      </form>
-      <table id="table" class="table">
+    </form>
+
+    <table class="table" id="table">
         <thead>
-          <tr>
+        <tr>
             <th>Pealkiri</th>
             <th>Autor</th>
             <th>Lehekülg</th>
-            <th></th>
-          </tr>
+            <th>Kustuta</th>
+        </tr>
         </thead>
         <tbody id="book-list"></tbody>
-      </table>
-    </div>
-  </body>
+    </table>
+
+</div>
+</body>
 </html>
