@@ -73,7 +73,7 @@ Peale Start nupu vajutamist jõuab mängija põhi mängu. Taust vahetub ning muu
 ![](Pics/pic4.png)
 ##
 ## Peale Countdown-i
-Kasutajale on paremal antud mängu aeg ja vasakul tema skoori punktid. Lisaks kui kasutaja loobub enda mängust siis ta võib vajutada Quit Game. Mängus iga õigesti kirjutatud täht muutub lillast valgeks. Ning boonuste puhul tuleb boonuse aken juurde. Kui aeg saab otsa, kasutaja vajutab "Quit Game" või kasutaja kaotab mängu Hardi peal siis suunab mäng koheselt kasutaja Scoreboardile edasi kus ta näeb enda just mängitud mängus saavutatud tulemuse. Kui mängija tulemus ületab tulemuste tabeli parima, mida hinnatakse kõikidest raskustest siis teavitatakse mängijat sellest ning tagaplaanil käib muusika "You're the best". 
+Kasutajale on paremal antud mängu aeg ja vasakul tema skoori punktid. Lisaks kui kasutaja soovib mängu lõpetada siis ta võib vajutada Quit Game. Mängus iga õigesti kirjutatud täht muutub lillast valgeks. Ning boonuste puhul tuleb boonuse aken juurde. Kui aeg saab otsa, kasutaja vajutab "Quit Game" või kasutaja kaotab mängu Hardi peal siis suunab mäng koheselt kasutaja Scoreboardile edasi kus ta näeb enda just mängitud mängus saavutatud tulemuse. Kui mängija tulemus ületab tulemuste tabeli parima, mida hinnatakse kõikidest raskustest siis teavitatakse mängijat sellest ning tagaplaanil käib muusika "You're the best". 
 ##
 ![](Pics/pic7.png)
 ##
