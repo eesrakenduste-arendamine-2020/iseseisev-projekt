@@ -3,6 +3,12 @@ let ctx = canvas.getContext("2d");
 
 const pilt = new Image();
 pilt.src = "pilt.jpg";
+const levelPic = new Image();
+levelPic.src = "level.png";
+const heart = new Image();
+heart.src = "heart.jpg";
+const scorePic = new Image();
+scorePic.src = "score.png";
 ctx.lineWidth = 3;
 const paddleW = 100;
 const paddleH = 20;
@@ -11,6 +17,9 @@ const paddleBottomM = 50;
 const ballRadius = 15;
 let leftArrow = false;
 let rightArrow = false;
+let score = 0;
+let level = 1;
+let max_level = 3;
 
 const paddle = {
     x : canvas.width/2 - paddleW/2,
@@ -18,16 +27,16 @@ const paddle = {
     width : paddleW,
     height : paddleH,
     length : 5
-}
+};
 
 const ball = {
     x : canvas.width/2,
     y : paddle.y - ballRadius,
     radius : ballRadius,
-    speed : 10,
+    speed : 5 ,
     dx : 3 * (Math.random() * 2 - 1), 
     dy : -3
-}
+};
 
 function drawPaddle() {
     ctx.fillStyle = 'white';
@@ -95,9 +104,79 @@ function wallImpactBall() {
 
 function paddleImpactBall() {
     if(ball.x < paddle.x + paddle.width && ball.x > paddle.x && paddle.y < paddle.y + paddle.height && ball.y > paddle.y) {
-        ball.dx = - ball.dx;
-        ball.dy = - ball.dy;
+
+        let meetingPoint = ball.x - (paddle.x + paddle.width/2);
+        meetingPoint = meetingPoint / (paddle.width/2);
+
+        let angle = meetingPoint * Math.PI/3;
+        ball.dx = ball.speed * Math.sin(angle);
+        ball.dy = - ball.speed * Math.cos(angle);
     }
+}
+
+const brick = {
+    row : 3,
+    column : 8,
+    width : 55,
+    height: 20,
+    offsetLeft: 17,
+    offsetTop: 20,
+    marginTop: 40,
+    fillColor: "#cb4154",
+    strokeColor: "#FFF"
+};
+
+let bricks = [];
+
+function createBricks() {
+    for(let r = 0; r < brick.row; r++){
+        bricks[r] = [];
+        for(let c = 0; c < brick.column; c++){
+            bricks[r][c] = {
+                x : c * (brick.offsetLeft + brick.width) + brick.offsetLeft,
+                y : r * (brick.offsetTop + brick.height) + brick.offsetTop + brick.marginTop,
+                status : true
+            }
+        }
+    }
+}
+
+createBricks();
+
+function drawBricks() {
+    for(let r = 0; r < brick.row; r++){
+        for(let c = 0; c < brick.column; c++){
+
+            if(bricks[r][c].status){
+            ctx.fillStyle = brick.fillColor;
+                ctx.fillRect(bricks[r][c].x, bricks[r][c].y, brick.width, brick.height);
+                ctx.strokeStyle = brick.strokeColor;
+                ctx.strokeRect(bricks[r][c].x, bricks[r][c].y, brick.width, brick.height)
+            }
+        }
+        }
+}
+
+function breakBricks() {
+    for(let r = 0; r < brick.row; r++){
+        for(let c = 0; c < brick.column; c++){
+            if(bricks[r][c].status){
+                if(ball.x + ball.radius > bricks[r][c].x && ball.x - ball.radius < bricks[r][c].x + brick.width && ball.y + ball.radius > bricks[r][c].y && ball.y - ball.radius < bricks[r][c].y + brick.height){
+                    ball.dy = -ball.dy;
+                    bricks[r][c].status = false;
+                    score += 1;
+                }
+            }
+        }
+    }
+}
+
+function allScores(text, textX, textY, img, imgX, imgY) {
+    ctx.fillStyle = "#FFF";
+    ctx.font = "20px Verdana";
+    ctx.fillText(text, textX, textY);
+
+    ctx.drawImage(img, imgX, imgY, width = 25, height = 25);
 }
 
 function reset() {
@@ -110,6 +189,9 @@ function reset() {
 function draw() {
     drawPaddle();
     drawBall();
+    drawBricks();
+    allScores(score, 35, 25, scorePic, 5, 5);
+    allScores(heart, canvas.width/2, 25, heart, canvas.w/2 -30, 5);
 }
 
 function update() {
@@ -117,6 +199,7 @@ function update() {
     moveBall();
     wallImpactBall();
     paddleImpactBall();
+    breakBricks();
 }
 
 function loop() {
