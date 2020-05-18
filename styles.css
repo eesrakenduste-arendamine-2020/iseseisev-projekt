@@ -91,4 +91,24 @@ body {
     margin: 0;
 }
 
+.card-container{
+    flex-direction: row;
+    display: inherit;
+
+}
+
+.front{
+    height: 7em;
+    width: 5em;
+    border: solid 2px var(--accent-color);
+    border-radius: 4px;
+    box-shadow:  0px 0px 16px var(--accent-color);
+    transition: box-shadow ease 0.2s;
+}
+
+
+
+.front:hover{
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+}
 
