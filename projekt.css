@@ -1,0 +1,25 @@
+table {
+	width: 80%;
+	border-collapse: collapse;
+	margin: auto;
+}
+
+table, th, td{
+	border: 1px solid black;
+}
+
+th{
+	background-color: #D59932;
+}
+
+tr{
+	background-color: #FECE7C;
+}
+
+td{
+	text-align: center;
+}
+
+#add{
+	margin-left: 10%;
+}
