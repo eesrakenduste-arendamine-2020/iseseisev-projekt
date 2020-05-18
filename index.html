@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script
@@ -16,6 +16,7 @@
       href="https://fonts.googleapis.com/css?family=Open+Sans:600,700"
       rel="stylesheet"
     />
+    <script src="script.js" defer></script>
     <title>Raamaturiiul</title>
   </head>
   <body>
@@ -26,6 +27,8 @@
         <input type="text" id="book-title" />
         <label>Autor</label>
         <input type="text" id="book-author" />
+        <label>Lehekülg</label>
+        <input type="text" id="book-page" />
 
         <input
           type="submit"
@@ -39,6 +42,7 @@
             <th>Pealkiri</th>
             <th>Autor</th>
             <th>Lehekülg</th>
+            <th>Loetud</th>
           </tr>
         </thead>
         <tbody id="book-list"></tbody>
