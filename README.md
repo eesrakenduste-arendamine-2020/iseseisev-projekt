@@ -3,7 +3,7 @@ PROJEKTI LOOJAD :
 HERMAN PETROV JA DANIEL EELMAA
 ##
 # PROJEKTI KIRJELDUS:
-"Type-Type-Mania" on sõnade trükkimis mäng. Millel on olemas 3 erinevat mängu raskust millel on erinevad taust ja muusika ning sõnade valik, skooritabel mis võimaldab sortimist vastavalt kasutaja raskus soovile. Lisaks, mängul on loodud selgitus tab kus saab siis rohkem infot mängu raskuste kohta. Ja mäng suudab teavitada kui kasutaja on ületanud parima skoori. 
+"Type-Type-Mania" on sõnade trükkimis mäng. Millel on olemas 3 erinevat mängu raskust millel on erinevad taust ja muusika ning sõnade valik, skooritabel mis võimaldab sortimist vastavalt kasutaja raskus soovile. Lisaks, mängu jaoks on tehtud ka selgitus "Explanation of Game" kus saab ka lisaks siis rohkem infot mängu raskuste kohta. Ja mäng suudab teavitada kui kasutaja on ületanud parima skoori. 
 ## Lisa
 Mäng on mõeldud desktopi jaoks ning ei olnud võetud mingeid õpetus videosi. Kood on iseseisvalt kirjutatud ning läks iga liikme kohta umbes 83 tundi.
 ## Projekti link
@@ -16,7 +16,7 @@ Lehe avades leiab kasutaja end peamenüüs kus on kirjutatud projekti loojad ja 
 ![](Pics/pic1.png)
 ##
 ## Õpetus ( Explanation of Game)
-Vajutades õpetuse peale jõuab kasutaja mängu selgitus lehele kus  on piltitidega õpetus mängu alustamiseks ning selgituses  kolmest erinevast mängu koormusesest mida kasutaja saab valida. Tagasi navigeerida saab vajutades Õpetus lehel oleva "BACK TO MENU" nuppuga.
+Vajutades õpetuse peale jõuab kasutaja mängu selgitus lehele kus  on piltitidega õpetus mängu alustamiseks ning selgituses  kolmest erinevast mängu koormusesest, mida kasutaja saab valida. Tagasi navigeerida saab vajutades Õpetus lehel oleva "BACK TO MENU" nuppuga.
 ##
 ![](Pics/pic2.png)
 ##
@@ -68,19 +68,19 @@ Mängu kestvus on 54 sekundit. Kui mängija sisetab neljandat korda valet tähte
 ##
 # Gameplay ehk mängimine
 ## Enne Countdown-i
-Peale Start nupu vajutamist jõuab mängija põhi mängu. Taust vahetub ning muusika ka. Algul on mängijal 5 sekundit valmistuda ette. Kasutaja saab veel kord reguleerida enda heli ning näeb enda valitud raskus taseme ja on teavitatud kus sõnad hakkavad ilmuma
+Peale Start nupu vajutamist jõuab mängija põhi mängu. Taust vahetub ning muusika ka. Algul on mängijal 5 sekundit valmistuda ette. Kasutaja saab veel kord reguleerida enda heli ning näeb enda valitud raskus taseme ja on teavitatud kus sõnad hakkavad ilmuma.
 ##
 ![](Pics/pic4.png)
 ##
 ## Peale Countdown-i
-Kasutajale on paremal antud mängu aeg ja vasakul tema skoori punktid. Lisaks kui kasutaja loobub enda mängust siis ta võib vajutada Quit Game. Mängus iga õigesti kirjutatud täht muutub lillast valgeks. Ning boonuste puhul tuleb boonuse aken juurde. Kui aeg saab otsa, kasutaja vajutab "Quit Game" või kasutaja kaotab mängu Hardi peal siis suunab mäng koheselt kasutaja Scoreboardile edasi kus ta näeb enda just mängitud mängus saavutatud tulemuse. Kui mängija tulemus ületab tulemuste tabeli parima mida hinnatakse kõikidest raskustest siis teavitatakse mängijat sellest ning tagaplaanil käib muusika "You're the best". 
+Kasutajale on paremal antud mängu aeg ja vasakul tema skoori punktid. Lisaks kui kasutaja loobub enda mängust siis ta võib vajutada Quit Game. Mängus iga õigesti kirjutatud täht muutub lillast valgeks. Ning boonuste puhul tuleb boonuse aken juurde. Kui aeg saab otsa, kasutaja vajutab "Quit Game" või kasutaja kaotab mängu Hardi peal siis suunab mäng koheselt kasutaja Scoreboardile edasi kus ta näeb enda just mängitud mängus saavutatud tulemuse. Kui mängija tulemus ületab tulemuste tabeli parima, mida hinnatakse kõikidest raskustest siis teavitatakse mängijat sellest ning tagaplaanil käib muusika "You're the best". 
 ##
 ![](Pics/pic7.png)
 ##
 # Scoreboard tulemuste tabel
-Scoreboard on mõeldud tulemust järgimiseks mängus. Kõik tulemused on salvestatud kasutaja olevas brauseris localstorage-s. Ning võimaldab jälgida enda tulemusi erinevatel raskustel. 
+Scoreboard on mõeldud mängu tulemuste järgimiseks. Kõik tulemused on salvestatud kasutaja olevas brauseris localstorage-s. Scoreboard võimaldab samuti jälgida enda tulemusi erinevatel raskustel.
 ## Scoreboard menu
-Scoreboardis on olemas nupp minna tagasi Pea menus, nupud tabeli sorteerimiseks vastavalt raskusele. Tabeli tulemused on järjestatud järjekorras nimi, tase ja tulemus. Esmakords scoreboardi külastusel teavitab leht tulemuste puudumisest. Järgnevalt peale mängimist näeb kasutaja minnes scoreboardile kõik tulemused ning selleks, et näha enda soovitud taseme tulemust siis saab valida vastava nupu abil "Easy", "Normal","Hard".  Kui kasutaja on mänginud näiteks vaid "Hardi" siis minnes "Normal" või "Easy" peale on teavitatud kasutajat nende mängu väärtuste puudumisest kuna kasutaja pole veel mänginud nende raskus tasemetel.  
+Scoreboardis on olemas nupp minna tagasi peamenüüsse, nupud tabeli sorteerimiseks vastavalt raskusele. Tabeli tulemused on järjestatud järjekorras nimi, tase ja tulemus. Esmakords scoreboardi külastusel teavitab leht tulemuste puudumisest. Järgnevalt peale mängimist näeb kasutaja minnes scoreboardile kõik tulemused ning selleks, et näha enda soovitud taseme tulemust siis saab valida vastava nupu abil "Easy", "Normal","Hard".  Kui kasutaja on mänginud näiteks vaid "Hardi" siis minnes "Normal" või "Easy" peale on teavitatud kasutajat nende mängu väärtuste puudumisest kuna kasutaja pole veel mänginud nende raskus tasemetel.  
 ##
 ![](Pics/pic5.png)
 ##
