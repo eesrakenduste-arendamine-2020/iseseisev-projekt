@@ -52,12 +52,31 @@ document.querySelector("#book-form").addEventListener("submit", (e) => {
   const title = document.querySelector("#book-title").value;
   const author = document.querySelector("#book-author").value;
   const page = document.querySelector("#book-page").value;
+  const errors = 0;
 
-  const book = new Book(title, author, page);
+  if (title == "" && author == "" && page == "") {
+    alert("Palun täitke kõik väljad!");
+    error++;
+  } else if (author == "") {
+    alert("Palun sisestage raamatu autor!");
+    error++;
+  } else if (page == "") {
+    alert("Palun sisestage loetud lehekülgede arv!");
+    error++;
+  } else if (title == "") {
+    alert("Palun sisestage raamatu pealkiri!");
+    error++;
+  } else {
+    error = 0;
+  }
 
-  UI.addBook(book);
+  if (error == 0) {
+    const book = new Book(title, author, page);
 
-  UI.clear();
+    UI.addBook(book);
+
+    UI.clear();
+  }
 });
 
 document.querySelector("#book-list").addEventListener("click", (e) => {
