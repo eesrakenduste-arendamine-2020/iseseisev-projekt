@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TyperGame-Made-By-Herman-&-Daniel</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+             integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+                crossorigin="anonymous">
+    </script>
+    <script defer src="game.js"></script>
+    <link rel="stylesheet" href="game.css">
+</head>
+
+<body>
+    <audio id="easyTrack">
+        <source id="first" src="Easy.mp3" type="audio/mp3"></source>
+    </audio>
+    <audio id="normalTrack">
+        <source id="second" src="Normal.mp3" type="audio/mp3"></source>
+    </audio>
+    <audio id="hardTrack">
+        <source id="third" src="HARD.mp3" type="audio/mp3"></source>
+    </audio>
+    <audio id="record">
+        <source id="recordTrack" src="record.mp3" type="audio/mp3"></source>
+    </audio>
+    <audio id="failedMelody">
+        <source id="UFAILED" src="fish.mp3" type="audio/mp3"></source>
+    </audio>
+
+
+    <div id="menu">
+        <h3>Welcome to a page made by <br> Herman Petrov & Daniel Eelmaa</h3>
+        <h1>Type-Type-Mania</h1>
+        <div id="explination">
+            <input id="explinationButton" type="button" value="Explanation of game">
+            <input id="goToGame" type="button" value="Play Game">
+            <input id="goToScoreboard" type="button" value="Scoreboard">
+            <input id="repoButton" type="button" value="Repo">
+        </div>
+    </div>
+
+
+    <div id="explinationPage">
+        <h1>Type-Type-Mania</h1>
+        <h2>Step by Step How 2 Play</h2>
+        <input id="backToMenuFromExplination" type="button" value="Back To Menu">
+        <p>Welcome to the typing game &quot;Type-Type-Mania&quot;</p>
+            <p>How to play?</p>
+            <p>To play the game Type-Type-Mania here are the steps:</p>
+            <p><br></p>
+            <p>Navigate and press the &quot;Play Game&quot; button.</p>
+            <p><img src="Step1.png" style="width: 498px;"></p>
+            <p>You will be then in the game menu of Type-Type-Mania.</p>
+            <p><img src="Step6.png" style="width: 498px;"></p>
+            <p>In the game menu type in your name (Max 10 characters).</p>
+            <p><img src="Step2.png" style="width: 498px;"></p>
+            <p>Under &quot;Select your difficulty&quot; please select your preferred difficulty.  To know more about difficulties scroll down to difficulties section.</p>
+            <p><img src="Step3.png" style="width: 498px;"></p>
+            <p>You can adjust your volume before starting the game.</p>
+            <p><img src="Step4.png" style="width: 498px;"></p>
+            <p>After setting your name and choosing your difficulty you can press on &quot;Start&quot; to begin with the game.</p>
+            <p><img src="Step5.png" style="width: 498px;"></p>
+            <p>After pressing &quot;Start&quot;you will have 5 seconds to get ready to play.</p>
+            <p>The game start immediately&nbsp;after the countdown.</p>
+            <p><img src="Step8.png" style="width: 498px;"></p>
+            <p>After the timer counts down and notifies to &quot;Type!&quot;</p>
+            <p>Your difficulty will be displayed in the middle, score to the left and time to the right. In case you want to quit then press "Quit Game".</p>
+            <p>The word you will need to type out will be in the orange box.</p>
+            <p><img src="Step7.png" style="width: 498px;"></p>
+            <p>Every right letter will light up white.</p>
+            <p>In case of a wrong letter the color will not change.</p>
+            <p><img src="Step9.png" style="width: 498px;"></p>
+            <p>If you'll type out all 6 words in a row without a mistake, your next points will double.</p>
+            <p><img src="Step10.png" style="width: 498px;"></p>
+            <p>If you'll type out all 15 words in a row without a mistake, your next points will triple.<br><br></p>
+            <p><img src="Step11.png" style="width: 498px;"></p>
+            <p><br></p>
+            <p>After the game end,quitting or loss you will be moved to the Scoreboard with your score displayed below</p>
+            <p>NOW YOU'RE SET!</p>
+            <p>You can do this!</p>
+            <hr>
+            <p id="diffHeader">DIFFICULTIES</p>
+            <p >In total there are three difficulties which have unique backgrounds, songs and penalties.</p>
+            <p >For every completed word the player gets rewarded with points.</p>
+            <p >Word length represents points and every difficulty has it own reward for each correct letter within a word.&nbsp;</p>
+            <hr>
+            <p><img src="EASYIMAGE.png" style="width: 498px;"></p>
+            <p >Player can play freely without worrying of making a mistake of losing points.&nbsp;</p>
+            <p >Every single letter within a word gives you one point.</p>
+            <p >Game total duration is 62 seconds</p>
+            <hr>
+            <p><img src="NORMALIMAGE.png" style="width: 498px;"></p>
+            <p >User has to be cautious as every wrong letter means -5 <span>points from the total score .&nbsp;</p>
+            <p >Every single letter within a word gives you two points.</p>
+            <p >Game total duration is 63 seconds</p>
+            <hr>
+            <p><img src="HARDIMAGE.png" style="width: 498px;"></p>
+            <p >Player can not make more than three mistakes within the game, otherwise the game will end.</p>
+            <p >User has to be cautious as every wrong letter means -10 points from the total score.</p>
+            <p >Every single letter within a word gives you three &nbsp;points.</p>
+            <p >Game total duration is 54 seconds</p>
+    </div>
+
+
+    <div id="scoreBoardPage">
+        <h1>Type-Type-Mania</h1>
+        <h2>Scoreboard</h2>
+        <input id="backToMenuFromScoreBoard" type="button" value="Back To Menu">
+
+        <div id="difficultyS">
+            <h2 id="difficultyHeader" >View scores by difficulty</h2>
+            <input id="ez" type="button" value="Easy" >
+            <input id="norm" type="button" value="Normal">
+            <input id="hard" type="button" value="Hard">
+        </div>
+
+        <br>
+        <div id="highScores">
+            <div id="scoreHistory"></div>
+        </div>
+    </div>
+
+
+    <div id="main">
+        <h1>Type-Type-Mania</h1>
+        <div>
+            <input id="backToMenuFromGame" type="button" value="Back To Menu">
+        </div>
+        
+        <div id="personName" >
+            <p>Your name: </p>
+            <input type="text" id="name" maxlength="10">
+            
+        </div>
+        
+        
+        <div id="difficulty">
+            <h2 id="difficultyHeader" >Select your difficulty</h2>
+            <input id="ez" type="button" value="Easy" >
+            <input id="norm" type="button" value="Normal">
+            <input id="hard" type="button" value="Hard">
+        </div>
+        <p id="notificationD"></p>
+        <br>
+        <h2 id="volumeHeader" >Change volume</h2>
+        <div class="slidecontainer">
+            <input type="range" min="0" max="10" value="3" class="slider" id="vol">
+        </div>
+        <div class="start">
+            <input id="start" type="button"  value="Start">
+            <h3 id="headsUp">TIP: As soon the countdown ends just press on the keys of your keyboard, unless you clicked outside the page you don't need to click anywhere else on the page :)</h3>
+        </div>
+        <div class="stop"><!--dada -->
+            <input id="stop" type="button"  value="Quit Game"><!--dada -->
+        </div><!--dada -->
+        <br>
+        
+        <div id="score">
+            <h3>Score</h3>
+            <span id="scorePoints">0
+        </div>
+        <div id="time">
+            <h3>Time</h3>
+            <span id="timeLeft">0
+        </div>
+        <div id="words">
+            <div id="wordsSpot">WORDS ARE HERE</div>
+        </div>
+        
+        
+    </div>
+    <div id="bonus">
+        <span id="bonusBody">DOUBLE POINTS
+    </div>
+    <div id="justPlayed">
+        <div id="userRecentScore"></div>
+    </div>
+    <div id="countdown"></div>
+</body>
+</html>
