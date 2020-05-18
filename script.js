@@ -34,6 +34,10 @@ class UI {
     if (target.classList.contains("delete")) {
       target.parentElement.parentElement.remove();
       UI.showAlerts("Raamat kustutatud!", "info");
+      Storage.deleteBook(
+        target.parentElement.previousElementSibling.previousElementSibling
+          .previousElementSibling.textContent
+      );
     }
   }
 
@@ -157,10 +161,6 @@ document.querySelector("#book-form").addEventListener("submit", (e) => {
 document.querySelector("#book-list").addEventListener("click", (e) => {
   //console.log(e.target);
   UI.deleteBook(e.target);
-  Storage.deleteBook(
-    e.target.parentElement.previousElementSibling.previousElementSibling
-      .previousElementSibling.textContent
-  );
 });
 
 const cssheet = document.getElementById("csstheme");
