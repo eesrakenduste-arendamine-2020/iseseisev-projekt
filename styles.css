@@ -55,26 +55,26 @@ input[type=range]::-moz-range-thumb {
     cursor: pointer;
 }
 
-.play {
+#play {
     background: url("triangle.svg") no-repeat;
     padding: 10px;
-    width: 10em; 
+    width: 10em;
     height: 10em;
     border: none;
 }
 
-#value{
+#value {
     font-size: xx-large;
     font-weight: bold;
     border: solid 1px var(--accent-color);
     border-radius: 4px;
-    padding: 0.5em;
+    padding: .5em;
     line-height: 1em;
     width: 1.25em;
     text-align: center;
 }
 
-#slider{
+#slider {
     width: 60%;
 }
 
@@ -82,14 +82,13 @@ body > * {
     margin: 1em;
 }
 
-body{
+body {
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 0;
-    
 }
 
 
