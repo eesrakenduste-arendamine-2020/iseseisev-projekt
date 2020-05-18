@@ -17,70 +17,97 @@
 </head>
 <body>
 
-<div class="container">
 
-    <div class="item i1">
-        <div class="item__header">
-        </div><!--.item__header-->
-        <div class="item__header white">
-        </div><!--.item__header-->
-        <div class="clearfix-50"></div>
-    </div><!--.i1-->
+<!-- HEADER 1 -->
+<div class="main-flex header pink">
+    <div class="aside"></div>
 
+    <div class="basis-1080">
 
-    <div class="item i2">
-        <div class="item__header">
+        <div class="flex-row header-row"> 
 
-        </div><!--.item__header-->
-        <div class="item__header white">
-        </div><!--.item__header-->
-        <div class="clearfix-50"></div>
+            <div class="padding-left-10"><a href="/eesr-proj-redoned/">Raamatukogu</a></div>
+            <div class="padding-left-10">LISA RAAMAT</div>
 
-        <div class="i2__section">
-            <div class="i2__row">
-                <div class="col__1">PEALKIRI</div>
-                <div class="col__2">AUTOR</div>
-                <div class="col__3">LEHEKÜLGI</div>
-                <div class="col__4">AASTA</div>
-                <div class="col__5">HIND</div>
-                <div class="col__6">LISATUD</div>
-                <div class="col__7">PROGRESS</div>
-                <div class="col__8">dot</div>
-            </div>
+            <div class="aside"></div>
+
         </div>
 
-    </div><!--.i2-->
+    </div>
 
-    <div class="item i3">
-        <div class="item__header">
-        </div><!--.item__headerr-->
-        <div class="item__header white">
-        </div><!--.item__header-->
-        <div class="clearfix-50"></div>
+    <div class="aside"></div>
+</div><!--.header-->
 
-        <div class="i3__section">
-            
-            <div class="i3__row">
+<!-- HEADER 2 -->
+<div class="main-flex header white">
+    <div class="aside"></div>
+
+    <div class="basis-1080">
+
+        <div class="flex-row header-row"> 
+
+            <div class="padding-left-10">Lugemisprogress</div>
+
+            <div class="aside"></div>
+
+        </div>
+
+    </div>
+
+    <div class="aside"></div>
+</div><!--.header-->
+
+<div class="clearfix-50"></div>
+
+<div class="main-flex">
+    <div class="aside"></div>
+
+
+    <div class="basis-1080 flex-row body-row">
+
+
+        <div class="flex-column basis-760">
+
+               <div class="flex-row table-row table-row-heading">
+                    <div class="col__1">Kõik raamatud</div>
+                </div>
+
+                <div class="flex-row table-row font-size-12">
+                    <div class="col__1">PEALKIRI</div>
+                    <div class="col__2">AUTOR</div>
+                    <div class="col__3">LEHEKÜLGI</div>
+                    <div class="col__4">AASTA</div>
+                    <div class="col__5">HIND</div>
+                    <div class="col__6">LISATUD</div>
+                    <div class="col__7">PROGRESS</div>
+                    <div class="col__8">dot</div>
+                </div>
+
+        </div><!--.flex-row.basis-760-->
+
+        <div class="flex-column basis-360"> 
+
+            <div class="flex-row table-row table-row-heading">
+                <div class="col__1">Pooleli</div>
+            </div>
+
+            <div class="flex-row table-row font-size-12">
                 <div class="col__1">PEALKIRI</div>
                 <div class="col__2">VIIMATI LOETUD</div>
                 <div class="col__3">PROGRESS</div>
                 <div class="col__8">dot</div>
             </div>
 
-        </div>
-
-    </div><!--.i3-->
-
-    <div class="item i4">
-        <div class="item__header">
-        </div><!--.item__header-->
-        <div class="item__header white">
-        </div><!--.item__header-->
-        <div class="clearfix-50"></div>
-    </div><!--.i4-->
+        </div><!--.flex-row-->
 
 
-</div><!--.container-->
+
+    </div><!--.basis-1080-->
+
+
+
+    <div class="aside"></div>
+</div>
 
 
 

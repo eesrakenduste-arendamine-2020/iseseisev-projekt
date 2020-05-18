@@ -9,66 +9,116 @@ body {
     line-height: 1.47;
 }
 
-.container {
-    background-color: #ccc;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;/*x when row, y when column*/
-    align-items: center; /*y when row, x when column*/
-}
-
-
-.item {
-    color: #fff;
-    height: 100vh;
-    background-color: #F6F6F8;
-}
-
-.i1 , .i4{
-    flex: 1 1 10px;
-}
-
-.i3 {
-    flex-basis: 360px;
-}
-
-.i2 {
-    flex-basis: 760px;
-}
-
-.item__header {
-    height: 60px;
-    background-color: #FF6A88;
-}
-
-.clearfix-50 {
-    height: 50px;
-    background-color: #F6F6F8;
-}
-
-
-.i2__section {
-    margin-right: 15px;
-}
-
-.i2__section,
-.i3__section {
-    background-color: #ffffff;
-}
-
-.i2__row,
-.i3__row {
-    height: 50px;
+/* Main flex settings*/
+.main-flex {
+    background: #f6f6f8;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    color: #a1a1a1;
+    color: #838795;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    font-size: 14px;
+    align-items: center;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.aside {
+    flex: 1 1 10px;
+}
+
+.ul {
+    list-style-type: none;
+}
+
+/* colors */
+
+.pink {
+    background: #ff7691;
+}
+
+.white {
+    background: white;
+}
+
+
+/* clearfixes */
+.clearfix-50 {
+    height: 50px;
+    background: #f6f6f8;
+}
+
+/* header */
+.header-row {
+    height: 60px;
+}
+
+.header-list li {
+    padding: 15px;
+}
+
+.header-list li:last-child{
+    padding: 0;
+}
+
+
+/* main stuff */
+.basis-1080 {
+    flex-basis: 1080px;
+}
+
+.basis-760 {
+    flex-basis: 760px;
+    margin-right: 5px;
+
+}
+
+.basis-360 {
+    flex-basis: 360px;
+    margin-left: 7px;
+
+}
+
+.basis-360,
+.basis-760 {
+    border-radius: 4px;
+    background: white;
+}
+
+.table-row-heading {
+    border-bottom: 1px solid #f6f6f8;
+}
+
+
+.body-row{
+    min-height: 100vh;
+    align-items: initial;
+}
+
+.table-row {
+    height: 50px;
+}
+
+.font-size-12 {
     font-size: 12px;
+}
+
+
+.padding-left-10 {
+    padding-left: 10px;
 }
 
 .col__1 {
     flex-basis: 150px;
+    padding-left: 10px;
 }
 .col__2 {
     flex-basis: 100px;
@@ -89,6 +139,3 @@ body {
     flex-basis: 30px;
 }
 
-.white {
-    background: white;
-}
