@@ -78,37 +78,43 @@ input[type=range]::-moz-range-thumb {
     width: 60%;
 }
 
-body > * {
+.menu > * {
     margin: 1em;
 }
 
 body {
-    height: 100vh;
+    margin: 0;
+}
+
+.menu {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 0;
+    height: 100vh;
 }
 
-.card-container{
+.game {
+    display: flex;
     flex-direction: row;
-    display: inherit;
-
+    height: 100vh;
 }
 
-.front{
+.card {
+    display: inherit;
+    flex-direction: row;
+}
+
+.front {
     height: 7em;
     width: 5em;
     border: solid 2px var(--accent-color);
     border-radius: 4px;
-    box-shadow:  0px 0px 16px var(--accent-color);
-    transition: box-shadow ease 0.2s;
+    box-shadow: 0 0 16px var(--accent-color);
+    transition: box-shadow ease .2s;
+    text-align: center;
 }
 
-
-
-.front:hover{
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+.front:hover {
+    box-shadow: 0 0 4px rgba(0, 0, 0, .5);
 }
-

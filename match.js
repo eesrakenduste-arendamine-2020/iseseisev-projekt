@@ -101,6 +101,7 @@ const clearBody = () => {
 };
 
 // Loob menüü event listenerid, seda funktsiooni on vaja kasutada pärast mängu lõppu ka
+// TODO: event delegation
 function setupMenuEventListeners() {
     const play = document.getElementById('play');
     const slider = document.getElementById('slider');
@@ -146,23 +147,27 @@ setupMenuEventListeners();
 
 const buildDeckInterface = deck => {
     const fragment = document.createDocumentFragment();
+    const game = document.createElement('div');
+    game.classList.add('game');
 
     for (const card of deck.cards) {
-        const container = document.createElement('div');
-        container.classList.add('card-container');
+        const cardContainer = document.createElement('div');
+        cardContainer.classList.add('card');
 
         const front = document.createElement('div');
         front.classList.add('front');
         const text = document.createTextNode(card.face);
         front.appendChild(text);
-        container.appendChild(front);
+        cardContainer.appendChild(front);
 
         const back = document.createElement('div');
         back.classList.add('back');
-        container.appendChild(back);
+        cardContainer.appendChild(back);
 
-        fragment.appendChild(container);
+        game.appendChild(cardContainer);
     }
+
+    fragment.appendChild(game);
 
     return fragment;
 };
