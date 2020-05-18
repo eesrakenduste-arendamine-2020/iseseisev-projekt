@@ -11,7 +11,10 @@
       rel="stylesheet"
       href="https://bootswatch.com/4/cerulean/bootstrap.min.css"
     />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:600,700" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:600,700"
+      rel="stylesheet"
+    />
     <title>Raamaturiiul</title>
   </head>
   <body>
@@ -19,9 +22,9 @@
       <h1 class="title"><i class="fas fa-book"></i>Raamaturiiul</h1>
       <form id="book-form">
         <label>Pealkiri</label>
-        <input type="text" id="booktitle" />
+        <input type="text" id="book-title" />
         <label>Autor</label>
-        <input type="text" id="bookauthor" />
+        <input type="text" id="book-author" />
 
         <input
           type="submit"
@@ -37,6 +40,7 @@
             <th>Lehekülg</th>
           </tr>
         </thead>
+        <tbody id="book-list"></tbody>
       </table>
     </div>
   </body>
