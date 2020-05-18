@@ -7,11 +7,9 @@ HERMAN PETROV JA DANIEL EELMAA
 ##
 # Menu
 Lehe avades leiab kasutaja end peamenüüs kus on kirjutatud projekti loojad ja projekti nimi "Type-Type-Mania". Menus  saab valida nelja valiku vahel: mängu õpetus, mäng ja skooridetabel ning mängu projekti repositooriumi nupp.
-##
-# Õpetus ( Explanation of Game)
+## Õpetus ( Explanation of Game)
 Vajutades õpetuse peale jõuab kasutaja mängu selgitus lehele kus  on piltitidega õpetus mängu alustamiseks ning selgituses  kolmest erinevast mängu koormusesest mida kasutaja saab valida. Tagasi navigeerida saab vajutades Õpetus lehel oleva "BACK TO MENU" nuppuga.
-##
-# Menu
+# Mängu menu
 ## Mängu menu-kirjeldus 1
 Mängu sisenemiseks vajab kasutaja eelnevalt vajutada Menu "Play Game" nuppu peale kus saab siis kasutaja põhi mängu osale ligi.
 Mängus näeb kasutaja tagasi menu nupu, nime sisestus koha, raskuse valiku nupe, heli seadistus riba, start nupp ja teavitus kuidas mängu mängitakse. 
