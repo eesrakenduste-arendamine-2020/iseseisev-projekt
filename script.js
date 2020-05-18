@@ -9,7 +9,7 @@ class Book {
 // UI klass
 class UI {
   static displayBooks() {
-    const books = [];
+    const books = Storage.getBooks();
 
     books.forEach((book) => UI.addBook(book));
   }
@@ -26,6 +26,8 @@ class UI {
     `;
 
     bookList.appendChild(row);
+
+    UI.showAlerts("Raamat lisatud!", "success");
   }
 
   static deleteBook(target) {
@@ -43,7 +45,15 @@ class UI {
     const form = document.querySelector("#book-form");
     container.insertBefore(div, form);
 
-    setTimeout(() => document.querySelector(".alert-info").remove(), 4000);
+    var infoalert = document.querySelector(".alert-info") !== null;
+    var successalert = document.querySelector(".alert-success") !== null;
+    if (infoalert) {
+      setTimeout(() => document.querySelector(".alert-info").remove(), 4000);
+    }
+
+    if (successalert) {
+      setTimeout(() => document.querySelector(".alert-success").remove(), 4000);
+    }
   }
 
   static deleteAlerts() {
@@ -73,6 +83,38 @@ class UI {
 
 // LocalStorage klass
 
+class Storage {
+  static getBooks() {
+    let books;
+    if (localStorage.getItem("books") === null) {
+      books = [];
+    } else {
+      books = JSON.parse(localStorage.getItem("books"));
+    }
+
+    return books;
+  }
+
+  static addBook(book) {
+    const books = Storage.getBooks();
+
+    books.push(book);
+
+    localStorage.setItem("books", JSON.stringify(books));
+  }
+
+  static deleteBook(title) {
+    const books = Storage.getBooks();
+    books.forEach((book, index) => {
+      if (book.title === title) {
+        books.splice(index, 1);
+      }
+    });
+
+    localStorage.setItem("books", JSON.stringify(books));
+  }
+}
+
 // Näita raamatuid
 document.addEventListener("DOMContentLoaded", UI.displayBooks);
 
@@ -82,8 +124,7 @@ document.querySelector("#book-form").addEventListener("submit", (e) => {
   const title = document.querySelector("#book-title").value;
   const author = document.querySelector("#book-author").value;
   const page = document.querySelector("#book-page").value;
-  const errors = 0;
-
+  let error = 0;
   if (title == "" && author == "" && page == "") {
     UI.showAlerts("Palun täitke kõik väljad!", "danger");
     error++;
@@ -105,6 +146,8 @@ document.querySelector("#book-form").addEventListener("submit", (e) => {
 
     UI.addBook(book);
 
+    Storage.addBook(book);
+
     UI.clear();
 
     UI.deleteAlerts();
@@ -112,8 +155,12 @@ document.querySelector("#book-form").addEventListener("submit", (e) => {
 });
 
 document.querySelector("#book-list").addEventListener("click", (e) => {
-  console.log(e.target);
+  //console.log(e.target);
   UI.deleteBook(e.target);
+  Storage.deleteBook(
+    e.target.parentElement.previousElementSibling.previousElementSibling
+      .previousElementSibling.textContent
+  );
 });
 
 const cssheet = document.getElementById("csstheme");
