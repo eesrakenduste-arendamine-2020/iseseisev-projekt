@@ -1,7 +1,6 @@
 body{
     font-family: 'Open Sans', sans-serif;
-    background-color: var(--bg-color);
-    color: var(--font-color);
+    text: black;
 }
 
 #container{
@@ -18,7 +17,14 @@ body{
 }
 
 #book-form{
+    display: grid;
     text-align: left;
     position: relative;
     font-size: 21px;
+}
+
+#add-book-button{
+    margin:25px auto;
+    font-size: 25px;
+    text-align: center;
 }
