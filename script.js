@@ -39,6 +39,20 @@ class UI {
     document.querySelector("#book-author").value = "";
     document.querySelector("#book-page").value = "";
   }
+
+  static changeTheme(counter) {
+    if (counter % 2 != 0) {
+      cssheet.setAttribute(
+        "href",
+        "https://bootswatch.com/4/darkly/bootstrap.min.css"
+      );
+    } else {
+      cssheet.setAttribute(
+        "href",
+        "https://bootswatch.com/4/cerulean/bootstrap.min.css"
+      );
+    }
+  }
 }
 
 // LocalStorage klass
@@ -82,6 +96,13 @@ document.querySelector("#book-form").addEventListener("submit", (e) => {
 document.querySelector("#book-list").addEventListener("click", (e) => {
   console.log(e.target);
   UI.deleteBook(e.target);
+});
+
+const cssheet = document.getElementById("csstheme");
+counter = 0;
+document.querySelector("#checkbox").addEventListener("click", (e) => {
+  counter++;
+  UI.changeTheme(counter);
 });
 
 // Event: Mark book as read
