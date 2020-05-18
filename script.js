@@ -31,20 +31,23 @@ class UI {
   static deleteBook(target) {
     if (target.classList.contains("delete")) {
       target.parentElement.parentElement.remove();
+      UI.showAlerts("Raamat kustutatud!", "info");
     }
   }
 
-  static showAlerts(message) {
+  static showAlerts(message, className) {
     const div = document.createElement("div");
-    div.className = "alert alert-danger";
+    div.className = `alert alert-${className}`;
     div.appendChild(document.createTextNode(message));
     const container = document.querySelector("#container");
     const form = document.querySelector("#book-form");
     container.insertBefore(div, form);
+
+    setTimeout(() => document.querySelector(".alert-info").remove(), 4000);
   }
 
   static deleteAlerts() {
-    document.querySelectorAll(".alert").forEach((e) => e.remove());
+    document.querySelectorAll(".alert-danger").forEach((e) => e.remove());
   }
 
   static clear() {
@@ -82,16 +85,16 @@ document.querySelector("#book-form").addEventListener("submit", (e) => {
   const errors = 0;
 
   if (title == "" && author == "" && page == "") {
-    UI.showAlerts("Palun täitke kõik väljad!");
+    UI.showAlerts("Palun täitke kõik väljad!", "danger");
     error++;
   } else if (author == "") {
-    UI.showAlerts("Palun sisestage autor!");
+    UI.showAlerts("Palun sisestage autor!", "danger");
     error++;
   } else if (page == "") {
-    UI.showAlerts("Palun sisestage loetud lehekülgede arv!");
+    UI.showAlerts("Palun sisestage loetud lehekülgede arv!", "danger");
     error++;
   } else if (title == "") {
-    UI.showAlerts("Palun sisestage teose pealkiri!");
+    UI.showAlerts("Palun sisestage teose pealkiri!", "danger");
     error++;
   } else {
     error = 0;
