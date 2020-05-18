@@ -1,62 +1,46 @@
-#container{
-    margin: 20px auto;
-    border-radius: 5px;
-    border-radius: 15px;
-    border: 1px solid black;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+#container {
+  margin: 20px auto;
+  border-radius: 5px;
+  border-radius: 15px;
+  border: 1px solid black;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-#table{
-    margin: 5px auto;
-    position: relative;
+#table {
+  margin: 5px auto;
+  position: relative;
 }
 
-#book-form{
-    display: grid;
-    text-align: left;
-    position: relative;
-    font-size: 21px;
+#book-form {
+  display: grid;
+  text-align: left;
+  position: relative;
+  font-size: 21px;
 }
 
-#add-book-button{
-    margin:25px auto;
-    font-size: 25px;
-    text-align: center; 
+#add-book-button {
+  margin: 25px auto;
+  font-size: 25px;
+  text-align: center;
 }
 
-#heading{
-    margin: 5px auto;
-    text-align: center;
-    top: 25px;
+#heading {
+  margin: 5px auto;
+  text-align: center;
+  top: 25px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*Switchbox*/
-#switch-box{
-    justify-content: flex-end;
-    margin-right: 5px;
-    margin: 1px auto;
+#switch-box {
+  justify-content: flex-end;
+  margin-right: 5px;
+  margin: 1px auto;
 }
 
-#switch{
-    align-content: space-between;
-    margin-left: 10px;
-    margin-right: 10px;
+#switch {
+  align-content: space-between;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .theme-switch-wrapper {
@@ -71,7 +55,7 @@
 }
 
 .theme-switch input {
-  display:none;
+  display: none;
 }
 
 .slider {
@@ -82,7 +66,7 @@
   position: absolute;
   right: 0;
   top: 0;
-  transition: .4s;
+  transition: 0.4s;
 }
 
 .slider:before {
@@ -92,7 +76,7 @@
   height: 26px;
   left: 4px;
   position: absolute;
-  transition: .4s;
+  transition: 0.4s;
   width: 26px;
 }
 

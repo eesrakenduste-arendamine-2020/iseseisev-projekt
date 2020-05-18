@@ -17,6 +17,7 @@ class UI {
   static addBook(book) {
     const bookList = document.querySelector("#book-list");
     const row = document.createElement("tr");
+    row.setAttribute("id", "row");
 
     row.innerHTML = `
         <td>${book.title}</td>
