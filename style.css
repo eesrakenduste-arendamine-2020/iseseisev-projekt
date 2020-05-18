@@ -3,3 +3,11 @@ body{
     background-color: var(--bg-color);
     color: var(--font-color);
 }
+
+#container{
+    windows: 1000px;
+    height: 550px;
+    margin: 20px auto;
+    border-radius: 5px;
+    background-color: gray;
+}
