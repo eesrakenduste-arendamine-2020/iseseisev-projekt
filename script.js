@@ -5,8 +5,8 @@ const pilt = new Image();
 pilt.src = "pilt.jpg";
 const levelPic = new Image();
 levelPic.src = "level.png";
-const heart = new Image();
-heart.src = "heart.jpg";
+const heartPic = new Image();
+heartPic.src = "heart.jpg";
 const scorePic = new Image();
 scorePic.src = "score.png";
 ctx.lineWidth = 3;
@@ -14,12 +14,14 @@ const paddleW = 100;
 const paddleH = 20;
 const paddleBottomM = 50;
 //const paddleLength = 5;
-const ballRadius = 15;
+const ballRadius = 10;
 let leftArrow = false;
 let rightArrow = false;
 let score = 0;
 let level = 1;
+let life = 3;
 let max_level = 3;
+let game_over = false;
 
 const paddle = {
     x : canvas.width/2 - paddleW/2,
@@ -31,7 +33,7 @@ const paddle = {
 
 const ball = {
     x : canvas.width/2,
-    y : paddle.y - ballRadius,
+    y : paddle.y - ballRadius, 
     radius : ballRadius,
     speed : 5 ,
     dx : 3 * (Math.random() * 2 - 1), 
@@ -91,13 +93,14 @@ function moveBall() {
 }
 
 function wallImpactBall() {
-    if(ball.x + ballRadius > canvas.width || ball.x - ballRadius < 0) {
+    if(ball.x + ball.radius > canvas.width || ball.x - ball.radius < 0) {
         ball.dx = - ball.dx
     }
-    if(ball.y - ballRadius < 0) {
+    if(ball.y - ball.radius < 0) {
         ball.dy = - ball.dy;
     }
-    if(ball.y + ballRadius > canvas.height) {
+    if(ball.y + ball.radius > canvas.height) {
+        life -= 1;
         reset();
     }
 }
@@ -154,7 +157,7 @@ function drawBricks() {
                 ctx.strokeRect(bricks[r][c].x, bricks[r][c].y, brick.width, brick.height)
             }
         }
-        }
+    }
 }
 
 function breakBricks() {
@@ -162,7 +165,7 @@ function breakBricks() {
         for(let c = 0; c < brick.column; c++){
             if(bricks[r][c].status){
                 if(ball.x + ball.radius > bricks[r][c].x && ball.x - ball.radius < bricks[r][c].x + brick.width && ball.y + ball.radius > bricks[r][c].y && ball.y - ball.radius < bricks[r][c].y + brick.height){
-                    ball.dy = -ball.dy;
+                    ball.dy = - ball.dy;
                     bricks[r][c].status = false;
                     score += 1;
                 }
@@ -182,7 +185,7 @@ function allScores(text, textX, textY, img, imgX, imgY) {
 function reset() {
     ball.x = canvas.width/2;
     ball.y = paddle.y - ballRadius;
-    ball.dx = 3;
+    ball.dx = 3 * (Math.random() * 2 - 1);
     ball.dy = -3;
 }
 
@@ -190,8 +193,15 @@ function draw() {
     drawPaddle();
     drawBall();
     drawBricks();
-    allScores(score, 35, 25, scorePic, 5, 5);
-    allScores(heart, canvas.width/2, 25, heart, canvas.w/2 -30, 5);
+    allScores(score, 40, 30, scorePic, 10,10);
+    allScores(life, canvas.width/2, 30,heartPic, canvas.width/2 - 35, 10)
+    allScores(level, canvas.width - 25, 30, levelPic, canvas.width - 55, 10);
+}
+
+function gameOver() {
+    if(life <= 0) {
+        game_over = true;
+    }
 }
 
 function update() {
@@ -200,12 +210,15 @@ function update() {
     wallImpactBall();
     paddleImpactBall();
     breakBricks();
+    gameOver();
 }
 
 function loop() {
     ctx.drawImage(pilt, -85, -95);
     draw();
     update();
-    requestAnimationFrame(loop);
+    if(! game_over) {
+        requestAnimationFrame(loop);
+    }
 }
 loop();
