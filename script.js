@@ -234,5 +234,5 @@ restart_game.addEventListener("click", function(){
 
 function loseGame() {
     $('#gameover').css('display', 'block');
-    $('#loseGame').css('display', 'block');
+    $('#losegame').css('display', 'block');
 }
