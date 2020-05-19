@@ -4,6 +4,12 @@ Timemate on õpilase ajakasutuse rakendus, mis on valmimas õppeaine "Tarkvaraar
 Õpilane saab sisestada oma õppimisele kulutatud aega, ning õpitegevust.
 Seejärel näeb ta oma sisestusi kalendrist ja statistikast.
 
+Demo:
+http://timemate.ee
+
+Kasutajanimi: demo
+Parool: demo
+
 Graafikute tegemiseks on kasutatud [ChartJs](https://github.com/chartjs)
 
 HTML/CSS - [Martten Mitri](https://github.com/andrkuu/timemate/commits?author=marttenmitri)
