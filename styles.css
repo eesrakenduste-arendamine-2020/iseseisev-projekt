@@ -63,6 +63,11 @@ input[type=range]::-moz-range-thumb {
     width: 10em;
     height: 10em;
     border: none;
+    transition: animation ease .2s;
+}
+
+#play:hover{
+    animation: spin 1s;
 }
 
 #value {
@@ -148,4 +153,10 @@ img.emoji {
 
 .hidden > .back {
     transform: rotateY(0deg);
+}
+
+
+@keyframes spin{
+	0%{transform: rotate(0deg);}
+	100%{transform: rotate(360deg);}
 }
