@@ -28,7 +28,7 @@ const paddle = {
     y : canvas.height - paddleBottomM - paddleH,
     width : paddleW,
     height : paddleH,
-    length : 5
+    length : 5 //paddle kiirus
 };
 
 const ball = {
@@ -36,8 +36,8 @@ const ball = {
     y : paddle.y - ballRadius, 
     radius : ballRadius,
     speed : 5 ,
-    dx : 3 * (Math.random() * 2 - 1), 
-    dy : -3
+    dx : 3 * (Math.random() * 2 - 1), //palli suund
+    dy : -5 //palli kiirus
 };
 
 function drawPaddle() {
@@ -194,12 +194,13 @@ function draw() {
     drawBall();
     drawBricks();
     allScores(score, 40, 30, scorePic, 10,10);
-    allScores(life, canvas.width/2, 30,heartPic, canvas.width/2 - 35, 10)
+    allScores(life, canvas.width/2 + 10, 30,heartPic, canvas.width/2 - 20, 10)
     allScores(level, canvas.width - 25, 30, levelPic, canvas.width - 55, 10);
 }
 
 function gameOver() {
     if(life <= 0) {
+        loseGame();
         game_over = true;
     }
 }
@@ -222,3 +223,16 @@ function loop() {
     }
 }
 loop();
+
+let gameover = document.getElementById("gameover");
+let losegame = document.getElementById("losegame");
+let restart_game = document.getElementById("restart_game");
+
+restart_game.addEventListener("click", function(){
+    location.reload();
+})
+
+function loseGame() {
+    $('#gameover').css('display', 'block');
+    $('#loseGame').css('display', 'block');
+}
