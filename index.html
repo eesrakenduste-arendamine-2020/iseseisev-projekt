@@ -11,6 +11,11 @@
         </style>
     </head>
     <body>
+        <div id="info">
+            <p><img src="img/food.png" alt="food">  Good food(+1 length and +1 score) </p>
+            <p><img src="img/antifood.png" alt="antifood">  Bad food(-1 score) </p>
+            <p>Fast<input id="speed" min="40" max="200" value="130" step="10" type="range" onchange="speed()">Slow</p>
+        </div>
         <input class="button" type="reset" value="reset" onClick="document.location.reload(true)"></input>
 
     </body> 

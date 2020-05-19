@@ -47,4 +47,18 @@ body{
         background-color: teal;
       }
     }
+    #info {
+      position:absolute;
+      margin:0 auto 2em auto;
+      width:350px;
+      height:200px;
+      top: 10vw;
+      left: 2vw;
+      border-collapse: separate;
+      border-radius: 15px;
+      background-image: linear-gradient(to bottom right, #4A569D, #DC2424);
+      border: 5px solid rgb(206, 151, 0);
+      color: coral;
+     
+  }
 
