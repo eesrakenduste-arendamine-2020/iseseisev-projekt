@@ -1,3 +1,8 @@
+window.onload = function(){
+    $('[data-menu-search]').addClass('active');
+    selectContent();
+};
+
 $('.menu-item').click(function(){
     $('.menu-item').removeClass('active');
     $(this).addClass('active');
