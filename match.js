@@ -145,16 +145,20 @@ function setupMenuEventListeners() {
 
 setupMenuEventListeners();
 
+const getElementInPath = (path = [], name = '') => path.find(element => element.className.includes(name));
+
 function setupGameEventListeners() {
 
     document.body.onclick = event => {
-        const element = event.target;
-        if (element && element.parentElement.classList.contains('card')) {
-            element.parentElement.classList.toggle('hidden');
-        }
-    };
+        const path = event.composedPath();
+        // Kuna me teame et path'i kaks viimast elementi on mõtetud ja nende className võib tekitada probleeme
+        const card = getElementInPath(path.slice(0, path.length - 2), 'card');
 
-    // document.body.addEventListener('click', function (event) {})
+        // Kui elementi ei ole path'is siis selle väärtus on undefined
+        if (!card) return;
+
+        card.classList.toggle('hidden');
+    };
 }
 
 const buildDeckInterface = deck => {
@@ -168,8 +172,13 @@ const buildDeckInterface = deck => {
 
         const front = document.createElement('div');
         front.classList.add('front');
-        const text = document.createTextNode(card.face);
-        front.appendChild(text);
+
+        // Muudab emoji twemojiks
+        const emoji = twemoji.parse(card.face, {
+            folder: 'svg',
+            ext: '.svg'
+        });
+        front.innerHTML = emoji;
         cardContainer.appendChild(front);
 
         const back = document.createElement('div');
