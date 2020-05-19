@@ -1,0 +1,57 @@
+*{
+    font-family: 'Nanum Gothic', sans-serif;
+}
+body{
+    margin: 0;
+}
+
+nav{
+    height: 60px;
+    width: 100%;
+    background-color: #A6ACAF;
+    color: rgb(83, 78, 78);
+    display: flex;
+    font-size: 1.5rem;
+    align-items: center;
+}
+
+.menu{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 65%;
+    list-style: none;
+    background-color: #A6ACAF;
+}
+
+.logo{
+    width: 35%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: black; 
+    font-size: 3rem;
+    letter-spacing: 3px;
+}
+
+.menu-item{
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.menu-item:hover{
+    /*background-color: rgb(58, 57, 57);
+    font-weight: bold;*/
+    color: rgb(29, 27, 27);
+}
+
+.active{
+    color: rgb(29, 27, 27);
+    font-size: 2rem;
+}
