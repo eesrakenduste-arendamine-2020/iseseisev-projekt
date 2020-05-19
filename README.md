@@ -8,6 +8,7 @@ Demo:
 http://timemate.ee
 
 Kasutajanimi: demo
+
 Parool: demo
 
 Graafikute tegemiseks on kasutatud [ChartJs](https://github.com/chartjs)
