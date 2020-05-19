@@ -15,10 +15,11 @@ const shuffle = array => {
 };
 
 class Card {
-    constructor(face) {
+    constructor(deck, face) {
         this.face = face;
         // State peaks olema 'hidden', 'visible' või 'temporarilyVisible'
         this._state = 'hidden';
+        this.id = this.generateSafeGuid(deck);
     }
 
     get state() {
@@ -38,6 +39,25 @@ class Card {
         }
 
         this._state = state;
+    }
+
+    /**
+     * Internal method for Card
+     */
+    generateSafeGuid(deck) {
+        const guid = this.generateQuickGuid();
+        return deck.guids.includes(guid) ? this.generateQuickGuid(deck) : guid;
+    }
+
+    /**
+     * Internal method for Card
+     */
+    // https://stackoverflow.com/a/13403498
+    generateQuickGuid() {
+        return Math.random().toString(36)
+            .substring(2, 15) +
+                Math.random().toString(36)
+                    .substring(2, 15);
     }
 }
 
@@ -84,9 +104,22 @@ class Deck {
 
         return cards;
     }
+
+    get guids() {
+        const guids = [];
+
+        for (const card of this.cards) {
+            guids.push(card.id);
+        }
+
+        return guids;
+    }
 }
 
-// Tagastab clone'i body'st
+/**
+ * Tühjendab body sisu ning tagastab clone'i body'st
+ * @returns {HTMLElement} bodyClone
+ */
 const clearBody = () => {
     // Deep clone body node'i et me saaks selle pärast uuesti luua
     const bodyClone = document.body.cloneNode(true);
@@ -100,8 +133,10 @@ const clearBody = () => {
     return bodyClone;
 };
 
-// Loob menüü event listenerid, seda funktsiooni on vaja kasutada pärast mängu lõppu ka
-// TODO: event delegation
+/**
+ * Loob menüü event listenerid, seda funktsiooni on vaja kasutada pärast mängu lõppu ka
+ * Seda vist saaks event delegation'iga inimlikumalt teha, siin ei ole vaja 3 event listenerit
+ */
 function setupMenuEventListeners() {
     const play = document.getElementById('play');
     const slider = document.getElementById('slider');
@@ -114,7 +149,6 @@ function setupMenuEventListeners() {
         32,
         64
     ];
-
 
     // Muudab value väärtust kui sliderit liigutatakse
     // Samuti ükkab slideri thumb'i lähima lubatud väärtuse peale, sest brauserid seda ei ise ei tee
@@ -140,14 +174,25 @@ function setupMenuEventListeners() {
     };
 
     // Play nupu vajutamisel alustame mänguga ja tühjendame <body> sisu
-    play.onclick = () => startGame(slider.value / 2, clearBody());
+    play.onclick = () => setTimeout(() => {
+        startGame(slider.value / 2, clearBody());
+    }, 100);
 }
 
 setupMenuEventListeners();
 
-const getElementInPath = (path = [], name = '') => path.find(element => element.className.includes(name));
+/**
+ * Kui element on arrays olemas siis ta tagastab selle, kui mitte, siis tagastab undefined
+ * @param {HTMLElement[]} path Event'ist saadud capture path
+ * @param {string} name Otsitava klassi nimi
+ * @returns {(HTMLElement|undefined)} Element või undefined
+ */
+const getElementInPath = (path, name) => path.find(element => element.className.includes(name));
 
-function setupGameEventListeners() {
+/**
+ * @param {Deck} deck
+ */
+function setupGameEventListeners(deck) {
 
     document.body.onclick = event => {
         const path = event.composedPath();
@@ -157,10 +202,28 @@ function setupGameEventListeners() {
         // Kui elementi ei ole path'is siis selle väärtus on undefined
         if (!card) return;
 
-        card.classList.toggle('hidden');
+        gameEventHandler(deck, card);
     };
 }
 
+
+/**
+ * @param {Deck} deck
+ * @param {HTMLElement} cardElement
+ */
+function gameEventHandler(deck, cardElement) {
+    cardElement.classList.toggle('hidden');
+    const idFromElement = cardElement.getAttribute('data-id');
+
+    const matchingCard = deck.cards.find(card => card.id === idFromElement);
+
+    matchingCard.state = 'temporarilyVisible';
+}
+
+/**
+ * Ehitab HTML'i struktuuri vastavalt kaartidele
+ * @param {Deck} deck
+ */
 const buildDeckInterface = deck => {
     const fragment = document.createDocumentFragment();
     const game = document.createElement('div');
@@ -169,6 +232,7 @@ const buildDeckInterface = deck => {
     for (const card of deck.cards) {
         const cardContainer = document.createElement('div');
         cardContainer.classList.add('card');
+        cardContainer.setAttribute('data-id', card.id);
 
         const front = document.createElement('div');
         front.classList.add('front');
@@ -193,14 +257,18 @@ const buildDeckInterface = deck => {
     return fragment;
 };
 
-// Nõuab kaartide kogust ja body clone'i
+/**
+ * Alustab mängu
+ * @param {number} pairs Kaartide arv
+ * @param {HTMLElement} bodyClone Koopia menüü body'st et see pärast taasluua
+ */
 function startGame(pairs, bodyClone) {
     const deck = new Deck(pairs);
 
     const fragment = buildDeckInterface(deck);
     document.body.appendChild(fragment);
 
-    setupGameEventListeners();
+    setupGameEventListeners(deck);
 
     return;
     // Taasloob menüü
