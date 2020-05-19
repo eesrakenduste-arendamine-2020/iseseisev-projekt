@@ -1,23 +1,33 @@
 // Raamatu klass
 class Book {
-  constructor(title, author, page) {
+  constructor(title, author, page, checked) {
     this.title = title;
     this.author = author;
     this.page = page;
+    this.checked = checked;
   }
 }
 // UI klass
 class UI {
   static displayBooks() {
     const books = Storage.getBooks();
-
     books.forEach((book) => UI.addBook(book));
   }
 
   static addBook(book) {
+    document.createElement("td");
     const bookList = document.querySelector("#book-list");
     const row = document.createElement("tr");
-    row.setAttribute("id", "row");
+    row.setAttribute("valueID", book.checked);
+
+    row.addEventListener("click", function () {
+      book.checked = book.checked !== true;
+      if (book.checked === true) {
+        row.style.background = "lightgreen";
+      } else {
+        row.style.background = "";
+      }
+    });
 
     row.innerHTML = `
         <td>${book.title}</td>
@@ -34,6 +44,10 @@ class UI {
   static deleteBook(target) {
     if (target.classList.contains("delete")) {
       target.parentElement.parentElement.remove();
+      Storage.deleteBook(
+        target.parentElement.previousElementSibling.previousElementSibling
+          .previousElementSibling.textContent
+      );
       UI.showAlerts("Raamat kustutatud!", "info");
     }
   }
@@ -46,8 +60,8 @@ class UI {
     const form = document.querySelector("#book-form");
     container.insertBefore(div, form);
 
-    var infoalert = document.querySelector(".alert-info") !== null;
-    var successalert = document.querySelector(".alert-success") !== null;
+    const infoalert = document.querySelector(".alert-info") !== null;
+    const successalert = document.querySelector(".alert-success") !== null;
     if (infoalert) {
       setTimeout(() => document.querySelector(".alert-info").remove(), 4000);
     }
@@ -68,7 +82,7 @@ class UI {
   }
 
   static changeTheme(counter) {
-    if (counter % 2 != 0) {
+    if (counter % 2 !== 0) {
       cssheet.setAttribute(
         "href",
         "https://bootswatch.com/4/darkly/bootstrap.min.css"
@@ -126,24 +140,24 @@ document.querySelector("#book-form").addEventListener("submit", (e) => {
   const author = document.querySelector("#book-author").value;
   const page = document.querySelector("#book-page").value;
   let error = 0;
-  if (title == "" && author == "" && page == "") {
+  if (title === "" && author === "" && page === "") {
     UI.showAlerts("Palun täitke kõik väljad!", "danger");
     error++;
-  } else if (author == "") {
+  } else if (author === "") {
     UI.showAlerts("Palun sisestage autor!", "danger");
     error++;
-  } else if (page == "") {
+  } else if (page === "") {
     UI.showAlerts("Palun sisestage loetud lehekülgede arv!", "danger");
     error++;
-  } else if (title == "") {
+  } else if (title === "") {
     UI.showAlerts("Palun sisestage teose pealkiri!", "danger");
     error++;
   } else {
     error = 0;
   }
 
-  if (error == 0) {
-    const book = new Book(title, author, page);
+  if (error === 0) {
+    const book = new Book(title, author, page, false);
 
     UI.addBook(book);
 
@@ -158,17 +172,11 @@ document.querySelector("#book-form").addEventListener("submit", (e) => {
 document.querySelector("#book-list").addEventListener("click", (e) => {
   //console.log(e.target);
   UI.deleteBook(e.target);
-  Storage.deleteBook(
-    e.target.parentElement.previousElementSibling.previousElementSibling
-      .previousElementSibling.textContent
-  );
 });
 
 const cssheet = document.getElementById("csstheme");
 counter = 0;
-document.querySelector("#checkbox").addEventListener("click", (e) => {
+document.querySelector("#checkbox").addEventListener("click", () => {
   counter++;
   UI.changeTheme(counter);
 });
-
-// Event: Mark book as read
