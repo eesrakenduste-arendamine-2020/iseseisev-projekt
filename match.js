@@ -145,6 +145,18 @@ function setupMenuEventListeners() {
 
 setupMenuEventListeners();
 
+function setupGameEventListeners() {
+
+    document.body.onclick = event => {
+        const element = event.target;
+        if (element && element.parentElement.classList.contains('card')) {
+            element.parentElement.classList.toggle('hidden');
+        }
+    };
+
+    // document.body.addEventListener('click', function (event) {})
+}
+
 const buildDeckInterface = deck => {
     const fragment = document.createDocumentFragment();
     const game = document.createElement('div');
@@ -178,6 +190,8 @@ function startGame(pairs, bodyClone) {
 
     const fragment = buildDeckInterface(deck);
     document.body.appendChild(fragment);
+
+    setupGameEventListeners();
 
     return;
     // Taasloob menüü
