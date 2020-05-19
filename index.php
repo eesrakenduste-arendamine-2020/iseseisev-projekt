@@ -26,8 +26,8 @@
 
         <div class="flex-row header-row"> 
 
-            <div class="padding-left-10"><a href="/eesr-proj-redoned/">Raamatukogu</a></div>
-            <div class="padding-left-10">LISA RAAMAT</div>
+            <div class="padding-left-10"><a class="link" href="index.php">Raamatukogu</a></div>
+            <div class="padding-left-10 btn-add-book">LISA RAAMAT</div>
 
             <div class="aside"></div>
 
