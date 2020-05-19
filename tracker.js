@@ -3,6 +3,8 @@ window.onload = function(){
     selectContent();
 };
 
+var popular_movies;
+
 $('.menu-item').click(function(){
     $('.menu-item').removeClass('active');
     $(this).addClass('active');
@@ -33,3 +35,5 @@ function selectContent(){
         $('#search').hide();
     }
 }
+
+import{APIKEY} from "../lamp.js";
