@@ -27,7 +27,7 @@ class Card {
     }
 
     /**
-     * @param {string} state should be 'hidden', 'visible' or 'temporarilyVisible'
+     * @param {string} state peaks olema 'hidden', 'visible' või 'temporarilyVisible'
      */
     set state(state) {
         if (![
@@ -41,17 +41,11 @@ class Card {
         this._state = state;
     }
 
-    /**
-     * Internal method for Card
-     */
     generateSafeGuid(deck) {
         const guid = this.generateQuickGuid();
         return deck.guids.includes(guid) ? this.generateQuickGuid(deck) : guid;
     }
 
-    /**
-     * Internal method for Card
-     */
     // https://stackoverflow.com/a/13403498
     generateQuickGuid() {
         return Math.random().toString(36)
@@ -99,7 +93,7 @@ class Deck {
         const cards = [];
 
         for (const face of faces) {
-            cards.push(new Card(face));
+            cards.push(new Card(this, face));
         }
 
         return cards;
@@ -107,6 +101,9 @@ class Deck {
 
     get guids() {
         const guids = [];
+
+        // See on vajalik sest this.cards ei eksisteeri esimesel korral seega iteratimine viskaks errori
+        if (!this.hasOwnProperty('cards')) return [];
 
         for (const card of this.cards) {
             guids.push(card.id);
