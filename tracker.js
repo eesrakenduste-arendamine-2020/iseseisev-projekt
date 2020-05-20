@@ -31,21 +31,21 @@ let getConfig = function () {
 
 
 //movie leht
-function movieSection(movies){
-    return movies.map((movie) => {
-        if(movie.poster_path){
-            return `<img src=${image_url + movie.poster_path} data-movie-id=${movie.id}/>`;
+function createSection(elements){
+    return elements.map((element) => {
+        if(element.poster_path){
+            return `<img src=${image_url + element.poster_path} data-movie-id=${element.id}/>`;
         }
     })
 }
 
-function createMovies(movies){
+function createElements(elements){
     const element = document.createElement("div");
     element.setAttribute("class", "movie");
 
     const template = `
         <section class="section">
-            ${movieSection(movies)};
+            ${createSection(elements)};
         </section>
         <div class="content content-display">
             <p id="content-close">X</p>
@@ -63,9 +63,9 @@ let getPopularMovies = function(){
         return result.json();
     })
     .then((data)=>{
-        const movies = data.results;
-        const movieBlock = createMovies(movies);
-        document.getElementById("movies").appendChild(movieBlock);
+        const elements = data.results;
+        const block = createElements(elements);
+        document.getElementById("movies").appendChild(block);
     })
     .catch(function(err){
         alert(err);
@@ -77,29 +77,6 @@ getPopularMovies();
 getConfig();
 
 //tvshow leht
-function showSection(tvshows){
-    return tvshows.map((show) => {
-        return (`<img src=${image_url + show.poster_path} data-movie-id=${show.id}/>`);
-    })
-}
-
-function createShows(tvshows){
-    const element = document.createElement("div");
-    element.setAttribute("class", "show");
-
-    const template = `
-        <section class="section">
-            ${showSection(tvshows)}; 
-        </section>
-        <div class="content content-display">
-            <p id="content-close">X</p>
-        </div>
-    `; 
-
-    element.innerHTML = template;
-    return element;
-}
-
 function getPopularTVshows(){
     let url = "".concat(baseURL, 'tv/popular?api_key=', APIKEY, '&language=en-US&page=1');
     fetch(url)
@@ -107,14 +84,21 @@ function getPopularTVshows(){
         return result.json();
     })
     .then((data)=>{
-        const tvshows = data.results;
-        const showBlock = createShows(tvshows);
-        document.getElementById("tv-shows").appendChild(showBlock);
+        const elements = data.results;
+        const block = createElements(elements);
+        document.getElementById("tv-shows").appendChild(block);
     })
 }
 
 getPopularTVshows();
 
+//search
+
+function renderElements(data){
+    const searchResults = data.results;
+    const searchBlock = createElements(searchResults);
+    document.getElementById("search-results").appendChild(searchBlock);
+}
 
 $("button").click(function() {
     document.getElementById("search-results").innerHTML='';
@@ -125,11 +109,7 @@ $("button").click(function() {
         .then((result) =>{
             return result.json();
         })
-        .then((data) =>{
-            const searchResults = data.results;
-            const searchBlock = createMovies(searchResults);
-            document.getElementById("search-results").appendChild(searchBlock); 
-        })
+        .then(renderElements)
 
     }else if(this.id=="tv-show-search"){
         let inputValue = input.value;
@@ -138,11 +118,7 @@ $("button").click(function() {
         .then((result) =>{
             return result.json();
         })
-        .then((data) =>{
-            const searchResults = data.results;
-            const searchBlock = createMovies(searchResults);
-            document.getElementById("search-results").appendChild(searchBlock); 
-        })
+        .then(renderElements)
     }
 });
 
