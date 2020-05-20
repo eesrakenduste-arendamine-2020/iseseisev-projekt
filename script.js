@@ -93,16 +93,17 @@ function createNewListItem() {
     let pages_total = defaultToZero($('[name="pages_total"]').val());
     let pages_finished = defaultToZero($('[name="pages_finished"]').val());
     let rating = defaultToZero($('[name="rating"]').val());
+    let date_added = moment().format('DD.MM.YYYY');
 
     $(newCopy).children('.col__1').text(title);
     $(newCopy).children('.col__2').text(author);
     $(newCopy).children('.col__3').text(pages_total);
     $(newCopy).children('.col__4').text(year);
-    $(newCopy).children('.col__6').text(moment().format('DD.MM.YYYY'));
+    $(newCopy).children('.col__6').text(date_added);
     $(newCopy).children('.col__7').text(pages_finished + " / " + pages_total);
 
     cleanModalFields();
-    addNewToFile(title, author, year, pages_total, pages_finished, rating, $(newCopy));
+    addNewToFile(title, author, year, pages_total, pages_finished, rating, date_added, $(newCopy));
 }
 
 function defaultToZero(value) {
@@ -121,14 +122,15 @@ function cleanModalFields(){
 
 
 // database functions
-function addNewToFile(title, author, year, pages_total, pages_finished, rating, bookObject) {
+function addNewToFile(title, author, year, pages_total, pages_finished, rating, date_added, bookObject) {
         let fileData = {
         'title': title,
         'author': author, 
         'year': year,
         'pages_total': pages_total,
         'pages_finished': pages_finished,
-        'rating': rating
+        'rating': rating,
+        'date_added': date_added
     }
 
     let url = 'add.php';
