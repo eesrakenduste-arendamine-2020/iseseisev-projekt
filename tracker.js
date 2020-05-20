@@ -31,9 +31,7 @@ let getConfig = function () {
 //movie leht
 function movieSection(movies){
     return movies.map((movie) => {
-        return `
-            <img src=${image_url + movie.poster_path} data-movie-id=${movie.id}/>
-        `;
+        return `<img src=${image_url + movie.poster_path} data-movie-id=${movie.id}/>`;
     })
 }
 
@@ -77,9 +75,7 @@ getConfig();
 //tvshow leht
 function showSection(tvshows){
     return tvshows.map((show) => {
-        return `
-            <img src=${image_url + show.poster_path} data-movie-id=${show.id}/>
-        `;
+        return (`<img src=${image_url + show.poster_path} data-movie-id=${show.id}/>`);
     })
 }
 
@@ -89,7 +85,7 @@ function createShows(tvshows){
 
     const template = `
         <section class="section">
-            ${showSection(tvshows)};
+            ${showSection(tvshows)}; 
         </section>
         <div class="content">
             <p id="content-close">X</p>
@@ -114,7 +110,6 @@ function getPopularTVshows(){
 }
 
 getPopularTVshows();
-
 
 //klasside muutus
 $('.menu-item').click(function(){

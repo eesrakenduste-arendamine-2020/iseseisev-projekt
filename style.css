@@ -4,6 +4,7 @@
 
 body{
     margin: 0;
+    background-color: rgb(27, 25, 25);
 }
 
 nav{
@@ -81,4 +82,20 @@ nav{
 #search-button:hover{
     cursor: pointer;
     color: black;
+}
+
+#movies, #tv-shows{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+img{
+    padding: 1%;
+    margin-left: 5.5%;
+}
+
+img:hover{
+    cursor: pointer;
+    transform: scale(1.1);
 }
