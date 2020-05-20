@@ -34,4 +34,4 @@ Funktsioon, mis lõpetab mängu, kui ülevalt alla on veer klotse täis
 Kasutasime õpetust : https://www.youtube.com/watch?v=rAUn1Lom6dw&fbclid=IwAR0De-XjDM_MxFD_NlxYhV8RUcxZrN5MS2lbn7HeR-xNH_1RJWzvSrHMqrk
 
 
-![Tetris.png](pildi githubi url siia)
+![Tetris.png](https://github.com/marisjo/iseseisev-projekt/blob/master/Tetris.png)
