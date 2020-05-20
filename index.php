@@ -1,4 +1,6 @@
-<?php?>
+<?php
+require('functions.php');
+?>
 <!DOCTYPE html>
 <html lang="et">
 <head>
@@ -92,7 +94,7 @@
                         <div class="col__4"></div>
                         <div class="col__6"></div>
                         <div class="col__7"></div>
-                        <div class="col__8"><img src="options.png" class="col__8"></div>
+                        <div class="col__8" data-id="0"><img src="options.png"></div>
                     </div>
 
                     <div class="flex-row table-row font-size-14">
@@ -102,7 +104,7 @@
                         <div class="col__4">1999</div>
                         <div class="col__6">20.05.2020</div>
                         <div class="col__7">45 / 900</div>
-                        <div class="col__8"><img src="options.png" class="col__8"></div>
+                        <div class="col__8"><img src="options.png"></div>
                     </div>
                 </div>
 

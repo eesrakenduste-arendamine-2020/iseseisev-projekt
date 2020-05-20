@@ -84,6 +84,7 @@ $(document).ready(function() {
 
 // FE functions
 function createNewListItem() {
+    // clone
     let newCopy = $( '.book-copy' ).clone(true, true).removeClass('book-copy').hide().prependTo( '.js-wrap' ).slideDown("fast");
     // values
     let title = $('[name="title"]').val();
@@ -91,7 +92,7 @@ function createNewListItem() {
     let year = defaultToZero($('[name="year"]').val());
     let pages_total = defaultToZero($('[name="pages_total"]').val());
     let pages_finished = defaultToZero($('[name="pages_finished"]').val());
-    let rating =  defaultToZero($('[name="rating"]').val());
+    let rating = defaultToZero($('[name="rating"]').val());
 
     $(newCopy).children('.col__1').text(title);
     $(newCopy).children('.col__2').text(author);
@@ -101,6 +102,7 @@ function createNewListItem() {
     $(newCopy).children('.col__7').text(pages_finished + " / " + pages_total);
 
     cleanModalFields();
+    addNewToFile(title, author, year, pages_total, pages_finished, rating, $(newCopy));
 }
 
 function defaultToZero(value) {
@@ -114,7 +116,27 @@ function defaultToZero(value) {
 
 function cleanModalFields(){
     $('.inputBox > input').val('');
+
 }
 
 
 // database functions
+function addNewToFile(title, author, year, pages_total, pages_finished, rating, bookObject) {
+        let fileData = {
+        'title': title,
+        'author': author, 
+        'year': year,
+        'pages_total': pages_total,
+        'pages_finished': pages_finished,
+        'rating': rating
+    }
+
+    let url = 'add.php';
+    $.ajax({
+        type: 'POST',
+        url: url,
+        data: fileData
+    }).done(function(response) {
+        $(bookObject).children('.col__8').attr('data-id', response);
+    });
+}
