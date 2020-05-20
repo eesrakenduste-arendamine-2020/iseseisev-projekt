@@ -1,3 +1,15 @@
+Nimi: Kosmoselaskur
+Autor: Robin Kadakas
+Funktisonaalsus: Kosmoses olev laev laseb ründavaid tulnukaid. Tulnukatel ei tohi lasta liiga lähedale jõuda muidu mäng saab läbi ja peab uuesti alustama. Iga koletise eest saab korjata punkte niikaua kuni jaksad.
+
+Pildid on üles laetud aga siia ei lase.
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------
 # iseseisev-projekt
 
 Tähtaeg - 1 päev enne esitlust. Esitluse kuupäevadeks: 1 nädal peale ÕISis valitud arvestuse kuupäeva (v.a arvatud järelarvestus, mis toimub õigel kuupäeval) - kindlasti tuleb arvestusele registreerida. Projektide esitlemine toimub:
