@@ -10,4 +10,4 @@ kaotatakse ära. Mäng on kaotatud kui tulnukad jõuavad ekraani alumisse ossa.
 Inspiratsiooniks vaadati youtube videot: https://www.youtube.com/watch?v=XmqAPQsc1n4
 Kuigi sealt koodi ei kopeeritud.
 
-
+![mängu pilt](pilt.png)
