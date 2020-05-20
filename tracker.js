@@ -33,7 +33,9 @@ let getConfig = function () {
 //movie leht
 function movieSection(movies){
     return movies.map((movie) => {
-        return `<img id="img" src=${image_url + movie.poster_path} data-movie-id=${movie.id}/>`;
+        if(movie.poster_path){
+            return `<img src=${image_url + movie.poster_path} data-movie-id=${movie.id}/>`;
+        }
     })
 }
 
@@ -113,23 +115,6 @@ function getPopularTVshows(){
 
 getPopularTVshows();
 
-//search 
-// search.onclick = function(){
-//     let inputValue = input.value;
-//     let url = "".concat(baseURL, "search/movie?api_key=", APIKEY, '&language=en-US&query=', inputValue);
-//     fetch(url)
-//     .then((result) =>{
-//         return result.json();
-//     })
-//     .then((data) =>{
-//         const searchResults = data.results;
-//         const searchBlock = createMovies(searchResults);
-//         document.getElementById("search-results").appendChild(searchBlock); 
-//     })
-
-//     input.value='';
-
-// }
 
 $("button").click(function() {
     document.getElementById("search-results").innerHTML='';
@@ -192,6 +177,8 @@ function selectContent(){
         $('#tv-shows').hide();
         $('#my-list').hide();
         $('#search').show();
+        $('#search-results').show();
+        document.getElementById("search-results").innerHTML=''; 
     } else if($('[data-menu-my-list]').hasClass('active')){ 
         $('#my-list').show();
         $('#movies').hide();

@@ -4,7 +4,7 @@
 
 body{
     margin: 0;
-    /*background-color: rgb(27, 25, 25);*/
+    background-color: rgb(27, 25, 25);
     
 }
 
@@ -111,4 +111,8 @@ img{
 img:hover{
     cursor: pointer;
     transform: scale(1.1);
+}
+
+#search-results{
+    margin-top: 20px;
 }
