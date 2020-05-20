@@ -8,6 +8,8 @@ let baseURL = 'https://api.themoviedb.org/3/';
 const image_url = "https://image.tmdb.org/t/p/w185";
 let configData = null;
 let baseImageURL = null;
+const search = document.querySelector("#search-button");
+const input = document.querySelector("#search-input");
 
 let getConfig = function () {
     let url = "".concat(baseURL, 'configuration?api_key=', APIKEY); 
