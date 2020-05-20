@@ -1,0 +1,57 @@
+body{
+  font-family: 'VT323', monospace;
+}
+
+
+canvas {
+  position: absolute;
+  right: 20%;
+  top: 10%;
+  border: solid;
+  border-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  padding: 10px;
+  font-weight: bold;
+  border: none;
+  font-family: 'VT323', monospace;
+}
+
+div {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+}
+
+#counter {
+  font-size: larger;
+  text-align: center;
+  font-family: 'VT323', monospace;
+}
+
+#inputDiv {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 10%;
+  text-align: center;
+  font-size: 18px;
+  margin-left: 840px;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+#playerName,
+#saveButton,
+#restart {
+  margin-bottom: 5px;
+  /*border: 2px solid gray;*/
+  background-color: #404040;
+  font-size: xx-large;
+
+}
