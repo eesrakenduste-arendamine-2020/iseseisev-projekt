@@ -57,15 +57,14 @@ nav{
 }
 
 #search{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
 }
 
 #search-input, #search-button{
     padding: 10px;
     margin: 2px;
+    margin-top: 2%;
     border-radius: 5px;
     font-size: 20px;
     color: rgb(83, 78, 78);

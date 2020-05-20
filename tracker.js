@@ -111,6 +111,22 @@ function getPopularTVshows(){
 
 getPopularTVshows();
 
+//search 
+search.onclick = function(){
+    const value = input.value;
+    let url = "".concat(baseURL, "search/movie?api_key=", APIKEY, '&language=en-US&query=', value);
+    fetch(url)
+    .then((result) =>{
+        return result.json();
+    })
+    .then((data) =>{
+        const searchResults = data.results;
+        const searchBlock = createMovies(searchResults);
+        document.getElementById("search-results").appendChild(searchBlock); 
+    })
+
+}
+
 //klasside muutus
 $('.menu-item').click(function(){
     $('.menu-item').removeClass('active');
