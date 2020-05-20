@@ -97,6 +97,7 @@ body {
     font-family: "Inter", sans-serif;
     display: flex;
     height: 100vh;
+    overflow-y: hidden;
 }
 
 .menu {
@@ -106,6 +107,8 @@ body {
     align-items: center;
     height: 100vh;
     width: 100vw;
+    transition: transform ease 0.75s;
+
 }
 
 .game {
@@ -121,6 +124,7 @@ body {
     height: calc(var(--card-size) + 2 * var(--card-padding));
     width: calc(var(--card-size) + 2 * var(--card-padding));
     margin: var(--card-margin);
+    transition: transform ease 0.75s;
 }
 
 .card {
@@ -171,4 +175,8 @@ img.emoji {
 
 button {
     background: none;
+}
+
+.falling{
+    transform: translateY(150vh);
 }

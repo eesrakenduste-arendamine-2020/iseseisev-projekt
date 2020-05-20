@@ -256,6 +256,7 @@ function gameEventHandler(deck, cardElement, bodyClone) {
 
             // Kas mäng on läbi?
             if (!states.hidden.length) {
+                deck.locked = true;
                 gameVictoryHandler(bodyClone);
             }
         } else {
@@ -278,10 +279,27 @@ function gameEventHandler(deck, cardElement, bodyClone) {
  * Teavitab mängijat võidust
  * @param {HTMLElement} bodyClone
  */
-function gameVictoryHandler(bodyClone) {
+async function gameVictoryHandler(bodyClone) {
+    const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+    const cardContainers = document.getElementsByClassName('card-container');
+    const array = Array.from(cardContainers);
+    array.reverse();
+
+    await sleep(300);
+    for (const item of array) {
+        item.classList.add('falling');
+        await sleep(100);
+    }
+    bodyClone.firstElementChild.classList.add('falling');
+
+    await sleep(500);
+
 
     // Taasloob menüü
     document.body.replaceWith(bodyClone);
+    await sleep(750);
+    bodyClone.firstElementChild.classList.remove('falling');
     setupMenuEventListeners();
 }
 
