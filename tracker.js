@@ -132,18 +132,19 @@ getPopularTVshows();
 // }
 
 $("button").click(function() {
+    document.getElementById("search-results").innerHTML='';
     if(this.id=="movie-search"){
         let inputValue = input.value;
-    let url = "".concat(baseURL, "search/movie?api_key=", APIKEY, '&language=en-US&query=', inputValue);
-    fetch(url)
-    .then((result) =>{
-        return result.json();
-    })
-    .then((data) =>{
-        const searchResults = data.results;
-        const searchBlock = createMovies(searchResults);
-        document.getElementById("search-results").appendChild(searchBlock); 
-    })
+        let url = "".concat(baseURL, "search/movie?api_key=", APIKEY, '&language=en-US&query=', inputValue);
+        fetch(url)
+        .then((result) =>{
+            return result.json();
+        })
+        .then((data) =>{
+            const searchResults = data.results;
+            const searchBlock = createMovies(searchResults);
+            document.getElementById("search-results").appendChild(searchBlock); 
+        })
 
     }else if(this.id=="tv-show-search"){
         let inputValue = input.value;
