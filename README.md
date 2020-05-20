@@ -6,6 +6,8 @@ Autorid: Raimond Laatspera, Taavi Vestel
 
 Rakendus on meelelahutusliku eesmärgiga loodud mäng, kus mängija on pall ning ta peab vältima ruute. Ajapikku muutub ruutude kiirus suuremaks. Lisaks on ka skoor märgitud ning salvestatakse ka parim skoor arvutisse. Mängimise ajal mängib samuti ka muusika ning, kui vastu kasti minnakse, siis käib ka heliefekt. Samuti muutub ka tasutavärv, mida rohkem edasi minnakse.
 
+Taavi Vestel tegeles HTML-iga ja CSS-iga ning koos Raimond Laatsperaga sai tehtud JavaScripti.
+
 Pilt rakendusest:
 https://www.linkpicture.com/view.php?img=LPic5ec587cb21085603877594
 
