@@ -17,9 +17,9 @@ Töö võib teha teha 1-4 liikmelise meeskonnana. Punkte jaotatakse vastavalt se
 **NB! Kui meeskonnas on rohkem kui üks liige, siis peab githubis selgelt välja tulema, kes millist osa tegi, et oleks võimalik hinnata iga meeskonnaliikme individuaalset panust.**
 
 README.md fail sisaldab:
-1. suurelt rakenduse nime;
-1. autorite nimesid;
-1. rakenduse funktsionaalsuse kirjeldust;
+1. 2D BRICKBREAKER
+1. Tauri Miilits, Karl-Markus Pihlakas
+1. Tegemist on Breakout stiilis 2D mänguga, kus mängijal tuleb palliga purustada kõik tellised. Pall muutub mängu vältel kiiremaks ning iga leveli läbides tekib uus rida telliseid. Level läbitakse täpsemalt kui kõik tellised antud levelil on purustatud. Maksimaalselt on kolm levelit, kolme leveli läbides saab kasutaja teate "YOU WIN". Mängijal on kolm elu ning elude lõppedes on mäng läbi ning kasutaja saab teate "Game Over", mõlemal juhul on mängijal võimalik mängu uuesti alustada.  
 1. ekraanitõmmist rakendusest.
 
 Rakenduse puhul peavad olema täidetud vähemalt järgmised nõuded:

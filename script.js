@@ -121,8 +121,8 @@ function paddleImpactBall() {
 }
 
 const brick = {
-    row : 2,
-    column : 8,
+    row : 1,
+    column : 2,
     width : 55,
     height: 20,
     offsetLeft: 17,
