@@ -29,7 +29,7 @@ Funktsioon, mis näitab järgmist klotsi väikeses kastis
 
 Funktsioon, mis lisab skoori siis kui terve rida saab klotse täis
 
-Funktsioon, mis lõpetab mängu, kui ülevalt alla on veer klotse täis
+Funktsioon, mis lõpetab mängu, kui ülevalt alla on veerg klotse täis
 
 Kasutasime õpetust : https://www.youtube.com/watch?v=rAUn1Lom6dw&fbclid=IwAR0De-XjDM_MxFD_NlxYhV8RUcxZrN5MS2lbn7HeR-xNH_1RJWzvSrHMqrk
 
