@@ -67,7 +67,7 @@ input[type=range]::-moz-range-thumb {
 
     border-radius: 4px;
     align-content: center;
-    transition: box-shadow ease .2
+    transition: box-shadow ease .2s;
 }
 
 #play:hover {
