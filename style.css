@@ -39,3 +39,12 @@
     color: darkslateblue;
     background-color: white;
 }
+
+#wingame{
+    width: 500px;
+    height: 550px;
+    position: absolute;
+    top: 30px;
+    left : 60px;
+    display: none;
+}

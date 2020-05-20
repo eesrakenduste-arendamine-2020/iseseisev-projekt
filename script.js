@@ -6,12 +6,12 @@ pilt.src = "pilt.jpg";
 const levelPic = new Image();
 levelPic.src = "level.png";
 const heartPic = new Image();
-heartPic.src = "heart.jpg";
+heartPic.src = "8bitheart.png";
 const scorePic = new Image();
-scorePic.src = "score.png";
+scorePic.src = "untitled.png";
 ctx.lineWidth = 3;
 const paddleW = 100;
-const paddleH = 20;
+const paddleH = 10;
 const paddleBottomM = 50;
 //const paddleLength = 5;
 const ballRadius = 10;
@@ -22,13 +22,17 @@ let level = 1;
 let life = 3;
 let max_level = 3;
 let game_over = false;
+let gameover = document.getElementById("gameover");
+let losegame = document.getElementById("losegame");
+let restart_game = document.getElementById("restart_game");
+let winGame = document.getElementById("wingame");
 
 const paddle = {
     x : canvas.width/2 - paddleW/2,
     y : canvas.height - paddleBottomM - paddleH,
     width : paddleW,
     height : paddleH,
-    length : 5 //paddle kiirus
+    paddleSpeed : 5
 };
 
 const ball = {
@@ -81,9 +85,9 @@ document.addEventListener("keyup", function (e) {
 
 function movePaddle() {
     if(rightArrow && paddle.x + paddle.width < canvas.width){
-        paddle.x += paddle.length;
+        paddle.x += paddle.paddleSpeed;
     }else if(leftArrow && paddle.x > 0){
-        paddle.x -= paddle.length;
+        paddle.x -= paddle.paddleSpeed;
     }
 }
 
@@ -118,8 +122,8 @@ function paddleImpactBall() {
 }
 
 const brick = {
-    row : 3,
-    column : 8,
+    row : 1,
+    column : 1,
     width : 55,
     height: 20,
     offsetLeft: 17,
@@ -205,6 +209,28 @@ function gameOver() {
     }
 }
 
+function levelUp() {
+    let isLevelDone = true;
+
+    for (let r = 0; r < brick.row; r++) {
+        for (let c = 0; c < brick.column; c++) {
+            isLevelDone = isLevelDone && ! bricks[r][c].status;
+        }
+    }
+    if(isLevelDone){
+        if(level >= max_level){
+            winGameEnd();
+            game_over = true;
+            return
+        }
+        brick.row++;
+        createBricks();
+        ball.speed += 0.5;
+        level++;
+    }
+}
+
+
 function update() {
     movePaddle();
     moveBall();
@@ -212,6 +238,7 @@ function update() {
     paddleImpactBall();
     breakBricks();
     gameOver();
+    levelUp();
 }
 
 function loop() {
@@ -224,10 +251,6 @@ function loop() {
 }
 loop();
 
-let gameover = document.getElementById("gameover");
-let losegame = document.getElementById("losegame");
-let restart_game = document.getElementById("restart_game");
-
 restart_game.addEventListener("click", function(){
     location.reload();
 })
@@ -235,4 +258,9 @@ restart_game.addEventListener("click", function(){
 function loseGame() {
     $('#gameover').css('display', 'block');
     $('#losegame').css('display', 'block');
+}
+
+function winGameEnd() {
+    $('#gameover').css('display', 'block');
+    $('#wingame').css('display', 'block');
 }
