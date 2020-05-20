@@ -279,3 +279,14 @@ body {
     padding-left: 10px;
     color:#5e5e5e;
 }
+
+
+/* validation messages */
+.error-title,
+.error-author,
+.error-year,
+.error-pages_total,
+.error-pages_finished,
+.error-rating {
+    color: red;
+}
