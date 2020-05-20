@@ -114,8 +114,26 @@ function getPopularTVshows(){
 getPopularTVshows();
 
 //search 
-search.onclick = function(){
-    let inputValue = input.value;
+// search.onclick = function(){
+//     let inputValue = input.value;
+//     let url = "".concat(baseURL, "search/movie?api_key=", APIKEY, '&language=en-US&query=', inputValue);
+//     fetch(url)
+//     .then((result) =>{
+//         return result.json();
+//     })
+//     .then((data) =>{
+//         const searchResults = data.results;
+//         const searchBlock = createMovies(searchResults);
+//         document.getElementById("search-results").appendChild(searchBlock); 
+//     })
+
+//     input.value='';
+
+// }
+
+$("button").click(function() {
+    if(this.id=="movie-search"){
+        let inputValue = input.value;
     let url = "".concat(baseURL, "search/movie?api_key=", APIKEY, '&language=en-US&query=', inputValue);
     fetch(url)
     .then((result) =>{
@@ -127,9 +145,21 @@ search.onclick = function(){
         document.getElementById("search-results").appendChild(searchBlock); 
     })
 
-    input.value='';
+    }else if(this.id=="tv-show-search"){
+        let inputValue = input.value;
+        let url = "".concat(baseURL, "search/tv?api_key=", APIKEY, '&language=en-US&query=', inputValue);
+        fetch(url)
+        .then((result) =>{
+            return result.json();
+        })
+        .then((data) =>{
+            const searchResults = data.results;
+            const searchBlock = createMovies(searchResults);
+            document.getElementById("search-results").appendChild(searchBlock); 
+        })
+    }
+});
 
-}
 
 //klasside muutus
 $('.menu-item').click(function(){

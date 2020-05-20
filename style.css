@@ -61,7 +61,7 @@ nav{
     justify-content: center;
 }
 
-#search-input, #search-button{
+#search-input, #movie-search, #tv-show-search{
     padding: 10px;
     margin: 2px;
     margin-top: 2%;
@@ -70,7 +70,7 @@ nav{
     color: rgb(83, 78, 78);
 }
 
-#search-button{
+#movie-search, #tv-show-search{
     background-color: rgb(183, 190, 194);
 }
 
@@ -78,7 +78,7 @@ nav{
     width: 400px;
 }
 
-#search-button:hover{
+#movie-search:hover, #tv-show-search:hover{
     cursor: pointer;
     color: black;
 }
