@@ -12,7 +12,6 @@
     crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
@@ -27,7 +26,7 @@
         <div class="flex-row header-row"> 
 
             <div class="padding-left-10"><a class="link" href="index.php">Raamatukogu</a></div>
-            <div class="padding-left-10 btn-add-book">LISA RAAMAT</div>
+            <div class="padding-left-10 btn-add-book js-add-new">LISA RAAMAT</div>
 
             <div class="aside"></div>
 
@@ -131,6 +130,65 @@
 </div>
 
 <div class="clearfix-50"></div>
+
+
+
+<div class="addNewBookModal">
+    <div class="addNewBookModal__content">
+
+        <div class="dialogBox">
+            <h1 class="dialogBox__title">Lisa uus raamat</h1>
+            <div class="dialogBox__titlePadding"></div>
+            <div class="dialogBox__closeIcon">
+                <div class="dialogBox__close"></div>
+            </div>
+
+            <div class="dialogBox__fields">
+                <form name="book_form" action="" method="POST" class="dialogBox__form">
+
+
+                    <div class="inputBox">
+                        <input name="title" placeholder="Pealkiri" class="inputBox__input" type="text">
+                    </div>
+
+                    <div class="inputBox">
+                        <input name="author" placeholder="Autor" class="inputBox__input" type="text">
+                    </div>
+
+                    <div class="inputBox">
+                        <input name="year" placeholder="Aasta" class="inputBox__input" type="text">
+                    </div>
+
+
+                    <div class="inputBox">
+                        <input name="pages_total" placeholder="Lehekülgede arv kokku" class="inputBox__input" type="text">
+                    </div>
+
+                    <div class="inputBox">
+                        <input name="pages_finished" placeholder="Lehekülgede arv loetud" class="inputBox__input" type="text">
+                    </div>
+
+
+                    <div class="inputBox">
+                        <input name="rating" placeholder="Hinnang (1-10)" class="inputBox__input" type="text">
+                    </div>
+
+
+
+                    <button class="submitBox" type="submit">
+                        <div class="submitBox__content">Lisa</div>
+                    </button>
+
+                </form><!--.dialogBox__form-->
+
+            </div><!--.dialogBox__fields-->
+        </div><!--.dialogBox-->
+
+    </div><!--.addNewBookModal__content-->
+</div><!--.addNewBookModal-->
+
+
+
 
 <script src="script.js"></script>
 </body>
