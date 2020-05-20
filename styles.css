@@ -107,8 +107,7 @@ body {
     align-items: center;
     height: 100vh;
     width: 100vw;
-    transition: transform ease 0.75s;
-
+    transition: transform ease .75s;
 }
 
 .game {
@@ -118,13 +117,14 @@ body {
     width: 100vw;
     place-items: center;
     place-content: space-evenly;
+    transition: transform ease .75s;
 }
 
 .card-container {
     height: calc(var(--card-size) + 2 * var(--card-padding));
     width: calc(var(--card-size) + 2 * var(--card-padding));
     margin: var(--card-margin);
-    transition: transform ease 0.75s;
+    transition: transform ease .75s;
 }
 
 .card {
@@ -177,6 +177,6 @@ button {
     background: none;
 }
 
-.falling{
+.falling {
     transform: translateY(150vh);
 }

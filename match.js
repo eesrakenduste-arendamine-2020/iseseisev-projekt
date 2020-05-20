@@ -194,15 +194,13 @@ function setupMenuEventListeners() {
     };
 
     // Play nupu vajutamisel alustame mänguga ja tühjendame <body> sisu
-   
-   
     play.onclick = () => {
         const menu = document.getElementsByClassName('menu')[0];
         menu.classList.add('falling');
         setTimeout(() => {
             startGame(slider.value / 2, clearBody());
-        }, 750);    
-    }
+        }, 750);
+    };
 }
 
 setupMenuEventListeners();
@@ -364,10 +362,9 @@ function startGame(pairs, bodyClone) {
 
     const fragment = buildDeckInterface(deck);
     document.body.appendChild(fragment);
+    const game = document.getElementsByClassName('game')[0];
     setTimeout(() => {
-        const game = document.getElementsByClassName('game')[0];
         game.classList.remove('falling');
         setupGameEventListeners(deck, bodyClone);
-
     }, 750);
 }
