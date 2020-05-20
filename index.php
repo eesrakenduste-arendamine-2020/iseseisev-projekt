@@ -80,8 +80,22 @@
                     <div class="col__5">HIND</div>
                     <div class="col__6">LISATUD</div>
                     <div class="col__7">PROGRESS</div>
-                    <div class="col__8">dot</div>
+                    <div class="col__8"></div>
                 </div>
+
+                <div class="flex-row table-row font-size-14">
+                    <div class="col__1">Harry potter vms</div>
+                    <div class="col__2">J.K Rowling</div>
+                    <div class="col__3">900</div>
+                    <div class="col__4">1999</div>
+                    <div class="col__5">20 €</div>
+                    <div class="col__6">20.05.2020</div>
+                    <div class="col__7">45 / 900</div>
+                    <div class="col__8"><img src="options.png" class="col__8"></div>
+                </div>
+
+
+
 
         </div><!--.flex-row.basis-760-->
 
@@ -95,7 +109,14 @@
                 <div class="col__1">PEALKIRI</div>
                 <div class="col__2">VIIMATI LOETUD</div>
                 <div class="col__3">PROGRESS</div>
-                <div class="col__8">dot</div>
+                <div class="col__8"></div>
+            </div>
+
+            <div class="flex-row table-row font-size-14">
+                <div class="col__1">Harry potter vms</div>
+                <div class="col__2">21.05.2020</div>
+                <div class="col__3">45 / 900</div>
+                <div class="col__8"><img src="options.png" class="col__8"></div>
             </div>
 
         </div><!--.flex-row-->
@@ -109,7 +130,7 @@
     <div class="aside"></div>
 </div>
 
-
+<div class="clearfix-50"></div>
 
 <script src="script.js"></script>
 </body>
