@@ -8,19 +8,6 @@ body{
     
 }
 
-.content-display{
-    display: block;
-}
-
-
-.content{
-    border: 2px solid red;
-    border-radius: 5%;
-    height: 50px;
-    display: none;
-}
-
-
 nav{
     height: 60px;
     width: 100%;
@@ -103,9 +90,10 @@ nav{
     justify-content: center;
 }
 
-img{
+div img{
     padding: 1%;
     margin-left: 5.5%;
+    transition: 200ms all;
 }
 
 img:hover{
@@ -113,6 +101,39 @@ img:hover{
     transform: scale(1.1);
 }
 
+.content{
+    border: 2px solid;
+    border-color: rgb(83, 78, 78);
+    border-radius: 10px;
+    height: 50px;
+    display: none;
+}
+
+.content-display{
+    display: block;
+    color: white;
+    width: 120px;
+    height: 50px;
+    justify-items: center;
+    margin-bottom: 20px;
+}
+
 #search-results{
     margin-top: 20px;
+}
+
+#content-close{
+    cursor: pointer;
+    width: 10px;
+    margin-left: 10px;
+}
+
+.listButton{
+    background-color: rgb(183, 190, 194);
+    font-size: 17px;
+    padding: 9px;
+    float: right;
+    border-radius: 5px;
+    margin-top: 4px;
+    margin-right: 4px;
 }

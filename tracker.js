@@ -20,15 +20,11 @@ let getConfig = function () {
     .then((data)=>{
         baseImageURL = data.images.secure_base_url;
         configData = data.images;
-        console.log('config:', data);
-        console.log('config fetched');
-        //runSearch('jaws')
     })
     .catch(function(err){
         alert(err);
     });
 }
-
 
 //movie leht
 function createSection(elements){
@@ -44,11 +40,13 @@ function createElements(elements){
     element.setAttribute("class", "movie");
 
     const template = `
-        <section class="section">
+        <div class="section">
             ${createSection(elements)};
-        </section>
-        <div class="content content-display">
-            <p id="content-close">X</p>
+            
+        </div>
+        <div class="content">
+            <button class="listButton">+ My list</button>
+            <p id="content-close">X</p>            
         </div>
     `;  
 
@@ -124,18 +122,20 @@ $("button").click(function() {
 
 //my listi lisamine, <button id="addToList">+My list</button>
 document.onclick = function(event){
-    //console.log(event);
-    const target = event.target;
-    console.log(target);
-    if(target === 'img'){
-        const movieID = event.target.dataset.movieID;
-        const section = event.target.parentElement.parentElement;
+    const imgTagName = event.target.tagName;
+    if(imgTagName === 'IMG'){
+        const section = event.target.parentElement;
         const content = section.nextElementSibling;
-        content.classList.add('myListButton');
-        var button = content.createElement('BUTTON')
-        button.innerHTML = "+My List";
-        //getVideosByMovieId(movieId, content);
+        content.classList.add('content-display');
     }
+
+    const closeButton = event.target.id;
+    if(closeButton === 'content-close'){
+        const content = event.target.parentElement;
+        content.classList.remove('content-display');
+    }
+
+    const movieID = event.target.dataset.movieId;
 }
 
 
