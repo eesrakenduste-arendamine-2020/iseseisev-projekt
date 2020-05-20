@@ -47,10 +47,10 @@ function createMovies(movies){
         <section class="section">
             ${movieSection(movies)};
         </section>
-        <div class="content">
-            <p id="content-close">X</p>
+        <div class="buttonToList">
+            <button id="addToList">+My list</button>
         </div>
-    `; 
+    `;  
 
     element.innerHTML = template;
     return element;
@@ -91,8 +91,8 @@ function createShows(tvshows){
         <section class="section">
             ${showSection(tvshows)}; 
         </section>
-        <div class="content">
-            <p id="content-close">X</p>
+        <div class="buttonToList">
+            <button id="addToList">+My list</button>
         </div>
     `; 
 
@@ -162,6 +162,9 @@ $("button").click(function() {
         })
     }
 });
+
+//my listi lisamine
+
 
 
 //klasside muutus
