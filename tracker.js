@@ -115,8 +115,8 @@ getPopularTVshows();
 
 //search 
 search.onclick = function(){
-    const value = input.value;
-    let url = "".concat(baseURL, "search/movie?api_key=", APIKEY, '&language=en-US&query=', value);
+    let inputValue = input.value;
+    let url = "".concat(baseURL, "search/movie?api_key=", APIKEY, '&language=en-US&query=', inputValue);
     fetch(url)
     .then((result) =>{
         return result.json();
@@ -126,6 +126,8 @@ search.onclick = function(){
         const searchBlock = createMovies(searchResults);
         document.getElementById("search-results").appendChild(searchBlock); 
     })
+
+    input.value='';
 
 }
 
