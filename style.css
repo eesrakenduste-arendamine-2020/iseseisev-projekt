@@ -42,7 +42,7 @@ p {
     align-items: center;
     justify-content: space-between;
     border: 1px solid lightgray;
-    background-color: azure;
+    background-color: #05afaf;
     margin: 5px;
     padding: 1%;
     border-radius: 10px;
@@ -65,7 +65,7 @@ p {
     font-size: 27px;
 }
 
-#books {
+.header-text {
     text-align: center;
     font-weight: 700;
 }
