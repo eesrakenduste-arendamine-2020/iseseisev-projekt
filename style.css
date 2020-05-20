@@ -76,3 +76,25 @@ input[type="button"]{
     padding: 0.5em 1em;
     cursor: pointer;
 }
+
+.done-button{
+    color: green;
+    width: 10%;
+    cursor: pointer;
+}
+
+.done-state {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid red;
+    margin: 5px;
+    padding: 1%;
+    border-radius: 10px;
+    background-color: lightgreen;
+    color: black;
+    font-size: medium;
+    font-style: italic;
+    font-size: medium;
+    width: 30%;
+} 

@@ -3,6 +3,7 @@ class Entry {
         this.title = title;
         this.author = author;
         this.zanr = zanr;
+        this.done = false;
     }
 }
 
@@ -39,6 +40,9 @@ class Book{
         this.entries.forEach((entryValue, entryIndex)=>{
             const li = document.createElement('li');
             const div = document.createElement('div');
+            const doneButton = document.createElement('div');
+            doneButton.classList.add('done-button');
+            const doneIcon = document.createTextNode('✓');
             const removeButton = document.createElement('div');
             removeButton.classList.add('delete-button');
             const removeIcon = document.createTextNode('X');
@@ -50,14 +54,27 @@ class Book{
                 this.render();
             });
 
+            if(entryValue.done){
+                li.classList.add('done-state');
+            }
+
+            doneButton.addEventListener('click', ()=>{
+                this.entries[entryIndex].done = true;
+                this.saveLocal();
+                location.reload();
+            });
 
 
             div.innerHTML = `${entryValue.title} <br> ${entryValue.author} <br> ${entryValue.zanr}`;
-
+            
+            doneButton.appendChild(doneIcon);
             removeButton.appendChild(removeIcon);
+            li.appendChild(doneButton);
             li.appendChild(div);
             li.appendChild(removeButton);
             ul.appendChild(li);
+            
+
         });
 
         document.body.appendChild(ul);
