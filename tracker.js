@@ -33,7 +33,9 @@ let getConfig = function () {
 //movie leht
 function movieSection(movies){
     return movies.map((movie) => {
-        return `<img src=${image_url + movie.poster_path} data-movie-id=${movie.id}/>`;
+        if(movie.poster_path){
+            return `<img src=${image_url + movie.poster_path} data-movie-id=${movie.id}/>`;
+        }
     })
 }
 
@@ -176,6 +178,8 @@ function selectContent(){
         $('#tv-shows').hide();
         $('#my-list').hide();
         $('#search').show();
+        $('#search-results').show();
+        document.getElementById("search-results").innerHTML=''; 
     } else if($('[data-menu-my-list]').hasClass('active')){ 
         $('#my-list').show();
         $('#movies').hide();
