@@ -219,7 +219,7 @@ function setupGameEventListeners(deck, bodyClone) {
     document.body.onclick = event => {
         const path = event.composedPath();
         // Kuna me teame et path'i kaks viimast elementi on mõtetud ja nende className võib tekitada probleeme
-        const card = getElementInPath(path.slice(0, path.length - 2), 'card');
+        const card = getElementInPath(path.slice(0, path.length - 2), 'card-container');
 
         // Kui elementi ei ole path'is siis selle väärtus on undefined
         // Või me lukustasime decki muutmise ajutiselt
@@ -247,8 +247,6 @@ function gameEventHandler(deck, cardElement, bodyClone) {
     const states = deck.states;
 
     if (states.temporarilyVisible.length > 1) {
-        console.log(states.hidden);
-
 
         // Kontrollime kas elemendid klapivad emojide poolest
         // Eeldame et on ainult kaks elementi
@@ -262,6 +260,7 @@ function gameEventHandler(deck, cardElement, bodyClone) {
             if (!states.hidden.length) {
                 // Taasloob menüü
                 document.body.replaceWith(bodyClone);
+                // TODO: teavita kasutajat võidust
                 setupMenuEventListeners();
             }
         } else {
@@ -275,7 +274,7 @@ function gameEventHandler(deck, cardElement, bodyClone) {
                     game.classList.remove('unhoverable');
                 }
                 deck.locked = false;
-            }, 1333);
+            }, 1167);
         }
     }
 }
@@ -291,16 +290,18 @@ const buildDeckInterface = deck => {
 
     for (const card of deck.cards) {
         const cardContainer = document.createElement('div');
-        cardContainer.classList.add('card');
+        cardContainer.classList.add('card-container');
         cardContainer.setAttribute('data-id', card.id);
+
+        const cardElement = document.createElement('div');
+        cardElement.classList.add('card');
 
         const front = document.createElement('div');
         front.classList.add('front');
-        cardContainer.appendChild(front);
+        cardElement.appendChild(front);
 
         const back = document.createElement('div');
         back.classList.add('back');
-
         // Muudab emoji twemojiks
         // eslint-disable-next-line no-undef
         const emoji = twemoji.parse(card.face, {
@@ -308,7 +309,9 @@ const buildDeckInterface = deck => {
             ext: '.svg'
         });
         back.innerHTML = emoji;
-        cardContainer.appendChild(back);
+        cardElement.appendChild(back);
+
+        cardContainer.appendChild(cardElement);
 
         // Loome seose elemendi ja temaga seotud kaardi vahel
         card.elementReference = cardContainer;

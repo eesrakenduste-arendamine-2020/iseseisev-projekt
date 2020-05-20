@@ -6,6 +6,9 @@
     --slider-track-border-radius: 2em;
     --slider-thumb-border-radius: 8em;
     --slider-thumb-size: 4em;
+    --card-size: 8vmin;
+    --card-padding: 1vmin;
+    --card-margin: .75vmin;
 }
 
 input[type=range] {
@@ -56,12 +59,12 @@ input[type=range]::-moz-range-thumb {
 }
 
 #play {
-    padding: 10px;
+    padding: 1em;
     width: 10em;
     height: 10em;
     border: solid 1px var(--tertiary-color);
     box-shadow: 0 0 4px rgba(0, 0, 0, .5);
-    border-radius: 4px;
+    border-radius: 8px;
     align-content: center;
     transition: box-shadow ease .2s;
 }
@@ -92,6 +95,8 @@ input[type=range]::-moz-range-thumb {
 body {
     margin: 0;
     font-family: "Inter", sans-serif;
+    display: flex;
+    height: 100vh;
 }
 
 .menu {
@@ -100,34 +105,40 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    width: 100vw;
 }
 
 .game {
     display: flex;
     flex-flow: row wrap;
-    height: 100vh;
+    max-height: 100vh;
+    width: 100vw;
     place-items: center;
     place-content: space-evenly;
 }
 
+.card-container {
+    height: calc(var(--card-size) + 2 * var(--card-padding));
+    width: calc(var(--card-size) + 2 * var(--card-padding));
+    margin: var(--card-margin);
+}
+
 .card {
-    display: flex;
-    margin: 0 3vmin;
     position: relative;
     transform-style: flat;
     user-select: none;
 }
 
 img.emoji {
-    height: 2.5em;
-    width: 2.5em;
+    height: var(--card-size);
+    width: var(--card-size);
 }
 
 .front,
 .back {
-    padding: 1.25em;
-    height: 2.5em;
-    width: 2.5em;
+    padding: var(--card-padding);
+    height: var(--card-size);
+    width: var(--card-size);
     border: solid 1px var(--tertiary-color);
     border-radius: 4px;
     transition: box-shadow ease .2s, transform ease .2s;
@@ -142,19 +153,19 @@ img.emoji {
     transform: rotateY(180deg);
 }
 
-:not(.unhoverable) > .card > .front:hover {
+:not(.unhoverable) > .card-container > .card > .front:hover {
     box-shadow: 0 0 16px rgba(0, 0, 0, .3);
 }
 
-:not(.unhoverable) > .card {
+:not(.unhoverable) > .card-container {
     cursor: pointer;
 }
 
-.hidden > .front {
+.hidden > .card > .front {
     transform: rotateY(180deg);
 }
 
-.hidden > .back {
+.hidden > .card > .back {
     transform: rotateY(0deg);
 }
 
