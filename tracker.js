@@ -5,9 +5,10 @@ window.onload = function(){
 
 import{APIKEY} from "../lamp.js"; 
 let baseURL = 'https://api.themoviedb.org/3/';
-const image_url = "https://image.tmdb.org/t/p/w500";
+const image_url = "https://image.tmdb.org/t/p/w185";
 let configData = null;
 let baseImageURL = null;
+
 let getConfig = function () {
     let url = "".concat(baseURL, 'configuration?api_key=', APIKEY); 
     fetch(url)
@@ -75,6 +76,47 @@ let getPopularMovies = function(){
 //var popular_movies;
 getPopularMovies();
 getConfig();
+
+function showSection(tvshows){
+    return tvshows.map((show) => {
+        return `
+            <img src=${image_url + show.poster_path} data-movie-id=${show.id}/>
+        `;
+    })
+}
+
+function createShows(tvshows){
+    const element = document.createElement("div");
+    element.setAttribute("class", "show");
+
+    const template = `
+        <section class="section">
+            ${showSection(tvshows)};
+        </section>
+        <div class="content">
+            <p id="content-close">X</p>
+        </div>
+    `; 
+
+    element.innerHTML = template;
+    return element;
+}
+
+function getPopularTVshows(){
+    let url = "".concat(baseURL, 'tv/popular?api_key=', APIKEY, '&language=en-US&page=1');
+    fetch(url)
+    .then((result)=>{
+        return result.json();
+    })
+    .then((data)=>{
+        const tvshows = data.results;
+        const showBlock = createShows(tvshows);
+        document.getElementById("tv-shows").appendChild(showBlock);
+    })
+}
+
+
+getPopularTVshows();
 $('.menu-item').click(function(){
     $('.menu-item').removeClass('active');
     $(this).addClass('active');
