@@ -194,9 +194,15 @@ function setupMenuEventListeners() {
     };
 
     // Play nupu vajutamisel alustame mänguga ja tühjendame <body> sisu
-    play.onclick = () => setTimeout(() => {
-        startGame(slider.value / 2, clearBody());
-    }, 100);
+   
+   
+    play.onclick = () => {
+        const menu = document.getElementsByClassName('menu')[0];
+        menu.classList.add('falling');
+        setTimeout(() => {
+            startGame(slider.value / 2, clearBody());
+        }, 750);    
+    }
 }
 
 setupMenuEventListeners();
@@ -310,7 +316,7 @@ async function gameVictoryHandler(bodyClone) {
 const buildDeckInterface = deck => {
     const fragment = document.createDocumentFragment();
     const game = document.createElement('div');
-    game.classList.add('game');
+    game.classList.add('game', 'falling');
 
     for (const card of deck.cards) {
         const cardContainer = document.createElement('div');
@@ -358,6 +364,10 @@ function startGame(pairs, bodyClone) {
 
     const fragment = buildDeckInterface(deck);
     document.body.appendChild(fragment);
+    setTimeout(() => {
+        const game = document.getElementsByClassName('game')[0];
+        game.classList.remove('falling');
+        setupGameEventListeners(deck, bodyClone);
 
-    setupGameEventListeners(deck, bodyClone);
+    }, 750);
 }
