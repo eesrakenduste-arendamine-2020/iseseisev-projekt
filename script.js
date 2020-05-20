@@ -82,7 +82,7 @@ $(document).ready(function() {
 
 
 
-// Create new list in FE, trigger ajax
+// FE functions
 function createNewListItem() {
     let newCopy = $( '.book-copy' ).clone(true, true).removeClass('book-copy').hide().prependTo( '.js-wrap' ).slideDown("fast");
     // values
@@ -93,18 +93,14 @@ function createNewListItem() {
     let pages_finished = defaultToZero($('[name="pages_finished"]').val());
     let rating =  defaultToZero($('[name="rating"]').val());
 
-    console.log(pages_finished);
-
-
     $(newCopy).children('.col__1').text(title);
     $(newCopy).children('.col__2').text(author);
     $(newCopy).children('.col__3').text(pages_total);
     $(newCopy).children('.col__4').text(year);
-    $(newCopy).children('.col__5').text("20 €");
     $(newCopy).children('.col__6').text(moment().format('DD.MM.YYYY'));
     $(newCopy).children('.col__7').text(pages_finished + " / " + pages_total);
 
-
+    cleanModalFields();
 }
 
 function defaultToZero(value) {
@@ -113,3 +109,12 @@ function defaultToZero(value) {
     }
     return parseFloat(value);
 }
+
+
+
+function cleanModalFields(){
+    $('.inputBox > input').val('');
+}
+
+
+// database functions

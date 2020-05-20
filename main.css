@@ -114,6 +114,7 @@ body {
 
 .font-size-14 {
     font-size: 14px;
+    color: #000000;
 }
 
 .padding-left-10 {
@@ -132,7 +133,7 @@ body {
 .col__4,
 .col__5,
 .col__6 {
-    flex-basis: 92px;
+    flex-basis: 122.6px;
 }
 
 .col__7 {
@@ -146,7 +147,6 @@ body {
 
 
 /* add new book styles */
-
 .btn-add-book {
     background: white;
     padding: 10px 30px;

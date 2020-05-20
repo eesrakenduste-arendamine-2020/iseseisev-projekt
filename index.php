@@ -78,7 +78,6 @@
                     <div class="col__2">AUTOR</div>
                     <div class="col__3">LEHEKÜLGI</div>
                     <div class="col__4">AASTA</div>
-                    <div class="col__5">HIND</div>
                     <div class="col__6">LISATUD</div>
                     <div class="col__7">PROGRESS</div>
                     <div class="col__8"></div>
@@ -91,7 +90,6 @@
                         <div class="col__2"></div>
                         <div class="col__3"></div>
                         <div class="col__4"></div>
-                        <div class="col__5"></div>
                         <div class="col__6"></div>
                         <div class="col__7"></div>
                         <div class="col__8"><img src="options.png" class="col__8"></div>
@@ -102,7 +100,6 @@
                         <div class="col__2">J.K Rowling</div>
                         <div class="col__3">900</div>
                         <div class="col__4">1999</div>
-                        <div class="col__5">20 €</div>
                         <div class="col__6">20.05.2020</div>
                         <div class="col__7">45 / 900</div>
                         <div class="col__8"><img src="options.png" class="col__8"></div>
@@ -122,14 +119,14 @@
             <div class="flex-row table-row font-size-12">
                 <div class="col__1">PEALKIRI</div>
                 <div class="col__2">VIIMATI LOETUD</div>
-                <div class="col__3">PROGRESS</div>
+                <div class="col__7">PROGRESS</div>
                 <div class="col__8"></div>
             </div>
 
             <div class="flex-row table-row font-size-14">
                 <div class="col__1">Harry potter vms</div>
                 <div class="col__2">21.05.2020</div>
-                <div class="col__3">45 / 900</div>
+                <div class="col__7">45 / 900</div>
                 <div class="col__8"><img src="options.png" class="col__8"></div>
             </div>
 
@@ -185,7 +182,6 @@
                     <div class="inputBox">
                         <input name="pages_finished" placeholder="Lehekülgede arv loetud" class="inputBox__input" type="text">
                     </div>
-
 
                     <div class="error-rating"></div>
                     <div class="inputBox">
