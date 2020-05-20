@@ -1,6 +1,8 @@
 #canvas {
     border: 5px solid steelblue;
     position: absolute;
+    align-content: center;
+
 }
 
 #gameover {

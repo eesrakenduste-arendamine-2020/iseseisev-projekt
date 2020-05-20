@@ -13,7 +13,6 @@ ctx.lineWidth = 3;
 const paddleW = 100;
 const paddleH = 10;
 const paddleBottomM = 50;
-//const paddleLength = 5;
 const ballRadius = 10;
 let leftArrow = false;
 let rightArrow = false;
@@ -122,8 +121,8 @@ function paddleImpactBall() {
 }
 
 const brick = {
-    row : 1,
-    column : 1,
+    row : 2,
+    column : 8,
     width : 55,
     height: 20,
     offsetLeft: 17,
@@ -225,11 +224,13 @@ function levelUp() {
         }
         brick.row++;
         createBricks();
+        reset();
+        paddle.paddleSpeed += 1;
+        paddle.width -= 5;
         ball.speed += 0.5;
         level++;
     }
 }
-
 
 function update() {
     movePaddle();
