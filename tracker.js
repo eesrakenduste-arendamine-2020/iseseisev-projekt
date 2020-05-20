@@ -148,16 +148,19 @@ function selectContent(){
         $('#movies').hide();
         $('#tv-shows').hide();
         $('#search').hide();
+        $('#search-results').hide();
     } else if($('[data-menu-movies]').hasClass('active')){
         $('#my-list').hide();
         $('#movies').show();
         $('#tv-shows').hide();
         $('#search').hide();
+        $('#search-results').hide();
     } else if($('[data-menu-tv-shows]').hasClass('active')){
         $('#my-list').hide();
         $('#movies').hide();
         $('#tv-shows').show();
         $('#search').hide();
+        $('#search-results').hide();
     }
 }
 
