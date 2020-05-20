@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekt</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="javascript-new.js" defer></script>
+</head>
+<body onload="formCheck()">
+    <br><br><br><br><br><br>
+    <form name="bookform" onsubmit="return sendForm(event)" method="post">
+        <label class="booklabel">Raamatu pealkiri:</label><br>
+        <input class="form-control" type="text" id="bookheader" name="bookheader" placeholder="Sisesta raamatu pealkiri"><br>
+        <div class="alert alert-danger" id="bookheaderMistake">
+            <strong>Viga!</strong> Raamatu pealkiri on jäänud sisestamata.
+          </div>
+        <label class="booklabel">Raamatu autor:</label><br>
+        <input class="form-control" type="text" id="bookauthor" name="bookauthor" placeholder="Sisesta raamatu autor"><br>
+        <div class="alert alert-danger" id="bookauthorMistake">
+            <strong>Viga!</strong> Raamatu autor on jäänud sisestamata.
+          </div>
+        <label class="booklabel">Raamatu leheküljed:</label><br>
+        <input class="form-control" type="number" id="bookpages" name="bookpages" placeholder="Sisesta raamatu lehekülgede arv"><br>
+        <div class="alert alert-danger" id="bookpagesMistake">
+          <strong>Viga!</strong> Lehekülgede arv on jäänud sisestamata.
+        </div>
+        <label class="booklabel">Raamatu kirjastus:</label><br>
+        <input class="form-control" type="text" id="bookcompany" name="bookcompany" placeholder="Sisesta raamatu kirjastus"><br>
+        <div class="alert alert-danger" id="bookcompanyMistake">
+          <strong>Viga!</strong> Kirjastus on jäänud sisestamata.
+        </div>
+        <br>
+        <br>
+        <div class="text-center">
+            <input class="btn btn-primary" type="submit" value="Sisesta">
+        </div>
+      </form> 
+     
+</body>
+</html>

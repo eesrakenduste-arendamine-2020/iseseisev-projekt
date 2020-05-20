@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="javascript-review.js" defer></script>
+</head>
+<body onload="getReviewData()">
+    <a href="new.html" id="back">Mine tagasi</a> <br>
+    <h3>Kontrolli enne raamatu sisestamist raamatu andmed</h3><br>
+        <label class="booklabel">Raamatu pealkiri:</label><br>
+        <p id="bookheader">Pealkirja ei sisestatud</p><br>
+        <label class="booklabel">Autor:</label><br>
+        <p id="bookauthor">Autori nime ei sisestatud</p><br>
+        <label class="booklabel">Lehekülgede arv:</label><br>
+        <p id="bookpages">Lehekülgede arvu ei sisestatud</p><br>
+        <label class="booklabel">Kirjastus:</label><br>
+        <p id="bookcompany">Kirjastust ei sisestatud</p><br>
+        <div class="text-center">
+            <input class="btn btn-primary" type="button" value="Saada"data-toggle="modal" data-target="#myModal">
+        </div>
+
+        
+
+<!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" onclick="sendForm()">&times;</button>
+        <h4 class="modal-title">Sinu raamat on sisestatud</h4>
+      </div>
+      <div class="modal-body">
+        <p>Sinu raamat sisestati edukalt andmebaasi.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="sendForm()">Close</button>
+      </div>
+    </div>
+
+    </div>
+       
+</body>
+</html>
