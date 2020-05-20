@@ -1,5 +1,20 @@
 # iseseisev-projekt
 
+2D-PLATFORMER VEEBIRAKENDUS
+
+Autorid: Raimond Laatspera, Taavi Vestel
+
+Rakendus on meelelahutusliku eesmärgiga loodud mäng, kus mängija on pall ning ta peab vältima ruute. Ajapikku muutub ruutude kiirus suuremaks. Lisaks on ka skoor märgitud ning salvestatakse ka parim skoor arvutisse. Mängimise ajal mängib samuti ka muusika ning, kui vastu kasti minnakse, siis käib ka heliefekt. Samuti muutub ka tasutavärv, mida rohkem edasi minnakse.
+
+Pilt rakendusest:
+https://www.linkpicture.com/view.php?img=LPic5ec587cb21085603877594
+
+Rakenduse aluse loomiseks kasutasime YouTube'i videot:
+https://www.youtube.com/watch?v=cIe3d2vwn7s
+
+
+
+
 Tähtaeg - 1 päev enne esitlust. Esitluse kuupäevadeks: 1 nädal peale ÕISis valitud arvestuse kuupäeva (v.a arvatud järelarvestus, mis toimub õigel kuupäeval) - kindlasti tuleb arvestusele registreerida. Projektide esitlemine toimub:
 1. 19.05.2020 kell 16:15-17:45 zoomis
 1. 21.05.2020 kell 08.15-09:45 zoomis
