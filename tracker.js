@@ -33,7 +33,7 @@ let getConfig = function () {
 //movie leht
 function movieSection(movies){
     return movies.map((movie) => {
-        return `<img src=${image_url + movie.poster_path} data-movie-id=${movie.id}/>`;
+        return `<img id="img" src=${image_url + movie.poster_path} data-movie-id=${movie.id}/>`;
     })
 }
 
@@ -45,8 +45,8 @@ function createMovies(movies){
         <section class="section">
             ${movieSection(movies)};
         </section>
-        <div class="buttonToList">
-            <button id="addToList">+My list</button>
+        <div class="content content-display">
+            <p id="content-close">X</p>
         </div>
     `;  
 
@@ -89,8 +89,8 @@ function createShows(tvshows){
         <section class="section">
             ${showSection(tvshows)}; 
         </section>
-        <div class="buttonToList">
-            <button id="addToList">+My list</button>
+        <div class="content content-display">
+            <p id="content-close">X</p>
         </div>
     `; 
 
@@ -161,8 +161,21 @@ $("button").click(function() {
     }
 });
 
-//my listi lisamine
-
+//my listi lisamine, <button id="addToList">+My list</button>
+document.onclick = function(event){
+    //console.log(event);
+    const target = event.target;
+    console.log(target);
+    if(target === 'img'){
+        const movieID = event.target.dataset.movieID;
+        const section = event.target.parentElement.parentElement;
+        const content = section.nextElementSibling;
+        content.classList.add('myListButton');
+        var button = content.createElement('BUTTON')
+        button.innerHTML = "+My List";
+        //getVideosByMovieId(movieId, content);
+    }
+}
 
 
 //klasside muutus

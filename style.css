@@ -4,8 +4,22 @@
 
 body{
     margin: 0;
-    background-color: rgb(27, 25, 25);
+    /*background-color: rgb(27, 25, 25);*/
+    
 }
+
+.content-display{
+    display: block;
+}
+
+
+.content{
+    border: 2px solid red;
+    border-radius: 5%;
+    height: 50px;
+    display: none;
+}
+
 
 nav{
     height: 60px;
