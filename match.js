@@ -70,9 +70,7 @@ class Deck {
         this.locked = false;
     }
 
-    // TODO: valida suvaline emoji teema
-    generateFaces(pairs, theme) {
-        const themes = ['foods'];
+    generateFaces(pairs) {
         const emojis = [];
 
         // Toidud
@@ -258,10 +256,7 @@ function gameEventHandler(deck, cardElement, bodyClone) {
 
             // Kas mäng on läbi?
             if (!states.hidden.length) {
-                // Taasloob menüü
-                document.body.replaceWith(bodyClone);
-                // TODO: teavita kasutajat võidust
-                setupMenuEventListeners();
+                gameVictoryHandler(bodyClone);
             }
         } else {
             deck.locked = true;
@@ -277,6 +272,17 @@ function gameEventHandler(deck, cardElement, bodyClone) {
             }, 1167);
         }
     }
+}
+
+/**
+ * Teavitab mängijat võidust
+ * @param {HTMLElement} bodyClone
+ */
+function gameVictoryHandler(bodyClone) {
+
+    // Taasloob menüü
+    document.body.replaceWith(bodyClone);
+    setupMenuEventListeners();
 }
 
 /**
