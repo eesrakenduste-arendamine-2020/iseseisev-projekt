@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+
+body{
+  text-align: center;
+  margin: 0;
+  font-family: 'Alfa Slab One', cursive;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  font-size: xx-large;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  
+}
+
+
+.grid {
+  width: 200px;
+  height: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: yellow;
+ 
+}
+
+.grid div {
+  height: 20px;
+  width: 20px;
+}
+
+.tetris {
+  background-color: blue;
+}
+
+
+.mini-grid {
+  margin-left: 50px;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  flex-wrap: wrap;
+  background-color:yellow;
+  
+}
+
+.mini-grid div {
+  height: 20px;
+  width: 20px;
+}
+
+.all{
+  display: flex;
+  justify-content: center;
+
+}
+#start-button{
+color: black!important;
+text-transform: uppercase;
+background: #ffffff;
+padding: 10px;
+border: 10px solid #20bf6b !important;
+border-radius: 6px;
+display: inline-block;
+transition: all 0.3s ease 0s;
+font-weight: bold;
+}
+
+#start-button:hover {
+color: black !important;
+border-radius: 50px;
+border-color: #494949 !important;
+transition: all 0.3s ease 0s;
+}
+
