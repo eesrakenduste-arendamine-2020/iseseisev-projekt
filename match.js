@@ -1,12 +1,19 @@
-// Tagastab suvalise int'i antud vahemikus, defaultib 0'i ja max'i vahele kui anda üks argument
-// Ei tagasta kunagi max väärtust kuna Math.random() ei ole kunagi 1
+/**
+ * Tagastab suvalise int'i antud vahemikus, defaultib 0'i ja max'i vahele kui anda üks argument.
+ * Ei tagasta kunagi max väärtust kuna Math.random() ei ole kunagi 1.
+ * @param {number} min või max kui max puudub
+ * @param {number} [max]
+ * @returns {number}
+ */
 const randomInt = (min, max) => {
     if (!max && max !== 0) [min, max] = [0, min];
     return Math.floor(Math.random() * (max - min) + min);
 };
-
-// Durstenfeld'i (Fisher-Yates) suvaline järjestus
-// https://stackoverflow.com/a/12646864
+/**
+ * Durstenfeld'i (Fisher-Yates) suvaline järjestus
+ * https://stackoverflow.com/a/12646864
+ * @param {Array} array
+ */
 const shuffle = array => {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -20,6 +27,7 @@ class Card {
         // State peaks olema 'hidden', 'visible' või 'temporarilyVisible'
         this._state = 'hidden';
         this.id = this.generateSafeGuid(deck);
+        this.elementReference = undefined;
     }
 
     get state() {
@@ -57,9 +65,9 @@ class Card {
 
 class Deck {
     constructor(pairs) {
-        // TODO: this.faces on tõenäoliselt ebavajalik, generateFaces() ja generateDeck() peaks kombineerima
-        this.faces = this.generateFaces(pairs);
-        this.cards = this.generateDeck(this.faces);
+        const faces = this.generateFaces(pairs);
+        this.cards = this.generateDeck(faces);
+        this.locked = false;
     }
 
     // TODO: valida suvaline emoji teema
@@ -84,7 +92,6 @@ class Deck {
         // Teeme topelt pikkusega array sest iga paar tähendab kahte identset pilti
         select.push(...select);
         shuffle(select);
-        console.log(select);
 
         return select;
     }
@@ -110,6 +117,24 @@ class Deck {
         }
 
         return guids;
+    }
+
+    /**
+     * Tagastab objekti kõikide kaartide staatustega
+     * Kuidas ma returni dokumenteerin??
+     */
+    get states() {
+        const states = {
+            hidden: [],
+            visible: [],
+            temporarilyVisible: []
+        };
+
+        for (const card of this.cards) {
+            states[card.state].push(card);
+        }
+
+        return states;
     }
 }
 
@@ -189,7 +214,7 @@ const getElementInPath = (path, name) => path.find(element => element.className.
 /**
  * @param {Deck} deck
  */
-function setupGameEventListeners(deck) {
+function setupGameEventListeners(deck, bodyClone) {
 
     document.body.onclick = event => {
         const path = event.composedPath();
@@ -197,24 +222,62 @@ function setupGameEventListeners(deck) {
         const card = getElementInPath(path.slice(0, path.length - 2), 'card');
 
         // Kui elementi ei ole path'is siis selle väärtus on undefined
-        if (!card) return;
+        // Või me lukustasime decki muutmise ajutiselt
+        if (!card || deck.locked) return;
 
-        gameEventHandler(deck, card);
+        gameEventHandler(deck, card, bodyClone);
     };
 }
-
 
 /**
  * @param {Deck} deck
  * @param {HTMLElement} cardElement
  */
-function gameEventHandler(deck, cardElement) {
-    cardElement.classList.toggle('hidden');
+function gameEventHandler(deck, cardElement, bodyClone) {
     const idFromElement = cardElement.getAttribute('data-id');
 
     const matchingCard = deck.cards.find(card => card.id === idFromElement);
 
+    // Varajane return kui see kaart on juba nähtaval
+    if (matchingCard.state === 'temporarilyVisible' || matchingCard.state === 'visible') return;
+
+    cardElement.classList.toggle('hidden');
     matchingCard.state = 'temporarilyVisible';
+
+    const states = deck.states;
+
+    if (states.temporarilyVisible.length > 1) {
+        console.log(states.hidden);
+
+
+        // Kontrollime kas elemendid klapivad emojide poolest
+        // Eeldame et on ainult kaks elementi
+        if (states.temporarilyVisible[0].face === states.temporarilyVisible[1].face) {
+            deck.locked = false;
+            for (const card of states.temporarilyVisible) {
+                card.state = 'visible';
+            }
+
+            // Kas mäng on läbi?
+            if (!states.hidden.length) {
+                // Taasloob menüü
+                document.body.replaceWith(bodyClone);
+                setupMenuEventListeners();
+            }
+        } else {
+            deck.locked = true;
+            const game = document.getElementsByClassName('game')[0];
+            game.classList.add('unhoverable');
+            setTimeout(() => {
+                for (const card of states.temporarilyVisible) {
+                    card.state = 'hidden';
+                    card.elementReference.classList.toggle('hidden');
+                    game.classList.remove('unhoverable');
+                }
+                deck.locked = false;
+            }, 1333);
+        }
+    }
 }
 
 /**
@@ -233,18 +296,22 @@ const buildDeckInterface = deck => {
 
         const front = document.createElement('div');
         front.classList.add('front');
-
-        // Muudab emoji twemojiks
-        const emoji = twemoji.parse(card.face, {
-            folder: 'svg',
-            ext: '.svg'
-        });
-        front.innerHTML = emoji;
         cardContainer.appendChild(front);
 
         const back = document.createElement('div');
         back.classList.add('back');
+
+        // Muudab emoji twemojiks
+        // eslint-disable-next-line no-undef
+        const emoji = twemoji.parse(card.face, {
+            folder: 'svg',
+            ext: '.svg'
+        });
+        back.innerHTML = emoji;
         cardContainer.appendChild(back);
+
+        // Loome seose elemendi ja temaga seotud kaardi vahel
+        card.elementReference = cardContainer;
 
         game.appendChild(cardContainer);
     }
@@ -265,10 +332,5 @@ function startGame(pairs, bodyClone) {
     const fragment = buildDeckInterface(deck);
     document.body.appendChild(fragment);
 
-    setupGameEventListeners(deck);
-
-    return;
-    // Taasloob menüü
-    document.body.replaceWith(bodyClone);
-    setupMenuEventListeners();
+    setupGameEventListeners(deck, bodyClone);
 }

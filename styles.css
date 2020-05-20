@@ -66,7 +66,7 @@ input[type=range]::-moz-range-thumb {
     transition: animation ease .2s;
 }
 
-#play:hover{
+#play:hover {
     animation: spin 1s;
 }
 
@@ -113,7 +113,6 @@ body {
 .card {
     display: flex;
     margin: 0 3vmin;
-    cursor: pointer;
     position: relative;
     transform-style: flat;
     user-select: none;
@@ -143,8 +142,12 @@ img.emoji {
     transform: rotateY(180deg);
 }
 
-.front:hover {
+:not(.unhoverable) > .card > .front:hover {
     box-shadow: 0 0 16px rgba(0, 0, 0, .3);
+}
+
+:not(.unhoverable) > .card {
+    cursor: pointer;
 }
 
 .hidden > .front {
@@ -155,8 +158,12 @@ img.emoji {
     transform: rotateY(0deg);
 }
 
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
 
-@keyframes spin{
-	0%{transform: rotate(0deg);}
-	100%{transform: rotate(360deg);}
+    100% {
+        transform: rotate(360deg);
+    }
 }
