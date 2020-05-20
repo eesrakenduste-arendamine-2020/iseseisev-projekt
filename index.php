@@ -11,6 +11,7 @@
     integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
     crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js" integrity="sha256-sPB0F50YUDK0otDnsfNHawYmA5M0pjjUf4TvRJkGFrI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js" integrity="sha256-5oApc/wMda1ntIEK4qoWJ4YItnV4fBHMwywunj8gPqc=" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="main.css">
@@ -83,17 +84,30 @@
                     <div class="col__8"></div>
                 </div>
 
-                <div class="flex-row table-row font-size-14">
-                    <div class="col__1">Harry potter vms</div>
-                    <div class="col__2">J.K Rowling</div>
-                    <div class="col__3">900</div>
-                    <div class="col__4">1999</div>
-                    <div class="col__5">20 €</div>
-                    <div class="col__6">20.05.2020</div>
-                    <div class="col__7">45 / 900</div>
-                    <div class="col__8"><img src="options.png" class="col__8"></div>
-                </div>
+                <div class="js-wrap">
 
+                    <div class="flex-row table-row font-size-14 book-copy">
+                        <div class="col__1"></div>
+                        <div class="col__2"></div>
+                        <div class="col__3"></div>
+                        <div class="col__4"></div>
+                        <div class="col__5"></div>
+                        <div class="col__6"></div>
+                        <div class="col__7"></div>
+                        <div class="col__8"><img src="options.png" class="col__8"></div>
+                    </div>
+
+                    <div class="flex-row table-row font-size-14">
+                        <div class="col__1">Harry potter vms</div>
+                        <div class="col__2">J.K Rowling</div>
+                        <div class="col__3">900</div>
+                        <div class="col__4">1999</div>
+                        <div class="col__5">20 €</div>
+                        <div class="col__6">20.05.2020</div>
+                        <div class="col__7">45 / 900</div>
+                        <div class="col__8"><img src="options.png" class="col__8"></div>
+                    </div>
+                </div>
 
 
 

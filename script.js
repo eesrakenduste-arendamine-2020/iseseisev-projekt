@@ -40,8 +40,6 @@ $(document).ready(function() {
                 range: [1, 10]
             },
 
-
-
         },
         messages: {
             title: "Palun sisesta pealkiri",
@@ -72,4 +70,46 @@ $(document).ready(function() {
     });
 
 
+    // Submission action
+    $(document).on('submit', '.dialogBox__form', function(e) {
+        e.preventDefault();
+        createNewListItem();
+        $('.addNewBookModal').hide();
+    });
+
 });
+
+
+
+
+// Create new list in FE, trigger ajax
+function createNewListItem() {
+    let newCopy = $( '.book-copy' ).clone(true, true).removeClass('book-copy').hide().prependTo( '.js-wrap' ).slideDown("fast");
+    // values
+    let title = $('[name="title"]').val();
+    let author = $('[name="author"]').val();
+    let year = defaultToZero($('[name="year"]').val());
+    let pages_total = defaultToZero($('[name="pages_total"]').val());
+    let pages_finished = defaultToZero($('[name="pages_finished"]').val());
+    let rating =  defaultToZero($('[name="rating"]').val());
+
+    console.log(pages_finished);
+
+
+    $(newCopy).children('.col__1').text(title);
+    $(newCopy).children('.col__2').text(author);
+    $(newCopy).children('.col__3').text(pages_total);
+    $(newCopy).children('.col__4').text(year);
+    $(newCopy).children('.col__5').text("20 €");
+    $(newCopy).children('.col__6').text(moment().format('DD.MM.YYYY'));
+    $(newCopy).children('.col__7').text(pages_finished + " / " + pages_total);
+
+
+}
+
+function defaultToZero(value) {
+    if (!value) {
+        return 0;
+    }
+    return parseFloat(value);
+}
