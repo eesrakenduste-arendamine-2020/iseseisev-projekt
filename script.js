@@ -24,6 +24,7 @@ $(document).ready(function() {
                 required: true
             },
             year: {
+                 required: true,
                  number: true
             },
             pages_total: {
@@ -45,7 +46,10 @@ $(document).ready(function() {
         messages: {
             title: "Palun sisesta pealkiri",
             author: "Palun sisesta autor",
-            year: "Palun sisesta numbriline väärtus",
+            year: {
+                 required: "Palun sisesta aasta",
+                 number: "Palun sisesta numbriline väärtus"
+            },
             pages_total: {
                 required: "Palun sisesta lehekülgede number",
                 number: "Palun sisesta numbriline väärtus"
