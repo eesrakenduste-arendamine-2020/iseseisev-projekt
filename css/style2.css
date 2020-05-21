@@ -1,0 +1,76 @@
+html {
+  font-family: "Raleway", sans-serif;
+  background: url("img/space.png") no-repeat center center fixed;
+  background-size: cover;
+  font-size: 10px;
+}
+
+body {
+  width: 800px;
+  margin: 50px auto;
+}
+
+#bu {
+  position: relative;
+  left: 20px;
+  top: 20px;
+}
+
+#nu {
+  font-size: 10px;
+  position: relative;
+  top: 50px;
+  background-color: aliceblue;
+}
+
+h2 {
+  position: absolute;
+  transform-origin: 0 0;
+  transform: rotate(90deg);
+  font: bold 12px Sans-Serif;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  background: #369;
+  color: #fff;
+  padding: 5px 10px;
+  margin: 0 0 0px 0;
+  line-height: 24px;
+}
+
+#koostas {
+  position: fixed;
+  bottom: 80px;
+  right: 5px;
+  font-family: "Raleway";
+  font-size: 1em;
+  letter-spacing: 0.5em;
+  color: white;
+  font-size: 1em;
+  letter-spacing: 0.5em;
+}
+
+#git {
+  position: fixed;
+  bottom: 40px;
+  right: 5px;
+  font-family: "Raleway";
+  font-size: 1em;
+  letter-spacing: 0.5em;
+  color: white;
+  font-size: 1em;
+  letter-spacing: 0.5em;
+}
+
+#lin {
+  position: fixed;
+  top: 20px;
+  right: 5px;
+  font-family: "Raleway";
+  font-size: 1em;
+  letter-spacing: 0.5em;
+  color: white;
+  font-size: 1em;
+  letter-spacing: 0.5em;
+}
+
+
