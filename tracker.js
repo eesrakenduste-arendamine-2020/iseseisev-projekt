@@ -30,31 +30,44 @@ function generateUrl(path){
     const url = `https://api.themoviedb.org/3/${path}`;
     return url;
 }
+
 //movie leht
 function createSection(elements){
-    return elements.map((element) => {
+    const section = document.createElement("section");
+    section.classList = "section";
+
+    elements.map((element) => {
         if(element.poster_path){
-            return `<img src=${image_url + element.poster_path} data-movie-id=${element.id}>`;
+            const img = document.createElement("img");
+            img.src = image_url + element.poster_path;
+            img.id = element.id;
+            section.appendChild(img);
         }
     })
+
+    return section;
 }
 
 function createElements(elements){
     const element = document.createElement("div");
     element.setAttribute("class", "movie");
 
-    const template = `
-        <div class="section">
-            ${createSection(elements)};
-            
-        </div>
-        <div class="content">
-            <button class="listButton">+ My list</button>
-            <p id="content-close">X</p>            
-        </div>
-    `;  
+    const content = document.createElement("div");
+    content.classList = "content";
 
-    element.innerHTML = template;
+    const contentClose = `<p id='content-close'>X</p>`;
+
+    const button = document.createElement("button");
+    button.classList = "listButton";
+    button.innerHTML = "+ My list";
+
+    content.innerHTML = contentClose;
+    content.appendChild(button);
+
+    const section = createSection(elements);
+
+    element.appendChild(section);
+    element.appendChild(content);
     return element;
 }
 
@@ -141,8 +154,7 @@ function displayName(data, content){
 document.onclick = function(event){
     const imgTagName = event.target.tagName;
     if(imgTagName === 'IMG'){
-        const movieId = event.target.dataset.movieId;
-
+        const movieId = event.target.id;
         const section = event.target.parentElement;
         const content = section.nextElementSibling;
         content.classList.add('content-display');
@@ -163,7 +175,6 @@ document.onclick = function(event){
         content.classList.remove('content-display');
     }
 
-    const movieID = event.target.dataset.movieId;
 }
 
 
