@@ -4,7 +4,6 @@ window.onload = function(){
 };
 
 import{APIKEY} from "../lamp.js"; 
-let baseURL = 'https://api.themoviedb.org/3/';
 const image_url = "https://image.tmdb.org/t/p/w185";
 let configData = null;
 let baseImageURL = null;
@@ -12,7 +11,8 @@ const search = document.querySelector("#search-button");
 const input = document.querySelector("#search-input");
 
 let getConfig = function () {
-    let url = "".concat(baseURL, 'configuration?api_key=', APIKEY); 
+    const path = 'configuration?api_key=';
+    let url = generateUrl(path) + APIKEY;
     fetch(url)
     .then((result)=>{
         return result.json();
