@@ -60,12 +60,12 @@ function createNewListItem() {
     // clone
     let newCopy = $( '.book-copy' ).clone(true, true).removeClass('book-copy').hide().prependTo( '.js-wrap' ).slideDown("fast");
     // values
-    let title = $('[name="book_form"] > [name="title"]').val();
-    let author = $('[name="book_form"] > [name="author"]').val();
-    let year = defaultToZero($('[name="book_form"] > [name="year"]').val());
-    let pages_total = defaultToZero($('[name="book_form"] > [name="pages_total"]').val());
-    let pages_finished = defaultToZero($('[name="book_form"] > [name="pages_finished"]').val());
-    let rating = defaultToZero($('[name="book_form"] > [name="rating"]').val());
+    let title = $('[name="book_form"]').find('[name="title"]').val();
+    let author = $('[name="book_form"]').find('[name="author"]').val();
+    let year = $('[name="book_form"]').find('[name="year"]').val();
+    let pages_total = defaultToZero($('[name="book_form"]').find('[name="pages_total"]').val());
+    let pages_finished = defaultToZero($('[name="book_form"]').find('[name="pages_finished"]').val());
+    let rating = defaultToZero($('[name="book_form"]').find('[name="rating"]').val());
     let date_added = moment().format('DD.MM.YYYY');
 
     $(newCopy).children('.col__1').text(title);
