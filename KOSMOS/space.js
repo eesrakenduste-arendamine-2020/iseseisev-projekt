@@ -49,8 +49,9 @@ function Sprite ( filename, left, top ) {
     Sprite.prototype.stopAnimation = function() {
         window.clearInterval ( this._clock );
     };
-    //kontrollib kas on toimunud kokkupõrge
 
+
+    //kontrollib kas on toimunud kokkupõrge
 
      Sprite.prototype.checkCollision = function ( other ) {
 
