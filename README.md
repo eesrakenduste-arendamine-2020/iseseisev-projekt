@@ -40,7 +40,7 @@ Rakenduses võib kasutada teiste autorite koodi, aga see peab olema viidatud. Ü
 * Igale grupile on aega 15 minutit (6 minutit rakenduse esitlus, 6 minutit koodi esitlus, 3 minutit küsimused)
 * Esitama peavad grupiliikmed ühisel ajal. 
 
-Iseseisev töö - viktoriin
+Iseseisev töö - Viktoriin
 
 Autor: Klaus Erik Kruus
 
