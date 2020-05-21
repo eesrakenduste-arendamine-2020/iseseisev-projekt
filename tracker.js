@@ -20,7 +20,7 @@ let getConfig = function () {
     .then((data)=>{
         baseImageURL = data.images.secure_base_url;
         configData = data.images;
-        console.log(configData);
+        //console.log(configData);
     })
     .catch(function(err){
         alert(err);
@@ -53,20 +53,9 @@ function createElements(elements){
     const element = document.createElement("div");
     element.setAttribute("class", "movie");
 
-    const content = document.createElement("div");
-    content.classList = "content";
-
-    const contentClose = `<p id='content-close'>X</p>
-        <button class = "listButton">+ My list</button>`;
-
-    //const button = `<button class = "listButton">+ My list</button>`;
-
-    content.innerHTML = contentClose;
-
     const section = createSection(elements);
 
     element.appendChild(section);
-    element.appendChild(content);
     return element;
 }
 
@@ -139,28 +128,6 @@ $("button").click(function() {
         .then(renderElements)
     }
 });
-
-
-//my listi lisamine, <button id="addToList">+My list</button>
-document.onclick = function(event){
-    const imgTagName = event.target.tagName;
-    console.log(event.target);
-    if(imgTagName === 'IMG'){
-        //const id = event.target.id;
-        const section = event.target.parentElement;
-        const content = section.nextElementSibling;
-        content.classList.add('content-display');
-
-    }
-
-    const closeButton = event.target.id;
-    if(closeButton === 'content-close'){
-        const content = event.target.parentElement;
-        content.classList.remove('content-display');
-    }
-
-}
-
 
 //klasside muutus
 $('.menu-item').click(function(){
