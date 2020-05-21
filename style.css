@@ -1,0 +1,52 @@
+#canvas {
+    border: 5px solid steelblue;
+    position: absolute;
+    align-content: center;
+
+}
+
+#gameover {
+    position: absolute;
+    width: 605px;
+    height: 705px;
+    display: none;
+    background: rgba(0,0,0,0.3);
+}
+
+#losegame {
+    width: 500px;
+    height: 550px;
+    position: absolute;
+    top: 30px;
+    left : 60px;
+    display: none;
+
+}
+
+#restart_game {
+    position: absolute;
+    font-family: Verdana, Geneva, Tahoma, sans-serif; 
+    font-size: 1.2em;
+    font-weight: bold;
+    border: 1px solid white;
+
+    border-radius: 40px;
+    color: white;
+    cursor: pointer;
+    bottom: 90px;
+    left: 250px;
+}
+
+#gameover > #restart_game:hover {
+    color: darkslateblue;
+    background-color: white;
+}
+
+#wingame{
+    width: 500px;
+    height: 550px;
+    position: absolute;
+    top: 30px;
+    left : 60px;
+    display: none;
+}
