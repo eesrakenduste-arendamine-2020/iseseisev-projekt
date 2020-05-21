@@ -26,11 +26,15 @@ let getConfig = function () {
     });
 }
 
+function generateUrl(path){
+    const url = `https://api.themoviedb.org/3/${path}`;
+    return url;
+}
 //movie leht
 function createSection(elements){
     return elements.map((element) => {
         if(element.poster_path){
-            return `<img src=${image_url + element.poster_path} data-movie-id=${element.id}/>`;
+            return `<img src=${image_url + element.poster_path} data-movie-id=${element.id}>`;
         }
     })
 }
@@ -55,7 +59,8 @@ function createElements(elements){
 }
 
 let getPopularMovies = function(){
-    let url = "".concat(baseURL, 'movie/popular?api_key=', APIKEY, '&language=en-US');
+    const path = 'movie/popular?api_key=';
+    let url = generateUrl(path) + APIKEY;
     fetch(url)
     .then((result)=>{
         return result.json();
@@ -76,7 +81,8 @@ getConfig();
 
 //tvshow leht
 function getPopularTVshows(){
-    let url = "".concat(baseURL, 'tv/popular?api_key=', APIKEY, '&language=en-US&page=1');
+    const path = 'tv/popular?api_key=';
+    let url = generateUrl(path) + APIKEY;
     fetch(url)
     .then((result)=>{
         return result.json();
@@ -102,7 +108,8 @@ function renderElements(data){
 $("button").click(function() {
     if(this.id=="movie-search"){
         let inputValue = input.value;
-        let url = "".concat(baseURL, "search/movie?api_key=", APIKEY, '&language=en-US&query=', inputValue);
+        const path = 'search/movie?api_key=';
+        let url = generateUrl(path) + APIKEY + '&query=' + inputValue;
         fetch(url)
         .then((result) =>{
             return result.json();
@@ -111,7 +118,8 @@ $("button").click(function() {
 
     }else if(this.id=="tv-show-search"){
         let inputValue = input.value;
-        let url = "".concat(baseURL, "search/tv?api_key=", APIKEY, '&language=en-US&query=', inputValue);
+        const path = 'search/tv?api_key=';
+        let url = generateUrl(path) + APIKEY + '&query=' + inputValue;
         fetch(url)
         .then((result) =>{
             return result.json();
@@ -124,6 +132,8 @@ $("button").click(function() {
 document.onclick = function(event){
     const imgTagName = event.target.tagName;
     if(imgTagName === 'IMG'){
+        const movieId = event.target.dataset.movieId;
+
         const section = event.target.parentElement;
         const content = section.nextElementSibling;
         content.classList.add('content-display');
