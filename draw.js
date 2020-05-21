@@ -30,12 +30,16 @@ var savedScores;
     }, 200);
 
     savedScores = JSON.parse(localStorage.getItem('tulemused'));
+    snake.valueArray = savedScores;
     console.log(savedScores[0]);
+    savedScores.sort(function(a, b) {
+        return b - a;
+    });
     
     for (let i = 0; i < savedScores.length; i++) {
         let para = document.createElement('p'); 
         console.log(savedScores[0]);    
-        para.innerHTML = (i+1)+". Tulemus oli " + savedScores[i];
+        para.innerHTML = (i+1)+". Varasem tulemus oli " + savedScores[i];
         document.getElementById("best").appendChild(para);    
     }
 }());

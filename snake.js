@@ -1,11 +1,13 @@
 function Snake() {
   this.x = 0;
   this.y = 0;
-  this.xSpeed = scale * 1;
+  this.xSpeed = 0;
   this.ySpeed = 0;
   this.total = 0;
   this.tail = [];
   this.valueArray=[];
+  this.tempXspeed=0;
+  this.tempYspeed=0;
 
 
   this.draw = function() {
@@ -159,6 +161,15 @@ function Snake() {
               }
 
               break;
+          case 'Escape':
+              if (this.xSpeed>0 || this.ySpeed>0) {
+                  this.tempXspeed=this.xSpeed;
+                  this.tempYspeed=this.ySpeed;
+                  this.xSpeed = 0;
+                  this.ySpeed = 0;
+              }
+              
+              break;
       }
   }
 
@@ -186,7 +197,10 @@ function Snake() {
   this.addScore = function(score){  
     let para = document.createElement('p');
     this.valueArray.push(score);
-    para.innerHTML = "Tulemus " + score;
+    this.valueArray.sort(function(a, b) {
+      return b - a;
+    });
+    para.innerHTML = "Uus tulemus " + score;
     document.getElementById("best").appendChild(para);
     window.localStorage.setItem("tulemused",JSON.stringify(this.valueArray));
   }
