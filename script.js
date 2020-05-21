@@ -1,12 +1,13 @@
 // Raamatu klass
 class Book {
-  constructor(title, author, page, checked) {
+  constructor(title, author, page, read, id) {
     this.title = title;
     this.author = author;
     this.page = page;
-    this.checked = checked;
+    this.read = read;
   }
 }
+
 // UI klass
 class UI {
   static displayBooks() {
@@ -18,15 +19,12 @@ class UI {
     document.createElement("td");
     const bookList = document.querySelector("#book-list");
     const row = document.createElement("tr");
-    row.setAttribute("valueID", book.checked);
+    if (book.read === true) {
+      row.classList.add("read");
+    }
 
     row.addEventListener("click", function () {
-      book.checked = book.checked !== true;
-      if (book.checked === true) {
-        row.style.background = "lightgreen";
-      } else {
-        row.style.background = "";
-      }
+      UI.markAsRead(row);
     });
 
     row.innerHTML = `
@@ -49,6 +47,17 @@ class UI {
           .previousElementSibling.textContent
       );
       UI.showAlerts("Raamat kustutatud!", "info");
+    }
+  }
+
+  static markAsRead(row) {
+    const title = row.children[0].textContent;
+    if (row.classList.contains("read")) {
+      row.classList.remove("read");
+      Storage.markBookAsRead(row);
+    } else {
+      row.classList.add("read");
+      Storage.markBookAsRead(row);
     }
   }
 
@@ -82,16 +91,43 @@ class UI {
   }
 
   static changeTheme(counter) {
-    if (counter % 2 !== 0) {
+    let dm = JSON.parse(localStorage.darkMode);
+    console.log(dm.dark);
+    if (dm.dark === false) {
       cssheet.setAttribute(
         "href",
         "https://bootswatch.com/4/darkly/bootstrap.min.css"
       );
+      const darkModeValue = true;
+      Storage.setDarkMode(darkModeValue);
     } else {
       cssheet.setAttribute(
         "href",
         "https://bootswatch.com/4/cerulean/bootstrap.min.css"
       );
+      const darkModeValue = false;
+      Storage.setDarkMode(darkModeValue);
+    }
+  }
+
+  static showTheme() {
+    const darkmodestorage = Storage.getDarkMode();
+    if (darkmodestorage === undefined || darkmodestorage.length < 1) {
+      Storage.setDarkMode(false);
+    }
+    let dm = JSON.parse(localStorage.darkMode);
+    if (dm.dark === true) {
+      cssheet.setAttribute(
+        "href",
+        "https://bootswatch.com/4/darkly/bootstrap.min.css"
+      );
+      document.getElementById("checkbox").checked = true;
+    } else {
+      cssheet.setAttribute(
+        "href",
+        "https://bootswatch.com/4/cerulean/bootstrap.min.css"
+      );
+      document.getElementById("checkbox").checked = false;
     }
   }
 }
@@ -106,7 +142,6 @@ class Storage {
     } else {
       books = JSON.parse(localStorage.getItem("books"));
     }
-
     return books;
   }
 
@@ -128,10 +163,61 @@ class Storage {
 
     localStorage.setItem("books", JSON.stringify(books));
   }
+
+  // static getStorageSize() {
+  //   const storageSize = Storage.getBooks().length;
+  //   return storageSize;
+  // }
+
+  static markBookAsRead(row) {
+    const title = row.children[0].textContent;
+    const books = Storage.getBooks();
+    books.forEach((book, index) => {
+      if (book.title === title) {
+        if (book.read === false) {
+          book.read = true;
+        } else if (book.read === true) {
+          book.read = false;
+        }
+      }
+    });
+
+    localStorage.setItem("books", JSON.stringify(books));
+  }
+
+  static markBookAsUnread() {
+    const title = row.children[0].textContent;
+    const books = Storage.getBooks();
+    books.forEach((book, index) => {
+      if (book.title === title) {
+        book.read = false;
+      }
+    });
+
+    localStorage.setItem("books", JSON.stringify(books));
+  }
+
+  static getDarkMode() {
+    let darkMode;
+    if (localStorage.getItem("darkMode") === null) {
+      darkMode = [];
+    } else {
+      darkMode = JSON.parse(localStorage.getItem("darkMode"));
+    }
+    return darkMode;
+  }
+
+  static setDarkMode(darkModeValue) {
+    const darkMode = {
+      dark: darkModeValue,
+    };
+    localStorage.setItem("darkMode", JSON.stringify(darkMode));
+  }
 }
 
 // Näita raamatuid
 document.addEventListener("DOMContentLoaded", UI.displayBooks);
+document.addEventListener("DOMContentLoaded", UI.showTheme);
 
 // Lisa raamat
 document.querySelector("#book-form").addEventListener("submit", (e) => {
@@ -139,6 +225,8 @@ document.querySelector("#book-form").addEventListener("submit", (e) => {
   const title = document.querySelector("#book-title").value;
   const author = document.querySelector("#book-author").value;
   const page = document.querySelector("#book-page").value;
+  const read = false;
+
   let error = 0;
   if (title === "" && author === "" && page === "") {
     UI.showAlerts("Palun täitke kõik väljad!", "danger");
@@ -173,6 +261,11 @@ document.querySelector("#book-list").addEventListener("click", (e) => {
   //console.log(e.target);
   UI.deleteBook(e.target);
 });
+
+// document.querySelector("#book-list").addEventListener("click", (e) => {
+//   //console.log(e.target);
+//   UI.deleteBook(e.target);
+// });
 
 const cssheet = document.getElementById("csstheme");
 counter = 0;
