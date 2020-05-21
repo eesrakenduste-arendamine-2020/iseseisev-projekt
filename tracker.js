@@ -133,8 +133,28 @@ $("button").click(function() {
 document.onclick() = function(event){
     const tagName = event.target.tagName;
     if(tagName === 'IMG'){
-        const movieId = event.target.id;
+        const id = event.target.id;
+        const moviePath = `movie/${id}?api_key=`;
+        const tvPath = `tv/${id}?api_key=`;
+        if($('[data-menu-movies]').hasClass('active')){
+            const url = generateUrl(moviePath) + APIKEY;
+            fetch(url)
+            .then((result) =>{
+                return result.json();
+            })
+            .then((data) =>{
+                saveLocal(data);  
+            }
+        }else if($('[data-menu-tv-shows]').hasClass('active')){
+
+        }else if($('[data-menu-search]').hasClass('active')){
+
+        }
     }
+
+}
+
+function saveLocal(data){
 
 }
 
