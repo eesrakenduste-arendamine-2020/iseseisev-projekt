@@ -78,3 +78,34 @@ function fileDataToJson($array) {
     endif;
     return false;
 }
+
+// UPDATE
+function updateBook() {
+    $id = $_POST['id'];
+
+    
+    $array = getFileArray();
+
+    for($i=0;$i < sizeof($array['data']);$i++) :
+        if ($array['data'][$i]['id'] == $id) {
+                $array['data'][$i]['title'] =  $_POST['title'];
+                $array['data'][$i]['author'] =  $_POST['author'];
+                $array['data'][$i]['year'] =  $_POST['year'];
+                $array['data'][$i]['pages_total'] = $_POST['pages_total'];
+                $array['data'][$i]['pages_finished'] = $_POST['pages_finished'];
+                $array['data'][$i]['rating'] = $_POST['rating'];
+            break;
+        }
+
+    endfor;
+
+    writeNewArray($array);
+}
+
+
+
+function writeNewArray($array) {
+    $fileLocation = 'database.json';
+    $fileData_JSON = json_encode( $array, JSON_PRETTY_PRINT );
+    file_put_contents( $fileLocation, $fileData_JSON );
+}

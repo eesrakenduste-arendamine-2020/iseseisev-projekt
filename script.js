@@ -1,5 +1,5 @@
+let activeId;
 $(document).ready(function() {
-
 
 
     initJqueryValidation('[name="book_form"]');
@@ -15,6 +15,7 @@ $(document).ready(function() {
     $(document).on('click', '.js-edit', function() {
         readFields($(this).data('id'));
         $('.js-edit-modal').css('display', 'flex');
+        activeId = $(this).data('id');
     });
 
     // Hide both modals
@@ -56,12 +57,12 @@ function createNewListItem() {
     // clone
     let newCopy = $( '.book-copy' ).clone(true, true).removeClass('book-copy').hide().prependTo( '.js-wrap' ).slideDown("fast");
     // values
-    let title = $('[name="title"]').val();
-    let author = $('[name="author"]').val();
-    let year = defaultToZero($('[name="year"]').val());
-    let pages_total = defaultToZero($('[name="pages_total"]').val());
-    let pages_finished = defaultToZero($('[name="pages_finished"]').val());
-    let rating = defaultToZero($('[name="rating"]').val());
+    let title = $('[name="book_form"] > [name="title"]').val();
+    let author = $('[name="book_form"] > [name="author"]').val();
+    let year = defaultToZero($('[name="book_form"] > [name="year"]').val());
+    let pages_total = defaultToZero($('[name="book_form"] > [name="pages_total"]').val());
+    let pages_finished = defaultToZero($('[name="book_form"] > [name="pages_finished"]').val());
+    let rating = defaultToZero($('[name="book_form"] > [name="rating"]').val());
     let date_added = moment().format('DD.MM.YYYY');
 
     $(newCopy).children('.col__1').text(title);
@@ -135,12 +136,43 @@ function readFields(taskId) {
 }
 
 
+// UPDATE
+function editListItem() {
+
+    // More steps down. use find()
+    let title = $('[name="edit_form"]').find('[name="title"]').val();
+    let author = $('[name="edit_form"]').find('[name="author"]').val();
+    let year = defaultToZero($('[name="edit_form"]').find('[name="year"]').val());
+    let pages_total = defaultToZero($('[name="edit_form"]').find('[name="pages_total"]').val());
+    let pages_finished = defaultToZero($('[name="edit_form"]').find('[name="pages_finished"]').val());
+    let rating = defaultToZero($('[name="edit_form"]').find('[name="rating"]').val());
+
+    let fileData = {
+        'title': title,
+        'author': author, 
+        'year': year,
+        'pages_total': pages_total,
+        'pages_finished': pages_finished,
+        'rating': rating,
+        'id': activeId
+    }
+
+    let url = 'update.php';
+    $.ajax({
+        type: 'POST',
+        url: url,
+        data: fileData
+    }).done(function(response) {
+        console.log(response);
+        let tableObj = $('[data-id="' + activeId + '"]').parent('.table-row');
+        $(tableObj).find('.col__1').text(title);
+        $(tableObj).find('.col__2').text(author);
+        $(tableObj).find('.col__4').text(year);
+        $(tableObj).find('.col__3').text(pages_total);
+        $(tableObj).find('.col__7').text(pages_finished + ' / ' + pages_total);
+    });
 
 
-// FE functions
-function editListItem(form) {
-
-    console.log(form);
 
 }
 

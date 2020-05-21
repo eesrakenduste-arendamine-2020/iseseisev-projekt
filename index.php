@@ -222,9 +222,13 @@ require('functions.php');
                     </div>
 
 
-
                     <button class="submitBox" type="submit">
                         <div class="submitBox__content">Kinnita</div>
+                    </button>
+
+                    <br>
+                    <button class="submitBox deleteBox">
+                        <div class="submitBox__content delete__content">Kustuta</div>
                     </button>
 
                 </form><!--.dialogBox__form-->

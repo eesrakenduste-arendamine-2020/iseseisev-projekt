@@ -45,11 +45,6 @@ body {
     background: #ff7691;
 }
 
-.white {
-    background: white;
-}
-
-
 /* clearfixes */
 .clearfix-50 {
     height: 50px;
@@ -258,7 +253,7 @@ body {
     padding: 10px 18px;
     border: none;
     border-radius: 8px;
-    background: #ff7691;
+    background: forestgreen;
     outline: none;
     cursor: pointer;
     transition: background 1s;
@@ -268,7 +263,7 @@ body {
 }
 
 .submitBox:hover {
-    background: #f75172;
+    background: rgb(21, 85, 21);
 }
 
 .submitBox__content {
@@ -300,4 +295,23 @@ body {
 
 .js-edit {
     cursor: pointer;
+}
+
+
+.deleteBox {
+    margin-top: 20px;
+    background: red;
+    transitioN: background 1s;
+}
+
+.delete__content {
+
+}
+
+.deleteBox:hover {
+    background: rgb(196, 2, 2);
+}
+
+.white {
+    background: white;
 }
