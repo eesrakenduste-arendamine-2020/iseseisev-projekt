@@ -130,7 +130,7 @@ $("button").click(function() {
 });
 
 //my listi lisamine
-document.onclick() = function(event){
+document.onclick = function(event){
     const tagName = event.target.tagName;
     if(tagName === 'IMG'){
         const id = event.target.id;
@@ -143,9 +143,20 @@ document.onclick() = function(event){
                 return result.json();
             })
             .then((data) =>{
-                saveLocal(data);  
-            }
+                saveLocal(data);
+                const title = data.title;
+                
+            })
         }else if($('[data-menu-tv-shows]').hasClass('active')){
+            const url = generateUrl(tvPath) + APIKEY;
+            fetch(url)
+            .then((result) =>{
+                return result.json();
+            })
+            .then((data) =>{
+                saveLocal(data);
+                const name = data.name;
+            })
 
         }else if($('[data-menu-search]').hasClass('active')){
 
