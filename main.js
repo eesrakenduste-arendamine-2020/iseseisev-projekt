@@ -157,12 +157,12 @@ class Book {
   }
 
   search() {
-    var firstChars, ul, li, a, i, txtValue;
+    var firstChars, ul, li, a, i, txtValue;  
     firstChars = searchButton.value.toLowerCase();
     ul = document.getElementsByClassName("book-list");
     li = ul[0].getElementsByTagName("li");
     for (i = 0; i < li.length; i++) {
-        a = li[i].getElementsByTagName("div")[0];
+        a = li[i].getElementsByTagName("div")[2];
         txtValue = a.textContent || a.innerText;
         if (txtValue.toLowerCase().indexOf(firstChars) > -1) {
             li[i].style.display = "";
@@ -170,6 +170,7 @@ class Book {
             li[i].style.display = "none";
         }
     }
+    
 }
 
 }
