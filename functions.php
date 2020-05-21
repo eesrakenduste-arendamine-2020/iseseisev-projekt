@@ -109,3 +109,19 @@ function writeNewArray($array) {
     $fileData_JSON = json_encode( $array, JSON_PRETTY_PRINT );
     file_put_contents( $fileLocation, $fileData_JSON );
 }
+
+
+function deleteBook() {
+    $id = $_POST['id'];
+    $array = getFileArray();
+    $newArray = createFileArray();
+    for($i=0;$i < sizeof($array['data']);$i++) :
+        if ($array['data'][$i]['id'] == $id) {
+            continue;
+        }
+
+        array_push($newArray['data'], $array['data'][$i]);
+    endfor;
+
+    writeNewArray($newArray);
+}

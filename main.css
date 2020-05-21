@@ -101,6 +101,7 @@ body {
 
 .table-row {
     height: 50px;
+    background: transition 1s ease-out;
 }
 
 .font-size-12 {
@@ -314,4 +315,8 @@ body {
 
 .white {
     background: white;
+}
+
+.removalClassRed {
+    background: #f05d5d;
 }

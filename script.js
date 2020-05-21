@@ -29,10 +29,6 @@ $(document).ready(function() {
     });
 
 
-
-    
-
-
     // Submission action
     $(document).on('submit', '[name="book_form"]', function(e) {
         e.preventDefault();
@@ -44,6 +40,13 @@ $(document).ready(function() {
     $(document).on('submit', '[name="edit_form"]', function(e) {
         e.preventDefault();
         editListItem($(this));
+        $('.js-edit-modal').hide();
+    });
+
+    // Delete book
+    $(document).on('click', '.js-delete', function(e) {
+        e.preventDefault();
+        deleteBook($(this));
         $('.js-edit-modal').hide();
     });
 
@@ -87,8 +90,23 @@ function defaultToZero(value) {
 
 function cleanModalFields(){
     $('.inputBox > input').val('');
-
 }
+
+function deleteBook() {
+    let url = 'delete.php';
+    $.ajax({
+        type: 'POST',
+        url: url,
+        data: { 'id': activeId }
+    }).done(function(response) {
+        console.log(response);
+        let tableObj = $('[data-id="' + activeId + '"]').parent('.table-row');
+        $(tableObj).effect("highlight", {color: '#f05d5d'}, 600);
+        $(tableObj).slideUp(800, function() { $(tableObj).remove();});
+    });
+}
+
+
 
 
 // database functions
@@ -118,8 +136,6 @@ function addNewToFile(title, author, year, pages_total, pages_finished, rating, 
 
 // READ
 function readFields(taskId) {
-    console.log(taskId);
-    console.log("AAAA");
     var fileData; 
     $.getJSON('read.php', { 'task_id': taskId, }, function(jsonData) {
         fileData = jsonData;
@@ -138,11 +154,9 @@ function readFields(taskId) {
 
 // UPDATE
 function editListItem() {
-
-    // More steps down. use find()
     let title = $('[name="edit_form"]').find('[name="title"]').val();
     let author = $('[name="edit_form"]').find('[name="author"]').val();
-    let year = defaultToZero($('[name="edit_form"]').find('[name="year"]').val());
+    let year = $('[name="edit_form"]').find('[name="year"]').val();
     let pages_total = defaultToZero($('[name="edit_form"]').find('[name="pages_total"]').val());
     let pages_finished = defaultToZero($('[name="edit_form"]').find('[name="pages_finished"]').val());
     let rating = defaultToZero($('[name="edit_form"]').find('[name="rating"]').val());
@@ -239,3 +253,4 @@ function initJqueryValidation(formName) {
         }
     });
 }
+
