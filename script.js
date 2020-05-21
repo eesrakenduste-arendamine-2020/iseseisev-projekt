@@ -1,49 +1,49 @@
 let activeId;
 $(document).ready(function() {
 
-
     initJqueryValidation('[name="book_form"]');
-
     initJqueryValidation('[name="edit_form"]');
 
-    // Add modal opens
+    // --- Css stuff triggers
+
+    // Create book opens
     $(document).on('click', '.js-add-new', function() {
         $('.js-add-modal').css('display', 'flex');
     });
 
-    // Edit modal opens
+    // Edit book opens
     $(document).on('click', '.js-edit', function() {
         readFields($(this).data('id'));
         $('.js-edit-modal').css('display', 'flex');
         activeId = $(this).data('id');
     });
 
-    // Hide both modals
+    // Hide create book
     $(document).on('click', '.js-close-add', function() {
         $('.js-add-modal').hide();
     });
 
-   $(document).on('click', '.js-close-edit', function() {
+    // Hide edit book
+    $(document).on('click', '.js-close-edit', function() {
         $('.js-edit-modal').hide();
-         cleanModalFields();
+        cleanModalFields();
     });
 
-
-    // Submission action
+    // Create book submitted
     $(document).on('submit', '[name="book_form"]', function(e) {
         e.preventDefault();
         createNewListItem();
         $('.js-add-modal').hide();
     });
 
-    // Edit book
+    // Edit book submitted
     $(document).on('submit', '[name="edit_form"]', function(e) {
         e.preventDefault();
         editListItem($(this));
         $('.js-edit-modal').hide();
     });
 
-    // Delete book
+    // Delete book clicked
     $(document).on('click', '.js-delete', function(e) {
         e.preventDefault();
         deleteBook($(this));
@@ -53,9 +53,7 @@ $(document).ready(function() {
 });
 
 
-
-
-// FE functions
+// --- FE functions
 function createNewListItem() {
     // clone
     let newCopy = $( '.book-copy' ).clone(true, true).removeClass('book-copy').hide().prependTo( '.js-wrap' ).slideDown("fast");
@@ -86,30 +84,13 @@ function defaultToZero(value) {
     return parseFloat(value);
 }
 
-
-
 function cleanModalFields(){
     $('.inputBox > input').val('');
 }
 
-function deleteBook() {
-    let url = 'delete.php';
-    $.ajax({
-        type: 'POST',
-        url: url,
-        data: { 'id': activeId }
-    }).done(function(response) {
-        console.log(response);
-        let tableObj = $('[data-id="' + activeId + '"]').parent('.table-row');
-        $(tableObj).effect("highlight", {color: '#f05d5d'}, 600);
-        $(tableObj).slideUp(800, function() { $(tableObj).remove();});
-    });
-}
+// --- database functions
 
-
-// database functions
-
-// ADD
+// CREATE
 function addNewToFile(title, author, year, pages_total, pages_finished, rating, date_added, bookObject) {
     let fileData = {
         'title': title,
@@ -128,6 +109,7 @@ function addNewToFile(title, author, year, pages_total, pages_finished, rating, 
         data: fileData
     }).done(function(response) {
         console.log(response);
+        $(bookObject).effect("highlight", {color: 'skyblue'}, 800);
         $(bookObject).children('.col__8').attr('data-id', response);
     });
 }
@@ -183,10 +165,26 @@ function editListItem() {
         $(tableObj).find('.col__4').text(year);
         $(tableObj).find('.col__3').text(pages_total);
         $(tableObj).find('.col__7').text(pages_finished + ' / ' + pages_total);
+        $(tableObj).effect("highlight", {color: '#569e56'}, 800);
+        cleanModalFields();
     });
 
+}
 
-
+// DELETE
+function deleteBook() {
+    let url = 'delete.php';
+    $.ajax({
+        type: 'POST',
+        url: url,
+        data: { 'id': activeId }
+    }).done(function(response) {
+        console.log(response);
+        let tableObj = $('[data-id="' + activeId + '"]').parent('.table-row');
+        $(tableObj).effect("highlight", {color: '#f05d5d'}, 600);
+        $(tableObj).slideUp(800, function() { $(tableObj).remove();});
+        cleanModalFields();
+    });
 }
 
 

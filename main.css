@@ -40,7 +40,6 @@ body {
 }
 
 /* colors */
-
 .pink {
     background: #ff7691;
 }
@@ -140,9 +139,7 @@ body {
     flex-basis: 30px;
 }
 
-
-
-/* add new book styles */
+/* Create new book styles */
 .btn-add-book {
     background: white;
     padding: 10px 30px;
@@ -297,7 +294,6 @@ body {
 .js-edit {
     cursor: pointer;
 }
-
 
 .deleteBox {
     margin-top: 20px;
