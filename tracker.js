@@ -93,13 +93,13 @@ getPopularTVshows();
 //search
 
 function renderElements(data){
+    document.getElementById("search-results").innerHTML='';
     const searchResults = data.results;
     const searchBlock = createElements(searchResults);
     document.getElementById("search-results").appendChild(searchBlock);
 }
 
 $("button").click(function() {
-    document.getElementById("search-results").innerHTML='';
     if(this.id=="movie-search"){
         let inputValue = input.value;
         let url = "".concat(baseURL, "search/movie?api_key=", APIKEY, '&language=en-US&query=', inputValue);
@@ -154,7 +154,8 @@ function selectContent(){
         $('#my-list').hide();
         $('#search').show();
         $('#search-results').show();
-        document.getElementById("search-results").innerHTML=''; 
+        document.getElementById("search-results").innerHTML='';
+        input.value='';
     } else if($('[data-menu-my-list]').hasClass('active')){ 
         $('#my-list').show();
         $('#movies').hide();
