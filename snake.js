@@ -6,7 +6,7 @@ function Snake() {
   this.total = 0;
   this.tail = [];
   this.valueArray=[];
-  this.para=null;
+
 
   this.draw = function() {
       ctx.fillStyle = "#FFFFFF";
@@ -184,9 +184,9 @@ function Snake() {
   }
 
   this.addScore = function(score){  
+    let para = document.createElement('p');
     this.valueArray.push(score);
-    this.para = document.createElement('P');    
-    this.para.innerHTML = "Tulemus " + score;
+    para.innerHTML = "Tulemus " + score;
     document.getElementById("best").appendChild(para);
     window.localStorage.setItem("tulemused",JSON.stringify(this.valueArray));
   }

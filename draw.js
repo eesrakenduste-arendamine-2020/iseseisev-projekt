@@ -5,7 +5,6 @@ const rows = canvas.height / scale;
 const columns = canvas.width / scale;
 var snake;
 var savedScores;
-var para;
 
 
 
@@ -31,13 +30,13 @@ var para;
     }, 200);
 
     savedScores = JSON.parse(localStorage.getItem('tulemused'));
+    console.log(savedScores[0]);
     
-    
-    for (let i = 1; i < savedScores.length; i++) {
-        para = document.createElement('P');        
-        para.innerHTML = i+". Tulemus oli " + savedScores[i];
-        document.getElementById("best").appendChild(para);
-    
+    for (let i = 0; i < savedScores.length; i++) {
+        let para = document.createElement('p'); 
+        console.log(savedScores[0]);    
+        para.innerHTML = (i+1)+". Tulemus oli " + savedScores[i];
+        document.getElementById("best").appendChild(para);    
     }
 }());
 
