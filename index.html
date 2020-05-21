@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Snake Game</title>
+  </head>
+  <body>
+    <div class="keyboard">
+      <button id="up" onclick="snake.changeDirection('Up')">↑</button>
+      <button id="left" onclick="snake.changeDirection('Left')">←</button> 
+      <button id="down" onclick="snake.changeDirection('Down')">↓</button> 
+      <button id="right" onclick="snake.changeDirection('Right')">→</button>        
+    </div>
+
+    <canvas
+        id="canvas"
+        class="canvas"
+        height="400"
+        width="400">
+    </canvas>        
+    
+    <div id="best">
+      <h1 class="score"></h1>
+    </div>
+    
+  </body>
+  <script type="text/javascript" src="fruit.js"></script>
+  <script type="text/javascript" src="snake.js"></script>
+  <script type="text/javascript" src="draw.js"></script>
+  <link rel="stylesheet" type="text/css" href="main.css">
+</html>
