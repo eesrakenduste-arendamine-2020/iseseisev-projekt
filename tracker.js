@@ -198,11 +198,13 @@ function getTitle(data){
         list.push(movie);
         saveLocal(movie);
         alert("Movie added to my list");
+        addMyListToPage();
     }else{
         let show = data.name;
         list.push(show);
         saveLocal(show);
         alert("TV-show added to my list");
+        addMyListToPage();
     }
 }
 
@@ -212,6 +214,12 @@ function addMyListToPage(list){
     list = JSON.parse(window.localStorage.getItem("Movies and tv-shows")) || [];
     if(list.length != 0){
         for(let i = 0; i<list.length; i++){
+            let myList = document.getElementById('my-list');
+            let li = document.createElement('li');
+            li.id = "list-item";
+            myList.appendChild(li);
+            li.innerHTML = list[i];
+        
 
         }
     } else {
