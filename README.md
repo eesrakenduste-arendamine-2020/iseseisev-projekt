@@ -1,3 +1,17 @@
+
+EVE Online API -st info saamine ja töötlemine.
+
+AUTOR: Taavi Luur.
+
+Funktsionaalsus :
+Kasutab MMO API t, on pandud välja võtma kasutajale huvi pakkuvat infot.
+Töötleb seda.
+
+https://tluur.planet.ee/
+
+![](img/taavi.png)
+
+
 # iseseisev-projekt
 
 Tähtaeg - 1 päev enne esitlust. Esitluse kuupäevadeks: 1 nädal peale ÕISis valitud arvestuse kuupäeva (v.a arvatud järelarvestus, mis toimub õigel kuupäeval) - kindlasti tuleb arvestusele registreerida. Projektide esitlemine toimub:
