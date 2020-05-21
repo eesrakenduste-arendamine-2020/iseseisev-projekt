@@ -41,7 +41,9 @@ Rakenduses võib kasutada teiste autorite koodi, aga see peab olema viidatud. Ü
 * Esitama peavad grupiliikmed ühisel ajal. 
 
 Iseseisev töö - viktoriin
+
 Autor: Klaus Erik Kruus
+
 Veebipõhine viktoriinimäng, mõeldud ühele inimesele.
 
 Kasutatud abimaterjal: https://www.sitepoint.com/simple-javascript-quiz/
