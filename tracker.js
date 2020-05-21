@@ -20,6 +20,7 @@ let getConfig = function () {
     .then((data)=>{
         baseImageURL = data.images.secure_base_url;
         configData = data.images;
+        console.log(configData);
     })
     .catch(function(err){
         alert(err);
@@ -55,14 +56,12 @@ function createElements(elements){
     const content = document.createElement("div");
     content.classList = "content";
 
-    const contentClose = `<p id='content-close'>X</p>`;
+    const contentClose = `<p id='content-close'>X</p>
+        <button class = "listButton">+ My list</button>`;
 
-    const button = document.createElement("button");
-    button.classList = "listButton";
-    button.innerHTML = "+ My list";
+    //const button = `<button class = "listButton">+ My list</button>`;
 
     content.innerHTML = contentClose;
-    content.appendChild(button);
 
     const section = createSection(elements);
 
@@ -120,7 +119,7 @@ function renderElements(data){
 
 $("button").click(function() {
     if(this.id=="movie-search"){
-        let inputValue = input.value;
+        const inputValue = input.value;
         const path = 'search/movie?api_key=';
         let url = generateUrl(path) + APIKEY + '&query=' + inputValue;
         fetch(url)
@@ -141,31 +140,16 @@ $("button").click(function() {
     }
 });
 
-function displayName(data, content){
-    content.innerHTML = '<button class="listButton">+ My list</button><p id="content-close">X</p>';
-    const title = data.title;
-    const titleContainer = document.createElement("p");
-    console.log(title);
-    titleContainer.innerText = title;
-    content.appendChild(titleContainer);
-}
 
 //my listi lisamine, <button id="addToList">+My list</button>
 document.onclick = function(event){
     const imgTagName = event.target.tagName;
+    console.log(event.target);
     if(imgTagName === 'IMG'){
-        const movieId = event.target.id;
+        //const id = event.target.id;
         const section = event.target.parentElement;
         const content = section.nextElementSibling;
         content.classList.add('content-display');
-        //fetch movie names
-        const path = `movie/${movieId}?api_key=`
-        const url = generateUrl(path) + APIKEY;
-        fetch(url)
-        .then((result) =>{
-            return result.json();
-        })
-        .then((data) => displayName(data, content));
 
     }
 

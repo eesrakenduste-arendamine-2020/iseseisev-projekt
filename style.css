@@ -110,7 +110,7 @@ img:hover{
 }
 
 .content-display{
-    display: block;
+    display: block ruby;
     color: white;
     width: 120px;
     height: 50px;
