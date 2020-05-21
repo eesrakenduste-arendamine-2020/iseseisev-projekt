@@ -1,7 +1,3 @@
-* PROJEKTI NIMI - RAAMATURIIUL
-* Autorid - Gevin Paas & Raner Rebane
-* Rakenduse kirjeldus - On võimalik lisada uusi raamatuid, neid eemaldada, samuti märkida oetuks. Listis olevaid raamatuid on võimalik     sorteerida nii pealkirja, autori kui ka zanri järgi. Samuti saab kasutada otsingut.
-
 # iseseisev-projekt
 
 Tähtaeg - 1 päev enne esitlust. Esitluse kuupäevadeks: 1 nädal peale ÕISis valitud arvestuse kuupäeva (v.a arvatud järelarvestus, mis toimub õigel kuupäeval) - kindlasti tuleb arvestusele registreerida. Projektide esitlemine toimub:

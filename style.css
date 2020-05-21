@@ -24,8 +24,14 @@ input{
     width: 100vw;
     display: flex;
     justify-content: center;
-    margin: 5px;
-    
+    margin: 5px;  
+}
+
+#sortContainer{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    margin: 5px;  
 }
 
 .entry{
@@ -77,10 +83,29 @@ input[type="button"]{
     cursor: pointer;
 }
 
+input[type="button2"]{
+    position: relative;
+    background: #222;
+    color: rgb(107, 173, 20);
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    border: 0.2em solid rgb(124, 41, 80);
+    padding: 0.5em 1em;
+    cursor: pointer;
+}
+
 .done-button{
     color: green;
     width: 10%;
     cursor: pointer;
+}
+
+.page-button{
+    color: rgb(194, 117, 46);
+    width: 10%;
+    cursor: pointer;
+    position: relative;
 }
 
 .done-state {
@@ -98,3 +123,26 @@ input[type="button"]{
     font-size: medium;
     width: 30%;
 } 
+
+input[type=search] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('luup.png');
+    background-size: 25%;
+    background-position: left;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+  }
+  
+input[type=search]:focus {
+    width:50%;
+    background-image: url('luup.png');
+    background-size: 3%;
+    background-position: left;
+  }
