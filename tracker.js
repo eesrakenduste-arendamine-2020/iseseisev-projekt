@@ -209,18 +209,25 @@ function getTitle(data){
 }
 
 //kuva my list
-
 function addMyListToPage(list){
     list = JSON.parse(window.localStorage.getItem("Movies and tv-shows")) || [];
     if(list.length != 0){
-        for(let i = 0; i<list.length; i++){
-            let myList = document.getElementById('my-list');
+        let ul = document.createElement('ul');
+        ul.id = "list-items";
+        let myList = document.getElementById('my-list');
+        myList.appendChild(ul);
+        for(let i = 0; i<list.length; i++){            
             let li = document.createElement('li');
             li.id = "list-item";
-            myList.appendChild(li);
-            li.innerHTML = list[i];
-        
+            
+            ul.appendChild(li);
+            let delButton = document.createElement('button');
+            delButton.id = "delete-button";         
+            delButton.innerHTML = 'X';
 
+            li.innerHTML = list[i];
+            li.appendChild(delButton);
+            
         }
     } else {
         alert("My list is empty");
