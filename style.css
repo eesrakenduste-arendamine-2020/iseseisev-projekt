@@ -23,6 +23,12 @@ body{
     background-color: rgb(212, 194, 91);
 }
 
+#list-items{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 li{
     display: flex;
     width: 25%;
