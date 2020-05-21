@@ -148,6 +148,10 @@ document.onclick = function(event){
             .then((data) =>{
                 getTitle(data);
                 saveLocal();  
+
+                const title = data.title;
+                $('#my-list').html(title);
+                alert("Movie added to my list");
             })
         }else if($('[data-menu-tv-shows]').hasClass('active')){
             const url = generateUrl(tvPath) + APIKEY;
@@ -156,8 +160,10 @@ document.onclick = function(event){
                 return result.json();
             })
             .then((data) =>{
-                getTitle(data);
+                const title = getTitle(data);
                 saveLocal();
+                $('#my-list').html(title);
+                alert("TV-show added to my list");
             })
 
         }else if($('[data-menu-search]').hasClass('active')){

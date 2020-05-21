@@ -8,6 +8,10 @@ body{
     
 }
 
+#my-list{
+    color: white;
+}
+
 nav{
     height: 60px;
     width: 100%;
