@@ -9,6 +9,9 @@ let configData = null;
 let baseImageURL = null;
 const search = document.querySelector("#search-button");
 const input = document.querySelector("#search-input");
+let watched = false;
+let localList = localStorage.getItem("list")
+let list = new Array();
 
 let getConfig = function () {
     const path = 'configuration?api_key=';
@@ -130,7 +133,7 @@ $("button").click(function() {
 });
 
 //my listi lisamine
-document.onclick() = function(event){
+document.onclick = function(event){
     const tagName = event.target.tagName;
     if(tagName === 'IMG'){
         const id = event.target.id;
@@ -143,8 +146,9 @@ document.onclick() = function(event){
                 return result.json();
             })
             .then((data) =>{
-                saveLocal(data);  
-            }
+                getTitle(data);
+                saveLocal();  
+            })
         }else if($('[data-menu-tv-shows]').hasClass('active')){
 
         }else if($('[data-menu-search]').hasClass('active')){
@@ -154,8 +158,17 @@ document.onclick() = function(event){
 
 }
 
-function saveLocal(data){
+function getTitle(data){
+    console.log(data);
+    if(data.status == "Released"){
+        let movie = data.title;
+        list.push(movie);
+        saveLocal(movie);
+    }
+}
 
+function saveLocal(){
+    localStorage.setItem("Movies and tv-shows", JSON.stringify(list));
 }
 
 //klasside muutus
