@@ -156,8 +156,8 @@ document.onclick = function(event){
                 return result.json();
             })
             .then((data) =>{
-                saveLocal(data);
-                const name = data.name;
+                getTitle(data);
+                saveLocal();
             })
 
         }else if($('[data-menu-search]').hasClass('active')){
@@ -173,6 +173,11 @@ function getTitle(data){
         let movie = data.title;
         list.push(movie);
         saveLocal(movie);
+    }else{
+        let show = data.name;
+        console.log(show);
+        list.push(show);
+        saveLocal(show);
     }
 }
 
