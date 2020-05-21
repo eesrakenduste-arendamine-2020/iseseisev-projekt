@@ -1,0 +1,171 @@
+#vastused {
+  position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0; 
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(46, 25, 160, 0.897);
+  z-index: 3; /* Specify a stack order in case you're using a different order for other elements */
+  color:#d2af35;
+  text-align: center;
+  align-items: center;
+}
+
+
+#myProgress {
+  top: 1px;
+  width: 100%;
+  /* background-color: #ddd; */
+  float: right;
+  z-index: 99;
+}
+
+#timeruss {
+  top: 1px;
+  width: 0%;
+  height: 30px;
+  background: rgb(117,255,89);
+  background: linear-gradient(90deg, rgba(117,255,89,1) 0%, rgba(25,145,0,1) 100%);
+  /* background-color: #4CAF50; */
+  margin-left: 0%;
+  float: left;
+  z-index: 99;
+}
+
+
+
+.vastamise_aken{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+ transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  width: 60%;
+}
+#jooksev_tulemus{
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  color:rgb(170, 49, 49);
+  background-color: rgb(8, 9, 117);
+  border: 10px solid rgb(218, 248, 46) ;
+  border-radius:10px;
+  font-size: 80px;
+   z-index: 2;
+  height: auto;
+  width: 150px;
+  text-align: center;
+}
+
+.hide_pointer{
+cursor: not-allowed !important;
+pointer-events:none;
+}
+
+.kysimus_vastamiseks_kysimus {
+  font-size: 4rem;
+
+}
+.kysimus_vastamiseks_vastus {
+  cursor: pointer;
+  font-size: 18px;
+  /* border: 1px solid #5c5a58; */
+  outline: none;
+  /*background-color: rgb(146, 140, 140);*/
+  color:rgb(170, 49, 49);
+  justify-content: center;
+  
+  /*min-height: 10vh; */
+
+  font-weight: bold;
+  font-size: 26px;
+}
+
+input[type="button"]{
+  align-items:center;
+  background-color: rgb(8, 9, 117);
+  border: 1px solid rgb(218, 248, 46);
+  color:#d2af35;
+  padding: 10px;
+  height: 80px;
+  font-size: 30px;
+  font-weight: 700;
+  cursor: pointer;
+}
+input{
+  margin-top: 30px;
+  height: 30px;
+  border-radius: 5px;
+  width:100%;
+  font-size: 18px;
+}
+
+
+.peida_div {
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  font-weight: bold;
+}
+
+
+
+HTML, BODY {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  border: none;
+  background: rgb(36, 118, 241)
+}
+
+BODY {
+  font-family: Arial;
+  color:#d2af35;
+}
+
+
+
+
+.kuldvillak-grid {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;
+    grid-template-columns: repeat(6, 150px);
+    grid-template-rows: [row1-start] 80px [row1-end] 100px repeat(5, 100px);
+    box-shadow: 20px 20px;
+  }
+  
+  .kuldvillak-grid > button {
+    cursor: pointer;
+    font-size: 2rem;
+    border: 2px solid #000000;
+    outline: none;
+    background-color:#204898;
+    color:#d2af35;
+    
+  }
+  
+ .kuldvillak-pealkiri {
+  text-align: center;
+  font-size: 2rem;
+  border: 2px solid #000000;
+  outline: none;
+  background-color: #204898;
+  color: #d2af35;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+    
+  }
+
+  .kuldvillak-grid > button:hover {
+    background-color: rgba(160, 163, 168, 0.9);
+  }
+  
+
+ 
