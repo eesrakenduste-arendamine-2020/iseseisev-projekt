@@ -14,6 +14,9 @@ https://www.linkpicture.com/view.php?img=LPic5ec587cb21085603877594
 Rakenduse aluse loomiseks kasutasime YouTube'i videot:
 https://www.youtube.com/watch?v=cIe3d2vwn7s
 
+Rakenduse link:
+http://www.tlu.ee/~vestel/Homework4/
+
 
 
 
