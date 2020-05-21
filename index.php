@@ -33,27 +33,8 @@ require('functions.php');
 
         <div class="flex-row header-row"> 
 
-            <div class="padding-left-10"><a class="link" href="index.php">Raamatukogu</a></div>
-            <div class="padding-left-10 btn-add-book js-add-new">LISA RAAMAT</div>
-
-            <div class="aside"></div>
-
-        </div>
-
-    </div>
-
-    <div class="aside"></div>
-</div><!--.header-->
-
-<!-- HEADER 2 -->
-<div class="main-flex header white">
-    <div class="aside"></div>
-
-    <div class="basis-1080">
-
-        <div class="flex-row header-row"> 
-
-            <div class="padding-left-10">Lugemisprogress</div>
+            <div class="margin-left-10"><a class="link" href="index.php">Raamatukogu</a></div>
+            <div class="margin-left-10 btn-add-book js-add-new">LISA RAAMAT</div>
 
             <div class="aside"></div>
 
@@ -73,7 +54,7 @@ require('functions.php');
     <div class="basis-1080 flex-row body-row">
 
 
-        <div class="flex-column basis-760">
+        <div class="flex-column basis-inner-1080">
 
                <div class="flex-row table-row table-row-heading">
                     <div class="col__1">Kõik raamatud</div>
@@ -106,7 +87,7 @@ require('functions.php');
 
 
 
-        </div><!--.flex-row.basis-760-->
+        </div><!--.flex-row.basis-inner-1080-->
 
     <!-- .basis-360 kustutatud siit -->
 
