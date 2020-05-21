@@ -111,7 +111,7 @@ function deleteBook() {
 
 // ADD
 function addNewToFile(title, author, year, pages_total, pages_finished, rating, date_added, bookObject) {
-        let fileData = {
+    let fileData = {
         'title': title,
         'author': author, 
         'year': year,

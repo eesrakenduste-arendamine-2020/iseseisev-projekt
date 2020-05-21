@@ -224,7 +224,7 @@ body {
 }
 
 .dialogBox__close {
-    background: url(icon-close.png) no-repeat 50%;
+    background: url(img/icon-close.png) no-repeat 50%;
     background-size: 7px 7px;
     text-align: center;
     cursor: pointer;

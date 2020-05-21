@@ -98,7 +98,7 @@ require('functions.php');
                         <div class="col__4"></div>
                         <div class="col__6"></div>
                         <div class="col__7"></div>
-                        <div class="col__8 js-edit" data-id="0"><img src="options.png"></div>
+                        <div class="col__8 js-edit" data-id="0"><img src="img/options.png"></div>
                     </div>
 
                     <?php createBookHTML();?>

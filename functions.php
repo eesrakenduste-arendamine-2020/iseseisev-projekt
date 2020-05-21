@@ -48,7 +48,7 @@ function createBookHTML() {
                 <div class="col__4"><?php echo $array['data'][$i]['year'];?></div>
                 <div class="col__6"><?php echo $array['data'][$i]['date_added'];?></div>
                 <div class="col__7"><?php echo $array['data'][$i]['pages_finished'];?> / <?php echo $array['data'][$i]['pages_total'];?></div>
-                <div class="col__8 js-edit" data-id="<?php echo $array['data'][$i]['id'];?>"><img src="options.png"></div>
+                <div class="col__8 js-edit" data-id="<?php echo $array['data'][$i]['id'];?>"><img src="img/options.png"></div>
             </div>
 
         <?php endfor;
