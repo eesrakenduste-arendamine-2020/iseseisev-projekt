@@ -48,11 +48,33 @@ function createBookHTML() {
                 <div class="col__4"><?php echo $array['data'][$i]['year'];?></div>
                 <div class="col__6"><?php echo $array['data'][$i]['date_added'];?></div>
                 <div class="col__7"><?php echo $array['data'][$i]['pages_finished'];?> / <?php echo $array['data'][$i]['pages_total'];?></div>
-                <div class="col__8" data-id="<?php echo $array['data'][$i]['id'];?>"><img src="options.png"></div>
+                <div class="col__8 js-edit" data-id="<?php echo $array['data'][$i]['id'];?>"><img src="options.png"></div>
             </div>
 
         <?php endfor;
 
     endif;
 
+}
+
+function readFields() {
+    $taskId = $_GET['task_id'];
+    $array = getFileArray();
+
+    for($i=0;$i < sizeof($array['data']);$i++) :
+        if ($array['data'][$i]['id'] == $taskId) {
+            fileDataToJson($array['data'][$i]);
+            break;
+        }
+
+    endfor;
+
+}
+
+function fileDataToJson($array) {
+    if ($array) :
+        echo json_encode( $array, JSON_PRETTY_PRINT );
+        return;
+    endif;
+    return false;
 }

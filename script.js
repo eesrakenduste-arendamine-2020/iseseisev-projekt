@@ -1,21 +1,159 @@
 $(document).ready(function() {
 
-    // Modal js
+
+
+    initJqueryValidation('[name="book_form"]');
+
+    initJqueryValidation('[name="edit_form"]');
+
+    // Add modal opens
     $(document).on('click', '.js-add-new', function() {
-        $('.addNewBookModal').css('display', 'flex');
+        $('.js-add-modal').css('display', 'flex');
     });
 
-    $(document).on('click', '.dialogBox__closeIcon', function() {
-        $('.addNewBookModal').hide();
+    // Edit modal opens
+    $(document).on('click', '.js-edit', function() {
+        readFields($(this).data('id'));
+        $('.js-edit-modal').css('display', 'flex');
     });
 
+    // Hide both modals
+    $(document).on('click', '.js-close-add', function() {
+        $('.js-add-modal').hide();
+    });
+
+   $(document).on('click', '.js-close-edit', function() {
+        $('.js-edit-modal').hide();
+         cleanModalFields();
+    });
+
+
+
+    
+
+
+    // Submission action
+    $(document).on('submit', '[name="book_form"]', function(e) {
+        e.preventDefault();
+        createNewListItem();
+        $('.js-add-modal').hide();
+    });
+
+    // Edit book
+    $(document).on('submit', '[name="edit_form"]', function(e) {
+        e.preventDefault();
+        editListItem($(this));
+        $('.js-edit-modal').hide();
+    });
+
+});
+
+
+
+
+// FE functions
+function createNewListItem() {
+    // clone
+    let newCopy = $( '.book-copy' ).clone(true, true).removeClass('book-copy').hide().prependTo( '.js-wrap' ).slideDown("fast");
+    // values
+    let title = $('[name="title"]').val();
+    let author = $('[name="author"]').val();
+    let year = defaultToZero($('[name="year"]').val());
+    let pages_total = defaultToZero($('[name="pages_total"]').val());
+    let pages_finished = defaultToZero($('[name="pages_finished"]').val());
+    let rating = defaultToZero($('[name="rating"]').val());
+    let date_added = moment().format('DD.MM.YYYY');
+
+    $(newCopy).children('.col__1').text(title);
+    $(newCopy).children('.col__2').text(author);
+    $(newCopy).children('.col__3').text(pages_total);
+    $(newCopy).children('.col__4').text(year);
+    $(newCopy).children('.col__6').text(date_added);
+    $(newCopy).children('.col__7').text(pages_finished + " / " + pages_total);
+
+    cleanModalFields();
+    addNewToFile(title, author, year, pages_total, pages_finished, rating, date_added, $(newCopy));
+}
+
+function defaultToZero(value) {
+    if (!value) {
+        return 0;
+    }
+    return parseFloat(value);
+}
+
+
+
+function cleanModalFields(){
+    $('.inputBox > input').val('');
+
+}
+
+
+// database functions
+
+// ADD
+function addNewToFile(title, author, year, pages_total, pages_finished, rating, date_added, bookObject) {
+        let fileData = {
+        'title': title,
+        'author': author, 
+        'year': year,
+        'pages_total': pages_total,
+        'pages_finished': pages_finished,
+        'rating': rating,
+        'date_added': date_added
+    }
+
+    let url = 'add.php';
+    $.ajax({
+        type: 'POST',
+        url: url,
+        data: fileData
+    }).done(function(response) {
+        $(bookObject).children('.col__8').attr('data-id', response);
+    });
+}
+
+
+// READ
+function readFields(taskId) {
+    console.log(taskId);
+    console.log("AAAA");
+    var fileData; 
+    $.getJSON('read.php', { 'task_id': taskId, }, function(jsonData) {
+        fileData = jsonData;
+        if (fileData) {
+            $('[name="title"]').val(fileData['title']);
+            $('[name="author"]').val(fileData['author']);
+            $('[name="year"]').val(fileData['year']);
+            $('[name="pages_total"]').val(fileData['pages_total']);
+            $('[name="pages_finished"]').val(fileData['pages_finished']);
+            $('[name="rating"]').val(fileData['rating']);
+
+        } 
+    }); 
+}
+
+
+
+
+// FE functions
+function editListItem(form) {
+
+    console.log(form);
+
+}
+
+
+function initJqueryValidation(formName) {
     $.validator.addMethod("comparison", function (done, element) {
-        var total = parseFloat($('[name="pages_total"]').val());
+        var total = parseFloat($(element).parents('.dialogBox__form').find('[name="pages_total"]').val());
         return this.optional(element) || parseFloat(done) <= total;
     });
 
+
     // Jquery validation
-    $('[name="book_form"]').validate({
+    $(formName).validate({
         rules: {
             title: {
                 required: true,
@@ -65,80 +203,7 @@ $(document).ready(function() {
         errorPlacement: function(error, element) {
             // If input name is "title", then error is appended to a class named "error-title"
             // This system applies to all input elements stated in rules
-            error.appendTo( $('.error-' + element.attr("name")));
+            error.appendTo( $(formName + ' > .error-' + element.attr("name")));
         }
-    });
-
-
-    // Submission action
-    $(document).on('submit', '.dialogBox__form', function(e) {
-        e.preventDefault();
-        createNewListItem();
-        $('.addNewBookModal').hide();
-    });
-
-});
-
-
-
-
-// FE functions
-function createNewListItem() {
-    // clone
-    let newCopy = $( '.book-copy' ).clone(true, true).removeClass('book-copy').hide().prependTo( '.js-wrap' ).slideDown("fast");
-    // values
-    let title = $('[name="title"]').val();
-    let author = $('[name="author"]').val();
-    let year = defaultToZero($('[name="year"]').val());
-    let pages_total = defaultToZero($('[name="pages_total"]').val());
-    let pages_finished = defaultToZero($('[name="pages_finished"]').val());
-    let rating = defaultToZero($('[name="rating"]').val());
-    let date_added = moment().format('DD.MM.YYYY');
-
-    $(newCopy).children('.col__1').text(title);
-    $(newCopy).children('.col__2').text(author);
-    $(newCopy).children('.col__3').text(pages_total);
-    $(newCopy).children('.col__4').text(year);
-    $(newCopy).children('.col__6').text(date_added);
-    $(newCopy).children('.col__7').text(pages_finished + " / " + pages_total);
-
-    cleanModalFields();
-    addNewToFile(title, author, year, pages_total, pages_finished, rating, date_added, $(newCopy));
-}
-
-function defaultToZero(value) {
-    if (!value) {
-        return 0;
-    }
-    return parseFloat(value);
-}
-
-
-
-function cleanModalFields(){
-    $('.inputBox > input').val('');
-
-}
-
-
-// database functions
-function addNewToFile(title, author, year, pages_total, pages_finished, rating, date_added, bookObject) {
-        let fileData = {
-        'title': title,
-        'author': author, 
-        'year': year,
-        'pages_total': pages_total,
-        'pages_finished': pages_finished,
-        'rating': rating,
-        'date_added': date_added
-    }
-
-    let url = 'add.php';
-    $.ajax({
-        type: 'POST',
-        url: url,
-        data: fileData
-    }).done(function(response) {
-        $(bookObject).children('.col__8').attr('data-id', response);
     });
 }

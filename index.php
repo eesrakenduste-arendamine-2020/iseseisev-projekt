@@ -94,7 +94,7 @@ require('functions.php');
                         <div class="col__4"></div>
                         <div class="col__6"></div>
                         <div class="col__7"></div>
-                        <div class="col__8" data-id="0"><img src="options.png"></div>
+                        <div class="col__8 js-edit" data-id="0"><img src="options.png"></div>
                     </div>
 
                     <?php createBookHTML();?>
@@ -104,27 +104,7 @@ require('functions.php');
 
         </div><!--.flex-row.basis-760-->
 
-        <div class="flex-column basis-360"> 
-
-            <div class="flex-row table-row table-row-heading">
-                <div class="col__1">Pooleli</div>
-            </div>
-
-            <div class="flex-row table-row font-size-12">
-                <div class="col__1">PEALKIRI</div>
-                <div class="col__2">VIIMATI LOETUD</div>
-                <div class="col__7">PROGRESS</div>
-                <div class="col__8"></div>
-            </div>
-
-            <div class="flex-row table-row font-size-14">
-                <div class="col__1">Harry potter vms</div>
-                <div class="col__2">21.05.2020</div>
-                <div class="col__7">45 / 900</div>
-                <div class="col__8"><img src="options.png" class="col__8"></div>
-            </div>
-
-        </div><!--.flex-row-->
+    <!-- .basis-360 kustutatud siit -->
 
 
 
@@ -139,13 +119,13 @@ require('functions.php');
 
 
 
-<div class="addNewBookModal">
+<div class="addNewBookModal js-add-modal">
     <div class="addNewBookModal__content">
 
         <div class="dialogBox">
             <h1 class="dialogBox__title">Lisa uus raamat</h1>
             <div class="dialogBox__titlePadding"></div>
-            <div class="dialogBox__closeIcon">
+            <div class="dialogBox__closeIcon js-close-add">
                 <div class="dialogBox__close"></div>
             </div>
 
@@ -196,6 +176,64 @@ require('functions.php');
     </div><!--.addNewBookModal__content-->
 </div><!--.addNewBookModal-->
 
+
+
+<div class="addNewBookModal js-edit-modal">
+    <div class="addNewBookModal__content">
+
+        <div class="dialogBox">
+            <h1 class="dialogBox__title">Muuda raamatut</h1>
+            <div class="dialogBox__titlePadding"></div>
+            <div class="dialogBox__closeIcon js-close-edit">
+                <div class="dialogBox__close"></div>
+            </div>
+
+            <div class="dialogBox__fields">
+                <form name="edit_form" action="" method="POST" class="dialogBox__form">
+
+                    <div class="error-title"></div>
+                    <div class="inputBox">
+                        <input name="title" placeholder="Pealkiri" class="inputBox__input" type="text">
+                    </div>
+
+                    <div class="error-author"></div>
+                    <div class="inputBox">
+                        <input name="author" placeholder="Autor" class="inputBox__input" type="text">
+                    </div>
+
+                    <div class="error-year"></div>
+                    <div class="inputBox">
+                        <input name="year" placeholder="Aasta" class="inputBox__input" type="text">
+                    </div>
+
+                    <div class="error-pages_total"></div>
+                    <div class="inputBox">
+                        <input name="pages_total" placeholder="Lehekülgede arv kokku" class="inputBox__input" type="text">
+                    </div>
+
+                    <div class="error-pages_finished"></div>
+                    <div class="inputBox">
+                        <input name="pages_finished" placeholder="Lehekülgede arv loetud" class="inputBox__input" type="text">
+                    </div>
+
+                    <div class="error-rating"></div>
+                    <div class="inputBox">
+                        <input name="rating" placeholder="Hinnang (1-10)" class="inputBox__input" type="text">
+                    </div>
+
+
+
+                    <button class="submitBox" type="submit">
+                        <div class="submitBox__content">Kinnita</div>
+                    </button>
+
+                </form><!--.dialogBox__form-->
+
+            </div><!--.dialogBox__fields-->
+        </div><!--.dialogBox-->
+
+    </div><!--.addNewBookModal__content-->
+</div><!--.addNewBookModal-->
 
 
 

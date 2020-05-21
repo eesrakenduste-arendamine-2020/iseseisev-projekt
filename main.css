@@ -297,3 +297,7 @@ body {
 .book-copy {
     display: none;
 }
+
+.js-edit {
+    cursor: pointer;
+}
