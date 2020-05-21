@@ -79,7 +79,6 @@ let getPopularMovies = function(){
     })
 }
 
-
 getPopularMovies();
 getConfig();
 
@@ -101,7 +100,6 @@ function getPopularTVshows(){
 getPopularTVshows();
 
 //search
-
 function renderElements(data){
     document.getElementById("search-results").innerHTML='';
     const searchResults = data.results;
@@ -185,9 +183,14 @@ document.onclick = function(event){
                 })
             }
         }
-            // var movieButton = document.getElementById("#movie-search");
-            // var tvButton = document.getElementById("#tv-show-search");
-        
+    }
+    //my listi elemendi kustutamine
+    if(tagName === 'BUTTON'){
+        let id = parseInt(event.target.className);
+        list = JSON.parse(window.localStorage.getItem("Movies and tv-shows")) || [];
+        list.splice(id, 1);
+        saveLocal(list);
+        addMyListToPage(list);        
     }
 
 }
@@ -226,14 +229,11 @@ function addMyListToPage(list){
             let delButton = document.createElement('button');
             delButton.id = "delete-button";         
             delButton.innerHTML = 'X';
-
+            delButton.className = i;
             li.innerHTML = list[i];
-            li.appendChild(delButton);
-            
+            li.appendChild(delButton);            
         }
-    } else {
-        alert("My list is empty");
-    }
+    } 
 }
 
 addMyListToPage();
@@ -242,7 +242,7 @@ function saveLocal(){
     localStorage.setItem("Movies and tv-shows", JSON.stringify(list));
 }
 
-//klasside muutus
+//klasside muutus, navbar
 $('.menu-item').click(function(){
     $('.menu-item').removeClass('active');
     $(this).addClass('active');
@@ -279,20 +279,3 @@ function selectContent(){
         $('#search-results').hide();
     }
 }
-
-// { "popularity": 517.523, 
-// "vote_count": 3420, 
-// "video": false, 
-// "poster_path": "/xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg", 
-// "id": 419704, 
-// "adult": false, 
-// "backdrop_path": "/5BwqwxMEjeFtdknRV792Svo0K1v.jpg", 
-// "original_language": "en", 
-// "original_title": "Ad Astra", 
-// "genre_ids": [ 18, 878 ], 
-// "title": "Ad Astra", 
-// "vote_average": 6, 
-// "overview": "The near future, a time when both hope and hardships drive humanity to look to the stars and beyond.
-//  While a mysterious phenomenon menaces to destroy life on planet Earth, astronaut Roy McBride undertakes a mission across the immensity of space and its many perils to uncover
-//   the truth about a lost expedition that decades before boldly faced emptiness and silence in search of the unknown.", 
-//   "release_date": "2019-09-17" }
