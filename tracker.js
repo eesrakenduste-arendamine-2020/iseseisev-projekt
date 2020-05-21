@@ -150,6 +150,15 @@ document.onclick = function(event){
                 saveLocal();  
             })
         }else if($('[data-menu-tv-shows]').hasClass('active')){
+            const url = generateUrl(tvPath) + APIKEY;
+            fetch(url)
+            .then((result) =>{
+                return result.json();
+            })
+            .then((data) =>{
+                saveLocal(data);
+                const name = data.name;
+            })
 
         }else if($('[data-menu-search]').hasClass('active')){
 
