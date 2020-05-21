@@ -129,6 +129,15 @@ $("button").click(function() {
     }
 });
 
+//my listi lisamine
+document.onclick() = function(event){
+    const tagName = event.target.tagName;
+    if(tagName === 'IMG'){
+        const movieId = event.target.id;
+    }
+
+}
+
 //klasside muutus
 $('.menu-item').click(function(){
     $('.menu-item').removeClass('active');
