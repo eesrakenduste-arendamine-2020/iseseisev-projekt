@@ -1,0 +1,286 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.47;
+}
+
+/* Main flex settings*/
+.main-flex {
+    background: #f6f6f8;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: #838795;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    font-size: 15px;
+    align-items: center;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.aside {
+    flex: 1 1 10px;
+}
+
+/* colors */
+.pink {
+    background: #ff7691;
+}
+
+.white {
+    background: white;
+}
+
+/* clearfixes */
+.clearfix-50 {
+    height: 50px;
+    background: #f6f6f8;
+}
+
+/* header */
+.header-row {
+    height: 60px;
+}
+
+/* main stuff */
+.basis-1080 {
+    flex-basis: 1080px;
+}
+
+.basis-inner-1080 {
+    flex-basis: 1080px;
+    border-radius: 4px;
+    background: white;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.table-row-heading {
+    border-bottom: 1px solid #f6f6f8;
+}
+
+
+.body-row{
+    min-height: 100vh;
+    align-items: initial;
+}
+
+.table-row {
+    height: 50px;
+    background: transition 1s ease-out;
+}
+
+.font-size-12 {
+    font-size: 12px;
+}
+
+.font-size-14 {
+    font-size: 14px;
+    color: #000000;
+}
+
+.margin-left-10 {
+    margin-left: 10px;
+}
+
+.col__1 {
+    flex-basis: 200px;
+    padding-left: 10px;
+}
+
+.col__2 {
+    flex-basis: 200px;
+}
+
+.col__3,
+.col__4,
+.col__5,
+.col__6,
+.col__7 {
+    flex-basis: 160px;
+}
+
+.col__8 {
+    flex-basis: 30px;
+}
+
+/* New book trigger button */
+.btn-add-book {
+    background: white;
+    padding: 10px 30px;
+    font-size: 14px;
+    border-radius: 3px;
+    color: red;
+    text-shadow: 0px 0px 3px rgba(255,0,0,0.50);
+    cursor: pointer;
+    transition: background .5s;
+}
+
+.btn-add-book:hover {
+    background: #ff7691;
+}
+
+.link {
+    text-decoration: none;
+    color:white;
+}
+
+
+/* New book modal */
+.addNewBookModal {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 10;
+    justify-content: space-around;
+    overflow: auto;
+    margin: 0;
+    padding: 0;
+    background: rgba(0, 0, 0, 0.26);
+    display: flex;
+    display: none;
+}
+
+.addNewBookModal__content {
+    top: 50px;
+    left: 40px;
+    right: 40px;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    outline: none;
+}
+
+.dialogBox {
+    position: relative;
+    width: 360px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 3px 9px 0 rgba(0,0,0,.12);
+    border: 1px solid rgba(0,0,0,.12);
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 14px;
+}
+
+.dialogBox__title {
+    line-height: 14px;
+    color: #000000;
+    white-space: pre-wrap;
+    font: inherit;
+    font-weight: bold;
+}
+
+.dialogBox__titlePadding {
+    height: 20px;
+}
+
+.dialogBox__closeIcon {
+    position: absolute;
+    top: -7px;
+    right: -7px;
+    width: 50px;
+    height: 50px;
+}
+
+.dialogBox__close {
+    background: url(img/icon-close.png) no-repeat 50%;
+    background-size: 7px 7px;
+    text-align: center;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+}
+
+.inputBox {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.inputBox__input {
+    width: 100%;
+    height: 36px;
+    padding: 10px 12px;
+    outline: none;
+    border-radius: 8px;
+    border: 1px solid #ebebeb;
+}
+
+.submitBox {
+    height: 36px;
+    width: 100%;
+    display: inline-block;
+    position: relative;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    background: forestgreen;
+    outline: none;
+    cursor: pointer;
+    transition: background 1s;
+    line-height: normal;
+    text-align: center;
+    text-decoration: none;
+}
+
+.submitBox:hover {
+    background: rgb(21, 85, 21);
+}
+
+.submitBox__content {
+    color: #ffffff;
+}
+
+.inputCustom {
+    padding-left: 10px;
+    color:#5e5e5e;
+}
+
+
+/* jquery validation messages */
+.error-title,
+.error-author,
+.error-year,
+.error-pages_total,
+.error-pages_finished,
+.error-rating {
+    color: red;
+}
+
+/* edit book modal */
+.book-copy {
+    display: none;
+}
+
+.js-edit {
+    cursor: pointer;
+}
+
+.deleteBox {
+    margin-top: 20px;
+    background: red;
+    transitioN: background 1s;
+}
+
+.deleteBox:hover {
+    background: rgb(196, 2, 2);
+}
+
+
+.removalClassRed {
+    background: #f05d5d;
+}
