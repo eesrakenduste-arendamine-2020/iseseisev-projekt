@@ -110,6 +110,7 @@ function renderElements(data){
 }
 
 $("button").click(function() {
+    localStorage.setItem("search-id", JSON.stringify(this.id));
     if(this.id=="movie-search"){
         const inputValue = input.value;
         const path = 'search/movie?api_key=';
@@ -149,9 +150,6 @@ document.onclick = function(event){
                 getTitle(data);
                 saveLocal();  
 
-                const title = data.title;
-                $('#my-list').html(title);
-                alert("Movie added to my list");
             })
         }else if($('[data-menu-tv-shows]').hasClass('active')){
             const url = generateUrl(tvPath) + APIKEY;
@@ -160,30 +158,51 @@ document.onclick = function(event){
                 return result.json();
             })
             .then((data) =>{
-                const title = getTitle(data);
+                getTitle(data);
                 saveLocal();
-                $('#my-list').html(title);
-                alert("TV-show added to my list");
             })
-
         }else if($('[data-menu-search]').hasClass('active')){
-
+            var searchId = localStorage.getItem("search-id");
+            if(searchId=='"movie-search"'){
+                const url = generateUrl(moviePath) + APIKEY;
+                fetch(url)
+                .then((result) =>{
+                    return result.json();
+                })
+                .then((data) =>{
+                    getTitle(data);
+                    saveLocal();
+                })
+            }else if(searchId=='"tv-show-search"'){
+                const url = generateUrl(tvPath) + APIKEY;
+                fetch(url)
+                .then((result) =>{
+                    return result.json();
+                })
+                .then((data) =>{
+                    getTitle(data);
+                    saveLocal();
+                })
+            }
         }
+            // var movieButton = document.getElementById("#movie-search");
+            // var tvButton = document.getElementById("#tv-show-search");
+        
     }
 
 }
 
 function getTitle(data){
-    console.log(data);
     if(data.status == "Released"){
         let movie = data.title;
         list.push(movie);
         saveLocal(movie);
+        alert("Movie added to my list");
     }else{
         let show = data.name;
-        console.log(show);
         list.push(show);
         saveLocal(show);
+        alert("TV-show added to my list");
     }
 }
 
