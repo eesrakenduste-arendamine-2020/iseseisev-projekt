@@ -147,11 +147,7 @@ document.onclick = function(event){
             })
             .then((data) =>{
                 getTitle(data);
-                saveLocal();  
-
-                const title = data.title;
-                $('#my-list').html(title);
-                alert("Movie added to my list");
+                saveLocal();                  
             })
         }else if($('[data-menu-tv-shows]').hasClass('active')){
             const url = generateUrl(tvPath) + APIKEY;
@@ -160,10 +156,8 @@ document.onclick = function(event){
                 return result.json();
             })
             .then((data) =>{
-                const title = getTitle(data);
+                getTitle(data);
                 saveLocal();
-                $('#my-list').html(title);
-                alert("TV-show added to my list");
             })
 
         }else if($('[data-menu-search]').hasClass('active')){
@@ -179,13 +173,30 @@ function getTitle(data){
         let movie = data.title;
         list.push(movie);
         saveLocal(movie);
+        alert("Movie added to my list");
     }else{
         let show = data.name;
         console.log(show);
         list.push(show);
         saveLocal(show);
+        alert("TV-show added to my list");
     }
 }
+
+//kuva my list
+
+function addMyListToPage(list){
+    list = JSON.parse(window.localStorage.getItem("Movies and tv-shows")) || [];
+    if(list.length != 0){
+        for(let i = 0; i<list.length; i++){
+
+        }
+    } else {
+        alert("My list is empty");
+    }
+}
+
+addMyListToPage();
 
 function saveLocal(){
     localStorage.setItem("Movies and tv-shows", JSON.stringify(list));
