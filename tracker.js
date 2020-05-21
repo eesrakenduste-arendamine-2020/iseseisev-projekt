@@ -10,7 +10,6 @@ let baseImageURL = null;
 const search = document.querySelector("#search-button");
 const input = document.querySelector("#search-input");
 let watched = false;
-let localList = localStorage.getItem("list")
 let list = new Array();
 
 let getConfig = function () {
@@ -146,7 +145,6 @@ document.onclick = function(event){
             })
             .then((data) =>{
                 getTitle(data);
-                saveLocal();  
 
             })
         }else if($('[data-menu-tv-shows]').hasClass('active')){
@@ -157,7 +155,6 @@ document.onclick = function(event){
             })
             .then((data) =>{
                 getTitle(data);
-                saveLocal();
             })
         }else if($('[data-menu-search]').hasClass('active')){
             var searchId = localStorage.getItem("search-id");
@@ -169,7 +166,6 @@ document.onclick = function(event){
                 })
                 .then((data) =>{
                     getTitle(data);
-                    saveLocal();
                 })
             }else if(searchId=='"tv-show-search"'){
                 const url = generateUrl(tvPath) + APIKEY;
@@ -179,7 +175,6 @@ document.onclick = function(event){
                 })
                 .then((data) =>{
                     getTitle(data);
-                    saveLocal();
                 })
             }
         }
