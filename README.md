@@ -13,4 +13,4 @@ Searchis saab otsida kas filme või seriaale sõna või pealkirja järgi, selle 
 Abiks kasutasime youtube tutoriali lingil: https://www.youtube.com/watch?v=mWg2udweauY
 
 Otsing
-![Screenshot](Marginaal 2020-05-22 002451.jpg)
+![Screenshot](otsing.jpg)
