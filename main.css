@@ -1,0 +1,62 @@
+body{
+    width: auto;
+    height: auto;
+    background-color: darkgrey;
+    font-family: Helvetica;
+    
+}
+
+#canvas{
+    display: flex;
+    margin: auto;
+    background-color: #3e3e3e;
+    border: solid black 2px;
+    z-index: 6;
+}
+
+h1,p {
+    text-align: center;
+}
+
+p{
+    font-size: large;
+}
+
+.keyboard{
+    position: relative;
+    top: 300px;
+    left: 15%;
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    padding: 10px;
+    z-index: 2;
+}
+
+.keyboard > button {
+    margin: 1px;
+    font-size: larger;
+    height: 50px;
+    width: 50px;
+}
+
+#up{    
+    grid-column-start: 2;
+    grid-column-end: 3;
+    
+}
+
+#down {
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+#left {
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+#right {
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
