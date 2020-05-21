@@ -128,6 +128,15 @@ $("button").click(function() {
     }
 });
 
+function displayName(data, content){
+    content.innerHTML = '<button class="listButton">+ My list</button><p id="content-close">X</p>';
+    const title = data.title;
+    const titleContainer = document.createElement("p");
+    console.log(title);
+    titleContainer.innerText = title;
+    content.appendChild(titleContainer);
+}
+
 //my listi lisamine, <button id="addToList">+My list</button>
 document.onclick = function(event){
     const imgTagName = event.target.tagName;
@@ -137,6 +146,15 @@ document.onclick = function(event){
         const section = event.target.parentElement;
         const content = section.nextElementSibling;
         content.classList.add('content-display');
+        //fetch movie names
+        const path = `movie/${movieId}?api_key=`
+        const url = generateUrl(path) + APIKEY;
+        fetch(url)
+        .then((result) =>{
+            return result.json();
+        })
+        .then((data) => displayName(data, content));
+
     }
 
     const closeButton = event.target.id;
