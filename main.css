@@ -305,10 +305,6 @@ body {
     transitioN: background 1s;
 }
 
-.delete__content {
-
-}
-
 .deleteBox:hover {
     background: rgb(196, 2, 2);
 }

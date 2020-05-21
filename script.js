@@ -107,8 +107,6 @@ function deleteBook() {
 }
 
 
-
-
 // database functions
 
 // ADD
@@ -123,12 +121,13 @@ function addNewToFile(title, author, year, pages_total, pages_finished, rating, 
         'date_added': date_added
     }
 
-    let url = 'add.php';
+    let url = 'create.php';
     $.ajax({
         type: 'POST',
         url: url,
         data: fileData
     }).done(function(response) {
+        console.log(response);
         $(bookObject).children('.col__8').attr('data-id', response);
     });
 }
@@ -191,14 +190,13 @@ function editListItem() {
 }
 
 
+// Validation
 function initJqueryValidation(formName) {
     $.validator.addMethod("comparison", function (done, element) {
         var total = parseFloat($(element).parents('.dialogBox__form').find('[name="pages_total"]').val());
         return this.optional(element) || parseFloat(done) <= total;
     });
 
-
-    // Jquery validation
     $(formName).validate({
         rules: {
             title: {
