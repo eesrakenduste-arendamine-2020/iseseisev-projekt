@@ -8,3 +8,6 @@ Loodud on vanakooli ussi mäng.
 * Mängida saab enda klaviatuuri, kui ka virtuaalse klaviatuuriga.
 * Ekraanil on olemas teie tulemus.
 * Vanad tulemused, salvestatakse teie browseris ning kuvatakse avamisel veebilehel.
+
+Ekraani pilt mängust
+![Image description](https://github.com/iljamog/iseseisev-projekt/blob/master/SharedScreenshot.jpg)
