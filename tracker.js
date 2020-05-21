@@ -210,11 +210,13 @@ function getTitle(data){
 
 //kuva my list
 function addMyListToPage(list){
+    let myList = document.getElementById('my-list');
+    myList.innerHTML = "";
     list = JSON.parse(window.localStorage.getItem("Movies and tv-shows")) || [];
     if(list.length != 0){
         let ul = document.createElement('ul');
         ul.id = "list-items";
-        let myList = document.getElementById('my-list');
+        
         myList.appendChild(ul);
         for(let i = 0; i<list.length; i++){            
             let li = document.createElement('li');
