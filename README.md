@@ -14,3 +14,6 @@ Abiks kasutasime youtube tutoriali lingil: https://www.youtube.com/watch?v=mWg2u
 
 Otsing
 ![Screenshot](otsing.jpg)
+
+Populaarsed filmid
+![Screenshot](popular.jpg)
