@@ -14,4 +14,6 @@ Lisatud on õige ja vale vastuse helid ning aja ületamise heli.
 
 Mäng on mõeldud ühele inimesele.
 
+Rakenduse aadress http://greeny.cs.tlu.ee/~punkel/veebiprogrammeerimine/Kuld/kuldvillak.php
+
 ![](kuldvillak.png)
