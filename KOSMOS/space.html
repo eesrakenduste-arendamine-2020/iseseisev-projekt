@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="space.js"></script>
+    <title>Tulnukad ründavad</title>
+    <link rel="stylesheet" href="space.css">
+</head>
+<body>
+    
+    <!-- Loob mängu objektid ja määrab nende asukoha-->
+    <script type="text/javascript">
+    
+        var alien1 = new Sprite ( "alien1.png", 50, 50 );
+        var alien2 = new Sprite ( "alien2.png", 250, 50 );
+        var alien3 = new Sprite ( "alien3.png", 450, 50 );
+        var alien4 = new Sprite ( "alien4.png", 650, 50 );
+        var alien5 = new Sprite ( "alien5.png", 850, 50) ;
+
+        var alien6 = new Sprite ( "alien4.png", 150, 150 );
+        var alien7 = new Sprite ( "alien3.png", 350, 150 );
+        var alien8 = new Sprite ( "alien1.png", 550, 150 );
+        var alien9 = new Sprite ( "alien5.png", 750, 150 );
+        var alien10 = new Sprite ( "alien2.png", 950, 150);
+
+        var alien11 = new Sprite ( "alien3.png", 250, 250 );
+        var alien12 = new Sprite ( "alien4.png", 500, 250 );
+        var alien13 = new Sprite ( "alien5.png", 700, 250 );
+        var alien14 = new Sprite ( "alien1.png", 900, 250 );
+        var alien15 = new Sprite ( "alien2.png", 1100, 250);
+
+        var missile = new Sprite ("missile.png", 0, 0);
+        missile.display = "none";
+
+        var ship = new Sprite ( "ship.png", 740, 600 );
+
+        var hit = new Audio ("invaderkilled.wav");
+        var shoot = new Audio ("shoot.wav");
+        
+        //kuidas nuppu vajutades laev liigub
+        document.onkeydown = function ( event ) {
+        
+            if ( event.keyCode == 103) {         //liigub vasakule-üles
+                ship.left = ship.left - 10;
+                ship.top = ship.top - 10;
+            } else if ( event.keyCode == 104) {  //liigub üles
+                ship.top = ship.top - 10;
+            } else if ( event.keyCode == 105) {  //liigub paremale-üles
+                ship.left = ship.left + 10;
+                ship.top = ship.top - 10;
+            } else if ( event.keyCode == 100) {  //liigub vasakule
+                ship.left = ship.left - 10;
+            } else if ( event.keyCode == 102) {  //liigub paremale
+                ship.left = ship.left + 10;
+            } else if ( event.keyCode == 97) {  //liigub vasakule-alla
+                ship.left = ship.left - 10;
+                ship.top = ship.top + 10;
+            } else if ( event.keyCode == 98) {  //liigub alla
+                ship.top = ship.top + 10;
+            } else if ( event.keyCode == 99) {  //liigub paremale-alla
+                ship.left = ship.left + 10;
+                ship.top = ship.top + 10;
+            }
+
+            //takistab laeval vasakul/paremal ekraani pealt välja minemise
+            if ( ship.left < 0 ) {
+                 ship.left = 0;
+            }
+            if ( ship.left > document.body.clientWidth - ship._node.width ) {
+                 ship.left = document.body.clientWidth - ship._node.width;
+            }
+            //takistab laeval ülevalt/alt ekraani pealt välja minemise
+            if ( ship.top < 0 ) {
+                 ship.top = 0;
+            }
+            if ( ship.top > document.body.clientHeight - ship._node.height ) {
+                 ship.top = document.body.clientHeight - ship._node.height;
+            }
+            //nupule vajutades "tühik", ilmub rakett
+            if ( event.keyCode == 101 || event.keyCode == 32 ) {
+                //raketi asukohta ei saa resttida nupuvajutusega
+                if ( missile.display == "none" ) {
+                    missile.display = "block";
+                    //rakett ilmub samal x teljel samas kohas kui laev
+                    missile.left = ship.left + (ship._node.width - missile._node.width) / 2;
+                    //rakett ilmub samal kohal kui laev
+                    missile.top = ship.top;
+                    //lisab raktile animatsiooni külge
+                    missile.startAnimation ( moveMissile, 20 );
+                    shoot.play();
+                }
+            }
+        };
+
+        //rakett saab liikumise, määratakse kiirus
+        function moveMissile ( missile ) {
+            missile.top = missile.top - 10;
+            if ( missile.top < -40 ) {
+             missile.stopAnimation();
+             //saab tulistada rohkem kui ühe raketi
+             missile.display = "none";
+            }
+
+            // kui rakett puutub kokku tulnukaga, siis tulnukas ja rakett kaovad ära
+            for ( var i = 1; i <= 15; i++ ) {
+                var alien = window["alien" + i];
+                if ( alien.display == "none" ) continue;
+                if ( missile.checkCollision ( alien ) ) {
+                    missile.stopAnimation();
+                    missile.display = "none";
+                    alien.stopAnimation();
+                    alien.display = "none";
+                    hit.play();
+                }
+            }
+        }
+
+            for ( var i = 1; i <= 15; i++ ) {
+                var alien = window["alien" + i];
+                if ( ship.checkCollision ( alien ) ) {
+                    alien.stopAnimation();
+                    alien.display = "none";
+                    ship.stopAnimation();
+                    ship.display = "none";
+                    hit.play();
+                }
+            }
+        
+        
+        //tulnukale pannakse liikumine külge ja määratakse kiirus
+        function moveAlienToLeft ( alien ) {
+            alien.left = alien.left - 3;
+            //kui tulnukad jõuavad ekraani ääreni siis alustatakse teistpidi liikumist
+            if ( alien.left <= 0 ) {
+                // peale seina katsumist liigutakse 50 pikslit allapoole
+                alien.top = alien.top + 50;
+                alien.startAnimation ( moveAlienToRight, 20 );
+            }
+        }
+
+        function moveAlienToRight ( alien ) {
+            alien.left = alien.left + 3;
+            //kui tulnukad jõuavad ekraani ääreni siis alustatakse teistpidi liikumist
+            if ( alien.left > document.body.clientWidth - alien._node.width ) {
+                alien.top = alien.top + 50;
+                alien.startAnimation ( moveAlienToLeft, 20 );
+            }
+        }
+
+            //tulnukatele lisatakse liikumine külge
+            for ( var i = 1; i <= 15; i++ ){
+            window ["alien" + i].startAnimation( moveAlienToRight, 20);
+        }
+
+
+    </script>
+    
+</body>
+</html>
