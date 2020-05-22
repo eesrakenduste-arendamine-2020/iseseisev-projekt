@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous">
+    </script>
+    <script type = "module" src="../lamp.js"></script>
+    <script defer type="module" src="tracker.js"></script>
+    <title>Tracker</title>
+</head>
+<body>
+    <nav>
+        <label class="logo">TRACKER</label>
+        <ul class="menu">
+            <li data-menu-movies class="menu-item">Popular movies</li>
+            <li data-menu-tv-shows class="menu-item">Popular TV-shows</li>
+            <li data-menu-my-list class="menu-item">My list</li>
+            <li data-menu-search class="menu-item" >Search</li>
+        </ul>
+    </nav>
+    <div id="search">
+        <input id="search-input" type="text" placeholder="Search movies and tv-shows...">
+        <button id="movie-search">Movies</button>
+        <button id="tv-show-search">Tv-shows</button>
+    </div>
+    <div id="search-results">
+    </div>
+    <div id="movies"></div>
+    <div id="tv-shows"></div>
+    <div id="my-list"></div>    
+</body>
+</html>

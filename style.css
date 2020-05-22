@@ -1,0 +1,149 @@
+*{
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+body{
+    margin: 0;
+    background-color: rgb(0, 0, 0);    
+}
+
+#my-list{
+    margin-top: 20px;
+    color: white;    
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+#delete-button{
+    margin: 2px;
+    margin-top: 2%;
+    border-radius: 5px;
+    font-size: 20px;
+    background-color: rgb(212, 194, 91);
+}
+
+#list-items{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+li{
+    display: flex;
+    width: 25%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1%;
+    border: 2px solid rgb(212, 194, 91);
+    border-radius: 10px;
+    margin: 5px;
+}
+
+nav{
+    height: 65px;
+    width: 100%;
+    background-color: rgb(68, 121, 112);
+    color: rgb(7, 12, 12);
+    display: flex;
+    font-size: 1.5rem;
+    align-items: center;
+}
+
+.menu{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 70%;
+    list-style: none;
+    background-color: rgb(68, 121, 112);
+}
+
+.logo{
+    width: 30%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: black; 
+    font-size: 3rem;
+    letter-spacing: 3px;
+}
+
+.menu-item{
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: transparent;
+    justify-content: center;
+}
+
+.menu-item:hover{
+    color: rgb(29, 27, 27);
+}
+
+.active{
+    color: rgb(29, 27, 27);
+    font-size: 1.7rem;
+}
+
+#search{
+    display: flex;
+    justify-content: center;
+}
+
+#search-input, #movie-search, #tv-show-search{
+    padding: 10px;
+    margin: 2px;
+    margin-top: 2%;
+    border-radius: 5px;
+    font-size: 20px;
+    color: rgb(83, 78, 78);
+}
+
+#movie-search, #tv-show-search{
+    background-color: rgb(212, 194, 91);
+}
+
+#search-input{
+    width: 400px;
+}
+
+#movie-search:hover, #tv-show-search:hover{
+    cursor: pointer;
+    color: black;
+}
+
+#movies, #tv-shows{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+div img{
+    padding: 1%;
+    margin-left: 5.5%;
+    transition: 200ms all;
+}
+
+img:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.content{
+    border: 2px solid;
+    border-color: rgb(83, 78, 78);
+    border-radius: 10px;
+    height: 50px;
+    display: none;
+}
+
+
+#search-results{
+    margin-top: 20px;
+}
