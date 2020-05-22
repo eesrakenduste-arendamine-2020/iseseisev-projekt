@@ -11,6 +11,7 @@ const search = document.querySelector("#search-button");
 const input = document.querySelector("#search-input");
 let watched = false;
 let list = new Array();
+list = JSON.parse(window.localStorage.getItem("Movies and tv-shows")) || [];
 
 let getConfig = function () {
     const path = 'configuration?api_key=';
@@ -164,7 +165,7 @@ document.onclick = function(event){
                     return result.json();
                 })
                 .then((data) =>{
-                    saveLocal();
+                    //saveLocal();
                     getTitle(data);
                 })
             }else if(searchId=='"tv-show-search"'){
@@ -174,7 +175,7 @@ document.onclick = function(event){
                     return result.json();
                 })
                 .then((data) =>{
-                    saveLocal();
+                    //saveLocal();
                     getTitle(data);
                 })
             }
@@ -186,8 +187,9 @@ document.onclick = function(event){
             let id = parseInt(event.target.className);
             list = JSON.parse(window.localStorage.getItem("Movies and tv-shows")) || [];
             list.splice(id, 1);
-            addMyListToPage(list);
+            //addMyListToPage(list);
             saveLocal(list);
+            addMyListToPage(list);
         }
     }
 
@@ -197,14 +199,14 @@ function getTitle(data){
     if(data.status == "Released"){
         let movie = data.title;
         list.push(movie);
-        saveLocal(movie);
         alert("Movie added to my list");
+        saveLocal();
         addMyListToPage();
     }else{
         let show = data.name;
         list.push(show);
-        saveLocal(show);
         alert("TV-show added to my list");
+        saveLocal();
         addMyListToPage();
     }
 }
