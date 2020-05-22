@@ -3,5 +3,5 @@
 
 # Functions
 
-Can add journal entries that are marked automatically with a date
-Can remove them
+- Can add journal entries that are marked automatically with a date
+- Can remove them
