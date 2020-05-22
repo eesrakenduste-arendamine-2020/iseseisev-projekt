@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+	<title>Fitness App</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="script.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    </script>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="savy.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="timer.html">FitnessApp</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="index.html">Kehamassiindeks</a></li>
+      <li><a href="toiteained.html">Toiteainete kalkulaator</a></li>
+      <li><a href="calories.html">Kalorikalkulaator</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+ <form>
+
+  <div class="container">
+   <div class="col-sm-10">
+   <h2> Arvuta oma KMI ja BMR</h2>
+ <p>BMR naitab palju su keha kaloreid poletab puhkeolekus</p>
+    <p>KMI ehk kehamassiindeks on suurus, mis valjendub inimese kehakaalu ja pikkuse suhet</p>
+    <p>Kehamassiindeksit peetakse normaalseks vahemikus 19-25</p>
+    <label> Kaal: </label>
+    <input type="number" class="auto-save form-control" name='' id='kaal'>
+    <div>
+     </div> 
+    <label> Pikkus (meetrites): </label>
+    <input type="number" class="auto-save form-control" name='' id='pikkus'>
+    <div>
+     </div> 
+    <label> Vanus: </label>
+    <input type="number" class="auto-save form-control" name='' id='vanus'>
+    
+      <div>
+      <div>
+     </div> 
+     </div> 
+    <button type="button" id="lsOutput" class="btn btn-success" onclick='bmivalue(); bmrvalue();'> Arvuta 
+    </button>
+<div>
+    <br>
+    <br>
+    <label> Kehamassiindeks: </label>
+    <input type="number" class="form-control" name='' id='KMIvalue'>
+    <div>
+     </div> 
+     <label> BMR kalorid: </label>
+    <input type="number" class="form-control" name='' id='BMRvalue'>
+    </div>
+     <div>
+
+        
+    </fieldset>
+</form>
+     
+    
+    
+   
+</body>
+</html>
+    

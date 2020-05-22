@@ -1,0 +1,61 @@
+
+
+.form-control{
+    width: 300px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid black;
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: inline-block;
+   
+   }
+
+#result{
+    display:block;
+    padding-top: inline-block;
+   font-size: 25px;
+    margin-top: -15px;
+    color: darkseagreen
+   }
+#result::after { 
+  content: " kalorit";
+    color: black;
+    font-size: 15px;
+}
+
+
+.navbar{
+   font-family: Hoefler text;
+   background-color: white !important;
+box-shadow: 0px 9px 46px -12px rgba(0,0,0,0.10);
+    
+   }
+
+
+.timer{
+    display:block;
+   font-size: 50px;
+    font-family: Roboto;
+    
+   }
+
+
+#laps{
+    display:block;
+   font-size: 25px;
+    font-family: Roboto;
+    margin: 10px;
+    
+   }
+
+html body{
+    background-color:#FAFAFA;
+    
+   }
+
+.container{
+   background-color: white;
+box-shadow: 0px 9px 46px -12px rgba(0,0,0,0.10);
+    padding: 10px;
+   }
