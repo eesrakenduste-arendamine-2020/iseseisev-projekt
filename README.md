@@ -11,3 +11,9 @@ My list lehel saab näha kõiki enda lisatud filmide ja seriaalide nimetusi, nin
 Searchis saab otsida kas filme või seriaale sõna või pealkirja järgi, selle jaoks on kaks nuppu movies ja tv-shows, samuti saab peale klikkides neid lisada enda listi.
 
 Abiks kasutasime youtube tutoriali lingil: https://www.youtube.com/watch?v=mWg2udweauY
+
+Otsing
+![Screenshot](otsing.jpg)
+
+Populaarsed filmid
+![Screenshot](popular.jpg)
