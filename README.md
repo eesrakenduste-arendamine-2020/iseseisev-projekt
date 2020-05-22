@@ -1,7 +1,7 @@
 # DateJournal app
 ![Pilt DateJournalist](https://i.imgur.com/BebEo8p.jpg)
 
-#Simple React application with Firebase implementation
+# Simple React application with Firebase implementation
 
 # Functions
 
