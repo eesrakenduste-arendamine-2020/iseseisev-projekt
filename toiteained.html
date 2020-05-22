@@ -1,0 +1,79 @@
+<html lang="en">
+<head>
+<meta charset="utf-8">
+	<title>Fitness App</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="script.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+    </script>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="savy.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="timer.html">FitnessApp</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="index.html">Kehamassiindeks</a></li>
+      <li><a href="toiteained.html">Toiteainete kalkulaator</a></li>
+      <li><a href="calories.html">Kalorikalkulaator</a></li>
+    </ul>
+  </div>
+</nav>
+
+<form>
+    
+<div class="container">
+   <div class="col-sm-10">
+   <h2>Arvuta toitainetest kalorikogus</h2>
+    
+        <div class="form-group">
+        
+
+            <label> Valgud: </label>
+            <input type="number" class="auto-save form-control" name='' id='proteins'>
+            <div>
+            
+        <div class="form-group">
+            <label> Süsivesikud: </label>
+            <input type="number" class="auto-save form-control" name='' id='carbs'>
+            </div>
+            
+            <div>
+    <div class="form-group">
+            <label> Rasvad: </label>
+            <input type="number" class="auto-save form-control" name='' id='fats'>    
+            </div>
+
+            <div> 
+                <button type="button" class="btn btn-success" onclick='MacrosToCalories()'> Arvuta macros 
+            </button>
+            <br>
+            <br>
+            <div>
+            <div class="form-group">       
+            <label> Kalorid: </label>
+            <input type="number" class="auto-save form-control" name='' id='nutValue'>
+            </div>
+        </div>
+    
+        <br>
+        <br>  
+ 
+
+
+</form>
+</div>
+     
+    
+    
+    
+   
+</body>
+</html>
