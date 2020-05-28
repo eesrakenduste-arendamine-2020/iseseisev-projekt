@@ -1,7 +1,10 @@
+idleCounter();
 let score_display = document.getElementById("score");
+let idle_display = document.getElementById("idleValue")
 let clickValue = 1;
 let idleValue = 0;
 let score = 0;
+
 let levels = [
     ['passive1', 1],
     ['passive2', 25],
@@ -18,11 +21,23 @@ let levels = [
 function updateScore(){
     score_display.innerHTML = score;
 }
+function updateIdleValue(){
+    idle_display.innerHTML = idleValue.toString() + " Küpsist/s";
+}
+
+function idleCounter(){
+    setInterval(()=>{
+        score += idleValue;
+        updateScore();
+    }, 1000);
+}
+
 function levelUp(entry){
     for(let i=0; i < levels.length; i++){
         if(entry === levels[i][0]){
             if(i < 5){
                 idleValue += levels[i][1];
+                updateIdleValue(entry);
             } else {
                 clickValue += levels[i][1];
             }
@@ -33,20 +48,17 @@ function levelUp(entry){
 $('#cookie').click(function(){
     score += clickValue;
     updateScore();
-
 });
-
 
 $('.btn').click(function(){
     let price = parseInt(this.innerHTML)
     if(score >= price){
-        this.innerHTML = Math.round(price+(price/2)).toString();
+        this.innerHTML = Math.round(price*1.15).toString();
         score -= price;
         levelUp(this.id);
         updateScore();
     }
 });
-
 
 //Konami kood
 let allowedKeys = {
