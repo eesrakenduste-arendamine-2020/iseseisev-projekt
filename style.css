@@ -1,0 +1,101 @@
+#container {
+  margin: 20px auto;
+  border-radius: 5px;
+  border-radius: 15px;
+  border: 1px solid black;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#table {
+  margin: 5px auto;
+  position: relative;
+}
+
+#book-form {
+  display: grid;
+  text-align: left;
+  position: relative;
+  font-size: 21px;
+}
+
+#add-book-button {
+  margin: 25px auto;
+  font-size: 25px;
+  text-align: center;
+}
+
+#heading {
+  margin: 5px auto;
+  text-align: center;
+  top: 25px;
+}
+
+/*Switchbox*/
+#switch-box {
+  justify-content: flex-end;
+  margin-right: 5px;
+  margin: 1px auto;
+}
+
+#switch {
+  align-content: space-between;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.theme-switch-wrapper {
+  display: flex;
+  align-items: center;
+}
+.theme-switch {
+  display: inline-block;
+  height: 34px;
+  position: relative;
+  width: 60px;
+}
+
+.theme-switch input {
+  display: none;
+}
+
+.slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 0.4s;
+}
+
+.slider:before {
+  background-color: #fff;
+  bottom: 4px;
+  content: "";
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: 0.4s;
+  width: 26px;
+}
+
+input:checked + .slider {
+  background-color: #66bb6a;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.read {
+  background-color: lightgreen;
+}
