@@ -1,0 +1,238 @@
+body {
+  max-width: 1000px;
+  margin: auto;
+  background-color: #f3f2ec;
+  position: relative;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.container {
+  background-color: white;
+  padding: 30px 10px;
+}
+.span-end {
+  float: right;
+}
+.span-error {
+  color: #ff1818;
+  margin: auto 5px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.row {
+  margin: 6px 0;
+  border-bottom: 1px dashed lightgrey;
+}
+.info-wrap {
+  max-width: 750px;
+  margin: auto;
+}
+.contract {
+  max-width: 800px;
+  margin: auto;
+  margin-top: 30px;
+}
+.info {
+  border: 1px solid lightgrey;
+  padding: 10px;
+  margin-top: 7px;
+  padding-bottom: 5px;
+  border-radius: 3px;
+}
+.info-2 {
+  border: 1px solid lightgrey;
+  padding: 10px;
+  padding-bottom: 5px;
+  border-radius: 3px;
+}
+.input {
+  background-color: white;
+  transform: translateY(-5px);
+  border: none;
+  border-bottom: 2px solid dimgrey;
+  height: 20px;
+}
+.input-modal {
+  background-color: white;
+  transform: translateY(-5px);
+  border: none;
+  border-bottom: 2px solid dimgrey;
+  height: 20px;
+  display: block;
+  margin: auto;
+  width: 190px;
+}
+.input:focus,
+.input-modal:focus,
+#submit-button2:focus,
+#submit-button:focus {
+  outline: 0;
+}
+li {
+  margin: 3px 0;
+}
+ol {
+  padding-inline-start: 20px;
+  margin-top: 15px;
+}
+ol li {
+  margin: 5px 0;
+}
+table {
+  margin: 50px auto;
+  max-width: 680px;
+  width: 100%;
+  text-align: center;
+}
+.row.no-border {
+  border-bottom: 0;
+}
+.margin-30 {
+  margin: 20px 0 10px 3px;
+}
+.margin-0 {
+  margin: 0 0 10px 3px;
+  padding-top: 20px;
+}
+.agreement {
+  margin: 50px 0 0 20px;
+  position: relative;
+  padding-bottom: 20px;
+  text-align: right;
+}
+.button-js {
+  padding: 9px;
+  margin-left: auto;
+  margin-top: 35px;
+  border-radius: 3px;
+  cursor: pointer;
+  text-align: center;
+  border: 1px solid lightgrey;
+  width: 100%;
+  max-width: 200px;
+  background-image: linear-gradient(180deg, #039ae0, #0368ac);
+  color: white;
+}
+#button-js2 {
+  margin-top: 15px;
+}
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.04) translateZ(0);
+  background-color: white;
+  max-width: 350px;
+  width: 100%;
+  text-align: center;
+  z-index: 3;
+  border-radius: 3px;
+}
+.modal1 {
+  height: 200px;
+}
+.modal2 {
+  height: 321px;
+  max-width: 425px;
+}
+.modal-text {
+  margin-top: 30px;
+  font-size: 15px;
+  margin-bottom: 31px;
+}
+.modal1 .modal-text {
+  margin-top: 27px;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(76, 76, 76, 0.5);
+  display: none;
+  z-index: 2;
+}
+.close-button {
+  text-align: right;
+  margin: auto;
+  margin-top: 8px;
+  margin-right: 13px;
+  cursor: pointer;
+  width: 15px;
+}
+.close-button:hover {
+  color: #e24444;
+}
+#submit-button {
+  padding: 9px;
+  width: 100px;
+  margin-top: 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  text-align: center;
+  border: 1px solid lightgrey;
+  background-color: white;
+  background-image: linear-gradient(180deg, #039ae0, #0368ac);
+  color: white;
+}
+#submit-button2 {
+  padding: 9px;
+  width: 100px;
+  border-radius: 3px;
+  cursor: pointer;
+  text-align: center;
+  border: 1px solid lightgrey;
+  background-color: white;
+  background-image: linear-gradient(180deg, #039ae0, #0368ac);
+  color: white;
+}
+.agreement label,
+.agreement input {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+}
+.agreement-wrap {
+  max-width: 800px;
+  width: 100%;
+  margin: 75px auto 50px auto;
+}
+.dropdown {
+  transform: translateY(0);
+}
+.radio-btn {
+  text-align: center;
+}
+.radio-btn label {
+  margin-right: 10px;
+}
+.radio-btn {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 10px 0;
+}
+#extra {
+  margin-bottom: 18px;
+}
+.plus {
+  margin: 10px auto;
+  width: 20px;
+  border: 1px solid #93999c;
+  border-radius: 3px;
+  padding: 1px;
+  cursor: pointer;
+  margin-bottom: 24px;
+}
+.plus:hover {
+  border: 1px solid #7dc2e3;
+}
+
+@media only screen and (max-width: 576px) {
+  .container {
+    padding: 0 5px;
+  }
+  .span-error {
+    display: none;
+  }
+}
