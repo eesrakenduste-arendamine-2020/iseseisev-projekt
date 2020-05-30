@@ -253,3 +253,52 @@ function toggleExtra() {
     disableSubmit();
   }
 }
+
+/* Change contracts */
+document.getElementById('contract1').addEventListener('click', function () {
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("contract").innerHTML = this.responseText;
+      /* document.getElementById("nextYear").addEventListener("click", changeYearF); */
+    }
+  };
+  xmlhttp.open("GET", "contract1.php", true);
+  xmlhttp.send();
+
+  document.getElementById('contract1').classList.add('active');
+  document.getElementById('contract2').classList.remove('active');
+  document.getElementById('contract3').classList.remove('active');
+})
+
+document.getElementById('contract2').addEventListener('click', function () {
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("contract").innerHTML = this.responseText;
+      /* document.getElementById("nextYear").addEventListener("click", changeYearF); */
+    }
+  };
+  xmlhttp.open("GET", "contract2.php", true);
+  xmlhttp.send();
+
+  document.getElementById('contract1').classList.remove('active');
+  document.getElementById('contract2').classList.add('active');
+  document.getElementById('contract3').classList.remove('active');
+})
+
+document.getElementById('contract3').addEventListener('click', function () {
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("contract").innerHTML = this.responseText;
+      /* document.getElementById("nextYear").addEventListener("click", changeYearF); */
+    }
+  };
+  xmlhttp.open("GET", "contract3.php", true);
+  xmlhttp.send();
+
+  document.getElementById('contract1').classList.remove('active');
+  document.getElementById('contract2').classList.remove('active');
+  document.getElementById('contract3').classList.add('active');
+})

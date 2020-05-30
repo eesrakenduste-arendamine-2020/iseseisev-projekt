@@ -337,6 +337,24 @@ a {
 .front-product-shortcut:active::before {
     border: 3px solid #373737;
 }
+.front-product-shortcut.active::after {
+    content: "";
+    opacity: 1;
+    width: 63%;
+    height: 80%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 3px solid #373737;
+    -webkit-transform: translateY(20px);
+    -ms-transform: translateY(20px);
+    transform: translate(-46px, 0px);
+    border-radius: 50%;
+    -webkit-transition: 0.1s ease-in-out;
+    -o-transition: 0.1s ease-in-out;
+    transition: 0.1s ease-in-out;
+    pointer-events: none;
+}
 
 /**************************************
 *
