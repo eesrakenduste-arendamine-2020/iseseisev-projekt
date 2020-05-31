@@ -93,12 +93,13 @@ if(isset($_POST['signMyself']) || isset($_POST['sendForSigning'])) {
             </div>
             <!-- Mobile menu -->
             <div id="mobile-menu" style="display: none;">
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/tPDF3LMG_q8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
     </div>
 
 <?php $doc->printContract();?>
-
+    <div id="success"></div>
     <div class="contract" id="contract">
         <strong>1. ÜLDSÄTTED</strong>
             <p>&nbsp;</p>

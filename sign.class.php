@@ -58,7 +58,7 @@ class signDoc {
     #from conf
     public $apiUrl = 'https://gateway-sandbox.dokobit.com';
     public $accessToken = 'testgw_bcgxvDEpDst0WIqj77qwz8pHYxwyx7pn';
-    public $postbackUrl = 'https://epo.ee/proov/postback-handler.php';
+    public $postbackUrl = 'https://epo.ee/jsjs/postback-handler.php';
 
     #sendForSigning()
     public $from;
@@ -415,10 +415,10 @@ class signDoc {
         $this->file['name'] = 'Teenuse_leping_nr_'. $this->contractNr. '.docx'; 
 
         if($this->client == 'Juriidiline') {
-            $this->file['url'] = 'http://epo.ee/proov/testingsamplecopy.docx';
+            $this->file['url'] = 'http://epo.ee/jsjs/testingsamplecopy.docx';
             $this->file['digest'] = hash_file('sha256', 'testingsamplecopy.docx');
         } else if($this->client == 'Eraisik') {
-            $this->file['url'] = 'http://epo.ee/proov/testingsamplecopy2.docx';
+            $this->file['url'] = 'http://epo.ee/jsjs/testingsamplecopy2.docx';
             $this->file['digest'] = hash_file('sha256', 'testingsamplecopy2.docx');
         }
 
@@ -428,7 +428,7 @@ class signDoc {
         $this->action = 'file/upload';
         $this->uploadResponse = $this->request($this->getApiUrlByAction($this->action), [
             'file' => $this->file
-        ], REQUEST_POST);
+        ], self::REQUEST_POST);
 
         if ($this->uploadResponse['status'] != 'ok') {
             echo "File could not be uploaded.
@@ -444,7 +444,7 @@ class signDoc {
         while ($this->statusResponse === '' || $this->statusResponse['status'] == 'pending') {
             $this->statusResponse = $this->request($this->getApiUrlByAction($this->action), [
                 'token' => $this->uploadResponse['token']
-            ], REQUEST_GET);
+            ], self::REQUEST_GET);
             sleep(2);
         }
 
@@ -532,7 +532,7 @@ class signDoc {
                     $this->signerUID = '51001099999';
                     $this->signer['id'] = $this->signerUID;
 
-                    $this->signer2UID = '39303220256';
+                    $this->signer2UID = '39303334454';
                     $this->signer2['id'] = $this->signer2UID;
                     /**
                      * Name
@@ -566,7 +566,7 @@ class signDoc {
                 'signers' => $this->signers,
                 'files' => $this->files,
                 'postback_url' => $this->postbackUrl,
-            ], REQUEST_POST);
+            ], self::REQUEST_POST);
 
             if ($this->createResponse['status'] != 'ok') {
                 print_r($this->createResponse);
@@ -582,7 +582,7 @@ class signDoc {
     }
 
     public function sendForSigning() {
-        $this->from = "info@deskis.ee";
+        $this->from = "proov@proov.ee";
         $this->headers = 'From: ' . $this->from . "\r\n";
         $this->subject = 'Leping';
         $this->message = "Teile on saadetud leping allkirjastamiseks.".  "\r\n". "Saate lepingut allkirjastada alloleva lingi kaudu:". "\r\n";
@@ -595,7 +595,7 @@ class signDoc {
 
             mail($this->email, $this->subject, $this->message, $this->headers);
 
-            header("Location:http://epo.ee/proov?mailsent");
+            header("Location:http://epo.ee/jsjs?mailsent");
 
         } else {
             $this->signingUrl = trim(/*$this->apiUrl*/conf::$apiUrl, '/') . "/signing/" . $this->createResponse['token'] . '?access_token=' . $this->createResponse['signers'][$this->signerUID];
@@ -605,10 +605,10 @@ class signDoc {
             $this->message2 = $this->message. $this->signingUrl2;
             $this->message .= $this->signingUrl;
 
-            mail($this->email, $subject, $this->message, $this->headers);
-            mail($this->email2, $this->subject, $this->message2, $this->headers);
+            /* mail($this->email, $subject, $this->message, $this->headers);
+            mail($this->email2, $this->subject, $this->message2, $this->headers); */
             
-            header("Location:http://epo.ee/proov?mailsent");
+            header("Location:http://epo.ee/jsjs?mailsent");
         }
     }
 
@@ -623,8 +623,8 @@ class signDoc {
         
         
 
-        $this->REQUEST_GET = false;
-        $this->REQUEST_POST = true;
+        /* $this->REQUEST_GET = false;
+        $this->REQUEST_POST = true; */
 
 
         

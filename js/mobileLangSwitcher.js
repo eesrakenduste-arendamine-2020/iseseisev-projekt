@@ -10,7 +10,6 @@ document.addEventListener("click", function (e) {
     if (menu.style.display == "block") {
         if (e.target !== menu && !menu.contains(e.target)) {
             toggleMenu();
-            console.log('toggle1');
         }
     } else if (menu.style.display == "none") {
         if (e.target == menuToggler || menuToggler.contains(e.target)) {

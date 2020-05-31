@@ -298,3 +298,11 @@ document.getElementById('contract3').addEventListener('click', function () {
   document.getElementById('contract2').classList.remove('active');
   document.getElementById('contract3').classList.add('active');
 })
+
+/* Get query strings */
+const queryString = window.location.search;
+if (queryString == '?mailsent') {
+  document.getElementById('success').innerHTML = '<h3>Leping on välja saadetud!</h3>';
+} else if (queryString == '?success') {
+  document.getElementById('success').innerHTML = '<h3>Leping on edukalt allkirjastatud!</h3>';
+}

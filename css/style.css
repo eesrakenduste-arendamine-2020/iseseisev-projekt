@@ -426,6 +426,11 @@ a {
   display: inline-block;
   z-index: -1;
 }
+#success {
+  text-align:center;
+  color: rgb(44, 185, 44);
+  background-color: #f4f4f4;
+}
 
 .menu-icons .svg-wrap:active::after,
 .front-mobile-footer .svg-wrap:active:after {
@@ -529,6 +534,8 @@ a {
 
 .front-header-image h1 {
   letter-spacing: 2px;
+  text-shadow: 1px 2px grey;
+  color: white;
 }
 
 .front-header-image-text {
@@ -1398,6 +1405,9 @@ input[type="radio"] {
   .front-product-shortcut:hover::before {
     display: none;
   }
+  .front-product-shortcut.active::after {
+    border: none;
+  }
 }
 
 @media only screen and (max-width: 900px) {
@@ -1603,6 +1613,10 @@ input[type="radio"] {
 
   .news-post-icon {
     display: none;
+  }
+
+  .front-product-shortcut.active::after {
+    border: none;
   }
 }
 
