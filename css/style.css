@@ -1,3 +1,16 @@
+html {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  /* Chrome/Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE10+ */
+
+  /* Rules below not implemented in browsers yet */
+  -o-user-select: none;
+  user-select: none;
+}
 body {
   max-width: 1000px;
   margin: auto;
@@ -626,7 +639,44 @@ a {
 .front-slider {
   position: relative;
 }
-
+#front-slider-arrows {
+  opacity: 0;
+  transition: 0.3s ease-in-out;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  height: 10%;
+  transform: translate(-50%, 30%);
+  z-index: 99999;
+}
+#right-arrow {
+    cursor: pointer;
+    width: 20px;
+    float: right;
+    font-size: 30px;
+    text-shadow: 1px 1px black;
+    color: white;
+}
+#right-arrow:hover,
+#left-arrow:hover {
+  color: lightgrey;
+}
+#left-arrow {
+  cursor: pointer;
+  width: 20px;
+  float: left;
+  font-size: 30px;
+  text-shadow: 1px 1px black;
+  color: white;
+}
+/* #front-slider:hover + #front-slider-arrows {
+  visibility: hidden;
+} */
+.arrows {
+  opacity:1 !Important;
+  transform: translate(-50%, 0%) !Important;
+}
 .front-slider img {
   width: 100%;
   max-width: 100%;
@@ -753,6 +803,7 @@ a {
   transition: 0.1s ease-in-out;
   visibility: visible;
   opacity: 1;
+  z-index: 9999999;
 }
 
 .grid-6 {

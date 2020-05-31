@@ -1,29 +1,39 @@
 /* Slider */
-var i = 0;
+var i = -1;
 var time = 5000;
 var images = [];
 var stopper = 0;
 var baseUrl = 'http://localhost/iseseisevJS/images/';
+var slider = document.getElementById('front-slider');
+var arrows = document.getElementById('front-slider-arrows');
+var leftArrow = document.getElementById('left-arrow');
+var rightArrow = document.getElementById('right-arrow');
+
 /* Add more colors, if there are more than 5 images in the slider */
 var colors = ['#c0b283', '#dcd0c0', '#c0b283', '#dcd0c0', '#c0b283'];
 
 images[0] = "binding-books-bound-colorful-272980.jpg";
 images[1] = "chart-close-up-coffee-cup-590037.jpg";
 images[2] = "person-holding-gray-twist-pen-and-white-printer-paper-on-955389.jpg";
-/* images[3] = "forest2.jpg";
-images[4] = "forest.jpg"; */
+
+slider.addEventListener('mouseenter', function () {
+  arrows.classList.add('arrows');
+})
+slider.addEventListener('mouseleave', function () {
+  arrows.classList.remove('arrows');
+})
 
 function changeSlide() {
   if (stopper == 0) {
-    document.slider.src = baseUrl + images[i];
-    colorDot();
     if (i < images.length - 1) {
       i++;
     } else {
       i = 0;
     }
+    document.slider.src = baseUrl + images[i];
+    colorDot();
+    setTimeout("changeSlide()", time);
   }
-  setTimeout("changeSlide()", time);
 }
 
 for (let o = 0; o < images.length; o++) {
@@ -51,10 +61,47 @@ function colorDot() {
   Array.from(dots).forEach(function (dot, index) {
     dot.style.backgroundColor = colors[index];
   });
-
+  
   var activeDot = document.querySelector('[data-id="' + i + '"]');
   activeDot.style.backgroundColor = "black";
 }
+
+rightArrow.addEventListener('click', function () {
+  stopper = 1;
+    for (let u = 0; u < images.length; u++) {
+      if (document.slider.src == baseUrl + images[u]) {
+        if (u != images.length - 1) {
+          document.slider.src = baseUrl + images[u + 1];
+          i++;
+          break;
+        } else {
+          document.slider.src = baseUrl + images[0];
+          i = 0;
+          break;
+        }
+      }
+  }
+  colorDot();
+})
+
+leftArrow.addEventListener('click', function () {
+  stopper = 1;
+  for (let u = 0; u < images.length; u++) {
+    if (u == i) {
+      if (i > 0) {
+        i--;
+        document.slider.src = baseUrl + images[i];
+        break;
+      } else if ( i == u )  {
+        i = images.length-1;
+        document.slider.src = baseUrl + images[i];
+        break;
+      }
+    }
+  }
+  colorDot();
+})
+
 /* Slider full screen button */
 var fullScreen = document.getElementById('slider-full-screen');
 var sliderOverlay = document.getElementById('overlay');
@@ -258,9 +305,10 @@ function toggleExtra() {
   }
 }
 
+/* Change contracts */
 var spinnerDur = 800;
 var spinnerOverlay = document.getElementById('spinner-overlay');
-/* Change contracts */
+
 document.getElementById('contract1').addEventListener('click', function () {
   setTimeout(function () {
     contract1();
@@ -344,4 +392,56 @@ if (queryString == '?mailsent') {
   document.getElementById('success').innerHTML = '<h3>Leping on välja saadetud!</h3>';
 } else if (queryString == '?success') {
   document.getElementById('success').innerHTML = '<h3>Leping on edukalt allkirjastatud!</h3>';
+}
+
+/* Mobile lang and menu toggler */
+var switcher = document.getElementById('mobile-lang-switcher');
+var dropdown = document.getElementById('mobile-lang-dropdown');
+
+var menuToggler = document.getElementById('mobile-menu-toggler');
+var menu = document.getElementById('mobile-menu');
+var bars = document.getElementsByClassName('bar');
+
+document.addEventListener("click", function (e) {
+  if (menu.style.display == "block") {
+    if (e.target !== menu && !menu.contains(e.target)) {
+      toggleMenu();
+    }
+  } else if (menu.style.display == "none") {
+    if (e.target == menuToggler || menuToggler.contains(e.target)) {
+      toggleMenu();
+    }
+  }
+
+  if (dropdown.style.display == "block") {
+    if (e.target !== dropdown && !dropdown.contains(e.target)) {
+      langToggler();
+    }
+  } else if (dropdown.style.display == "none") {
+    if (e.target == switcher || switcher.contains(e.target)) {
+      langToggler();
+    }
+  }
+});
+
+function langToggler() {
+  if (dropdown.style.display == "none") {
+    dropdown.style.display = "block";
+  } else {
+    dropdown.style.display = "none";
+  }
+}
+
+function toggleMenu() {
+  if (menu.style.display == "none") {
+    menu.style.display = "block";
+    for (let i = 0; i < bars.length; i++) {
+      bars[i].style.backgroundColor = "#1f6653";
+    }
+  } else {
+    menu.style.display = "none";
+    for (let i = 0; i < bars.length; i++) {
+      bars[i].style.backgroundColor = "#9ddda0";
+    }
+  }
 }
