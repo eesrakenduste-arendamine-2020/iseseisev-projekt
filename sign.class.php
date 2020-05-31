@@ -78,7 +78,6 @@ class signDoc {
 
     public function printContract() {
     echo '
-        <div class="overlay" id="overlay"></div>
         <div class="container">
             
             <div class="info-wrap">
@@ -402,7 +401,7 @@ class signDoc {
         $this->xml = str_replace("(EMAIL)",$this->email ,$this->xml);
         $this->xml = str_replace("(TELF)",$this->phone ,$this->xml);
         $this->xml = str_replace("(LEPINGUNR)",$this->contractNr ,$this->xml);
-        $this->xml = str_replace("(PAEVAD)",$this->days ,$this->xml);
+        /* $this->xml = str_replace("(PAEVAD)",$this->days ,$this->xml); */
 
         $this->zip->addFromString('word/document.xml', $this->xml);
 

@@ -57,25 +57,24 @@ function colorDot() {
 }
 /* Slider full screen button */
 var fullScreen = document.getElementById('slider-full-screen');
-var overlay = document.getElementById('overlay');
-var modal = document.getElementById('slider-modal');
+var sliderOverlay = document.getElementById('overlay');
+var sliderModal = document.getElementById('slider-modal');
 
 fullScreen.addEventListener('click', makeFullScreen);
-overlay.addEventListener('click', closeModal);
+sliderOverlay.addEventListener('click', closeSliderModal);
 
 function makeFullScreen() {
   stopper = 1;
 
-  overlay.classList.add("active");
-  modal.classList.add("active");
-  modal.innerHTML = '<img src="' + document.slider.src + '">';
-  /*document.slider.src*/
+  sliderOverlay.classList.add("active");
+  sliderModal.classList.add("active");
+  sliderModal.innerHTML = '<img src="' + document.slider.src + '">';
 }
 
-function closeModal() {
+function closeSliderModal() {
   stopper = 0;
-  modal.classList.remove("active");
-  overlay.classList.remove("active");
+  sliderModal.classList.remove("active");
+  sliderOverlay.classList.remove("active");
 }
 
 /* Allkirjastamine */
@@ -260,7 +259,6 @@ document.getElementById('contract1').addEventListener('click', function () {
   xmlhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("contract").innerHTML = this.responseText;
-      /* document.getElementById("nextYear").addEventListener("click", changeYearF); */
     }
   };
   xmlhttp.open("GET", "contract1.php", true);
@@ -276,7 +274,6 @@ document.getElementById('contract2').addEventListener('click', function () {
   xmlhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("contract").innerHTML = this.responseText;
-      /* document.getElementById("nextYear").addEventListener("click", changeYearF); */
     }
   };
   xmlhttp.open("GET", "contract2.php", true);
@@ -292,7 +289,6 @@ document.getElementById('contract3').addEventListener('click', function () {
   xmlhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById("contract").innerHTML = this.responseText;
-      /* document.getElementById("nextYear").addEventListener("click", changeYearF); */
     }
   };
   xmlhttp.open("GET", "contract3.php", true);
