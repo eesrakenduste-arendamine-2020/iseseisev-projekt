@@ -100,7 +100,8 @@ if(isset($_POST['signMyself']) || isset($_POST['sendForSigning'])) {
 
 <?php $doc->printContract();?>
     <div id="success"></div>
-    <div class="contract" id="contract">
+ 
+    <div class="contract" id="contract">   
         <strong>1. ÜLDSÄTTED</strong>
             <p>&nbsp;</p>
             <p>1.1 Lepingu eesm&auml;rgiks on kokku leppida &Uuml;hingu ja Juhatuse liikme vastastikused &otilde;igused, kohustused ja muud Juhatuse liikme kohustuste t&auml;itmisest tulenevad tingimused, sealhulgas Juhatuse liikme peamised tegevusvaldkonnad, tasu ja muud soodustused, kohustused konfidentsiaalse informatsiooni hoidmisel ja konkurentsikeeld, Poolte vastutus Lepingu rikkumise eest ning Lepingu l&otilde;ppemise alused ja tingimused.</p>

@@ -8,6 +8,7 @@ body {
 .container {
   background-color: white;
   padding: 30px 10px;
+  position: relative;
 }
 .span-end {
   float: right;
@@ -431,7 +432,17 @@ a {
   color: rgb(44, 185, 44);
   background-color: #f4f4f4;
 }
-
+#spinner-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.38);
+  z-index: 9999;
+  opacity: 0;
+  transition: 0.1s ease-in-out;
+}
 .menu-icons .svg-wrap:active::after,
 .front-mobile-footer .svg-wrap:active:after {
   opacity: 1;
@@ -1646,18 +1657,44 @@ input[type="radio"] {
   }
 }
 
-@font-face {
-  font-family: "Oscine W04 Light";
-  src: url("f3b4480034be437c576a2fd2af7173db.eot");
-  /* IE9*/
-  src: url("f3b4480034be437c576a2fd2af7173db.eot?#iefix") format("embedded-opentype"),
-    /* IE6-IE8 */
-    url("f3b4480034be437c576a2fd2af7173db.woff2") format("woff2"),
-    /* chromeم€پfirefox */
-    url("f3b4480034be437c576a2fd2af7173db.woff") format("woff"),
-    /* chromeم€پfirefox */
-    url("f3b4480034be437c576a2fd2af7173db.ttf") format("truetype"),
-    /* chromeم€پfirefoxم€پoperaم€پSafari, Android, iOS 4.2+*/
-    url("f3b4480034be437c576a2fd2af7173db.svg#Oscine W04 Light") format("svg");
-  /* iOS 4.1- */
+.spinner {
+  animation: rotator 1.4s linear infinite;
+  position: absolute;
+  top: 250px;
+  left: 50%;
+  transform: translateX(-50%);
+  stroke: #fff;
+}
+
+@keyframes rotator {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(270deg);
+  }
+}
+
+.path {
+  stroke-dasharray: 187;
+  stroke-dashoffset: 0;
+  transform-origin: center;
+  animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 187;
+  }
+
+  50% {
+    stroke-dashoffset: 46.75;
+    transform: rotate(135deg);
+  }
+
+  100% {
+    stroke-dashoffset: 187;
+    transform: rotate(450deg);
+  }
 }

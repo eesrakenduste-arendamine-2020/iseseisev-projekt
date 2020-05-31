@@ -77,6 +77,23 @@ function closeSliderModal() {
   sliderOverlay.classList.remove("active");
 }
 
+function hideInput(e) {
+  errorId = e.target.dataset.id;
+  if (e.target.value) {
+    document.getElementById(errorId).style.display = "none";
+    document.getElementById("input" + errorId).style.backgroundColor = "white";
+  } else {
+    const mq = window.matchMedia("(max-width: 567px)");
+    if (mq.matches) {
+      return;
+    } else {
+      document.getElementById(errorId).style.display = "inline-block";
+      document.getElementById("input" + errorId).style.backgroundColor =
+        "#ff5f5f";
+    }
+  }
+}
+
 /* Allkirjastamine */
 window.onload = function () {
   document.getElementById("button-js").addEventListener("click", openModal);
@@ -119,6 +136,11 @@ window.onload = function () {
   } else {
     showInfo();
   }
+
+  spinnerOverlay.style.opacity = 0;
+  spinnerOverlay.style.visibility = 'hidden';
+
+  hideInput();
 };
 
 function openModal(e) {
@@ -158,23 +180,6 @@ function openModal2(e) {
 function closeModal2(e) {
   modal2.style.display = "none";
   overlay.style.display = "none";
-}
-
-function hideInput(e) {
-  errorId = e.target.dataset.id;
-  if (e.target.value) {
-    document.getElementById(errorId).style.display = "none";
-    document.getElementById("input" + errorId).style.backgroundColor = "white";
-  } else {
-    const mq = window.matchMedia("(max-width: 567px)");
-    if (mq.matches) {
-      return;
-    } else {
-      document.getElementById(errorId).style.display = "inline-block";
-      document.getElementById("input" + errorId).style.backgroundColor =
-        "#ff5f5f";
-    }
-  }
 }
 
 function hideInfo() {
@@ -253,8 +258,18 @@ function toggleExtra() {
   }
 }
 
+var spinnerDur = 800;
+var spinnerOverlay = document.getElementById('spinner-overlay');
 /* Change contracts */
 document.getElementById('contract1').addEventListener('click', function () {
+  setTimeout(function () {
+    contract1();
+  }, spinnerDur);
+
+  spinnerOverlay.style.opacity = 1;
+  spinnerOverlay.style.visibility = 'visible';
+})
+function contract1() {
   var xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
@@ -263,13 +278,24 @@ document.getElementById('contract1').addEventListener('click', function () {
   };
   xmlhttp.open("GET", "contract1.php", true);
   xmlhttp.send();
-
+  
   document.getElementById('contract1').classList.add('active');
   document.getElementById('contract2').classList.remove('active');
   document.getElementById('contract3').classList.remove('active');
-})
+  spinnerOverlay.style.opacity = 0;
+  spinnerOverlay.style.visibility = 'hidden';
+}
 
 document.getElementById('contract2').addEventListener('click', function () {
+  setTimeout(function () {
+    contract2();
+  }, spinnerDur);
+
+  spinnerOverlay.style.opacity = 1;
+  spinnerOverlay.style.visibility = 'visible';
+})
+
+function contract2() {
   var xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
@@ -278,27 +304,40 @@ document.getElementById('contract2').addEventListener('click', function () {
   };
   xmlhttp.open("GET", "contract2.php", true);
   xmlhttp.send();
-
+  
   document.getElementById('contract1').classList.remove('active');
   document.getElementById('contract2').classList.add('active');
   document.getElementById('contract3').classList.remove('active');
-})
+  spinnerOverlay.style.opacity = 0;
+  spinnerOverlay.style.visibility = 'hidden';
+}
 
 document.getElementById('contract3').addEventListener('click', function () {
-  var xmlhttp = new XMLHttpRequest();
-  xmlhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("contract").innerHTML = this.responseText;
-    }
-  };
-  xmlhttp.open("GET", "contract3.php", true);
-  xmlhttp.send();
+  setTimeout(function () {
+    contract3();
+  }, spinnerDur);
 
-  document.getElementById('contract1').classList.remove('active');
-  document.getElementById('contract2').classList.remove('active');
-  document.getElementById('contract3').classList.add('active');
+  spinnerOverlay.style.opacity = 1;
+  spinnerOverlay.style.visibility = 'visible';
 })
-
+  function contract3() {
+  
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("contract").innerHTML = this.responseText;
+      }
+    };
+    xmlhttp.open("GET", "contract3.php", true);
+    xmlhttp.send();
+    
+    document.getElementById('contract1').classList.remove('active');
+    document.getElementById('contract2').classList.remove('active');
+    document.getElementById('contract3').classList.add('active');
+    spinnerOverlay.style.opacity = 0;
+    spinnerOverlay.style.visibility = 'hidden';
+}
+  
 /* Get query strings */
 const queryString = window.location.search;
 if (queryString == '?mailsent') {
