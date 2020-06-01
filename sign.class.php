@@ -623,13 +623,6 @@ class signDoc {
 
     public function request($requestUrl, $fields = [], $post = REQUEST_POST) {
         
-        
-
-        /* $this->REQUEST_GET = false;
-        $this->REQUEST_POST = true; */
-
-
-        
         $this->fields = http_build_query($fields);
         $this->ch = curl_init();
         curl_setopt($this->ch, CURLOPT_URL, $requestUrl);

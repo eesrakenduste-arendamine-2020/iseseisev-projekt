@@ -28,7 +28,6 @@ if(isset($_POST['signMyself']) || isset($_POST['sendForSigning'])) {
     <link rel="stylesheet" href="css/style.css">
     <link href="css/all.min.css" rel="stylesheet">
     <script src="js/main.js" defer></script>
-    <script src="js/mobileLangSwitcher.js" defer></script>
 </head>
 <body>
     <div class="grid-3-2" style="margin-top: 30px;">
@@ -37,7 +36,11 @@ if(isset($_POST['signMyself']) || isset($_POST['sendForSigning'])) {
                 <h1>INTERAKTIIVNE LEPINGU ALLKIRJASTAMINE</h1>
             </div>
         </div>
-        <div class="front-slider">
+        <div class="front-slider" id="front-slider" unselectable="on">
+            <div id="front-slider-arrows">
+                <div id="left-arrow"><i class="fas fa-chevron-left"></i></div>
+                <div id="right-arrow"><i class="fas fa-chevron-right"></i></div>
+            </div>
             <img name="slider" alt="Slider">
             <div class="slider-full-screen" id="slider-full-screen">
                 <img src="images/full_screen.svg" alt="Fullscreen">

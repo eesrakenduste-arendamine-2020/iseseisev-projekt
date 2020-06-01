@@ -7,7 +7,6 @@ html {
   -ms-user-select: none;
   /* IE10+ */
 
-  /* Rules below not implemented in browsers yet */
   -o-user-select: none;
   user-select: none;
 }
@@ -140,10 +139,12 @@ table {
   width: 100%;
   text-align: center;
   z-index: 3;
+  border: 1px solid lightgrey;
   border-radius: 3px;
 }
 .modal1 {
   height: 200px;
+  
 }
 .modal2 {
   height: 321px;
@@ -248,6 +249,18 @@ table {
   }
   .span-error {
     display: none;
+  }
+  .front-product-shortcut:hover::before,
+  .front-product-shortcut:hover::after {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .front-product-shortcut.active {
+    color: grey;
+  }
+  .spinner {
+    left: 42% !Important;
   }
 }
 
@@ -1712,8 +1725,7 @@ input[type="radio"] {
   animation: rotator 1.4s linear infinite;
   position: absolute;
   top: 250px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 48%;
   stroke: #fff;
 }
 
