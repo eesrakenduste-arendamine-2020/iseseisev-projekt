@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clicker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="http://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script defer src = "clicker.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand">Georg-Henri Allas</a>
+        <a class="navbar-brand" href="https://github.com/georgha123/3kodutoo">
+            <img src="github.png" width="30" height="30" alt="swag">
+        </a>
+        <div class="container float-right justify-content-end mr-0">
+            <button type="button" class="btn btn-outline-success mr-2" id="save">salvesta</button>
+            <button type="button" class="btn btn-outline-danger" id="clear">Kustuta kõik</button>
+        </div>
+
+    </nav>
+    <div class="container">
+        <div class="text-center">
+            <img src="cookie.png" class="rounded" alt="" id="cookie" width="350px" height="350px">
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col col-lg-2">
+                <p class="h3 text-center" id="score">0</p>
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col col-lg-4">
+                <p class="h3 text-center" id="idleValue">0 Küpsist/s</p>
+            </div>
+        </div>
+
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <p class="text-justify">Passiivne küpsetamine
+                            <button type="button" class="btn btn-outline-success float-right" id="passive1">100</button>
+                        </p>
+                    </li>
+                    <li class="list-group-item">
+                        <p class="text-left">Küpsetajad
+                            <button type="button" class="btn btn-outline-success float-right" id="passive2">500</button>
+                        </p>
+
+                    </li>
+                    <li class="list-group-item">
+                        <p class="text-left">Küpsise 3d printija
+                            <button type="button" class="btn btn-outline-success float-right" id="passive3">1000</button>
+                        </p>
+                    </li>
+                    <li class="list-group-item">
+                        <p class="text-left">Küpsise tehas
+                            <button type="button" class="btn btn-outline-success float-right" id="passive4">10000</button>
+                        </p>
+                    </li>
+                    <li class="list-group-item">
+                        <p class="text-left">Küpsise tarkade kivi
+                            <button type="button" class="btn btn-outline-success float-right" id="passive5">100000</button>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <div class="col">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <p class="text-justify">Pronks sõrmed
+                            <button type="button" class="btn btn-outline-success float-right" id="active1">25</button>
+                        </p>
+                    </li>
+                    <li class="list-group-item">
+                        <p class="text-left">Hõbe sõrmed
+                            <button type="button" class="btn btn-outline-success float-right" id="active2">150</button>
+                        </p>
+
+                    </li>
+                    <li class="list-group-item">
+                        <p class="text-left">Kuld sõrmed
+                            <button type="button" class="btn btn-outline-success float-right" id="active3">1500</button>
+                        </p>
+                    </li>
+                    <li class="list-group-item">
+                        <p class="text-left">Plaatinum sõrmed
+                            <button type="button" class="btn btn-outline-success float-right" id="active4">15000</button>
+                        </p>
+                    </li>
+                    <li class="list-group-item">
+                        <p class="text-left">Teemant sõrmed
+                            <button type="button" class="btn btn-outline-success float-right" id="active5">50000</button>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
