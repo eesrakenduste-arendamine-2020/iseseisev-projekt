@@ -1,0 +1,70 @@
+body {
+    background-color: honeydew;
+}
+h1 {
+    font-family: verdana;
+}
+
+h5 {
+    font-size: large;
+    font-weight: 800;
+    font-family: verdana;
+}
+
+.main-grid {
+    display: grid;
+    grid-template-columns: 40vw 40vw auto;
+    grid-template-rows: 20vw 20vw;
+    border: 2px solid black;
+}
+
+.grid-submit {
+    grid-column: 1/2;
+    grid-row: 1/3;
+    background-color: rgb(255, 103, 103);
+}
+
+.grid-budget-display {
+    grid-column: 2/4;
+    grid-row: 1/2;
+    background-color: rgb(121, 228, 247);
+}
+
+.grid-expense-list {
+    grid-column: 2/4;
+    grid-row: 2/3;
+    background-color: rgb(194, 248, 112);
+}
+
+.budget-form, .expense-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.budget-display, .expense-list-items{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.expense-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.input-box {
+    height: 5vh;
+}
+
+.btn {
+    margin: 20px;
+    height: 5vh;
+    font-size: medium;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background-color: rgb(122, 195, 255);
+}

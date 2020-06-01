@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script
+    src="https://code.jquery.com/jquery-3.5.1.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+    <script src="budget.js"></script>
+    <title>Eelarve rakendus</title>
+</head>
+<h1>Eelarve rakendus</h1>
+<body>
+    <div class="main-grid">
+        <div class="submit-form grid-submit">
+            <form id="budget-form" class="budget-form">
+                <h5>Palun sisesta oma eelarve</h5>
+                <span id="budget-error" hidden>Palun sisesta eelarve summa!</span>
+                <input type="number" min="0" id="budget-input" class="budget-input input-box" placeholder="Suurus">
+                <button id="submit-budget" class="btn">Kinnita</button>
+            </form>
+            <form id="expense-form" class="expense-form">
+                <h5>Palun sisesta oma kulud</h5>
+                <input type="text" id="expense-input" class="expense-input input-box" placeholder="Kulu nimetus">
+                <input type="number" min="0" id="amount-input" class="amount-input input-box" placeholder="Suurus">
+                <button id="submit-expenses" class="btn">Lisa kulutus</button>
+            </form>
+        </div>
+        <div class="budget-display grid-budget-display">
+            <div id="budget"></div>
+                <h3>Eelarve</h3>
+                <span id="budget-amount">0</span>
+            <div id="expenses"></div>
+                <h3>Kulud</h3>
+                <span id="expense-amount">0</span>
+            <div id="balance"></div>
+                <h3>Jääk</h3>
+                <span id="balance-amount">0</span>
+        </div>
+        <div id="expense-list" class="expense-list grid-expense-list">
+            <div class="expense-list-items">
+                <h3 class="list-item">Kulu nimetus</h3>
+                <h3 class="list-item">Kulu suurus</h3>
+                <h3 class="list-item"></h3>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
