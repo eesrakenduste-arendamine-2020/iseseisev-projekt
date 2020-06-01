@@ -1,5 +1,5 @@
 # Clicker game
-##Autor
+## Autor
 Georg-Henri Allas
 ## Funktsionaalsus
  - Clickimine küpsise peale tekitab skoori.
