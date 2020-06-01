@@ -1,0 +1,9 @@
+<b><a name="_Toc177559404"></a>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; L&otilde;pps&auml;tted</b>
+<p>1.1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lepingust t&otilde;usetuvad vaidlused lahendatakse l&auml;bir&auml;&auml;kimiste teel. Kui vaidlust ei &otilde;nnestu lahendada l&auml;bir&auml;&auml;kimiste teel, on Pooltel &otilde;igus p&ouml;&ouml;rduda vaidluse lahendamiseks maakohtusse vastavalt Eesti Vabariigis kehtivatele &otilde;igusaktidele.</p>
+<p>1.2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &Uuml;hing annab Juhatuse liikme kasutusse k&auml;esoleva Lepingu t&auml;itmiseks vajalikud t&ouml;&ouml;vahendid ning loob muud Juhatuse liikmele m&otilde;istlikult vajalikud ning Juhatuse liikme positsioonile kohased t&ouml;&ouml;tingimused.</p>
+<p>1.3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lepingule ei laiene vastavalt t&ouml;&ouml;lepingu seaduse &sect; 1 p-le 5 t&ouml;&ouml;lepingu seadus ja teised t&ouml;&ouml;&otilde;iguslikud aktid ning k&auml;esoleva Lepingu alusel tekkinud suhe ei ole t&ouml;&ouml;suhe.</p>
+<p>1.4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Leping asendab ja l&otilde;petab k&otilde;ik varasemad lepingud ja kokkulepped Lepingus reguleeritud k&uuml;simuste osas.</p>
+<p>1.5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; K&otilde;ikides Lepinguga reguleerimata k&uuml;simustes juhinduvad Pooled seadustest, headest kommetest, v&auml;ljakujunenud tavadest ja praktikast.</p>
+<p>1.6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Leping j&auml;&auml;b t&auml;ies mahus kehtima &Uuml;hingu &otilde;igusj&auml;rglaste suhtes.</p>
+<p>1.7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Lepingu tingimused on konfidentsiaalsed ning ei kuulu avaldamisele kolmandatele isikutele.</p>
+<p>Leping on koostatud ja allkirjastatud kahes (2) eestikeelses eksemplaris, millest kummalegi Poolele j&auml;&auml;b &uuml;ks (1) eksemplar.</p>
