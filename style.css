@@ -1,0 +1,117 @@
+#output{
+    font-size: 1.5em;
+}
+
+#btndeal, #minutegevus{
+    display: none;
+
+}
+
+.btn{
+    border-radius: 5px;
+    padding:7px 20px;
+    color: white;
+    display: inline-block;
+    font: normal "Calibri", sans-serif;
+    text-align: center;
+    text-shadow: 1px 1px #000000;
+}
+.mangkaart{
+    height: 160px;
+    width: 120px;
+    padding: 3px;
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 10px;
+    position: absolute;
+    left:100px;
+    display:inline-block;
+    font-family: 'Lato';
+}
+
+#kaardi-kate{
+    height: 160px;
+    width: 120px;
+    border-radius: 10px;
+    background-color: yellow;
+    position: absolute;
+    border: 2px black;
+    padding: 3px;
+}
+
+.clubs, .spades{
+    color:black;
+}
+
+.hearts, .diams{
+    color:red;
+}
+
+.kaardi-ula{
+    font-size: 30px;
+    line-height: 20px;
+    left: 2px;
+    top: 2px;
+}
+.kaardi-all{
+    font-size: 30px;
+    line-height: 20px;
+    right: 2px;
+    bottom: 2px;
+    transform: rotate(-180deg);
+
+}
+.kaardi-kesk{
+    text-align: center;
+    font-size: 60px;
+}
+.hearts .mast::after{
+    content: '\2665';
+}
+.diams .mast::after{
+    content: '\2666';
+}
+.spades .mast::after{
+    content: '\2660';
+}
+.clubs .mast::after{
+    content:'\2663';
+}
+
+#diilerHoidla, #mangijaHoidla{
+    height:200px;
+    width: 550px;
+}
+
+#message{
+    height: 70px;
+    font-size: 30px;
+    text-align: center;
+
+}
+#btnhold{
+    background-color: green;
+
+}
+#btnhit{
+    background-color: red;
+}
+
+#btndouble{
+    background-color: purple;
+}
+#btnstart{
+    background-color: black;
+}
+#maxpanus{
+    background-color: red;
+}
+
+.kokku{
+    font-size: 25px;
+}
+
+#btndeal{
+    background-color: orange;
+    font-size: 35px;
+}

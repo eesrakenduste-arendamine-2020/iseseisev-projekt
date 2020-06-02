@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Pontoon</title>
+</head>
+<body>
+    <div>
+    <div><h1>Blackjack</h1></small>Saa 21 või rohkem kui diiler.</small>
+    <div class ="kokku">Kokku $<span id="dollars">50</span></div>
+    <div>Panuse suures $<input type ="number" id="minupanus" value="0" min="1" max="100"><button id="maxpanus"type ="button" onclick="maxpanus()" class ="btn">Maksimum panus</button>
+    <div>
+        <button id="btndeal" type="button" onclick="jagaUus()" class="btn">Jaga uus pakk</button>
+    </div>
+    
+    </div>
+    <div id="message">Vajuta Alusta mängu nuppu!</div>
+    <div id="start">
+        <button id="btnstart" type="button" onclick="Start()" class="btn">Alusta mängu</button>
+
+
+    </div>
+    <div id="output">
+        Diileri käsi : <span id="dVaartus"></span><div id="diilerHoidla"></div>
+        Mängija käsi : <span id="mVaartus"></span><div id="mangijaHoidla"></div>
+        <div id="minutegevus">
+            <button id="btnhold" type="button" onclick="minuKaik('hold')" class="btn">Hold</button>
+            <button id="btnhit" type="button" onclick="minuKaik('hit')" class="btn">Hit</button>
+            <button id="btndouble" type="button" onclick="minuKaik('double')" class="btn">Double</button>
+        </div>
+   
+
+    </div>
+    
+        
+    </div>
+    
+    
+</body>
+<script src="script.js"></script>
+</html>
