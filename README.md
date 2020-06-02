@@ -11,4 +11,4 @@ autor Petrik sarri
 
 Kasutatud on õppevideot: https://www.youtube.com/watch?v=m_HJ3juuFvo
 
-![App foto](/screenshot.png)
+![App foto](/Screenshot.png)
