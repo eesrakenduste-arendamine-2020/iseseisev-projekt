@@ -40,4 +40,13 @@ Rakenduses võib kasutada teiste autorite koodi, aga see peab olema viidatud. Ü
 * Igale grupile on aega 15 minutit (6 minutit rakenduse esitlus, 6 minutit koodi esitlus, 3 minutit küsimused)
 * Esitama peavad grupiliikmed ühisel ajal. 
 
+Iseseisev töö - Viktoriin
+
+Autor: Klaus Erik Kruus
+
+Veebipõhine viktoriinimäng, mõeldud ühele inimesele.
+
+Kasutatud abimaterjal: https://www.sitepoint.com/simple-javascript-quiz/
+
+Ekraanitõmmis: https://github.com/klauskruus/iseseisev-projekt/blob/master/Projekt.png
 
