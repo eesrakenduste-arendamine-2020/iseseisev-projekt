@@ -1,0 +1,148 @@
+body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-image: url(raamat.jpg);
+    background-size: cover;
+    
+}
+
+div{
+    text-align: center;
+}
+
+input{
+    margin: 5px;
+    height: 40px;
+    border-radius: 5px;
+    width: 20%;
+    font-size: 18px;
+}
+
+#inputContainer, #buttonContainer{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    margin: 5px;  
+}
+
+#sortContainer{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    margin: 5px;  
+}
+
+.entry{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid red;
+    margin: 5px;
+    padding: 1%;
+    border-radius: 10px;
+    background-color: #222;
+    color: aqua;
+    font-style: italic;
+    font-size: medium;
+    width: 30%;
+}
+
+.book-list{
+    width: 90%;
+}
+
+#inputContainer, #buttonContainer{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    margin: 5px;
+}
+
+.delete-button {
+    color: red;
+    font-size: 25px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    color: darkred;
+    font-size: 27px;
+}
+
+input[type="button"]{
+    position: relative;
+    background: #222;
+    color: aqua;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 0.2em solid aqua;
+    padding: 0.5em 1em;
+    cursor: pointer;
+}
+
+input[type="button2"]{
+    position: relative;
+    background: #222;
+    color: rgb(107, 173, 20);
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    border: 0.2em solid rgb(124, 41, 80);
+    padding: 0.5em 1em;
+    cursor: pointer;
+}
+
+.done-button{
+    color: green;
+    width: 10%;
+    cursor: pointer;
+}
+
+.page-button{
+    color: rgb(194, 117, 46);
+    width: 10%;
+    cursor: pointer;
+    position: relative;
+}
+
+.done-state {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid red;
+    margin: 5px;
+    padding: 1%;
+    border-radius: 10px;
+    background-color: lightgreen;
+    color: black;
+    font-size: medium;
+    font-style: italic;
+    font-size: medium;
+    width: 30%;
+} 
+
+input[type=search] {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('luup.png');
+    background-size: 25%;
+    background-position: left;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+  }
+  
+input[type=search]:focus {
+    width:50%;
+    background-image: url('luup.png');
+    background-size: 3%;
+    background-position: left;
+  }
