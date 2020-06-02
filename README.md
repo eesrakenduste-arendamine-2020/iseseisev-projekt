@@ -1,3 +1,24 @@
+Rakenduse nimi: Hangman
+
+
+Iseseisva projekti autor: Edgar Lainelo
+
+
+Iseseisva projekti kirjeldus: 
+Projekt kujuneb ennast Hangman mängu, kus mängijal on olemas 5 elu. Talle öeldakse kategooria (näiteks filmid, instrumendid jne) ja mängija peab ära arvama sõna. Kui mängija õigesti ära arvas sõnu, siis ta võib alustada mängu uuesti. Kui mängijale ebaõnnustas sõnu ära arvata, siis talle öeldakse, mis sõna oli ja ta võib uuesti alustada uue sõnaga.
+Programmi ülesehituse aluseks võeti YouTube video´t: 
+https://www.youtube.com/watch?v=dgvyE1sJS3Y
+Lisaks tahaks tänuda minu sõbra Lauri Kammonen´it, kes aitas mulle lahendada koodi vead (näiteks random sõna valimisel) ja seletas kuidas võib teha ülejaanud koodi.
+
+Erkaantõmmit on toodut png failidena
+
+
+//-----------------------------------------------------------------//
+
+
+
+
+
 # iseseisev-projekt
 
 Tähtaeg - 1 päev enne esitlust. Esitluse kuupäevadeks: 1 nädal peale ÕISis valitud arvestuse kuupäeva (v.a arvatud järelarvestus, mis toimub õigel kuupäeval) - kindlasti tuleb arvestusele registreerida. Projektide esitlemine toimub:
