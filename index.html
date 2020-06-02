@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<head>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="obstacle.js"></script>
+    <script type="text/javascript" src="player.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <audio id="music" autoplay><source src="0.mp3" type="audio/mp3"></audio>
+    <title>2D-Platformer</title>
+</head>
+<body>
+
+  <div id="containerButton" >
+    <div id="buttons" >
+        <button id="game-over" onclick="restartGame()">Play again</button>
+        <button onclick="location.href='https://github.com/TouringNormal/iseseisev-projekt'" type="button">Repository</button>
+        </div>
+  </div>
+
+  <div id="creator">
+    <div id="creator1">Raimond Laatspera</div>
+    <div id="creator2">Taavi Vestel</div>
+  </div>
+
+    <!--paneb automaatselt järgmise loo mängima, kui eelmine on läbi-->
+    <script>
+      var x = 0;
+      var music = document.getElementById("music"); 
+      music.volume = 0.05;
+      $("#music").bind("ended", function(){
+      x=x+1;
+      music.src = x%7 + ".mp3";
+      music.load();
+      music.play();       
+      });
+    </script>
+</body>
+</head>
