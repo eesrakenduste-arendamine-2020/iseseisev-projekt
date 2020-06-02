@@ -1,3 +1,10 @@
+BlackJack
+Lõin iseseisvaks projektiks blackjack mängu.
+
+
+
+
+
 # iseseisev-projekt
 
 Tähtaeg - 1 päev enne esitlust. Esitluse kuupäevadeks: 1 nädal peale ÕISis valitud arvestuse kuupäeva (v.a arvatud järelarvestus, mis toimub õigel kuupäeval) - kindlasti tuleb arvestusele registreerida. Projektide esitlemine toimub:
