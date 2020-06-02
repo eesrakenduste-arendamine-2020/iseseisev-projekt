@@ -1,20 +1,24 @@
+* {
+    font-family: verdana;
+}
+
 body {
     background-color: honeydew;
-}
-h1 {
-    font-family: verdana;
 }
 
 h5 {
     font-size: large;
     font-weight: 800;
-    font-family: verdana;
+}
+
+.text2 {
+    font-size: large;
 }
 
 .main-grid {
     display: grid;
     grid-template-columns: 40vw 40vw auto;
-    grid-template-rows: 20vw 20vw;
+    grid-template-rows: 25vw 25vw;
     border: 2px solid black;
 }
 
@@ -36,22 +40,30 @@ h5 {
     background-color: rgb(194, 248, 112);
 }
 
+.submit-form {
+    padding: 10px;
+    overflow: scroll;
+}
+
 .budget-form, .expense-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.budget-display, .expense-list-items{
+.budget-display, .expense-list-items {
+    padding: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
+
 .expense-list {
+    overflow: scroll;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+
 }
 
 .input-box {
@@ -68,3 +80,23 @@ h5 {
     cursor: pointer;
     background-color: rgb(122, 195, 255);
 }
+
+.delete-icon {
+    width: 2vw;
+    height: 2vh;
+}
+
+.delete-icon:hover, .edit-icon:hover {
+    cursor: pointer;
+}
+
+.edit-icon {
+    width: 2vw;
+    height: 2vh;
+}
+
+/* .color-changer {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+} */

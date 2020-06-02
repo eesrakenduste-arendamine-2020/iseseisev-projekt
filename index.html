@@ -23,27 +23,36 @@
             </form>
             <form id="expense-form" class="expense-form">
                 <h5>Palun sisesta oma kulud</h5>
+                <span id="expense-error" hidden>Palun sisesta kulu nimetus ja summa!</span>
                 <input type="text" id="expense-input" class="expense-input input-box" placeholder="Kulu nimetus">
                 <input type="number" min="0" id="amount-input" class="amount-input input-box" placeholder="Suurus">
                 <button id="submit-expenses" class="btn">Lisa kulutus</button>
             </form>
+            <!-- <div class="color-changer">
+                <span>Vaheta värvi</span>
+                <input id="submit-background" class="">
+                <input id="budget-display-background" class="">
+                <input id="expense-list-backround" class="">
+            </div> -->
         </div>
         <div class="budget-display grid-budget-display">
-            <div id="budget"></div>
+            <div id="budget" class="budget text2">
                 <h3>Eelarve</h3>
                 <span id="budget-amount">0</span>
-            <div id="expenses"></div>
+            </div>
+            <div id="expenses" class="expenses text2">
                 <h3>Kulud</h3>
                 <span id="expense-amount">0</span>
-            <div id="balance"></div>
+            </div>
+            <div id="balance" class="balance text2">
                 <h3>Jääk</h3>
                 <span id="balance-amount">0</span>
+            </div>
         </div>
         <div id="expense-list" class="expense-list grid-expense-list">
             <div class="expense-list-items">
                 <h3 class="list-item">Kulu nimetus</h3>
                 <h3 class="list-item">Kulu suurus</h3>
-                <h3 class="list-item"></h3>
             </div>
         </div>
     </div>
