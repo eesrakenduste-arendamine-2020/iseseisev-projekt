@@ -1,0 +1,95 @@
+<div class="main-content">
+  <h2><a name=""></a></h2>
+  <p>This is the  API</p>
+
+  <h2><a name="getRouteOriginDestination"></a>getRouteOriginDestination</h2>
+  <hr>
+  <p></p>
+  <p>Get the systems between origin and destination  ---  This route is cached for up to 86400 seconds</p>
+  <h3 class="section">URL</h3>
+  <code>https://esi.evetech.net/v1/route/{origin}/{destination}/</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="integer"><a href="">List</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">destination</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">destination solar system ID</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      <span class="param-in">Path: </span>
+      
+      
+      <span class="param-name">origin</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">origin solar system ID</p>
+	  </li>
+	  <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">avoid</span>
+      <span class="param-type">List(Integer)</span>
+      
+      <p class="param-description">avoid solar system ID(s)</p>
+	  </li>
+	  <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">connections</span>
+      <span class="param-type">List(List)</span>
+      
+      <p class="param-description">connected solar system pairs</p>
+	  </li>
+	  <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">datasource</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">The server name you would like data from</p>
+	  </li>
+	  <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">flag</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">route security preference</p>
+	  </li>
+	  <li class="parameter">
+      
+      
+      
+      <span class="param-in">Header: </span>
+      
+      <span class="param-name">If-None-Match</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">ETag from a previous request. A 304 will be returned if this matches the current ETag</p>
+	  </li>
+  </ul>
+</div>
