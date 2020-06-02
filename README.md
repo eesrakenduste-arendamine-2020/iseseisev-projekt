@@ -4,7 +4,7 @@ Tähtaeg - 1 päev enne esitlust. Esitluse kuupäevadeks: 1 nädal peale ÕISis 
 1. 19.05.2020 kell 16:15-17:45 zoomis
 1. 21.05.2020 kell 08.15-09:45 zoomis
 1. 22.05.2020 kell 08.15-09:45 zoomis
-1. Järelarvestus - 02.06.2020 kell 16:15-17:45 ruumis A-406 (või vajadusel zoomis)
+1. Järelarvestus - 02.06.2020 kell 16:15-17:45 https://us02web.zoom.us/j/81114426837?pwd=cHZmUmZZbFRmQnJkc0pQTlFNYytCZz09
 
 Eesrakenduste arendamise iseseisva projekti lähteülesanne. 
 
