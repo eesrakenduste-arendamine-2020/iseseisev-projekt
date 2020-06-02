@@ -1,5 +1,5 @@
-BlackJack
-Lõin iseseisvaks projektiks blackjack mängu.
+# BlackJack
+Tegin iseseisvaks projektiks blackjack mängu.
 
 
 
