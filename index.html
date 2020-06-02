@@ -122,7 +122,7 @@
 				+ this.orbit.semiminor * Math.sin(this.ticks) * Math.cos(this.orbit.rotation_angle);
 				
 				this.location = [x,y];
-				this.ticks += this.ticks === 360 ? -360 : (1/this.T) * speed_coef;
+				this.ticks += this.ticks > 360 ? -360 : (1/this.T) * speed_coef;
 			}
 			update_and_get_location()
 			{
@@ -146,6 +146,8 @@
 			last_addition_time = Date.now();
 			USER_PLANETS_ORDER = planet_names;
 			document.getElementById("sun_checkbox").disabled = true;
+			document.getElementById("roundness_threshold").defaultValue = "85";
+			document.getElementById("speed").defaultValue = "10";
 
 			var constraints = { video: true };
 			var permission 	= navigator.mediaDevices.getUserMedia(constraints);
