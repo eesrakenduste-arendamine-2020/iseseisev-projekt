@@ -46,23 +46,30 @@ body {
     justify-content: center;
 }
 
-.budget-display, .expense-list-items, .list-item {
+.budget-display, .expense-list-caption  {
     padding: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
+.list-item{
+    padding-left: 15vw;
+}
 
 .expense-list {
     overflow: scroll;
-    display: flex;
-    flex-direction: column;
 }
 
 .expense-item {
     display: flex;
+    justify-content: space-between;
+}
+
+.expense {
+    display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
 
 .input-box {
@@ -80,16 +87,12 @@ body {
     background-color: rgb(122, 195, 255);
 }
 
-.delete-icon {
-    width: 2vw;
-    height: 2vh;
+.delete-icon, .edit-icon {
+    width: 20px;
+    height: 20px;
+    padding-left: 5vw;
 }
 
 .delete-icon:hover, .edit-icon:hover {
     cursor: pointer;
-}
-
-.edit-icon {
-    width: 2vw;
-    height: 2vh;
 }

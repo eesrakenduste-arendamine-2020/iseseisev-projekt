@@ -1,3 +1,11 @@
+/* class Expense{
+    constructor(id, title, amount){
+        this.id = id;
+        this.title = title;
+        this.amount = amount;
+    }
+} */
+
 class UI{
     constructor(){
         this.budgetForm = document.getElementById("budget-form");
@@ -10,11 +18,10 @@ class UI{
         this.expenseInput = document.getElementById("expense-input");
         this.amountInput = document.getElementById("amount-input");
         this.expenseList = document.getElementById("expense-list");
-        this.itemList = [];
+        //this.itemList = [];
         this.itemID = 0;
 
-/*         this.itemList = JSON.parse(window.localStorage.getItem('expenses')) || [];
-        this.loadLocal(); */
+        this.itemList = JSON.parse(window.localStorage.getItem('expenses')) || [];
 
     }
 
@@ -27,6 +34,7 @@ class UI{
             $('#budget-error').hide(200);
             this.budgetInput.value = "";
             this.showBalance();
+            this.saveLocal();
         };
     }
 
@@ -53,9 +61,10 @@ class UI{
                 amount,
         };
             this.itemID++;
+            //this.itemList.push(new Expense(this.itemID, expenseValue, amount));
             this.itemList.push(expense);
             this.addExpense(expense);
-            //this.saveLocal();
+            this.saveLocal();
             this.showBalance();
         }
     }
@@ -102,7 +111,11 @@ class UI{
 
         this.itemList = tempList;
 
+        this.itemList.forEach((entryValue, entryIndex)=>{
+            this.itemList.slice(entryIndex, 1);
+        })
 
+        this.saveLocal();
         this.showBalance();
     }
 
@@ -129,14 +142,38 @@ class UI{
 
     }
 
-
     saveLocal(){
         window.localStorage.setItem('expenses', JSON.stringify(this.itemList));
+        //window.localStorage.setItem('budget', this.budgetInput.value);
     }
 
     loadLocal(){
+
+/*         let budgetLoad = window.localStorage.getItem('budget');
+        this.budgetAmount = parseInt(budgetLoad).budgetValue;
+ */
         window.localStorage.getItem('expenses', JSON.stringify(this.itemList));
+        //console.log(this.itemList);
+        this.itemList.forEach((entryValue, entryIndex)=>{
+            const div = document.createElement('div');
+            div.classList.add('expense');
+            div.innerHTML = `
+            <div id="expense-item" class="expense-item">
+    
+             <p class="expense-title list-item">- ${entryValue.title}</p>
+             <p class="expense-amount list-item">${entryValue.amount}</p>
+    
+              <img src="pencil.png" id="edit-icon" class="edit-icon" data-id="${entryValue.id}">
+              <img src="trash-can.png" id="delete-icon" class="delete-icon" data-id="${entryValue.id}">
+             </div>
+            </div>
+            `;
+        this.expenseList.appendChild(div);
+
+        })
+        //this.addExpense();
     }
+
 }
 
 function eventListener(){
@@ -145,6 +182,8 @@ function eventListener(){
     const expenseList = document.getElementById("expense-list");
 
     const ui = new UI();
+
+    ui.loadLocal();
 
     budgetForm.addEventListener('submit', function(event){
         event.preventDefault();
