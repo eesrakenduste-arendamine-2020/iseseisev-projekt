@@ -1,207 +1,209 @@
-var kaardid = [];
-var mangijaKaardid = [];
-var diileriKaardid = [];
-var minuDollarid=50;
-var loppMang=false; 
-var loeKaarte = 0;
-var mastid = ["spades","hearts","clubs","diams"];
-var numbrid= ["A","2","3","4","5","6","7","8","9","10","J","Q","K"];
-var message = document.getElementById("message");
-var output = document.getElementById("output");
-var diilerHoidla = document.getElementById("diilerHoidla");
-var mangijaHoidla = document.getElementById("mangijaHoidla");
-var mVaartus = document.getElementById("mVaartus");
-var dVaartus = document.getElementById("dVaartus");
-var dollariVaartus = document.getElementById("dollars");
+let mastid=["spades","hearts","clubs","diams"];
+let vaartus=["A","2","3","4","5","6","7","8","9","10","J","Q","K"];
+let kaardiPakk=[];
+let kaardiVarv = "";
+let punktid = 0;
+let kaardiLoendur = 0;
+let txt = "";
+let voit = 0;
+let panus = 0;
+var diileriKasi = document.getElementById("diileriKasi");
+var mangijaKasi = document.getElementById("mangijaKasi");
+var mangijaSkoor = document.getElementById("mangijaSkoor");
+var diileriSkoor = document.getElementById("diileriSkoor");
+let mangija={
+    kaardid:[],
+    punktid:0,
+    kujutis: mangijaKasi,
+    displeiSkoor: mangijaSkoor
+};
+let diiler={
+    kaardid:[],
+    punktid:0,
+    kujutis: diileriKasi,
+    displeiSkoor: diileriSkoor
+};
 
 
-for (i in mastid){ 
-    var mast = mastid[i][0].toUpperCase();
-    var kaardivarv = (mast == "S" || mast == "C") ? "black" : "red";
-    for (n in numbrid){
-        
-        var kaardivaartus = (n>9) ? 10 : parseInt(n)+1 
-        var kaart={
-            mast:mast,
-            ikoon:mastid[i],
-            kaardivarv:kaardivarv,
-            kaardinum:numbrid[n],
-            kaardivaartus:kaardivaartus
-        }
-        kaardid.push(kaart);
+for (i = 0; i < mastid.length; i++){
+    if (mastid[i] == "spades"|| mastid[i] == "clubs"){
+        kaardiVarv = "black";
+    } else {
+        kaardiVarv = "red";
     }
-}
-
-function Start(){
-    segaPakk(kaardid);
-    jagaUus();
-    document.getElementById('start').style.display='none'; 
-    document.getElementById('dollars').innerHTML = minuDollarid; 
-}
-
-function jagaUus(){ 
-    mangijaKaardid = [];
-    diileriKaardid = [];
-    diilerHoidla.innerHTML = ""; 
-    mangijaHoidla.innerHTML = "";
-    var panuseSuurus=document.getElementById('minupanus').value; 
-    minuDollarid=minuDollarid-panuseSuurus;
-    document.getElementById('dollars').innerHTML = minuDollarid;
-    document.getElementById('minutegevus').style.display='block';
-    message.innerHTML = "Saa 21 või sellele lähedale,et võita diiler!<br>Hetkene panus on $"+panuseSuurus;
-    document.getElementById('minupanus').disabled=true;
-    document.getElementById('maxpanus').disabled = true;
-    jaga();
-  
-}
-
-function jaga(){
-    console.log(kaardid);
-    for(x=0;x<2;x++){ 
-        diileriKaardid.push(kaardid[loeKaarte]);
-        diilerHoidla.innerHTML += kaardiValjund(loeKaarte,x);
-        loeKaarte++
-        if(x==0){ 
-            diilerHoidla.innerHTML += '<div id="kaardi-kate" style="left:100px;"></div>';
-        }
-        mangijaKaardid.push(kaardid[loeKaarte]);
-        mangijaHoidla.innerHTML += kaardiValjund(loeKaarte,x);
-        loeKaarte++;
-        
-    }
-    
-    mVaartus.innerHTML =checktotal(mangijaKaardid);
-    console.log(diileriKaardid);
-    console.log(mangijaKaardid);
-}
-
-function kaardiValjund(n,x){
-    var hpos = (x>0) ? x*60+100 : 100;
-    return '<div class="mangkaart '+kaardid[n].ikoon+'" style="left:'+hpos+'px"> <div class="kaardi-ula mast">'+kaardid[n].kaardinum+'<br></div><div class="kaardi-kesk mast"></div><div class="kaardi-all mast">'+kaardid[n].kaardinum+'<br></div></div>';
-}
-
-function maxpanus(){
-    document.getElementById('minupanus').value = minuDollarid;
-    message.innerHTML = "Panus muudetud $"+minuDollarid;
-
-}
-
-function minuKaik(k){
-    console.log(k);
-    switch (k) { 
-        case 'hit':
-            mangiukaart(); 
-            break;
-        case 'hold':
-            mangulopp(); 
-            break;
-        case 'double':
-            var panuseSuurus= parseInt(document.getElementById('minupanus').value);
-            if((minuDollarid-panuseSuurus)<0){
-                panuseSuurus=panuseSuurus+minuDollarid;
-                minuDollarid=0
-            } else{
-                minuDollarid=minuDollarid-panuseSuurus;
-                panuseSuurus=panuseSuurus*2;
+    for (j = 0; j < vaartus.length; j++){
+        if (isNaN(vaartus[j])){
+            if (vaartus[j] != "A"){
+                punktid = 10;
+            } else {
+                punktid = 11;
             }
-            document.getElementById('dollars').innerHTML=minuDollarid;
-            document.getElementById('minupanus').value=panuseSuurus;
-            mangiukaart();
-            mangulopp();
-            break;
-        default:
-            console.log('done');
-            mangulopp();
-
-    }
-}
-
-function mangiukaart(){ 
-    mangijaKaardid.push(kaardid[loeKaarte]); 
-    mangijaHoidla.innerHTML += kaardiValjund(loeKaarte,(mangijaKaardid.length-1));
-    loeKaarte++
-    var rValue = checktotal(mangijaKaardid);
-    mVaartus.innerHTML = rValue;
-    if(rValue>21){
-        message.innerHTML="LÄKSID LÕHKI!HAHA!";
-        mangulopp();
-    }
-}
-function mangulopp(){
-    loppMang=true; 
-    document.getElementById('kaardi-kate').style.display='none';
-    document.getElementById('minutegevus').style.display='none';
-    document.getElementById('btndeal').style.display='block';
-    document.getElementById('minupanus').disabled= false;
-    document.getElementById('maxpanus').disabled = false;
-    message.innerHTML ="Mäng on läbi!<br>";
-    var voitjatasuBlackjack=1;
-    var diilerikasi= checktotal(diileriKaardid);
-    dVaartus.innerHTML = diilerikasi;
-    while(diilerikasi<17){ 
-        diileriKaardid.push(kaardid[loeKaarte]); 
-        diilerHoidla.innerHTML += kaardiValjund(loeKaarte,(mangijaKaardid.length-1));
-        loeKaarte++;
-        diilerikasi= checktotal(diileriKaardid);
-        dVaartus.innerHTML = diilerikasi;
-    }
-    
-    var mangijakasi= checktotal(mangijaKaardid);
-    if(mangijakasi ==21 &&mangijaKaardid.length == 2){
-        message.innerHTML ="Mangija sai BlackJacki"
-        voitjatasuBlackjack = 1.5; 
-    }
-    var panus= parseInt(document.getElementById('minupanus').value)*voitjatasuBlackjack; 
-   
-    if((mangijakasi<22 && diilerikasi<mangijakasi) || (diilerikasi>21 && mangijakasi<22)){
-        
-        message.innerHTML += '<span style="color:green;">Sa võitsid! Sa võitsid $'+panus+'</span>';
-        minuDollarid=minuDollarid+(panus*2);
-        
-    }
-    else if(mangijakasi > 21){
-        message.innerHTML += '<span style="color:red;">Diile võitis!Sa kaotasid $'+panus+'</span>';
-    }
-    else if (mangijakasi==diilerikasi){
-        message.innerHTML += '<span style="color:blue;">Viik!</span>';
-        minuDollarid=minuDollarid+panus;
-
-    }
-    else {
-        message.innerHTML += '<span style="color:red;">Diile võitis!Sa kaotasid $'+panus+'</span>';
-
-    }
-    mVaartus.innerHTML = diilerikasi;
-    dollariVaartus.innerHTML =minuDollarid;
-}
-
-function checktotal(arr){
-    var rValue=0; 
-    var assaSeade=false;
-    for(var i in arr ){
-        if(arr[i].kaardinum=='A' && !assaSeade){ 
-            assaSeade=true;
-            rValue=rValue+10;
+            
+        } else {
+            punktid = parseInt(vaartus[j]);
         }
-        rValue=rValue+arr[i].kaardivaartus
+        var kaart={
+            mast:mastid[i],
+            kaardivarv:kaardiVarv,
+            vaartus:vaartus[j],
+            punktid:punktid     
+        };
+        kaardiPakk.push(kaart);
     }
-    if(assaSeade && rValue>21){
-        rValue=rValue-10;
+}
+function Start(){
+    mangija.kaardid = [];
+    diiler.kaardid = [];
+    mangija.punktid = 0;
+    diiler.punktid = 0;
+    voit = 0;
+    mangija.kujutis.innerHTML = "";
+    diiler.kujutis.innerHTML = "";
+    txt = "";
+    segaPakk(kaardiPakk);
+   panus = prompt("Mängu alustamiseks sisesta panus:");
+   if (!panus){
+       location.reload()
+   } else {
+    uusMang();
     }
-    return rValue;
+}
+
+function valjastaKaart(kaardiLoendur){
+    return "<span style='color:"+kaardiPakk[kaardiLoendur].kaardivarv+"'>"+kaardiPakk[kaardiLoendur].vaartus + "&"
+    +kaardiPakk[kaardiLoendur].mast+";</span> ";
+
 }
 
 function segaPakk(array){
-    for(var i = array.length -1; i>0;i--){ 
-        var o = Math.floor(Math.random() * (i+1));
-        var ajutine = array [i];
-        array[i] = array[o];
-        array[o] = ajutine;
+    for (var i = array.length - 1; i > 0; i--) {
+        var rand = Math.floor(Math.random() * (i + 1));
+        [array[i], array[rand]] = [array[rand], array[i]]
     }
     return array;
 }
 
-function valjastaKaart(){
-    output.innerHTML += "<span style='color:"+kaardid[loeKaarte].kaardivarv+"'>"+kaardid[loeKaarte].kaardinum + "&"
-    +kaardid[loeKaarte].ikoon+";</span> ";
+function uusMang(){
+    for (var i=0; i<2; i++){
+        uusKaart(mangija);
+        uusKaart(diiler);
+    }
+    sai21();
+    laksLohki();
+
 }
+
+function uusKaart(obj){
+    obj.kujutis.innerHTML += valjastaKaart(kaardiLoendur);
+   obj.kaardid.push(kaardiPakk[kaardiLoendur]);
+   if (kaardiPakk[kaardiLoendur].vaartus == "A" && obj.kaardid.length>2){
+       assaPunktid(obj, kaardiLoendur);
+   }
+   obj.punktid += kaardiPakk[kaardiLoendur].punktid;
+   obj.displeiSkoor.innerHTML = obj.punktid;
+   kaardiLoendur++;
+
+}
+
+function Hold(){
+    lahemal21le();
+    sai21();
+    if (txt==""){
+        diileriKaik();
+    }
+}
+
+function Hit(){
+    uusKaart(mangija);
+    sai21();
+    laksLohki();
+    if(txt==""){
+        diileriKaik();
+    }
+}
+
+function diileriKaik(){
+    if (diiler.punktid < 17){
+        uusKaart(diiler);
+    } else {
+        setTimeout(function () {
+            alert("Diileril on 17 punkti või rohkem. Sinu käik.");
+        }, 400); 
+    }
+    sai21();
+    laksLohki();
+}
+
+function assaPunktid(obj, kaardiLoendur){
+    if (obj == mangija){
+        var tulemus = confirm("Said Ässa. Kas arvestad selle väärtuseks 11?");
+        if(tulemus == true){
+            kaardiPakk[kaardiLoendur].punktid = 11;
+        }else {
+            kaardiPakk[kaardiLoendur].punktid = 1;
+        }
+    } else {
+        if (obj.punktid + 11 > 21){
+            kaardiPakk[kaardiLoendur].punktid = 1; 
+        } else if (15 < obj.punktid + 11 < 17){            
+            kaardiPakk[kaardiLoendur].punktid = 1; 
+        } 
+        
+    }
+}
+
+function sai21(){
+    if (mangija.punktid == 21 && diiler.punktid!= 21){
+        if (mangija.kaardid.length == 2){
+            voit = 2.5 * panus;
+            txt = "BLACKJACK!"
+        } else {
+            voit = 2*panus;
+            txt = "Said 21 punkti ja oled võtja!";  
+        }
+        manguLopp(txt);
+    } else if (diiler.punktid == 21 && mangija.punktid != 21){
+        txt = "Diiler sai 21 punkti ja võitis!";
+        voit = -1 * panus;
+        manguLopp(txt);
+    } else if (diiler.punktid == 21 && mangija.punktid == 21){
+        txt = "Viik!";  
+        manguLopp(txt);
+    }
+}
+
+function laksLohki(){
+    if (mangija.punktid > 21){
+        voit = -1 * panus
+        txt = "Läksid lõhki ja kaotasid!";
+        manguLopp(txt);
+    } else if (diiler.punktid > 21){
+        voit = 2 * panus;
+        txt = "Diiler läks lõhki ja sina võtisid!";
+        manguLopp(txt);
+    }
+}
+
+function lahemal21le(){
+    if (diiler.punktid >= 17 && diiler.punktid < 21 && mangija.punktid < 21) {
+        if (diiler.punktid < mangija.punktid){
+            txt = "Sinu skoor on lähemal 21-le ning sa võitsid!";
+            voit = 2 * panus;
+            manguLopp(txt);
+        } else if (mangija.punktid < diiler.punktid){
+            txt = "Diileri skoor on lähemal 21-le ning ta võitis!";
+            voit = -1 * panus;
+            manguLopp(txt);
+        } else if (mangija.punktid == diiler.punktid){
+            txt = "Viik!";
+            manguLopp(txt);
+        }
+    }
+   
+}
+
+function manguLopp(txt){
+    setTimeout(function(){ alert(txt + " Sinu tulemuseks oli " + voit + " eurot."); }, 300);
+    setTimeout(function(){ Start(); }, 600);
+}
+
