@@ -11,6 +11,8 @@ var diileriKasi = document.getElementById("diileriKasi");
 var mangijaKasi = document.getElementById("mangijaKasi");
 var mangijaSkoor = document.getElementById("mangijaSkoor");
 var diileriSkoor = document.getElementById("diileriSkoor");
+var koguVoidud=document.getElementById("koguVoidud");
+let koguVoit= 0;
 let mangija={
     kaardid:[],
     punktid:0,
@@ -61,7 +63,7 @@ function Start(){
     diiler.kujutis.innerHTML = "";
     txt = "";
     segaPakk(kaardiPakk);
-   panus = prompt("Mängu alustamiseks sisesta panus:");
+   panus = parseInt(prompt("Mängu alustamiseks sisesta panus:"));
    if (!panus){
        location.reload()
    } else {
@@ -96,7 +98,7 @@ function uusMang(){
 function uusKaart(obj){
     obj.kujutis.innerHTML += valjastaKaart(kaardiLoendur);
    obj.kaardid.push(kaardiPakk[kaardiLoendur]);
-   if (kaardiPakk[kaardiLoendur].vaartus == "A" && obj.kaardid.length>2){
+   if (kaardiPakk[kaardiLoendur].vaartus == "A"){
        assaPunktid(obj, kaardiLoendur);
    }
    obj.punktid += kaardiPakk[kaardiLoendur].punktid;
@@ -155,10 +157,10 @@ function assaPunktid(obj, kaardiLoendur){
 function sai21(){
     if (mangija.punktid == 21 && diiler.punktid!= 21){
         if (mangija.kaardid.length == 2){
-            voit = 2.5 * panus;
+            voit = 1.5 * panus;
             txt = "BLACKJACK!"
         } else {
-            voit = 2*panus;
+            voit = panus;
             txt = "Said 21 punkti ja oled võtja!";  
         }
         manguLopp(txt);
@@ -178,7 +180,7 @@ function laksLohki(){
         txt = "Läksid lõhki ja kaotasid!";
         manguLopp(txt);
     } else if (diiler.punktid > 21){
-        voit = 2 * panus;
+        voit = panus;
         txt = "Diiler läks lõhki ja sina võtisid!";
         manguLopp(txt);
     }
@@ -188,7 +190,7 @@ function lahemal21le(){
     if (diiler.punktid >= 17 && diiler.punktid < 21 && mangija.punktid < 21) {
         if (diiler.punktid < mangija.punktid){
             txt = "Sinu skoor on lähemal 21-le ning sa võitsid!";
-            voit = 2 * panus;
+            voit = panus;
             manguLopp(txt);
         } else if (mangija.punktid < diiler.punktid){
             txt = "Diileri skoor on lähemal 21-le ning ta võitis!";
@@ -204,6 +206,10 @@ function lahemal21le(){
 
 function manguLopp(txt){
     setTimeout(function(){ alert(txt + " Sinu tulemuseks oli " + voit + " eurot."); }, 300);
+    koguVoit+= voit;
+    koguVoidud.innerHTML=koguVoit;
     setTimeout(function(){ Start(); }, 600);
+
 }
+
 
