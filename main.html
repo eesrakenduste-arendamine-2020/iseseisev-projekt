@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Blackjack</title>
+</head>
+<body>
+    <div>
+    <div id="message"><h1>Vajuta nuppu, et mängu alustada!</h1></div>
+    <div id="start">
+        <button id="btnstart" type="button" onclick="Start()" class="btn">Alusta mängu</button>
+    </div>
+    <div id="output">
+        Diileri käsi:
+        <div id="diileriKasi"></div>
+        Mängija käsi:
+        <div id="mangijaKasi"></div>
+        <div id="tegevus">
+            <button id="btnhit" type="button" onclick="Hit()" class="btn">Hit</button>
+            <button id="btnhold" type="button" onclick="Hold()" class="btn">Hold</button>
+        </div>
+        <div id="skoorid">
+            Diileri skoor:
+        <div id="diileriSkoor"></div>
+            Sinu skoor:
+        <div id="mangijaSkoor"></div>
+            Koguvõidud:
+        <div id="koguVoidud"></div>
+        </div>
+    </div>
+<script src="script.js"></script>
+</html>
