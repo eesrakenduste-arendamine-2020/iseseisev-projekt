@@ -1,0 +1,635 @@
+<!-- Pildid on leitud siit: https://space-facts.com/transparent-planet-pictures/ -->
+<!-- Radu Mariescu-Istodori koodi edasiarendus -->
+<!-- https://www.youtube.com/watch?v=0SxiyLk2IMM -->
+
+<!DOCTYPE html>
+<html lang="ee">
+<head>
+	<meta charset="UTF-8">
+    <title> Päikesesüsteem </title>
+    <style>
+		#effects, #images
+		{
+			pointer-events : none;		
+			-webkit-transform: scaleX(-1);
+  			transform: scaleX(-1);
+		}
+		canvas
+		{
+			position    : absolute;
+			margin-left : -150px;
+			border      : solid 2px;
+		}
+		#camera
+		{
+  			-webkit-transform: scaleX(-1);
+  			transform: scaleX(-1);
+		}
+		#controls
+		{
+			position: fixed;
+  			top: 5px;
+  			right: 20px;
+			text-align: left;
+		}
+		#planets_choice
+		{
+			position: fixed;
+  			top: 5px;
+  			left: 10px;
+		}
+		#user_manual
+		{
+			padding-top: 320px;
+		}	
+    </style>
+    <script>		
+        var CAMERA_CANVAS     		= null;
+		var EFFECTS_CANVAS    		= null;
+		var IMAGES_CANVAS     		= null;
+		const SIZE 	          		= 300;
+		const PLANET_SIZE 	  		= 30;
+		const INTERVAL        		= 42;
+		var THRESHOLD         		= 50;
+
+		var COLOR             		= [4, 104, 39];
+		var PATH		      		= [];
+		const PATH_LIFETIME   		= 2000;
+
+		var PARTICLES         		= [];
+		var CHAOS 		      		= 10;
+		const G               		= [0, 1];
+		
+		var ROUNDNESS             	= 0;
+		var ROUNDNESS_THRESHOLD 	= 0.85;
+		var DETECTED         		= false;
+
+		let sun_visible  = false;
+		let sun_location = [SIZE/2, SIZE/2];
+
+		var PLANETS = [];
+		var USER_PLANETS_ORDER = [];
+
+		var orbit = null;
+		var planet = null;
+		var centre_points = [];
+		var last_addition_time;
+		var speed_coef = 1;
+		
+
+		class Orbit
+		{
+			constructor(roundness, area, rotation_angle)
+			{
+				this.roundness  = roundness;
+				this.area		= area;
+				this.rotation_angle = rotation_angle;
+
+				// This is not exact, but good enough.
+				this.semimajor 	= Math.sqrt(this.area / (Math.PI * this.roundness));
+				this.semiminor	= this.roundness * this.semimajor;
+
+				this.focus_dist = Math.sqrt(this.semimajor**2 - this.semiminor**2);
+/*				this.F1 = 
+				[this.focus_dist * Math.cos(this.rotation_angle),
+				+this.focus_dist * Math.sin(this.rotation_angle)];*/
+			}
+		}
+
+		class Planet 
+		{
+			constructor(centre_point, orbit, name)
+			{
+				this.centre_point = centre_point;
+				this.orbit = orbit;
+				this.ticks = 0;
+				this.location = [0,0];
+				this.name 	= name;
+
+				this.m = 10000;
+				this.a = this.orbit.semimajor;
+
+				this.T = 2 * Math.PI * Math.sqrt( this.a**3 / this.m );
+			}
+			set_location()
+			{
+				var x = this.centre_point[0] - PLANET_SIZE /2
+				+ this.orbit.semimajor * Math.cos(this.ticks) * Math.cos(this.orbit.rotation_angle)
+				- this.orbit.semiminor * Math.sin(this.ticks) * Math.sin(this.orbit.rotation_angle);
+
+				var y = this.centre_point[1] - PLANET_SIZE /2
+				+ this.orbit.semimajor * Math.cos(this.ticks) * Math.sin(this.orbit.rotation_angle)
+				+ this.orbit.semiminor * Math.sin(this.ticks) * Math.cos(this.orbit.rotation_angle);
+				
+				this.location = [x,y];
+				this.ticks += this.ticks > 360 ? -360 : (1/this.T) * speed_coef;
+			}
+			update_and_get_location()
+			{
+				this.set_location();
+				// TODO set_speed()
+				return this.location;
+			}			
+		}
+
+		function main() {			
+			CAMERA_CANVAS         = document.getElementById('camera');
+            CAMERA_CANVAS.width   = SIZE;
+			CAMERA_CANVAS.height  = SIZE;
+			EFFECTS_CANVAS        = document.getElementById('effects');
+            EFFECTS_CANVAS.width  = SIZE;
+			EFFECTS_CANVAS.height = SIZE;
+			IMAGES_CANVAS         = document.getElementById('images');
+            IMAGES_CANVAS.width   = SIZE;
+            IMAGES_CANVAS.height  = SIZE;						
+
+			last_addition_time = Date.now();
+			USER_PLANETS_ORDER = planet_names;
+			document.getElementById("sun_checkbox").disabled = true;
+			document.getElementById("roundness_threshold").defaultValue = "85";
+			document.getElementById("speed").defaultValue = "10";
+
+			var constraints = { video: true };
+			var permission 	= navigator.mediaDevices.getUserMedia(constraints);
+			permission.then(
+				function(stream) {
+					var video 		= document.createElement('video');
+					video.srcObject = stream;
+					video.play();
+					
+					setInterval(updateImage, INTERVAL, video);					
+				}
+			).catch(
+				function(err) {
+					alert("camera error");
+				}
+			);
+			
+			CAMERA_CANVAS.addEventListener('mousedown', updateColor); 
+
+			create_the_menus();
+        }
+
+		function updateImage(video) {
+            const context = CAMERA_CANVAS.getContext('2d');
+
+			const minSize = Math.min(video.videoWidth, 
+								   video.videoHeight);
+			const startX  = (video.videoWidth  - minSize) / 2;
+			const startY  = (video.videoHeight - minSize) / 2;
+
+			context.drawImage(video, startX, startY, minSize, minSize, 
+									 0, 0, SIZE, SIZE);
+							
+			clearEffectsCanvas();
+			clearImagesCanvas();
+
+			PLANETS.forEach(put_planet_onto_canvas);
+			
+			if (sun_visible)
+			{
+				put_sun_onto_canvas(sun_location);
+			}
+			
+			if (DETECTED == false && Date.now() - last_addition_time > 2500)
+			{
+				const pixelLocations = getPointerPixels();	
+				//showLocations(pixelLocations);			
+				if (pixelLocations.length > 0) {	
+					const centrePoint = average(pixelLocations);
+					centrePoint.time  = new Date().getTime();
+					PATH.push(centrePoint);
+				}
+				keepRecentPartOfPath();
+				ROUNDNESS = calculateRoundness();
+				
+				if (ROUNDNESS >= ROUNDNESS_THRESHOLD)
+				{
+					DETECTED = true;
+
+					orbit = new Orbit
+					(
+						ROUNDNESS, 
+						getPolygonArea(), 
+						rotation_angle(average(PATH), farthest(PATH, average(PATH)))
+					);
+					planet = new Planet 
+					(
+						average(PATH), 
+						orbit, 
+						USER_PLANETS_ORDER.shift()
+					);
+					PLANETS.push(planet);
+					DETECTED = false;
+					last_addition_time = Date.now();
+				}
+			}
+
+			drawPath();
+			updateParticles(EFFECTS_CANVAS);			
+		}
+		
+		function getPointerPixels(){
+			const context   = CAMERA_CANVAS.getContext("2d");
+			const imageData = context.getImageData(0, 0, SIZE, SIZE);
+			const oneDArray = imageData.data;
+			
+			var pixelLocations = [];
+			for (var y = 0; y < SIZE; y++) {
+				for (var x = 0; x < SIZE; x++) { 
+					const r = oneDArray[ y*SIZE*4 + x*4 + 0 ];
+					const g = oneDArray[ y*SIZE*4 + x*4 + 1 ];
+					const b = oneDArray[ y*SIZE*4 + x*4 + 2 ];
+					if (distance(COLOR, [r,g,b]) < THRESHOLD) {
+						pixelLocations.push([x, y]);
+					}
+				}
+			}
+			return pixelLocations;
+		}
+			
+		function showLocations(locations) {
+			const context = EFFECTS_CANVAS.getContext("2d");
+			for (var i = 0; i < locations.length; i++) {
+				context.fillStyle = "black";
+				context.fillRect(...locations[i], 1, 1);
+			}
+			context.fill();
+		}
+		
+		function clearEffectsCanvas() {
+			const context = EFFECTS_CANVAS.getContext("2d");
+			context.clearRect(0, 0, SIZE, SIZE);
+		}
+//*********************************************************************************************
+
+		function clearImagesCanvas() {
+			const context = IMAGES_CANVAS.getContext("2d");
+			context.clearRect(0, 0, SIZE, SIZE);
+		}
+
+		function farthest (locations, centre)
+		{
+			var loc  = [0, 0];
+			var far  = [0, 0];
+			var dist = 0;
+
+			for (var i = 0; i < locations.length; i++)
+			{
+				loc[0] = locations[i][0];
+				loc[1] = locations[i][1];
+				
+				new_dist = Math.sqrt
+				( ( loc[0]-centre[0] )**2 + ( loc[1]-centre[1] )**2 );
+
+				if(new_dist > dist)
+				{
+					far = loc;
+					dist = new_dist;
+				}
+			}
+			return far;
+		}
+
+		function rotation_angle (origin, loc)
+		{			
+			return Math.atan2
+			(
+				Math.abs(loc[1] - origin[1]),
+				Math.abs(loc[0] - origin[0])				
+			) * 180 / Math.PI;
+		}
+//*********************************************************************************************
+
+		function updateColor(event) {
+			const location  = getCursorPosition(event);
+			const context   = CAMERA_CANVAS.getContext('2d');
+			const imageData = context.getImageData(...location, 1, 1);
+			const oneDArray = imageData.data;
+			COLOR[0] = oneDArray[0];  COLOR[1] = oneDArray[1];  COLOR[2] = oneDArray[2];
+		}
+	
+		function getCursorPosition(event) {
+			const rect = CAMERA_CANVAS.getBoundingClientRect();
+			const x    = rect.width - (event.clientX - rect.left);
+			const y    = (event.clientY - rect.top);
+			return [x,y];
+		}
+		
+		function average(locations) {
+			var loc = [0, 0];
+			for (var i = 0; i < locations.length; i++) {
+				loc[0] += locations[i][0];
+				loc[1] += locations[i][1];
+			}
+			loc[0] /= locations.length;
+			loc[1] /= locations.length;
+			return loc;
+		}
+		
+		function keepRecentPartOfPath() {
+			const now=new Date().getTime();
+			while (PATH.length > 0 && now-PATH[0].time > PATH_LIFETIME) {
+				PATH.shift();
+			}
+		}
+		
+		function drawPath() {
+			for (var i=0; i < PATH.length - 1; i++) {
+				drawSegment(PATH[i], PATH[i + 1]);
+			}
+		}
+		
+		function drawSegment(from, to, color = "black") { 
+			const context = EFFECTS_CANVAS.getContext("2d");
+			context.beginPath();
+			context.moveTo(...from);
+			context.lineTo(...to);
+			context.lineWidth=2;		
+			context.strokeStyle=color;	
+			context.stroke();
+		}
+		
+		function calculateRoundness() {
+			const length     = getPolygonLength();
+			const area	     = getPolygonArea();
+			const R		     = length / (Math.PI * 2);
+			const circleArea = Math.PI * R * R;
+			const roundness  = area / circleArea;
+			return roundness;
+		}
+		
+		function getPolygonLength() {
+			var length = 0;
+			for (var i = 0; i < PATH.length; i++) {
+				var nextI = i + 1;
+				if (nextI == PATH.length) {
+					nextI = 0;
+				}
+				length+=distance(PATH[i], PATH[nextI]);
+			}
+			return length;
+		}
+		
+		function getPolygonArea() {
+			var area = 0;
+			for (var i = 0; i < PATH.length; i++) {
+				var nextI = i + 1;
+				if (nextI == PATH.length) {
+					nextI = 0;
+				}
+				area += PATH[i][0] * PATH[nextI][1];
+				area -= PATH[i][1] * PATH[nextI][0];
+			}
+			area = Math.abs(area) / 2
+			return area;
+		}
+		
+		class Particle {
+			constructor(location, velocity) {
+				this.location = location;
+				this.velocity = velocity;
+				this.life 	  = 10;
+				this.green 	  = 100 + Math.round(Math.random() * 100);
+			}
+			
+			move() {
+				this.velocity = addVectors(this.velocity, G)	
+				this.location = addVectors(this.location, this.velocity);
+				this.life--;
+			}
+			
+			draw() {
+				const opacity     = this.life / 10;	
+				const color 	  = "rgba(255," + this.green + ",0," + opacity + ")";
+				const oldLocation = subtractVectors(this.location, this.velocity);
+				drawSegment(this.location, oldLocation, color);
+			}
+		}					
+		
+		function updateParticles() {
+			for (var i=0; i < PATH.length; i++) {
+				var velocity = [
+					CHAOS * (Math.random() - 0.5),
+					CHAOS * (Math.random() - 0.5)
+				];
+				if (i > 0) {
+					const movement = subtractVectors(PATH[i - 1], PATH[i]); 
+					velocity = addVectors(velocity, movement);
+				}
+				PARTICLES.push(new Particle(PATH[i], velocity));
+			}
+			for (var i = 0; i < PARTICLES.length; i++) {
+				PARTICLES[i].move();
+				PARTICLES[i].draw();
+			}
+			while(PARTICLES.length > 0 && PARTICLES[0].life == 0){
+				PARTICLES.shift();
+			}
+		}
+		
+		function distance(p1, p2) {
+            var dist = 0;
+            for (var i = 0; i < p1.length; i++) {
+                dist += (p1[i] - p2[i]) * (p1[i] - p2[i]);
+            }
+            return Math.sqrt(dist);
+        }
+
+		function addVectors(v1, v2) {
+			var newV=[
+				v1[0] + v2[0],
+				v1[1] + v2[1]
+			];
+			return newV;
+		}
+
+		function subtractVectors(v1, v2) {
+			var newV=[
+				v1[0] - v2[0],
+				v1[1] - v2[1]
+			];
+			return newV;
+		}
+
+//		BUILDUP FUNCTIONS		**********************************************************************		
+		
+		function put_planet_onto_canvas(planet)
+		{
+			var loc = planet.update_and_get_location();
+			var width  = PLANET_SIZE;
+			var height = PLANET_SIZE;
+
+			var c = document.getElementById("images");
+  			var ctx = c.getContext("2d");
+  			var img = document.getElementById( planet.name + "_image" );
+  			ctx.drawImage(img, loc[0], loc[1], width, height);
+		}
+
+		function put_sun_onto_canvas(loc)
+		{			
+			var width  = PLANET_SIZE;
+			var height = PLANET_SIZE;
+
+			var c = document.getElementById("images");
+  			var ctx = c.getContext("2d");
+  			var img = document.getElementById("sun_image");
+  			ctx.drawImage(img, -PLANET_SIZE /2 +loc[0], -PLANET_SIZE /2 +loc[1], width, height);
+			//ctx.drawImage(img, loc[0], loc[1], width, height);
+		}
+
+		const planet_names =   ["Mercury",
+								"Venus",
+								"Earth",
+								"Mars",
+								"Jupiter",
+								"Saturn",
+								"Uranus",
+								"Neptune"]		
+
+		function create_the_menus()
+		{
+			const MENU_IMG_SIZE = 50;
+			const ordered_list = document.getElementById("menus");
+
+			for (let menu = 0; menu < planet_names.length; menu++)
+			{				
+				const list_element = document.createElement("li");
+				const select_element = document.createElement("select");
+				
+				for (let option = 0; option < planet_names.length; option++)
+				{
+					let opt = document.createElement("option");
+					opt.textContent = planet_names[option];
+					select_element.appendChild(opt);					
+				}
+				
+				select_element.selectedIndex = menu;
+				select_element.onchange = change_image;
+
+				const image_element = document.createElement("img");
+				image_element.id = planet_names[menu] + "_image";
+				image_element.src = 
+				"images/" + planet_names[menu].toLowerCase() + ".png";
+				image_element.alt = "image of the " + planet_names[menu];
+				image_element.width = MENU_IMG_SIZE;
+				image_element.height = MENU_IMG_SIZE;
+
+				list_element.appendChild(select_element);
+				list_element.appendChild(document.createElement("br"));
+				list_element.appendChild(image_element);
+				ordered_list.appendChild(list_element);
+			}
+		}
+
+//		SETTING FUNCTIONS	************************************************************		
+
+		function get_planets_order()
+		{
+			USER_PLANETS_ORDER = [];
+			let dropdowns = Array.from(document.getElementsByTagName("select"));
+
+			for (let index = 0; index < dropdowns.length; index++)
+			{
+				const select_element = dropdowns[index];
+				USER_PLANETS_ORDER.push(
+					planet_names[select_element.selectedIndex]);
+			}
+		}
+
+		function change_image(e)
+		{
+			e.currentTarget.parentElement.lastChild.src = 
+			"images/"  
+			+ e.currentTarget.options[
+					e.currentTarget.selectedIndex]
+						.textContent
+							.toLowerCase()
+			+ ".png";
+		}
+		
+		function move_orbits_to_average_centre_point()
+		{
+			for (let i = 0; i < PLANETS.length; i++)
+			{
+				centre_points.push( PLANETS[i].centre_point );				
+			}
+			var new_centre = average(centre_points);
+			
+			for (let i = 0; i < PLANETS.length; i++)
+			{
+				PLANETS[i].centre_point = new_centre;
+			}
+			sun_location = new_centre;
+			document.getElementById("sun_checkbox").disabled = false;
+		}
+		function move_orbits_to_video_centre_point()
+		{
+			var new_centre = [SIZE/2, SIZE/2];
+			
+			for (let i = 0; i < PLANETS.length; i++)
+			{
+				PLANETS[i].centre_point = new_centre;
+			}
+			sun_location = new_centre;
+			document.getElementById("average_button").disabled = true;
+			document.getElementById("sun_checkbox").disabled = false;
+		}
+		function clear_planet_canvas()
+		{
+			PLANETS 		= [];
+			sun_visible 	= false;
+			document.getElementById("sun_checkbox").checked = false;
+			document.getElementById("average_button").disabled = false;
+			document.getElementById("sun_checkbox").disabled = true;
+			sun_location 	= [SIZE/2, SIZE/2];
+		}
+		function change_coefficients()
+		{
+			speed_coef = 
+				document.getElementById("speed").value / 10 ;
+			ROUNDNESS_THRESHOLD = 
+				document.getElementById("roundness_threshold").value / 100;
+		}
+    </script>
+</head>
+<body onload="main()">
+	<center>
+		<h1>Joonista oma Päikesesüsteem</h1>
+		<canvas id="camera"></canvas>
+		<canvas id="effects"></canvas>
+		<canvas id="images"></canvas>
+		<div id="controls">
+			<p>Orbiitide tsentreerimine</p>
+			<label>Lähimasse keskpunkti:</label><br>
+			<button id="average_button" onclick="move_orbits_to_average_centre_point()">
+				Tsentreeri
+			</button><br>
+			<label>Videoakna keskpunkti:</label><br>
+			<button onclick="move_orbits_to_video_centre_point()">
+				Tsentreeri
+			</button><br>
+			<label>Eemalda planeedid:</label><br>
+			<button onclick="clear_planet_canvas()">
+				Eemalda
+			</button>
+			<p>Päike sisse/välja<input type="checkbox" id="sun_checkbox" onclick="sun_visible=!sun_visible"></p>
+
+			<label for="roundness_threshold">Vajalik ümarus (%)</label><br>
+			<input type="number" id="roundness_threshold" min="70" max="100">
+			<br>
+			<label for="speed">Tiirlemise kiirus</label><br>
+			<input type="number" id="speed" min="1" max="50"><br>
+			<button onclick="change_coefficients()">Uuenda</button>
+		</div>
+	</center>
+
+	<div id="planets_choice">
+		<p>Planeetide lisamise <br> järjekord:</p>
+		<ol id="menus"></ol>
+	</div>
+
+	<br>
+	<img id="sun_image" width="1" height="1" src="images/sun.png">
+</body>
+</html>
